@@ -10,26 +10,22 @@
 
 <b>(ES) Pasos para configurar el tema:</b>
 <ol>
-   <li>Descarga el tema desde el botón verde <code>Code</code>-><code>Download Zip</code></li>.
-   <li>Descomprime el archivo y copia la carpeta 👉<code>chrome</code>👈 y el archivo 👉<code>user.js</code>👈 dentro de la carpeta de perfil de tu usuario de firefox. <b>Para encontrar el directorio de tu perfil de usuario ve a <a href="https://github.com/Godiesc/firefox-gx#example-of-aboutsupport"> about:support</a> or about:profiles.</b></li>
+   <li>Descarga el tema desde el botón verde <code>Code</code>-><code>Download Zip.</code></li>
+   <li>Descomprime el archivo y copia la carpeta 👉<code>chrome</code>👈 y el archivo 👉<code>user.js</code>👈 dentro de la carpeta de perfil de tu usuario de firefox. Para encontrar el directorio de tu perfil de usuario ve a <a href="https://github.com/Godiesc/firefox-gx#example-of-aboutsupport"> about:support</a> or about:profiles.</li>
    <li>Instala y usa un tema compatible.</li>
    <li>Reinicia el navegador.</li>
-</ol>
-
 </br>
 
 <b>(EN) Steps to configure the theme:</b>
 <ol>
-   <li>Download the theme from the green big button <code>Code</code>-><code>Download Zip</code></li> 
-   <li>Unzip the file and copy the 👉<code>chrome</code>👈 folder and the 👉<code>user.js</code>👈 file into your Firefox profile directory. <b> To find out the location of your profile directory go to <a href="https://github.com/Godiesc/firefox-gx#example-of-aboutsupport"> about:support</a> or about:profiles.</b></li>
+   <li>Download the theme from the green big button <code>Code</code>-><code>Download Zip.</code></li> 
+   <li>Unzip the file and copy the 👉<code>chrome</code>👈 folder and the 👉<code>user.js</code>👈 file into your Firefox profile directory.To find out the location of your profile directory go to <a href="https://github.com/Godiesc/firefox-gx#example-of-aboutsupport"> about:support</a> or about:profiles.</li>
    <li>Install and use a compatible theme.</li>
-   <li>Restart the browser. </li>
+   <li>Restart the browser.</li>
 </ol>
-
-<ul><li></li></ul>
 </br>
 
-> <p>Notice:<ul><li>⚠ The latest code updated in the repository (code > download zip) may work well only on beta or nightly versions.</li></ul></p>
+> <p>Notice:<ul>⚠ The latest code updated in the repository (code > download zip) may work well only on beta or nightly versions.</ul></p>
 
 # Temas - Themes
 <ul><li>Temas Principales - Main Themes: <a href="https://addons.mozilla.org/es/firefox/addon/beautiful-focused-tab/">light/dark adaptive Theme</a></li>
@@ -40,9 +36,27 @@
    
 <p><b>Here a <a href="https://imgur.com/a/0ZASdRb">"Video Explanation"</a> to how switch into light and dark mode if necessary.</b></p>
 
-
 # Extra Info
-<p>Into the "Extras" folder you will find the next features.</p>
+<ul>
+<li> For left sidebar the theme use the bookmark-bar, so it should be always on.</li>
+<li>The social extensions used to put in the left-sidebar are:
+
+[Twitch](https://addons.mozilla.org/es/firefox/addon/twitch-live-channels/) - 
+[Whatsapp](https://addons.mozilla.org/es/firefox/addon/chatwapp-in-sidebar/) - 
+[Telegram](https://addons.mozilla.org/es/firefox/addon/telegram-in-sidebar/) -
+[Facebook messenger](https://addons.mozilla.org/es/firefox/addon/messenger-sidebar-with-toolbar/) - 
+[Twitter](https://addons.mozilla.org/es/firefox/addon/twitter-as-a-sidebar/) -
+[Instagram Chat](https://addons.mozilla.org/es/firefox/addon/instagram-chat-in-sidebar/) -
+[Discord](https://addons.mozilla.org/es/firefox/addon/discord-in-sidebar/) -
+[Panorama tab groups](https://addons.mozilla.org/es/firefox/addon/panorama-tab-groups/) - 
+[Ublock](https://addons.mozilla.org/es/firefox/addon/ublock-origin/) 
+</li>
+<li>You can use flexible spaces to create separatos in the tabs-bar.</li>
+</br>
+
+
+<p>PD: I'm the owner of <b>Instagram Chat extension</b> and <b>WhatsApp extension</b>, The other extensions I used were for testing purposes.</p></br>
+</ul>
 
 # Personalizar - Customize
 
