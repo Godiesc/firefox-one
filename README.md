@@ -24,7 +24,7 @@
 </ol>
 </br>
 
-> <p>Notice: ⚠ The latest code updated in the repository (code > download zip) may work well only on beta or nightly versions.</p>
+> <p>⚠ Notice: The latest code updated in the repository (code > download zip) may work well only on beta or nightly versions.</p>
 
 # Temas - Themes
 <ul><li>Temas Principales - Main Themes: <a href="https://addons.mozilla.org/es/firefox/addon/beautiful-focused-tab/">light/dark adaptive Theme</a></li>
@@ -52,7 +52,7 @@
 <li>You can use flexible spaces to create separatos in the tabs-bar.</li>
 </ul>
 
-<p>PD: I'm the owner of <b>Instagram Chat extension</b> and <b>WhatsApp extension</b>, The other extensions I used were for testing purposes.</p></br>
+<p>PD: I'm the owner of <b>Instagram Chat extension</b> and <b>WhatsApp extension</b>, The other extensions I used were for testing purposes.</p>
 
 # Personalizar - Customize
 
