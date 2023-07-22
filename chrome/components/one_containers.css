@@ -6,7 +6,7 @@
 .tabbrowser-tab:not([pinned]) .tab-context-line {
     -moz-box-ordinal-group: 2 !important;
     order: 2 !important;
-    margin-bottom: 0px !important;
+    margin-bottom: 1px !important;
 }
 
 .tabbrowser-tab:not([pinned], [selected]) .tab-context-line {
@@ -37,7 +37,7 @@ tab[muted] .tab-content .tab-label {
 .tabbrowser-tab:is([pinned]) .tab-context-line {
     -moz-box-ordinal-group: 2 !important;
     height: 2px;
-    margin-bottom: 0px !important;
+    margin-bottom: 1px !important;
     order: 2;
 }
 
