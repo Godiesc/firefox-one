@@ -58,7 +58,7 @@
 
 <b><i>Personalizaciones Varias - Various customizations</i></b>
 <ul>
-<li><p>The file <code>chrome/components/ogx_root-personal.css</code> contains very useful and easy to use variables, so it is easier to change:</p>
+<li><p>The file <code>chrome/components/one_root-personal.css</code> contains very useful and easy to use variables, so it is easier to change:</p>
 <ul>
 <li>Wallpaper.</li>
 <li>Height of the tabs and toolbar.</li>
@@ -71,11 +71,11 @@
 <b><i>Fondo Nueva Pestaña - NewTab Wallpaper</i></b>
 <ul>
    <li><p>(Option 1) In the directory: <code>chrome/images/newtab</code> there is a set of wallpapers, the images that the theme will select by default are: <b><i>wallpaper-light.png</i></b> and <b><i>wallpaper-dark.png</i></b>, you could rename the images you want with that names and the theme will select them, you can add your own images. If you don't want a wallpaper just delete the files with the specified names. You can find more images in: <a href="https://imgur.com/a/j78IhJN"><b>This Gallery</b></a>. <b>Restarting the browser after changing the wallpaper is required. </b></p></li>
-<li><p>(Option 2) Editing the code <code>chrome/components/ogx_root-personal.css</code> lines: <code>19</code> and <code>23</code>.<p></li></ul></br>
+<li><p>(Option 2) Editing the code <code>chrome/components/one_root-personal.css</code> lines: <code>19</code> and <code>23</code>.<p></li></ul></br>
 
 <b><i>Color Principal - Accent Color</i></b>
 <ul>
-<li><p>It has manual customization of the accent color for userContent.css (new-tab, preferences and add-ons page). The file in <code>chrome/components/ogx_root-personal.css</code> has the variable: " --general-color " to set the color, you could choose whatever you like. 💙💚💜🤎💛🧡❤ <b>Restarting the browser is required. </b></p></li></ul>
+<li><p>It has manual customization of the accent color for userContent.css (new-tab, preferences and add-ons page). The file in <code>chrome/components/one_root-personal.css</code> has the variable: <code>--general-color</code> to set the color, you could choose whatever you like. <b>Restarting the browser is required. </b></p></li></ul>
 
 ![Captura de pantalla 2022-06-05 155840](https://user-images.githubusercontent.com/22057609/172070426-0de79289-eaa3-4826-ac62-af6230cdf877.png)
 
