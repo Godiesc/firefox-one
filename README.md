@@ -18,7 +18,7 @@
 <b>(EN) Steps to configure the theme:</b>
 <ol>
    <li>Download the theme from the green big button <code>Code</code>-><code>Download Zip.</code></li> 
-   <li>Unzip the file and copy the 👉<code>chrome</code>👈 folder and the 👉<code>user.js</code>👈 file into your Firefox profile directory.To find out the location of your profile directory go to <a href="https://github.com/Godiesc/firefox-gx#example-of-aboutsupport"> about:support</a> or about:profiles.</li>
+   <li>Unzip the file and copy the 👉<code>chrome</code>👈 folder and the 👉<code>user.js</code>👈 file into your Firefox profile directory. To find out the location of your profile directory go to <a href="https://github.com/Godiesc/firefox-gx#example-of-aboutsupport"> about:support</a> or about:profiles.</li>
    <li>Install and use a compatible theme.</li>
    <li>Restart the browser.</li>
 </ol>
@@ -38,6 +38,7 @@
 <ul>
 <li> For left sidebar the theme use the bookmark-bar, so it should be always on.</li>
 <li>The social extensions used to put in the left-sidebar are:
+   
 [Twitch](https://addons.mozilla.org/es/firefox/addon/twitch-live-channels/) - 
 [Whatsapp](https://addons.mozilla.org/es/firefox/addon/chatwapp-in-sidebar/) - 
 [Telegram](https://addons.mozilla.org/es/firefox/addon/telegram-in-sidebar/) -
