@@ -1,0 +1,137 @@
+/* Source file made available under Mozilla Public License v. 2.0 See the main repository for updates as well as full license text. 
+   https://github.com/Godiesc/firefox-one */
+
+/* WindowsOS - window control icons */
+
+@media (-moz-platform: windows-win7), (-moz-platform: windows-win10) {
+    /*.titlebar-button {
+        color: var(--toolbarbutton-icon-fill) !important;
+        padding-inline: 11px !important;
+    }
+    .titlebar-button:hover:not(.titlebar-close) {
+        background-color: var(--toolbarbutton-hover-personal) !important;
+    }
+    .titlebar-min {
+        padding-block-start: 12px !important;
+        padding-block-end: 0px !important;
+    }
+    .titlebar-min image, .titlebar-max image, .titlebar-close image {
+        border-radius: 0 !important;
+        height: 14px !important;
+        width: 14px !important;
+    }
+    .titlebar-restore image {
+        height: 14px !important;
+        width: 13px !important;
+    }
+    
+    .titlebar-min, .titlebar-max, .titlebar-restore, .titlebar-close {
+    margin-bottom: -3px !important
+   }
+    
+    .titlebar-min, .titlebar-max, .titlebar-restore, .titlebar-close {
+    border-radius: 12px !important;
+    border: 3px solid #00000000 !important;
+    background-clip: padding-box !important;
+   }
+    
+    :root:is([lwtheme-image], [style*="--lwt-additional-images"]) .titlebar-button:hover:not(.titlebar-close) {
+        background-color: var(--toolbarbutton-hover-background) !important;
+        color: var(--general-color) !important;
+    }*/
+    
+    .titlebar-button{
+        background-color: transparent !important;
+        padding-inline: 4px !important;
+    }
+    
+    .titlebar-button:hover{
+        background-color: transparent !important;
+    }
+    
+    .titlebar-button.titlebar-min .toolbarbutton-icon,
+    .titlebar-button.titlebar-restore .toolbarbutton-icon, .titlebar-button.titlebar-max .toolbarbutton-icon,
+    .titlebar-button.titlebar-close .toolbarbutton-icon{
+        width: 32px !important;
+        height: calc(var(--tab-height-personal) + 8px) !important;
+    }
+    
+    .titlebar-button:hover .toolbarbutton-icon{
+        background-color:  var(--lwt-selected-tab-background-color) !important;
+        border-radius: var(--tab-border-radius) !important;
+    }
+    
+    /* Min button */
+    
+    .titlebar-button.titlebar-min .toolbarbutton-icon{
+        padding-block: calc(var(--tab-height-personal) / 2 - 3px) 6px !important;
+        padding-inline: 9px !important;
+    }
+    
+    /* maximizar-restore-close buttons */
+    
+    .titlebar-button.titlebar-restore .toolbarbutton-icon, 
+    .titlebar-button.titlebar-max .toolbarbutton-icon,
+    .titlebar-button.titlebar-close .toolbarbutton-icon{
+        padding-block: calc(var(--tab-height-personal) / 2 - 3px) !important;
+        padding-inline: 9px !important;
+    }
+    
+    .titlebar-button.titlebar-close:hover .toolbarbutton-icon{        
+        background-color:  #e81123 !important;
+    }
+    
+    /* Keep the same windows control icons in all the themes, includint the themes with images */
+    
+    .titlebar-button {
+        background-color: transparent !important;
+        -moz-context-properties: stroke !important;
+        stroke: currentColor !important;
+    }
+    .titlebar-close:hover {
+        background-color: transparent !important;
+        color: white !important;
+    }
+    .titlebar-close {
+        list-style-image: url(chrome://browser/skin/window-controls/close.svg) !important
+    }
+    .titlebar-min {
+        list-style-image: url(chrome://browser/skin/window-controls/minimize.svg) !important
+    }
+    .titlebar-max {
+        list-style-image: url(chrome://browser/skin/window-controls/maximize.svg) !important
+    }
+    .titlebar-restore {
+        list-style-image: url(chrome://browser/skin/window-controls/restore.svg) !important
+    }
+}
+
+/* Linux default window control icons */
+
+@media (-moz-platform: linux) {
+    .titlebar-button {
+        list-style-image: none !important;
+        appearance: auto !important;
+    }
+    .titlebar-min {
+        -moz-default-appearance: -moz-window-button-minimize !important;
+    }
+    .titlebar-max {
+        -moz-default-appearance: -moz-window-button-maximize !important;
+    }
+    .titlebar-restore {
+        -moz-default-appearance: -moz-window-button-restore !important;
+    }
+    .titlebar-close {
+        -moz-default-appearance: -moz-window-button-close !important;
+    }
+    .titlebar-buttonbox {
+        max-height: var(--tab-height-personal) !important;
+    }
+}
+
+@media (-moz-gtk-csd-reversed-placement) {
+    .titlebar-buttonbox-container {
+        margin-inline: 2px 8px !important;
+    }
+}

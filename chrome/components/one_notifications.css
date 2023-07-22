@@ -1,0 +1,138 @@
+/* Source file made available under Mozilla Public License v. 2.0 See the main repository for updates as well as full license text. 
+   https://github.com/Godiesc/firefox-one */
+
+/* -------------------------------- Notifs - warnings - dialogos del navegador ------------------------------- */
+
+/* Position */
+
+#window-modal-dialog{
+    --chrome-offset: 78px !important;
+}
+
+/* COlor fondo en temas oscuros */
+
+@media (prefers-color-scheme: dark){
+    :root[dialogroot], :host(dialog) {
+        --arrowpanel-background: #252836 !important;   
+        --in-content-page-background: var(--arrowpanel-background) !important;
+    }}
+
+@-moz-document url("chrome://global/content/commonDialog.xhtml"){
+  :root{
+    background-color: var(--arrowpanel-background) !important;
+  }
+}
+
+/* Color fondo favicon */
+
+.titleIcon {
+  background-color: transparent !important;
+}
+
+/* Fondo tras la notificación */
+
+browser[primary="true"][tabDialogShowing="true"], .dialogOverlay[topmost="true"], #window-modal-dialog::backdrop {
+    background-image: linear-gradient(var(--arrowpanel-background, transparent), transparent), 
+                      linear-gradient(transparent, var(--arrowpanel-background, transparent)), 
+                      var(--noise-urlbar-personal, var(--noise-urlbar-personal, none)) !important;    
+}
+
+/* Fondo tras la notificación - "about:" pages */
+
+#window-modal-dialog::backdrop, #main-window[window-modal-open="true"]>body>#browser{
+    background-color: rgba(28, 27, 34, 0.70) !important; 
+}
+
+/* Borde */
+
+.dialogBox:not(.spotlightBox), #commonDialog, .dialogFrame {
+    border-radius: 10px !important;
+        box-shadow: inset 0 0px 0px 1px #50505090  !important;
+}
+
+.dialogBox:not(.spotlightBox) {
+    border-radius: 10px !important;
+    overflow-x: unset !important;
+    outline: 1px solid var(--contrast-color) !important;
+}
+
+/* Quitar fondo indeseado tras notificación en "about:" pages*/
+
+#window-modal-dialog > .dialogOverlay[topmost="true"] {
+    background: none !important;
+}
+
+/* COlor botones - checkbox - etc */
+
+@-moz-document url(chrome://global/content/commonDialog.xhtml),
+    url("chrome://mozapps/content/handling/permissionDialog.xhtml"),
+    url("chrome://mozapps/content/handling/appChooser.xhtml")
+{
+    #commonDialogWindow,
+    #commonDialogWindow * {
+    --in-content-link-color: var(--button-active-bgcolor) !important;
+    --in-content-link-color-hover: var(--general-color) !important;
+    --in-content-link-color-active: var(--button-active-bgcolor) !important;
+        
+    --in-content-primary-button-background: var(--button-active-bgcolor) !important;
+    --in-content-primary-button-background-hover: var(--general-color) !important;
+    --in-content-primary-button-background-active: var(--button-active-bgcolor) !important;
+    --in-content-primary-button-text-color: white !important;
+    /*--in-content-button-background: none !important;*/
+    --in-content-button-background-hover: #da3633 !important;
+    /*--in-content-button-text-color: red !important;*/
+        
+    --checkbox-checked-border-color: transparent !important;        
+    --checkbox-border-color:  color-mix(in srgb, var(--arrowpanel-background)75%,var(--in-content-text-color) ) !important;
+        
+    --checkbox-unchecked-bgcolor: color-mix(in srgb, var(--arrowpanel-background) 90%,var(--in-content-text-color) ) !important;
+    --checkbox-unchecked-hover-bgcolor: var(--general-color) !important;                /*color de los checkbox hover*/
+    --checkbox-unchecked-active-bgcolor: var(--button-hover-bgcolor) !important;        /*color de los checkbox al darle clic*/
+
+    --checkbox-checked-bgcolor: var(--button-active-bgcolor) !important;                /*color de los checkbox con check*/
+    --checkbox-checked-color: white !important;                                         /*color de la palomita check*/
+    --checkbox-checked-hover-bgcolor: var(--general-color) !important;                  /*color de los checkbox con check :hover*/
+    --checkbox-checked-active-bgcolor: var(--button-active-bgcolor) !important;         
+    }    
+}
+
+/* HTML5 dark mode web notifs */
+
+@-moz-document url("chrome://global/content/alerts/alert.xhtml") {
+    @media (prefers-color-scheme: dark){
+    #alertBox {
+        border-color: rgb(48, 48, 48, .4) !important;
+        border-radius: 4px !important;
+        background-color: #101010 !important;
+        color: rgba(255, 255, 255, 0.800000011920929) !important;
+    }
+    #alertSourceLabel {
+        color: #9400ff !important;
+        /*proton color: rgb(5,209,241)*/
+    }
+    #alertSettings {
+        -moz-context-properties: fill, fill-opacity !important;
+        padding: 3px !important;
+        margin: 0px 2px -3px 0px !important;
+        color: inherit !important;
+        border-radius: 4px !important;
+        transform: scale(0.91, 0.91) !important;
+    }
+    #alertSettings:hover, #alertSettings[open] {
+        background-color: #313131 !important;
+    }
+    menupopup {
+        --panel-color: rgba(255, 255, 255, 0.800000011920929) !important;
+        --panel-border-color: rgb(48, 48, 48) !important;
+        --panel-background: #101010 !important;
+        --menuitem-hover-background-color: #313131 !important;
+        --menuitem-disabled-hover-background-color: #1f1f1f !important;
+        --menu-color: rgba(255, 255, 255, 0.8) !important;
+        --menu-disabled-color: color-mix(in srgb, #101010 65%, rgb(255, 255, 255))!important;
+        --menu-border-color: var(--panel-separator-color, Field) !important;
+    }
+    #alertImage {
+        border-radius: 4px !important;
+    }
+    }
+}

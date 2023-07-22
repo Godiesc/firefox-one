@@ -1,0 +1,190 @@
+/* Source file made available under Mozilla Public License v. 2.0 See the main repository for updates as well as full license text. 
+   https://github.com/Godiesc/firefox-one */
+
+/* favicon siempre visible */
+.tab-icon-image,
+.tab-throbber{ opacity: 1 !important; }
+    
+/* secondary audio label ain't much use with this style. */
+.tab-secondary-label{ display: none !important; }
+
+/* Reproduciendo */
+.tab-icon-overlay[soundplaying]:not([pinned]){
+    opacity: 1 !important;
+    fill: var(--identity-tab-color,var(--lwt-tab-text))  !important;
+    background: transparent !important;
+    border-radius: 4px !important;
+    padding: 1px !important;
+    left: 20px !important;
+    fill-opacity: 1 !important;
+    z-index: 1 !important;
+    }
+/* RHYTHM IMAGES IN LIGHT AND DARK MODE 
+@media (prefers-color-scheme: dark){
+tab[soundplaying]:not([pinned]) .tab-background::after{
+    background-color: var(--toolbar-bgcolor) !important;
+    background: url("../images/Beats.webp") repeat-x left center !important;
+    content: "" !important; display: block !important; 
+    background-size: -moz-available var(--tab-height-personal) !important;
+    width: -moz-available !important;
+    height: calc(var(--tab-height-personal) * 2 / 1.5) !important;
+    opacity: 0.07 !important;
+    transform: rotate(0deg) !important;
+        }}
+@media (prefers-color-scheme: light){
+tab[soundplaying]:not([pinned]) .tab-background::after{
+    background: url("../images/Beats.gif") repeat-x bottom !important;
+    content: "" !important; display: block !important; 
+    background-size: -moz-available var(--tab-height-personal) !important;
+    width: -moz-available !important;
+    height: var(--tab-height-personal) !important;    
+    opacity: 0.2 !important;
+        }}
+/* reproduciendo hover */
+tab:not([pinned]) .tab-icon-overlay[soundplaying]:hover {
+    /*list-style-image: url("../images/paused.svg") !important;*/
+    /*clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%) !important;*/
+    fill: var(--lwt-tab-text) !important;
+    background-color: color-mix(in srgb, var(--toolbarbutton-hover-background), var(--border-contrast-color)) !important;
+    fill-opacity: 1 !important;
+    }
+/*Compartiendo microfono y cámara*/
+.tab-icon-overlay[soundplaying]:not([crashed]):is([sharing]) {
+      top: 0px !important; stroke: transparent !important; background-color: transparent !important;  }
+tab:hover .tab-icon-overlay:not([crashed],[muted]):is([sharing]) {
+      top: 0px !important; 
+      stroke: transparent !important; 
+      width: 16px !important; 
+      height: 16px !important;
+    }
+tab:hover .tab-icon-image:is([sharing]) {opacity: 1 !important; }
+    
+/* ------------------------------------ muteado -----------------------------------*/
+tab:hover .tab-icon-overlay:not([pinned], :hover):is([muted]), 
+tab:hover .tab-icon-overlay:not(:hover):is([muted][pinned]){
+    opacity: 0.7 !important;
+}
+.tab-icon-overlay:not([pinned]):is([muted]){
+    list-style-image: url("../images/paused.svg") !important;
+    top: -5px;  left: 7px !important; border-radius: 50% !important;
+    height: 14px !important;
+    width: 14px !important;
+    color: var(--lwt-tab-text) !important;
+    background-color: transparent !important;
+    stroke: transparent !important;
+    padding: 0 !important;
+    }
+/*muteado hover*/
+.tab-icon-overlay:not([pinned])[muted]:hover {
+    border-radius: 50% !important;
+    list-style-image: url("chrome://browser/skin/tabbrowser/tab-audio-blocked-small.svg") !important;
+    fill: var(--lwt-tab-text) !important;
+    opacity: 1 !important;
+    }
+/* favicon de pestañas recortado para mostrar mejor el ícono de silenciado */
+@media (-moz-platform: windows-win7),(-moz-platform: windows-win10),(-moz-platform: linux){
+tab:hover .tab-icon-stack:not([crashed]):is([muted], [activemedia-blocked]) :is(.tab-icon-pending, .tab-icon-image, .tab-sharing-icon-overlay) {
+    mask-image: url("../images/tab_icon_masks.svg#SoundMask") !important;
+    }}
+/* Audio bloqueado */
+.tab-icon-overlay:not([pinned]):is([activemedia-blocked]), .tab-icon-overlay:is([pinned]):is([activemedia-blocked]){
+    list-style-image: url("../images/blocked.svg") !important;
+    top: -6px;  left: 7px !important; border-radius: 2px !important;
+    height: 14px !important;
+    width: 14px !important;
+    color: var(--toolbarbutton-icon-fill) !important;
+    background-color: transparent !important;
+    stroke: transparent !important;
+    padding: 0 !important;
+    }
+.tab-icon-overlay:not([pinned]):is([activemedia-blocked]):hover, .tab-icon-overlay:is([pinned]):is([activemedia-blocked]):hover{
+    fill: var(--lwt-tab-text) !important;
+}
+
+/* --------------------- Pinned Tabs ----------------------*/
+
+.tab-icon-overlay[pinned] { opacity: 0 !important; }
+tab:hover .tab-icon-overlay { opacity: 1 !important; }
+
+@media (-moz-platform: windows-win7),(-moz-platform: windows-win10),(-moz-platform: linux){
+.tab-icon-stack:not([crashed]):is([soundplaying])[pinned] :is(.tab-icon-pending, .tab-icon-image, .tab-sharing-icon-overlay) {
+    mask-image: url("../images/tab_icon_masks.svg#SoundMask") !important;
+    }}
+    
+/* Reproduciendo pinned */    
+.tab-icon-overlay:is([pinned])[soundplaying]{
+    fill: var(--identity-tab-color, var(--lwt-tab-text)) !important;
+    stroke: transparent !important;
+    height: 14px !important;
+    width: 14px !important;
+    left: 8px !important;
+    padding: 1px !important;
+    fill-opacity: 1 !important;
+    opacity: 1 !important;
+    }
+/* reproduciendo hover pinned */
+tab:is([pinned]) .tab-icon-overlay[soundplaying]:hover {
+    list-style-image: url("../images/paused.svg") !important;
+    /*clip-path: polygon(20% 0%, 100% 0%, 100% 14%, 100% 100%, 100% 100%, 14% 100%, 0% 100%, 0% 20%);*/
+    stroke: transparent !important;
+    background-color: transparent !important;
+    fill: var(--lwt-tab-text) !important;
+    border-radius: 2px !important;
+    }
+/* muteado pinned */
+tab:hover .tab-icon-overlay:is([pinned])[muted] { 
+    opacity: 1 !important;
+    height: 12px !important;
+    width: 12px !important;
+    top: -4px !important;
+    left: 9px !important;
+    color: var(--lwt-tab-text) !important;
+    background-color: transparent !important;
+    stroke: transparent !important;
+    padding: 0px !important;
+}
+.tab-icon-overlay:is([pinned])[muted]{
+    list-style-image: url("../images/paused.svg") !important;
+    height: 14px !important;
+    width: 14px !important;
+    top: -5px !important;
+    left: 13px !important;
+    color: var(--toolbarbutton-icon-fill) !important;
+    stroke: transparent !important;
+    fill-opacity: 0.8 !important;
+    }
+/*muteado pinned :hover*/
+tab:hover .tab-icon-overlay:is([pinned])[muted]:hover {
+    list-style-image: url("chrome://browser/skin/tabbrowser/tab-audio-blocked-small.svg") !important;
+    border-radius: 50% !important;
+    color: var(--lwt-tab-text) !important;
+    fill-opacity: 1 !important;
+    }
+
+/* ocultar ícono [muted] en pestaba <cargando> */
+@media (-moz-platform: windows-win7),(-moz-platform: windows-win10),(-moz-platform: linux){
+tab[busy] .tab-icon-overlay:not([pinned]):is([muted]), tab[busy][pinned] .tab-icon-overlay:is([muted]){
+    opacity: 0 !important;
+    }}
+
+/*_________________________________________MacOS________________________________________*/
+
+@media (-moz-platform: macos){
+.tabbrowser-tab:not([pinned]) .tab-icon-stack:is([muted],[activemedia-blocked]){
+  grid-template-areas: "a s";
+    }
+.tabbrowser-tab:not([pinned]) .tab-icon-overlay:is([muted],[activemedia-blocked]){ 
+    opacity: 1 !important;
+    top: initial !important;
+    left: initial !important;
+    height: 16px !important;
+    width: 16px !important;
+    fill: var(--identity-tab-color, var(--general-color)) !important;
+    padding: 0px !important;
+    margin-inline: -2px 3px !important;
+    grid-area: s; 
+    }
+.tabbrowser-tab:not([pinned]) .tab-icon-overlay:is([muted],[activemedia-blocked]):hover{ 
+    fill: currentColor !important;
+    fill-opacity: 1 !important;
+}}
