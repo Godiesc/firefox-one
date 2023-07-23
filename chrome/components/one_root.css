@@ -10,14 +10,15 @@
   --contrast-color: #000000 !important;
   --border-contrast-color: color-mix(in srgb, var(--arrowpanel-background) 40%, var(--contrast-color)) !important; 
   
-  --lwt-accent-color: #030615 !important;                                               /*"frame": "#17161c" */
+  /*--lwt-accent-color: #030615 !important;                                               /*"frame": "#17161c" */
   --lwt-frame: var(--lwt-accent-color, #09080d) !important;                             /*"frame": "#17161c" */
   /*--lwt-text-color: inherit !important;                                               /*"tab_background_text": "#c3c3c3"*/
   --lwt-accent-color-inactive: var(--lwt-accent-color, Field) !important;               /*"frame_inactive": "#17161c" */
   
   --lwt-tab-text: #ffffff !important;                                                   /*"tab_text": "#ffffff"*/
   
-  --toolbar-bgcolor: #252836 !important;                                                /*"toolbar":"#131118", "Color de la toolbar"*/
+  /* --toolbar-bgcolor: #252836 !important;                                                "toolbar":"#131118", "Color de la toolbar" */
+  --toolbar-bgcolor: var(--general-color) !important;                                                /*"toolbar":"#131118", "Color de la toolbar"*/
   
   /*--toolbar-color: #8e8085 !important;                                                /*"ColorLabelMarcadores":"#1a1b25"*/
   
@@ -37,7 +38,8 @@
   --lwt-toolbar-field-highlight: var(--general-color) !important;                       /*"toolbar_field_highlight": "#006f80"*/
   --lwt-toolbar-field-highlight-text: var(--lwt-tab-text) !important;                   /*"toolbar_field_highlight_text": "#eaeaea"*/
     
-  --lwt-selected-tab-background-color: #484d65 !important;                              /*"tab_selected":"#363540"*/
+  /* --lwt-selected-tab-background-color: #484d65 !important;                              "tab_selected":"#363540" */
+  --lwt-selected-tab-background-color: var(--general-color) !important;                              /*"tab_selected":"#363540"*/
 
   --chrome-content-separator-color: transparent !important;                             /*"toolbar_bottom_separator": "#181818"*/
   
