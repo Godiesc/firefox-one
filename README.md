@@ -11,14 +11,14 @@
 <b>(ES) Pasos para configurar el tema:</b>
 <ol>
    <li>Descarga el tema desde el botón verde <code>Code</code>-><code>Download Zip.</code></li>
-   <li>Descomprime el archivo y copia la carpeta 👉<code>chrome</code>👈 y el archivo 👉<code>user.js</code>👈 dentro de la carpeta de perfil de tu usuario de firefox. Para encontrar el directorio de tu perfil de usuario ve a <a href="https://github.com/Godiesc/firefox-gx#example-of-aboutsupport"> about:support</a> or about:profiles.</li>
+   <li>Descomprime el archivo y copia la carpeta 👉<code>chrome</code>👈 y el archivo 👉<code>user.js</code>👈 dentro de la carpeta de perfil de tu usuario de firefox. Para encontrar el directorio de tu perfil de usuario ve a <a href="https://github.com/Godiesc/firefox-one#example-of-aboutsupport"> about:support</a> or about:profiles.</li>
    <li>Instala y usa un tema compatible.</li>
    <li>Reinicia el navegador.</li></ol>
 
 <b>(EN) Steps to configure the theme:</b>
 <ol>
    <li>Download the theme from the green big button <code>Code</code>-><code>Download Zip.</code></li> 
-   <li>Unzip the file and copy the 👉<code>chrome</code>👈 folder and the 👉<code>user.js</code>👈 file into your Firefox profile directory. To find out the location of your profile directory go to <a href="https://github.com/Godiesc/firefox-gx#example-of-aboutsupport"> about:support</a> or about:profiles.</li>
+   <li>Unzip the file and copy the 👉<code>chrome</code>👈 folder and the 👉<code>user.js</code>👈 file into your Firefox profile directory. To find out the location of your profile directory go to <a href="https://github.com/Godiesc/firefox-one#example-of-aboutsupport"> about:support</a> or about:profiles.</li>
    <li>Install and use a compatible theme.</li>
    <li>Restart the browser.</li>
 </ol>
@@ -27,7 +27,7 @@
 > <p>⚠ Notice: The latest code updated in the repository (code > download zip) may work well only on beta or nightly versions.</p>
 
 # Temas - Themes
-<ul><li>Temas Principales - Main Themes: <a href="https://addons.mozilla.org/es/firefox/addon/beautiful-focused-tab/">light/dark adaptive Theme</a></li>
+<ul><li>Temas Principales - Main Themes: <a href="https://addons.mozilla.org/es/firefox/addon/beautiful-focused-tab/">🧿light/dark adaptive Theme</a></li>
 <li> Otros Colores - Other Colors:
 <a href= "https://addons.mozilla.org/es/firefox/addon/beautiful-opera-gx-fucsia/">🔴Fuchsia</a> <a href= "https://addons.mozilla.org/es/firefox/addon/beautiful-opera-gx-blue/">🔵Blue</a> <a href= "https://addons.mozilla.org/es/firefox/addon/beautiful-gx-green/" >🟢Green</a><a href= "https://addons.mozilla.org/es/firefox/addon/beautiful-poison/" >🖍 Poison</a> <a href= "https://addons.mozilla.org/es/firefox/addon/beautiful-swamp-in-autumn/" >🎑 Swamp</a><a href= "https://addons.mozilla.org/es/firefox/addon/beautiful-red-blur/">🌈Red-Blur</a><a href= "https://addons.mozilla.org/es/firefox/addon/beautiful-purple-sky/"> 🌆 Purple-Sky</a> <a href= "https://addons.mozilla.org/es/firefox/addon/opera-gx-witchcraft-purple/">💜Purple</a> <a href= "https://addons.mozilla.org/es/firefox/addon/opera-gx-electric-aquamarine/">💚Aquamarine</a> <a href= "https://addons.mozilla.org/es/firefox/addon/opera-gx-ember-orange/">🦧Orange</a> <a href= "https://addons.mozilla.org/es/firefox/addon/opera-gx-frozen-cyan/">💠Cyan</a> <a href= "https://addons.mozilla.org/es/firefox/addon/opera-gx-level-up-green/">🍏GreenLight</a> <a href= "https://addons.mozilla.org/es/firefox/addon/opera-gx-stamina-yellow/">💛Yellow</a> <a href= "https://addons.mozilla.org/es/firefox/addon/opera-gx-wizard-grey/"> 🗻Gray</a></li>
    <li>Temas Claros - Light themes: <a href="https://addons.mozilla.org/es/firefox/addon/opera-light/"> ⚪🔴 Fuchsia</a> <a href="https://addons.mozilla.org/es/firefox/addon/beautiful-waves/"> ⚪🔵 Waves</a></li></ul>
