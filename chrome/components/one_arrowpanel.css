@@ -142,14 +142,9 @@ toolbar .text-link:-moz-lwtheme:hover, panel .text-link:-moz-lwtheme:hover {
 
 /* Color Sidebar */
 
-#sidebar-header {
+#sidebar-header, #bookmarksPanel{
     background-color: var(--lwt-sidebar-background-color) !important;
-    border-top: 1px dotted var(--sidebar-border-color) !important;
     padding: 4px 6px !important;
-}
-
-#sidebar-switcher-target:is(:hover, [open]) {
-    color: var(--general-color) !important;
 }
 
 /* sidebar de Firefox */
@@ -160,7 +155,7 @@ toolbar .text-link:-moz-lwtheme:hover, panel .text-link:-moz-lwtheme:hover {
     margin-inline-start: 4px !important;
     margin-bottom: 4px !important;
     border-radius: 8px !important;
-    outline: 1px solid #50505080 !important;
+    outline: 1px solid #50505030 !important;
     outline-offset: -1px !important;
 }
 
@@ -173,7 +168,6 @@ toolbar .text-link:-moz-lwtheme:hover, panel .text-link:-moz-lwtheme:hover {
 }
 
 .sidebar-splitter {
-    border-color: #50505050 !important;
     margin-block: 8px !important;
 }
 
