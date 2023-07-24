@@ -464,7 +464,7 @@ description#identity-popup-content-owner-label, description#identity-popup-conte
 /*  --------------------------------------- Rounded corner in pages --------------------------------------- */
 
 .browserStack>browser{
-    margin: 0px 4px 4px 5px !important; 
+    margin: 1px 4px 4px 5px !important; 
     border-radius: 8px !important;
     outline: 1px solid color-mix(in srgb, var(--lwt-frame) 94%, var(--lwt-tab-text)) !important;
 }
