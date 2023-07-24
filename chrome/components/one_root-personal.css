@@ -9,15 +9,15 @@
 
   /* ---------------------                         VivaldiFox - Variables                       -----------------------------*/    
   --lwt-accent-color: #030615 !important; /* Comentar si se usa VivaldiFox */ 
-  --auto-general-color:  var(--lwt-accent-color);
-  --auto-acent-color-dark: color-mix(in srgb, var(--auto-color) 75%, white);
-  --auto-acent-color-ligth: color-mix(in srgb, var(--auto-color) 75%, black); 
+  --auto-general-color:  var(--lwt-accent-color); /* Usar en la linea 19 para usar el color automatico de Vivaldifox */
+  --auto-acent-color-dark: color-mix(in srgb, var(--auto-general-color) 75%, white); /* Usar en la linea 20 para usar el color acento automatico de Vivaldifox */
+  --auto-acent-color-ligth: color-mix(in srgb, var(--auto-general-color) 75%, black); /* Usar en la linea 20 para usar el color acento automatico de Vivaldifox */
   /*                                                                                                                                 
     Accent color -----> UI del navegador.  -----|                  |---- userContent <------------ Accent color
                                                 |                  |     (Add-ons, preferences and newtab page.)
                                                 v                  v                                                          */
   --general-color: var(--lwt-toolbarbutton-icon-fill-attention, var(--blue));
-  --acent-color: var(--lwt-toolbarbutton-icon-fill-attention,  #484d65);
+  --acent-color: var(--lwt-toolbarbutton-icon-fill-attention,  #484d65);  /* Sustituir el color fijo por --auto-acent-color para usar Vivaldifox, copiar esta linea en las lineas 28 y 34 para hacer el cambio automatico */
 
 }
 /*---------------------------------------------- <-Personalizaciones Varias-> ---------------------------------------------------*/
@@ -25,11 +25,13 @@
 @media (prefers-color-scheme: dark){ :root{
   --lwt-main-image:  url("../images/newtab/wallpaper-dark.png") !important;                  /* new-tab page image - dark theme */ 
   --lwt-private-image:  url("../images/newtab/private-dark.png") !important;                 /* new-tab private-page image - dark theme */
+
 }}
 
 @media (prefers-color-scheme: light){ :root{
   --lwt-main-image:  url("../images/newtab/wallpaper-light.png") !important;                 /* new-tab page image - white theme*/
   --lwt-private-image:  url("../images/newtab/private-light.png") !important;                /* new-tab private-page image - white theme*/
+
 }}
 
 :root[privatebrowsingmode="temporary"]{ --general-color: var(--purple) !important; }         /* Accent color private mode */
