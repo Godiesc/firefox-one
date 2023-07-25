@@ -542,8 +542,8 @@ toolbarbutton[badge="0"] .toolbarbutton-badge { display: none !important; }
 
 @media (-moz-platform: windows-win7), (-moz-platform: windows-win10), (-moz-platform: linux) {
 :root:not([chromehidden~="toolbar"])[sizemode="maximized"] #appMenu-popup {
-    clip-path: polygon(0% 0%, 0% 100%, 1% 53%, 0 10px, calc(var(--padding-left-tab) + 4px) 10px,
-               calc(var(--padding-left-tab) + 4px) calc(var(--tab-height-personal) - 4px), 0 calc(var(--tab-height-personal) - 4px), 0 100%, 100% 100%, 100% 0%);
+    clip-path: polygon(0% 0%, 0% 100%, 1% 53%, 0 10px, calc(var(--padding-left-tab) + 6px) 10px,
+               calc(var(--padding-left-tab) + 6px) calc(var(--tab-height-personal) - 4px), 0 calc(var(--tab-height-personal) - 4px), 0 100%, 100% 100%, 100% 0%);
     }}
 
 /* Nuevo margen label Account */

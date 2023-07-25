@@ -373,7 +373,7 @@ tab:not([selected]) .tab-icon-image {
 
 #main-menubar{
   height: calc(var(--tab-min-height) +  1 * var(--tab-block-margin,0px) + 6px);
-  background-color: var(--toolbar-bgcolor);
+  background-color: var(--toolbar-bgcolor) !important;
   color: var(--arrowpanel-color);
   border-radius: var(--toolbarbutton-border-radius) 0px 0px var(--toolbarbutton-border-radius) !important;
   box-shadow: inset 0 4px var(--lwt-frame) !important;
