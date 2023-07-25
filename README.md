@@ -86,7 +86,6 @@
 <li>Windows 10 (Tested - Probado) ✔ - <a href="https://github.com/Godiesc/firefox-one/assets/22057609/55e39c67-7588-456a-a30b-278f1dc4bd19">Preview</a></li>
 <li>Windows 11 (Not tested - No probado) ⚠  Could work well for compatibility with windows 10. </li>
 <li>Windows 7 (Not tested - No probado) ❌ </li>
-<li>Linux - Manjaro KDE (Tested - Probado) ✔ - <a href="https://imgur.com/a/Di7Db9z">Preview</a></li>
 <li>MacOS (Not tested - No probado) ❌ </li>
 </ul>
 
