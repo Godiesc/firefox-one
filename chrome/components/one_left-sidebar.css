@@ -448,7 +448,7 @@ toolbarbutton[badge="0"] .toolbarbutton-badge { display: none !important; }
 
 /* ------------------------------ Nuevos margenes Botón menú ------------------------------- */
 
-@media (-moz-platform: windows-win7), (-moz-platform: windows-win10), (-moz-platform: linux) {
+@media (-moz-platform: windows), (-moz-platform: linux) {
 
 /* Margin top para subir el menú [open] */
     
@@ -527,34 +527,34 @@ toolbarbutton[badge="0"] .toolbarbutton-badge { display: none !important; }
 }
 /* Tamaño nuevo botón Menú */
 
-@media (-moz-platform: windows-win7), (-moz-platform: windows-win10), (-moz-platform: linux) {
+@media (-moz-platform: windows), (-moz-platform: linux) {
 :root:not([chromehidden~="toolbar"], [sizemode="fullscreen"]) #PanelUI-menu-button, :root[sizemode="maximized"] #appMenu-popup {
     --tab-height-personal: 40px !important;
     }}
 
 /* Botón Menú [open] no muy grande */
 
-@media (-moz-platform: windows-win7), (-moz-platform: windows-win10), (-moz-platform: linux) {
+@media (-moz-platform: windows), (-moz-platform: linux) {
 :root:not([chromehidden~="toolbar"])[sizemode="maximized"] #appMenu-popup>panelmultiview>box>box>panelview {
     padding-top: calc(-10px + var(--tab-height-personal)) !important;
     z-index: 2 !important;
     }}
 
-@media (-moz-platform: windows-win7), (-moz-platform: windows-win10), (-moz-platform: linux) {
+@media (-moz-platform: windows), (-moz-platform: linux) {
 :root:not([chromehidden~="toolbar"])[sizemode="maximized"] #appMenu-popup {
     clip-path: polygon(0% 0%, 0% 100%, 1% 53%, 0 10px, calc(var(--padding-left-tab) + 6px) 10px,
                calc(var(--padding-left-tab) + 6px) calc(var(--tab-height-personal) - 4px), 0 calc(var(--tab-height-personal) - 4px), 0 100%, 100% 100%, 100% 0%);
     }}
 
 /* Nuevo margen label Account */
-@media (-moz-platform: windows-win7), (-moz-platform: windows-win10), (-moz-platform: linux) {
+@media (-moz-platform: windows), (-moz-platform: linux) {
 #appMenu-fxa-label2 label, #fxa-manage-account-button label{
         margin-inline-start: calc(var(--margin-left-icons-personal) - 38px) !important;
     }
 
 /* Menu :hover */
 
-@media (-moz-platform: windows-win7), (-moz-platform: windows-win10), (-moz-platform: linux) {
+@media (-moz-platform: windows), (-moz-platform: linux) {
     :root:not([chromehidden~="toolbar"]) #PanelUI-menu-button:not([open]):hover>.toolbarbutton-badge-stack {
         border-radius: 8px !important;
     }

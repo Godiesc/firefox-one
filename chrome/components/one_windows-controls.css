@@ -3,43 +3,8 @@
 
 /* WindowsOS - window control icons */
 
-@media (-moz-platform: windows-win7), (-moz-platform: windows-win10) {
-    /*.titlebar-button {
-        color: var(--toolbarbutton-icon-fill) !important;
-        padding-inline: 11px !important;
-    }
-    .titlebar-button:hover:not(.titlebar-close) {
-        background-color: var(--toolbarbutton-hover-personal) !important;
-    }
-    .titlebar-min {
-        padding-block-start: 12px !important;
-        padding-block-end: 0px !important;
-    }
-    .titlebar-min image, .titlebar-max image, .titlebar-close image {
-        border-radius: 0 !important;
-        height: 14px !important;
-        width: 14px !important;
-    }
-    .titlebar-restore image {
-        height: 14px !important;
-        width: 13px !important;
-    }
-    
-    .titlebar-min, .titlebar-max, .titlebar-restore, .titlebar-close {
-    margin-bottom: -3px !important
-   }
-    
-    .titlebar-min, .titlebar-max, .titlebar-restore, .titlebar-close {
-    border-radius: 12px !important;
-    border: 3px solid #00000000 !important;
-    background-clip: padding-box !important;
-   }
-    
-    :root:is([lwtheme-image], [style*="--lwt-additional-images"]) .titlebar-button:hover:not(.titlebar-close) {
-        background-color: var(--toolbarbutton-hover-background) !important;
-        color: var(--general-color) !important;
-    }*/
-    
+@media (-moz-platform: windows) {
+
     .titlebar-button{
         background-color: transparent !important;
         padding-inline: 4px !important;

@@ -3,7 +3,7 @@
 
 /*"Botón de cerrar pestaña" en windows y linux */
 
-@media (-moz-platform: windows-win7), (-moz-platform: windows-win10), (-moz-platform: linux) {
+@media (-moz-platform: windows) , (-moz-platform: linux) {
     .close-icon {
         width: 15px !important;
         height: 15px !important;
@@ -24,7 +24,7 @@
     margin-inline-end: -2px !important;
 }
 
-@media (-moz-platform: windows-win7), (-moz-platform: windows-win10), (-moz-platform: linux) {
+@media (-moz-platform: windows), (-moz-platform: linux) {
     .tab-close-button:hover {
         background-color: color-mix(in srgb, var(--toolbarbutton-hover-background), var(--border-contrast-color)) !important;
         fill: var(--identity-tab-color, var(--lwt-tab-text)) !important;
