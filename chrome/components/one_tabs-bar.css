@@ -281,13 +281,13 @@ tab:not([selected]) .tab-icon-image {
                       var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
     background-position: center center !important;
     background-repeat:  no-repeat !important;
-    background-size:  auto !important; 
+    background-size:  var(--display-theme-with-images) !important; 
     outline: 1px solid var(--button-hover-bgcolor) !important;
     outline-offset: -1px !important;
     box-shadow: none !important;
 }
 
-:root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) #navigator-toolbox {
+:root:is([lwtheme-image],[style*="--lwt-additional-images"]) #navigator-toolbox {
     background-image:  none !important; 
 }
 
@@ -297,11 +297,10 @@ tab:not([selected]) .tab-icon-image {
                       var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
     background-position: right top !important;
     background-repeat: repeat !important;
-    background-size: auto !important;   /* "cover" for compatibility for themes that use 2 or more images */
+    background-size: var(--display-theme-with-images) !important;   /* "cover" for compatibility for themes that use 2 or more images */
     outline: 1px solid #50505040 !important;
     outline-offset: -1px !important;
 }
-#PersonalToolbar {}
 
 /* Image in bookmark-bar in themes that use images */
 

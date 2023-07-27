@@ -606,7 +606,7 @@ toolbarbutton[badge="0"] .toolbarbutton-badge { display: none !important; }
 
 /* Borde izquierda-derecha de la toolbar */
 
-:root:not([sizemode="fullscreen"]) #nav-bar {
+:root:not([chromehidden~="toolbar"],[sizemode="fullscreen"]) #nav-bar {
     border-radius: 8px !important;
     margin-inline-start: calc(var(--padding-left-tab) + 9px) !important;
     margin-inline-end: 4px !important;

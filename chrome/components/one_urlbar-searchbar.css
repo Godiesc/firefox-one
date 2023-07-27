@@ -478,3 +478,17 @@ findbar{
 .browserContainer, .browserStack, #browser{
     background-color: var(--lwt-frame) !important;
 }
+
+/* Corners en ventanas emergentes */
+
+:root:is([chromehidden~="toolbar"]) #nav-bar{
+    margin-top: 4px !important;
+    margin-right: 4px !important;
+    border-radius: 8px 8px 0 0  !important;
+}
+
+:root:is([chromehidden~="toolbar"]) .browserStack>browser{
+    margin: 0px 5px 4px 5px !important; 
+    border-radius: 0 0 8px 8px !important;
+    outline: 1px solid color-mix(in srgb, var(--lwt-frame) 94%, var(--lwt-tab-text)) !important;
+}

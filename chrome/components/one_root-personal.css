@@ -27,6 +27,7 @@
   
 :root{  
   --wallpaper-size: cover;                                                                   /* cover-> default ; auto auto -> to not adapted image */
+  --display-theme-with-images: auto;                                                        /* auto-> defautl ; cover -> themes with 2 or more images*/
   
   --tab-height-personal: 28px ;                                                              /* Tamaño altura de pestañas */
   --toolbar-height-personal: 38px ;                                                          /* Toolbar height */
