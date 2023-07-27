@@ -13,7 +13,7 @@
    <li>Descarga el tema desde el botón verde <code>Code</code>-><code>Download Zip.</code></li>
    <li>Descomprime el archivo y copia la carpeta 👉<code>chrome</code>👈 y el archivo 👉<code>user.js</code>👈 dentro de la carpeta de perfil de tu usuario de firefox. Para encontrar el directorio de tu perfil de usuario ve a <a href="https://github.com/Godiesc/firefox-one#example-of-aboutsupport"> about:support</a> or about:profiles.</li>
    <li>Instala y usa un tema compatible.</li>
-   <li>Reinicia el navegador.</li></ol>
+   <li>Reinicia el navegador.</li></ol></br>
 
 <b>(EN) Steps to configure the theme:</b>
 <ol>
@@ -37,6 +37,7 @@
 # Extra Info
 <ul>
 <li> For left sidebar the theme use the bookmark-bar, so it should be always on.</li>
+<li>You can use flexible spaces to create separatos in the tabs-bar.</li>
 <li>The social extensions used to put in the left-sidebar are:
    
 [Twitch](https://addons.mozilla.org/es/firefox/addon/twitch-live-channels/) - 
@@ -49,10 +50,11 @@
 [Panorama tab groups](https://addons.mozilla.org/es/firefox/addon/panorama-tab-groups/) - 
 [Ublock](https://addons.mozilla.org/es/firefox/addon/ublock-origin/) 
 </li>
-<li>You can use flexible spaces to create separatos in the tabs-bar.</li>
 </ul>
 
-<p>PD: I'm the owner of <b>Instagram Chat extension</b> and <b>WhatsApp extension</b>, The other extensions I used were for testing purposes.</p>
+For themes that use 2 or more images you should change the line <code>30</code> in <code>one_root-personal.css</code> file with <code>--display-theme-with-images: cover;</code>
+
+![compatibilitythemes](https://github.com/Godiesc/firefox-one/assets/22057609/ce692628-2009-4cc7-8120-77fd15bdf595)
 
 # Personalizar - Customize
 
@@ -91,7 +93,6 @@
 
 # Known Issues - Problemas Conocidos
 <ul>
-<li>When using a theme that use more that one image, the theme will display a bad background in the toolbar, for example the alpenglow theme from firefox.</li>
 <li>Not compatibility for RTL(right-to-left) languages.</li>
 </ul>
 
