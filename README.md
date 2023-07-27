@@ -50,11 +50,10 @@
 [Panorama tab groups](https://addons.mozilla.org/es/firefox/addon/panorama-tab-groups/) - 
 [Ublock](https://addons.mozilla.org/es/firefox/addon/ublock-origin/) 
 </li>
-</ul>
-
-For themes that use 2 or more images you should change the line <code>30</code> in <code>one_root-personal.css</code> file with <code>--display-theme-with-images: cover;</code>
+<li>For themes that use 2 or more images you should change the line <code>30</code> in <code>one_root-personal.css</code> file with <code>--display-theme-with-images: cover;</code>
 
 ![compatibilitythemes](https://github.com/Godiesc/firefox-one/assets/22057609/ce692628-2009-4cc7-8120-77fd15bdf595)
+</li></ul>
 
 # Personalizar - Customize
 
