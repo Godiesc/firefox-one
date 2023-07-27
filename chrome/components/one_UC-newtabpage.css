@@ -27,7 +27,7 @@
 
     --newtab-element-secondary-active-color: var(--button-active-bgcolor) !important;         /* Color clic en items del menú de 3 puntos */
 
-    --newtab-border-color: color-mix(in srgb, var(--newtab-background-color) 92%,             /* Color borde menu de 3 puntos y de input-text al editar un sitio*/
+    --newtab-border-color: color-mix(in srgb, var(--newtab-background-color) 88%,             /* Color borde menu de 3 puntos y de input-text al editar un sitio*/
         var(--newtab-wordmark-color)) !important;
 
     --newtab-text-primary-color: var(--newtab-wordmark-color) !important;                     /* label general */
@@ -61,7 +61,7 @@
 
     --newtab-element-secondary-active-color: var(--button-active-bgcolor) !important;         /* Color clic en items del menú de 3 puntos */
  
-    --newtab-border-color: color-mix(in srgb, var(--newtab-background-color) 92%,             /* Color borde menu de 3 puntos y de input-text al editar un sitio */
+    --newtab-border-color: color-mix(in srgb, var(--newtab-background-color) 88%,             /* Color borde menu de 3 puntos y de input-text al editar un sitio */
         var(--newtab-wordmark-color)) !important;
         
     --newtab-text-primary-color: var(--newtab-wordmark-color) !important;                     /* label general */
