@@ -9,12 +9,13 @@
 
 /* Barra de busqueda */
 
-findbar{                                                                 /*"toolbar":"#131118", "Color de la toolbar"*/
+findbar{
     background-image: linear-gradient(var(--toolbar-bgcolor, transparent), var(--toolbar-bgcolor, transparent)),
                       linear-gradient(var(--toolbar-bgcolor), var(--toolbar-bgcolor)), 
                       var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
     background-position: left top !important;
     background-repeat: repeat !important;
+    background-size: var(--display-theme-with-images) !important;
     outline: 1px solid #50505080 !important;
     outline-offset: -1px !important;
     box-shadow: none !important;
