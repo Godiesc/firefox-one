@@ -155,7 +155,7 @@ toolbar .text-link:-moz-lwtheme:hover, panel .text-link:-moz-lwtheme:hover {
     margin-inline-start: 4px !important;
     margin-bottom: 4px !important;
     border-radius: 8px !important;
-    outline: 1px solid #50505030 !important;
+    outline: 1px solid #50505050 !important;
     outline-offset: -1px !important;
 }
 
@@ -168,7 +168,12 @@ toolbar .text-link:-moz-lwtheme:hover, panel .text-link:-moz-lwtheme:hover {
 }
 
 .sidebar-splitter {
+    border-color: transparent !important;
     margin-block: 8px !important;
+}
+
+#browser {
+  --sidebar-border-color: #50505030 !important;
 }
 
 /* Linea Separadora */
