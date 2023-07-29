@@ -453,7 +453,7 @@ toolbarbutton[badge="0"] .toolbarbutton-badge { display: none !important; }
 /* Margin top para subir el menú [open] */
     
     :root:not([chromehidden~="toolbar"])[sizemode="maximized"] #appMenu-popup {
-        margin-top: calc(-1px - var(--tab-height-personal)) !important;
+        margin-top: calc(-2px - var(--tab-height-personal)) !important;
 }
 
 /* Logo */
@@ -536,13 +536,13 @@ toolbarbutton[badge="0"] .toolbarbutton-badge { display: none !important; }
 
 @media (-moz-platform: windows), (-moz-platform: linux) {
 :root:not([chromehidden~="toolbar"])[sizemode="maximized"] #appMenu-popup>panelmultiview>box>box>panelview {
-    padding-top: calc(-10px + var(--tab-height-personal)) !important;
+    padding-top: calc(-6px + var(--tab-height-personal)) !important;
     z-index: 2 !important;
     }}
 
 @media (-moz-platform: windows), (-moz-platform: linux) {
 :root:not([chromehidden~="toolbar"])[sizemode="maximized"] #appMenu-popup {
-    clip-path: polygon(0% 0%, 0% 100%, 1% 53%, 0 10px, calc(var(--padding-left-tab) + 6px) 10px,
+    clip-path: polygon(0% 0%, 0% 100%, 1% 53%, 0 12px, calc(var(--padding-left-tab) + 6px) 12px,
                calc(var(--padding-left-tab) + 6px) calc(var(--tab-height-personal) - 4px), 0 calc(var(--tab-height-personal) - 4px), 0 100%, 100% 100%, 100% 0%);
     }}
 
@@ -592,6 +592,7 @@ toolbarbutton[badge="0"] .toolbarbutton-badge { display: none !important; }
     fill: var(--general-color) !important;
     animation: 2000ms infinite ease;
     animation-name: slide1;
+    margin-inline: 0px !important;
     border-radius: 50% !important;
 }
 
