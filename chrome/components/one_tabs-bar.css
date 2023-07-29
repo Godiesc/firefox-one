@@ -310,7 +310,7 @@ tab:not([selected]) .tab-icon-image {
                       var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
     background-position: right calc(0px - var(--toolbar-height-personal)) !important;
     background-repeat: repeat !important;
-    background-size: auto !important;    /* "cover" for compatibility for themes that use 2 or more images */
+    background-size: var(--display-theme-with-images) !important;
     outline: 1px solid #50505040 !important;
     outline-offset: -1px !important;
 }
