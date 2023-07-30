@@ -176,6 +176,12 @@ toolbar .text-link:-moz-lwtheme:hover, panel .text-link:-moz-lwtheme:hover {
   --sidebar-border-color: #50505030 !important;
 }
 
+@media (-moz-platform: linux) {
+#sidebar-splitter{
+    background-color: transparent !important;
+    margin-right: -4px !important;
+    }}
+
 /* Linea Separadora */
 
 treechildren::-moz-tree-separator {
