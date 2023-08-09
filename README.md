@@ -38,17 +38,16 @@
 <ul>
 <li>You can disable the set colors of this theme to adapt the colors of your personal theme (about:addons), create this rule in about:config and set it true: <code>firefoxone.without-default-colors</code> </li>
 <li>If you want a tree-tabs-style create this rule in about:config and set it true: <code>firefoxone.tree_tabs_style</code>, if you don't want the Left-sidebar create this rule in about:config and set it true: <code>firefoxone.tree_tabs_style_without_leftsidebar</code></li>
-<li>For left sidebar the theme use the bookmark-bar, so it should be always on.</li>
-<li></li>
 <li>You can use flexible spaces to create separatos in the tabs-bar.</li>
+<li>For left sidebar the theme use the bookmark-bar, so it should be always on.</li>
 <li>The social extensions used to put in the left-sidebar are:
    
 [Twitch](https://addons.mozilla.org/es/firefox/addon/twitch-live-channels/) - 
 [Whatsapp](https://addons.mozilla.org/es/firefox/addon/chatwapp-in-sidebar/) - 
 [Telegram](https://addons.mozilla.org/es/firefox/addon/telegram-in-sidebar/) -
-[Facebook messenger](https://addons.mozilla.org/es/firefox/addon/messenger-sidebar-with-toolbar/) - 
+[Facebook](https://addons.mozilla.org/es/firefox/addon/messenger-sidebar-with-toolbar/) - 
 [Twitter](https://addons.mozilla.org/es/firefox/addon/twitter-as-a-sidebar/) -
-[Instagram Chat](https://addons.mozilla.org/es/firefox/addon/instagram-chat-in-sidebar/) -
+[Instagram](https://addons.mozilla.org/es/firefox/addon/instagram-chat-in-sidebar/) -
 [Discord](https://addons.mozilla.org/es/firefox/addon/discord-in-sidebar/) -
 [Panorama tab groups](https://addons.mozilla.org/es/firefox/addon/panorama-tab-groups/) - 
 [Ublock](https://addons.mozilla.org/es/firefox/addon/ublock-origin/) 
