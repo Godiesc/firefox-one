@@ -6,8 +6,8 @@
 /* Botón info*/
 
 .panel-info-button{ border-radius: 3px !important; color: var(--toolbarbutton-icon-fill) !important; }
-.panel-info-button:is(:hover){ background-color: var(--button-hover-bgcolor) !important; border-radius: 2px !important; color: white !important;}
-.panel-info-button:not(:hover)[checked]{ background-color: var(--general-color) !important; border-radius: 2px !important; color: white !important;}
+.panel-info-button:is(:hover){ background-color: var(--button-bgcolor) !important; border-radius: 4px !important; color: white !important;}
+.panel-info-button:not(:hover)[checked]{ background-color: var(--button-hover-bgcolor) !important; border-radius: 4px !important; color: white !important;}
 
 /*-"Radiobutton"-ProtecciónAntirastreo*/
 
@@ -138,13 +138,13 @@ richlistitem, #editBMPanel_namePicker , #editBMPanel_tagsField{
 #TabsToolbar .toolbarbutton-1:hover:not([disabled="true"],[open="true"],#tabs-newtab-button,  #new-tab-button) > .toolbarbutton-icon,
 #TabsToolbar .toolbarbutton-1:hover:not([disabled="true"],[open="true"],#tabs-newtab-button,  #new-tab-button) > .toolbarbutton-text,
 #TabsToolbar .toolbarbutton-1:hover:not([disabled="true"],[open="true"],#tabs-newtab-button,  #new-tab-button) > .toolbarbutton-badge-stack{
-    background-color: color-mix(in srgb, var(--toolbarbutton-hover-personal), var(--contrast-color)) !important;
+    background-color: color-mix(in srgb, var(--lwt-frame) 86%, var(--lwt-tab-text)) !important;
 }
 
 #TabsToolbar .toolbarbutton-1[open="true"] > .toolbarbutton-icon,
 #TabsToolbar .toolbarbutton-1[open="true"] > .toolbarbutton-text,
 #TabsToolbar .toolbarbutton-1[open="true"] > .toolbarbutton-badge-stack {
-    background-color: var(--arrowpanel-background) !important;
+    background-color: color-mix(in srgb, var(--lwt-frame) 90%, var(--lwt-tab-text)) !important;
 }
 
 /*Color de iconos de la tabs-bar cuando están :hover en temas con imágenes */
@@ -165,22 +165,6 @@ richlistitem, #editBMPanel_namePicker , #editBMPanel_tagsField{
 :root:is([lwtheme-image],[style*="--lwt-additional-images"])
 #TabsToolbar .toolbarbutton-1[open="true"] > .toolbarbutton-badge-stack {
     background-color: var(--toolbarbutton-active-background) !important;
-}
-
-/* Barra de menú */
-
-#main-menubar>menu {
-    text-shadow: none !important;
-    border-radius: calc(var(--toolbarbutton-border-radius) + 6px) !important;
-    background-color: transparent !important;
-}
-
-#main-menubar>menu label{
-    margin-bottom: -2px !important;
-}
-
-#main-menubar>menu:is(:hover, [open]){
-    background-color: var(--button-active-bgcolor) !important;
 }
 
 /* margin-right ultimo botón de la nav-bar*/
@@ -251,6 +235,5 @@ richlistitem, #editBMPanel_namePicker , #editBMPanel_tagsField{
 #statuspanel label{
     background-color: var(--toolbar-bgcolor) !important;
     border-color: var(--lwt-frame) !important;
-    margin: 0px 4px 4px 5px !important;
-    border-radius: 0 8px 0 8px !important;
+    border-radius: 0 8px 0 6px !important;
 }

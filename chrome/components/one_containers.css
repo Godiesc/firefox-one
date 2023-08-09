@@ -3,27 +3,40 @@
 
 /* Posición de la nueva linea de contenedor */
 
-.tabbrowser-tab:not([pinned]) .tab-context-line {
-    -moz-box-ordinal-group: 2 !important;
-    order: 2 !important;
-    margin-bottom: 1px !important;
+.tabbrowser-tab .tab-context-line {
+    height: calc(var(--tab-height-personal) - 6px) !important;
+    width: 3px !important;
+    margin-top: 3px !important;
+    box-shadow: none !important;
+    margin-left: 2px !important;
 }
 
-.tabbrowser-tab:not([pinned], [selected]) .tab-context-line {
-    clip-path: polygon(4px 0%, 24px 0%, 24px 100%, 4px 100%);
+.tabbrowser-tab:not([selected]) .tab-context-line {
+    height: calc(var(--tab-height-personal) - 12px) !important;
+    width: 3px !important;
+    margin-top: 6px !important;
+    box-shadow: 2px 0 8px color-mix(in srgb, var(--identity-tab-color) 90%, white) !important;
     transition-duration: 0ms !important;
 }
 
-.tabbrowser-tab[selected]:not([pinned]) .tab-context-line {
-    clip-path: polygon(4px 0%, calc(100% - 4px) 0%, calc(100% - 4px) 100%, 4px 100%);
-    transition-duration: 200ms !important;
+.tabbrowser-tab:is([selected]) .tab-context-line {
+    transition-duration: 150ms !important;
 }
+
+/*
+.tab-icon-image{
+    filter: drop-shadow(-1px -1px 0.30rem color-mix(in srgb, var(--identity-tab-color, transparent), transparent))
+      drop-shadow(1px 1px 0.30rem color-mix(in srgb, var(--identity-tab-color, transparent), transparent)) !important;
+}
+
+.tabbrowser-tab:is([selected]) .tab-icon-image{
+    filter: none !important;
+}*/
 
 /* Mover la label para hacer espacio para el ícono de sonido y darle una ligera animación */
 
 tab[soundplaying] .tab-content .tab-label {
     padding-left: 18px !important;
-    z-index: 0 !important;
     transition-duration: 200ms !important;
 }
 
@@ -32,31 +45,20 @@ tab[muted] .tab-content .tab-label {
     transition-duration: 200ms !important;
 }
 
-/* Pinned */
 
-.tabbrowser-tab:is([pinned]) .tab-context-line {
-    -moz-box-ordinal-group: 2 !important;
-    height: 2px;
-    margin-bottom: 1px !important;
-    order: 2;
-}
-
-tab:is([pinned])[selected] .tab-context-line {
-    max-width: 20px !important;
-    margin-inline: 8px !important;
-    transition-duration: 150ms;
-}
-
-tab:is([pinned]):not([selected]) .tab-context-line {
-    max-width: 8px !important;
-    margin-inline: 14px !important;
-    transition-duration: 0ms;
-}
 
 /* Eliminar label del contenedor de la urlbar, manteniendo el ícono */
 
 #userContext-label {
     display: none !important;
+}
+
+/* Quitar separadores entre pestañas de contenedor */
+
+:is(.identity-color-pink, .identity-color-green, .identity-color-blue, 
+    .identity-color-orange, .identity-color-red, .identity-color-purple, 
+    .identity-color-yellow, .identity-color-turquoise ) .tab-background:after{
+    content: none !important;
 }
 
 /* Color contenedor default */
@@ -76,12 +78,4 @@ tab:is([pinned]):not([selected]) .tab-context-line {
 .identity-color-red {
     --identity-tab-color: #ff2940 !important;
     --identity-icon-color: #ff2940 !important;
-}
-
-.tab-label[selected] {
-    color: color-mix(in srgb, var(--identity-tab-color, var(--lwt-tab-text)) 80%, var(--lwt-tab-text)) !important;
-}
-
-.tab-label:not([selected]) {
-    color: color-mix(in srgb, var(--identity-tab-color, var(--lwt-text-color)) 80%, var(--lwt-text-color)) !important;
 }

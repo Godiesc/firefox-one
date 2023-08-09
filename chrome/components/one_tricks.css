@@ -1,0 +1,18 @@
+/* Tree-tabs without left-sidebar 
+
+@supports -moz-bool-pref("firefoxone.tree_tabs_style_without_leftsidebar") {
+
+:root:not([chromehidden~="toolbar"]) #PanelUI-button { left: 10px !important; }
+
+:root:not([chromehidden~="toolbar"])[sizemode="maximized"] #PanelUI-menu-button[open] { margin-inline-start: -6px !important; }
+
+:root:not([chromehidden~="toolbar"]) #PanelUI-menu-button { min-height: calc(var(--toolbar-height-personal) + var(--tab-block-margin) ) !important; }
+:root:is([inFullscreen]) #PanelUI-menu-button { min-height: calc(var(--toolbar-height-personal) + 0px ) !important; } 
+
+:root:not([chromehidden~="toolbar"]) #PersonalToolbar { margin-top: initial !important; }
+
+:root:not([chromehidden~="toolbar"]) #nav-bar-customization-target > :is(toolbarbutton, toolbaritem):first-child,
+:root:not([chromehidden~="toolbar"]) toolbar[customizing] .customization-target{
+    margin-inline-start: calc(var(--padding-left-tab) + 4px) !important;
+}
+}*/

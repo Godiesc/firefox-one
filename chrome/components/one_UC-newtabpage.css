@@ -80,13 +80,21 @@
     }}
     
 /*------------------------fondo (imagen), Logo y Wordmark------------------------*/
-   
+    
 #root{
     background: var(--lwt-main-image) no-repeat right top fixed !important;
     background-size:  var(--wallpaper-size) !important;
     background-position-y: var(--background-align-y) !important;
-    border-radius: 8px !important;    
+    border-radius: 8px !important;
+    filter: brightness(99%) !important;
     }
+body{
+    background: var(--lwt-main-image) no-repeat right top fixed !important;
+    background-size:  var(--wallpaper-size) !important;
+    background-position-y: var(--background-align-y) !important;
+    border-radius: 8px !important;
+    filter: none !important;
+    }  
 
 .logo{
     background: url("../images/foxlogo.svg") no-repeat !important;
@@ -230,6 +238,7 @@ input:focus-visible, input:focus-visible{
     
 .icon.icon-settings {
     background-image: url("../images/edit.svg") !important;
+    opacity: 0.6;
     }
 .personalize-button {
     color: var(--newtab-background-color-primary) !important;
@@ -237,8 +246,8 @@ input:focus-visible, input:focus-visible{
 .personalize-button:hover {
     background-color: color-mix(in srgb, var(--contrast-color), transparent) !important;
     fill: var(--newtab-wordmark-color)  !important;
-    outline: 1px solid #50505030 !important;
-    border-radius: 7px !important;
+    border-radius: 5px !important;
+    opacity: 1 !important;
     }
 
 /* Colores del botón "Cerrar" */
@@ -246,12 +255,12 @@ input:focus-visible, input:focus-visible{
 .close-button {
     background-color: var(--newtab-element-secondary-color) !important;
     color: var(--newtab-wordmark-color)  !important;
-    border-radius: 7px !important;
-    border-color: #50505050 !important;
+    border-radius: 6px !important;
+    border-color: color-mix(in srgb, var(--newtab-element-secondary-color) 96%, var(--newtab-wordmark-color)) !important;
     }
 .close-button:hover{
     background-color: var(--button-active-bgcolor) !important;
-    border-color: var(--button-active-bgcolor) !important;
+    border-color: transparent !important;
     color: white  !important;
     }
     
@@ -269,13 +278,13 @@ input:focus-visible, input:focus-visible{
     
 .home-section .section .selector {
     background-color: var(--newtab-element-secondary-color) !important;
-    border-color: #50505050 !important;
-    border-radius: 7px !important; 
+    border-color: color-mix(in srgb, var(--newtab-element-secondary-color) 96%, var(--newtab-wordmark-color)) !important;
+    border-radius: 6px !important; 
     }
     
 .home-section .section .selector:hover {
     background-color: var(--button-active-bgcolor) !important;
-    border-color: var(--button-hover-bgcolor) !important;
+    border-color: transparent !important;
     color: white !important;
     }
     
@@ -322,7 +331,6 @@ input:focus-visible, input:focus-visible{
 .search-inner-wrapper:not(:focus) input, .search-wrapper:not(:active) input:focus{
     backdrop-filter: blur(20px) !important;
     border-radius: 34px !important;
-    
     }
     
 .search-handoff-button{
@@ -361,13 +369,14 @@ browser[primary="true"][tabDialogShowing="true"],
     
 /* Fondo pequeño de los favICON de los sitios anclados */
     
-.top-site-icon{ background-color: transparent !important;
+.top-site-icon{ 
+    background-color: transparent !important; 
     }
    
 /* Pinned icon */
     
 .title.has-icon.pinned { 
-    margin-left: -4px !important;  
+    margin-left: -4px !important;
     }
 .top-site-outer .title span:is(:hover) .icon.icon-pin-small{ 
     transition-delay: 150ms !important; 
@@ -390,6 +399,8 @@ browser[primary="true"][tabDialogShowing="true"],
     border: 1px solid #50505030 !important;
     background: var(--newtab-pinnedsites-background) !important;
     backdrop-filter: var(--personal-blur) !important;
+    filter: none !important;
+    filter: saturate(140%) !important;
     }
     
 .top-site-outer:is(.active, :focus, :hover) .tile{

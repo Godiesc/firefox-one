@@ -15,7 +15,7 @@ slot {
 
 panelview {    
     background-image: var(--noise-urlbar-personal) !important;
-    border: 1px solid color-mix(in srgb, var(--toolbar-bgcolor) 96%, var(--lwt-tab-text)) !important;
+    border: 1px solid var(--arrowpanel-border-color) !important;
     border-radius: var(--arrowpanel-border-radius) !important;
 }
 
@@ -53,7 +53,7 @@ addon-install-confirmation-notification {
 /* Color fondo gradiente :hover por los diferentes items de menús principales */
 
 .protections-popup-category:not(#appMenu-popup toolbarbutton):hover, .protections-popup-footer-button:not(#appMenu-popup toolbarbutton):hover, #protections-popup-show-report-stack:not(#appMenu-popup toolbarbutton):hover > .protections-popup-footer-button:not(#appMenu-popup toolbarbutton), panelview .toolbarbutton-1:not([disabled], [open]:not(#appMenu-popup toolbarbutton)):is(:hover), toolbarbutton.subviewbutton:not([disabled], [open], .subviewbutton-back):is(:hover), .navigable.subviewbutton:not([disabled], [open]):is(:hover), menu.subviewbutton:not([disabled])[_moz-menuhover], menuitem.subviewbutton:not([disabled])[_moz-menuhover], .widget-overflow-list .toolbarbutton-1:not([disabled], [open]):is(:hover), .toolbaritem-combined-buttons:is(:not([cui-areatype="toolbar"]), [overflowedItem="true"]) > toolbarbutton:not([disabled], [open]):is(:hover) {
-    background: var(--general-color) !important;
+    background: var(--button-active-bgcolor) !important;
     color: #ffffff !important;
     fill: #ffffff !important;
 }
@@ -61,7 +61,7 @@ addon-install-confirmation-notification {
 /* Color fondo clic por los diferentes items de menús principales */
 
 .protections-popup-category:active, .protections-popup-footer-button:active, #protections-popup-show-report-stack:active > .protections-popup-footer-button, panelview .toolbarbutton-1:not([disabled]):is(:active, [open]), toolbarbutton.subviewbutton:not([disabled], .subviewbutton-back):is(:active, [open]), .navigable.subviewbutton:not([disabled]):is(:active, [open]), menu.subviewbutton:not([disabled])[_moz-menuactive], .panel-banner-item:hover, menuitem.subviewbutton:not([disabled])[_moz-menuactive], .widget-overflow-list .toolbarbutton-1:not([disabled]):is(:active, [open]), .toolbaritem-combined-buttons:is(:not([cui-areatype="toolbar"]), [overflowedItem="true"]) > toolbarbutton:not([disabled]):is(:active, [open]) {
-    background: var(--button-active-bgcolor) !important;
+    background: var(--button-hover-bgcolor) !important;
 }
 
 /* Colores en items deshabilitados*/
@@ -124,13 +124,13 @@ toolbar .text-link:-moz-lwtheme:hover, panel .text-link:-moz-lwtheme:hover {
 }
 
 #downloadsListBox > richlistitem.download-state.hoveringMainArea:is(:hover) {
-    background: var(--general-color) !important;
+    background: var(--button-active-bgcolor) !important;
     color: #ffffff !important;
     fill: #ffffff !important;
 }
 
 .downloadButton:hover{
-    background: var(--general-color) !important;
+    background: var(--button-active-bgcolor) !important;
     border: none !important;
     border-radius: 6px !important;
     color: #ffffff !important;
@@ -140,40 +140,57 @@ toolbar .text-link:-moz-lwtheme:hover, panel .text-link:-moz-lwtheme:hover {
     padding: 0.62em 0.0em 0.62em 0em !important;
 }
 
-/* Color Sidebar */
+/* ____________ sidebar de Firefox _____________ */
+
+:root:not([sizemode="fullscreen"]) #sidebar-box {
+    margin-block: 2px 5px !important;
+}
+
+#sidebar-box {
+    max-width: none !important;
+    min-width: 30px !important;
+    margin-inline: 5px 1px !important;
+    border-radius: 8px !important;
+    /*outline: 1px solid #50505050 !important;
+    outline-offset: -1px !important;*/
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--lwt-frame) 90%, var(--lwt-tab-text)) !important;
+    z-index: 1 !important;
+    outline: 2px solid var(--lwt-frame) !important;
+    outline-offset: 1px !important;
+}
+
+/* Header sidebar */
 
 #sidebar-header, #bookmarksPanel{
     background-color: var(--lwt-sidebar-background-color) !important;
     padding: 4px 6px !important;
 }
 
-/* sidebar de Firefox */
-
-#sidebar-box {
-    max-width: none !important;
-    min-width: 30px !important;
-    margin-inline-start: 4px !important;
-    margin-bottom: 4px !important;
-    border-radius: 8px !important;
-    outline: 1px solid #50505050 !important;
-    outline-offset: -1px !important;
-}
-
-#sidebar-header{
+:root:not([sizemode="fullscreen"]) #sidebar-header{
     border-radius: 8px 8px 0 0 !important;
 }
 
-#sidebar{
+#browser {
+  --sidebar-border-color: color-mix(in srgb, var(--lwt-frame) 90%, var(--lwt-tab-text)) !important;
+}
+
+/* Contenido de la sidedar */
+
+:root:not([sizemode="fullscreen"]) #sidebar{
     border-radius: 0 0 8px 8px !important;
 }
 
+/* splitter - Borde para redimensionar la sidebar */
+
 .sidebar-splitter {
     border-color: transparent !important;
-    margin-block: 8px !important;
+    border-width: 4px !important;
 }
 
-#browser {
-  --sidebar-border-color: #50505030 !important;
+/* Espacio top de la sidebar[open] y más espacio para el splitter */
+
+:root:not([sizemode="fullscreen"]) #sidebar-box[checked="true"] + #sidebar-splitter + #appcontent .browserContainer {
+    padding: 2px 5px 5px 1px !important;
 }
 
 @media (-moz-platform: linux) {
@@ -203,16 +220,20 @@ treechildren::-moz-tree-separator {
 
 /* Botón flecha atrás */
 
+.panel-header > .subviewbutton-back image{
+    margin-right: 1px !important;
+}
+
 .panel-header > .subviewbutton-back {
     border-radius: var(--toolbarbutton-border-radius) !important;
 }
 
 .panel-header > .subviewbutton-back:hover {
-    background: var(--general-color) !important;
+    background: var(--button-active-bgcolor) !important;
 }
 
 .panel-header > .subviewbutton-back:active {
-    background: var(--button-active-bgcolor) !important;
+    background: var(--button-hover-bgcolor) !important;
 }
 
 /* Fondo :hover botones de zoom */
@@ -224,7 +245,6 @@ treechildren::-moz-tree-separator {
 #appMenu-zoomReduce-button2 > .toolbarbutton-icon, #appMenu-zoomEnlarge-button2 > .toolbarbutton-icon{
     -moz-context-properties: fill, stroke !important;
     stroke: #80808080 !important;
-    margin-inline: -8px !important;
 }
 #appMenu-fullscreen-button2 >.toolbarbutton-icon{
     -moz-context-properties: fill, stroke !important;

@@ -11,7 +11,7 @@
 /* Reproduciendo */
 .tab-icon-overlay[soundplaying]:not([pinned]){
     opacity: 1 !important;
-    fill: var(--identity-tab-color,var(--lwt-tab-text))  !important;
+    fill: var(--lwt-tab-text) !important;
     background: transparent !important;
     border-radius: 4px !important;
     padding: 1px !important;
@@ -19,35 +19,36 @@
     fill-opacity: 1 !important;
     z-index: 1 !important;
     }
-/* RHYTHM IMAGES IN LIGHT AND DARK MODE 
-@media (prefers-color-scheme: dark){
-tab[soundplaying]:not([pinned]) .tab-background::after{
-    background-color: var(--toolbar-bgcolor) !important;
-    background: url("../images/Beats.webp") repeat-x left center !important;
-    content: "" !important; display: block !important; 
-    background-size: -moz-available var(--tab-height-personal) !important;
-    width: -moz-available !important;
+
+/* RHYTHM IMAGE IN LIGHT AND DARK MODE 
+
+tab[soundplaying]:not([pinned]) .tab-background::before{
+    content: "" !important; 
+    display: block !important;
+    position: absolute !important;
+    background: url("../images/Beats.webp") no-repeat left center !important;
+    margin-block-start: 2px  !important;
+    margin-inline-start: 5px !important;
+    background-size: 21px 16px !important;
+    width: 24px !important;
     height: calc(var(--tab-height-personal) * 2 / 1.5) !important;
-    opacity: 0.07 !important;
-    transform: rotate(0deg) !important;
-        }}
-@media (prefers-color-scheme: light){
-tab[soundplaying]:not([pinned]) .tab-background::after{
-    background: url("../images/Beats.gif") repeat-x bottom !important;
-    content: "" !important; display: block !important; 
-    background-size: -moz-available var(--tab-height-personal) !important;
-    width: -moz-available !important;
-    height: var(--tab-height-personal) !important;    
-    opacity: 0.2 !important;
-        }}
+    opacity: 1 !important;
+    filter: drop-shadow(0.5px -0.5px 0.5rem var(--lwt-frame)) drop-shadow(-0.5px 0px 0.5rem var(--lwt-frame)) !important;
+        }/**/
+
 /* reproduciendo hover */
 tab:not([pinned]) .tab-icon-overlay[soundplaying]:hover {
-    /*list-style-image: url("../images/paused.svg") !important;*/
-    /*clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%) !important;*/
     fill: var(--lwt-tab-text) !important;
-    background-color: color-mix(in srgb, var(--toolbarbutton-hover-background), var(--border-contrast-color)) !important;
-    fill-opacity: 1 !important;
+    background-color: color-mix(in srgb, var(--toolbarbutton-hover-background) 40%, var(--border-contrast-color)) !important;
+    fill-opacity: 1 !important; }
+:root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) tab:not([pinned]) .tab-icon-overlay[soundplaying]:hover {
+     background-color: var(--toolbarbutton-hover-background) !important; }
+tab:not([pinned],[selected]) .tab-icon-overlay[soundplaying]:hover,
+:root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) tab:not([pinned],[selected]) .tab-icon-overlay[soundplaying]:hover{
+    fill: var(--lwt-tab-text) !important;
+    background-color: color-mix(in srgb, var(--lwt-frame) 70%, transparent) !important;
     }
+
 /*Compartiendo microfono y cámara*/
 .tab-icon-overlay[soundplaying]:not([crashed]):is([sharing]) {
       top: 0px !important; stroke: transparent !important; background-color: transparent !important;  }

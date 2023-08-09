@@ -16,11 +16,11 @@ findbar{
     background-position: left top !important;
     background-repeat: repeat !important;
     background-size: var(--display-theme-with-images) !important;
-    outline: 1px solid #50505080 !important;
-    outline-offset: -1px !important;
+    outline: 1px solid color-mix(in srgb, var(--toolbar-bgcolor) 98%, var(--lwt-tab-text)) !important;
     box-shadow: none !important;
     z-index: 3 !important;
     color: var(--lwt-tab-text) !important;
+    border: none !important;
 }
 
 .findbar-find-status[status="notfound"] {
@@ -151,21 +151,21 @@ findbar{
 /* Urlbar */
 
 #urlbar {
-    min-height: calc(var(--toolbar-height-personal) - 9px) !important;
+    min-height: calc(var(--toolbar-height-personal) - 8px) !important;
     padding-left: 10px !important;
     padding-right: 10px !important;
-    border-radius: 8px !important;
+    border-radius: 7px !important;
 }
 
 #urlbar:not([open], [focused]) #urlbar-background {
-    border-radius: 8px !important;
+    border-radius: 7px !important;
     transition: ease-in 150ms !important;
     transition-delay: 80ms !important;
 }
 
 #urlbar:not([open], [focused]):hover #urlbar-background {
     background-color: var(--toolbarbutton-hover-background) !important;
-    border-radius: 8px !important;
+    border-radius: 7px !important;
     border-color: transparent !important;
     transition: linear 150ms !important;
     transition-delay: 80ms !important;
@@ -175,12 +175,8 @@ findbar{
     background-color: var(--toolbarbutton-hover-background) !important;
 }
 
-#urlbar:not([open]) {
-    margin-top: -1px !important;
-}
-
 #urlbar[focused] #urlbar-background {
-    border-radius: 8px !important;
+    border-radius: 7px !important;
     box-shadow: none !important;
 }
 
@@ -188,10 +184,6 @@ findbar{
     background-image: var(--noise-urlbar-personal) !important;
     border-radius: 10px !important;
     border-color: transparent !important;
-}
-
-#urlbar[breakout][breakout-extend]>#urlbar-input-container {
-    margin-top: -1px !important;
 }
 
 #urlbar-input, #urlbar-scheme {
@@ -204,7 +196,7 @@ findbar{
 
 @media (-moz-platform: windows) {
     #urlbar-input, #urlbar-scheme {
-        padding-bottom: 1px !important;
+        padding-bottom: 2px !important;
     }
 }
 
@@ -222,12 +214,26 @@ findbar{
     pointer-events: none;
 }
 
-/* Bordes de la toolbar cuando left-sidebar no es usada */
+/* Bordes de las toolbar cuando left-sidebar no es usada */
 
 #nav-bar, #PersonalToolbar {
     border-radius: 8px !important;
     margin-inline: 4px !important;
-    margin-bottom: 1px !important;
+    outline: 1px solid color-mix(in srgb, var(--toolbar-bgcolor) 96%, var(--lwt-tab-text)) !important;
+    outline-offset: -1px !important;
+}
+
+#nav-bar{
+    margin-block-end: 1px !important;
+}
+
+#PersonalToolbar{
+    padding-block: 1px !important;
+    padding-inline: 1px !important;
+}
+
+:root:is([sizemode="fullscreen"]) #nav-bar{
+    margin-bottom: 2px !important;
 }
 
 /* Search-bar */
@@ -279,14 +285,16 @@ findbar{
 #identity-box[pageproxystate="valid"].chromeUI #identity-icon {
     list-style-image: url("../images/foxFill.svg") !important;
     -moz-context-properties: fill !important;
-    fill: var(--general-color) !important;
+    fill: var(--lwt-tab-text) !important;
     width: 15px !important;
     height: 15px !important;
     margin-inline: 2px 2px !important;
+    opacity: 0.8 !important;
 }
 
 #identity-box[pageproxystate="valid"].chromeUI .identity-box-button:is(:hover, [open]) #identity-icon {
     fill: var(--lwt-tab-text) !important;
+    opacity: 1 !important;
 }
 
 #identity-box[pageproxystate="valid"].notSecureText, #identity-box[pageproxystate="valid"].chromeUI, 
@@ -333,7 +341,7 @@ findbar{
 /* box, caja de íconos */
 
 #identity-icon-box, #identity-permission-box, #notification-popup-box {
-    margin-block: 3px 2px !important;
+    margin-block: 3px !important;
     margin-inline: 2px !important;
     color: var(--toolbarbutton-icon-fill) !important;
 }
@@ -348,9 +356,9 @@ findbar{
     margin-left: 0px !important;
 }
 
-/* ícono contenido DRM */
+/* íconos varios de permisos */
 
-.drm-icon, .geo-icon {
+#notification-popup-box image {
     padding: 3px !important;
     height: 20px !important;
     width: 20px !important;
@@ -372,8 +380,9 @@ findbar{
 /* ícono Portección contra rastreo */
 
 #tracking-protection-icon-container {
-    margin-block: 3px 2px !important;
+    margin-block: 3px !important;
     margin-inline: 3px 0px!important;
+    padding: 2px !important;
 }
 
 #tracking-protection-icon {
@@ -381,19 +390,14 @@ findbar{
     margin-block-start: 1px !important;
 }
 
-#tracking-protection-icon-container {
-    padding: 2px !important;
-}
-
 /* ícono bookmark, vista de lectura, etc */
 
 .urlbar-page-action {
     width: 21px !important;
     height: 20px !important;
-    margin-inline: 3px 3px!important;
+    margin-inline: 3px !important;
     padding: 3px !important;
     color: var(--toolbarbutton-icon-fill) !important;
-    margin-bottom: -1px !important;
 }
 
 .urlbar-page-action>.urlbar-icon {
@@ -464,16 +468,29 @@ description#identity-popup-content-owner-label, description#identity-popup-conte
 
 /*  --------------------------------------- Rounded corner in pages --------------------------------------- */
 
+/* Nuevo espacio alrededor del contenido web */
+
+.browserContainer {
+    padding: 2px 5px 5px 5px !important;
+}
+
 .browserStack>browser{
-    margin: 1px 5px 5px 5px !important; 
     border-radius: 8px !important;
-    outline: 1px solid color-mix(in srgb, var(--lwt-frame) 94%, var(--lwt-tab-text)) !important;
+    outline: 2px solid var(--lwt-frame) !important;
+    outline-offset: 1px !important;
+    box-shadow: 0 0 1px 0px color-mix(in srgb, var(--lwt-frame) 84%, var(--lwt-tab-text)) !important;
+}
+
+:root:is([sizemode="fullscreen"]) :is(.browserContainer,.browserStack>browser) {
+    padding: initial !important;
+    margin: initial !important;
+    border-radius: 0px !important;
+    box-shadow: none !important;
 }
 
 findbar{ 
     border-radius: 8px !important; 
-    z-index: 2; 
-    margin: 0 4px 4px !important; 
+    margin: 6px 0px 0px 0px !important; 
 }
 
 .browserContainer, .browserStack, #browser{
@@ -489,7 +506,8 @@ findbar{
 }
 
 :root:is([chromehidden~="toolbar"]) .browserStack>browser{
-    margin: 0px 5px 4px 5px !important; 
+    margin: -2px 0px 0px 0px !important; 
     border-radius: 0 0 8px 8px !important;
-    outline: 1px solid color-mix(in srgb, var(--lwt-frame) 94%, var(--lwt-tab-text)) !important;
+    outline: none !important;
+    box-shadow: 0 0 0 1px var(--toolbar-bgcolor) !important;
 }

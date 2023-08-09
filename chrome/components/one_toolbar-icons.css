@@ -68,12 +68,17 @@
 
 #urlbar-input-container[pageproxystate="valid"]>#tracking-protection-icon-container>#tracking-protection-icon-box>#tracking-protection-icon {
     list-style-image: var(--shield-icon-personal) !important;
-    fill: var(--general-color) !important;
+    fill: #4080ff !important;
     opacity: 1 !important;
 }
 
+#urlbar-input-container[pageproxystate="valid"]>#tracking-protection-icon-container:is([open="true"],:hover)>#tracking-protection-icon-box>#tracking-protection-icon,
+#urlbar-input-container[pageproxystate="valid"]>#tracking-protection-icon-container:is([open="true"],:hover)>#tracking-protection-icon-box[hasException]>#tracking-protection-icon {
+    fill: var(--toolbarbutton-icon-fill) !important;
+}
+
 #urlbar-input-container[pageproxystate="valid"]>#tracking-protection-icon-container>#tracking-protection-icon-box[hasException]>#tracking-protection-icon {
-    list-style-image: url(chrome://browser/skin/tracking-protection-disabled.svg) !important;
+    list-style-image: url("../images/shield-disabled.svg") !important;
     fill: var(--buttons-destructive-bgcolor) !important;
 }
 
@@ -108,27 +113,25 @@
 
 /* separador izquierda y derecha urlbar */
 
-#urlbar:not([open=true], [focused=true], :hover) #urlbar-background::before {
+#urlbar:not([open], [focused], :hover) #urlbar-background::before {
+    content: ""; display: flex;
     background: url("../images/urlbar-separator.svg") no-repeat left;
-    content: "";
-    display: block;
-    background-size: 16px 16px !important;
-    padding-top: calc(var(--urlbar-height) - 1px) !important;
-    margin-left: -7px !important;
-    -moz-context-properties: fill !important;
-    fill: var(--toolbarbutton-icon-fill) !important;
-    opacity: 0.2 !important;
+    background-size: 6px 16px;
+    margin-left: -3px !important;
+    height: calc(var(--toolbar-height-personal) - var(--tab-block-margin));
+    -moz-context-properties: fill;
+    fill: var(--toolbarbutton-icon-fill);
+    opacity: 0.2;
 }
 
-#urlbar:not([open=true], [focused=true], :hover) #urlbar-background::after {
+#urlbar:not([open], [focused], :hover) #urlbar-background::after {
+    content: ""; display: flex;
     background: url("../images/urlbar-separator.svg") no-repeat right;
-    content: "";
-    display: block;
-    background-size: 16px 16px !important;
-    height: 16px;
-    margin-top: calc( 0px - var(--urlbar-height) + 7px) !important;
-    margin-right: -7px !important;
-    fill: var(--toolbarbutton-icon-fill) !important;
-    -moz-context-properties: fill !important;
-    opacity: 0.2 !important;
+    background-size: 6px 16px;
+    margin-right: -3px !important;
+    height: calc(var(--toolbar-height-personal) - 8px);
+    margin-top: calc( 7px - var(--toolbar-height-personal)) !important;
+    -moz-context-properties: fill;
+    fill: var(--toolbarbutton-icon-fill);
+    opacity: 0.2;    
 }
