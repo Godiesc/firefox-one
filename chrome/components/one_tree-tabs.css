@@ -290,7 +290,7 @@ Window controls will be all wrong without it
     z-index: 1;
     top: 0;
     bottom: 0;
-    outline: 1px solid color-mix(in srgb, var(--toolbar-bgcolor) 96%, var(--lwt-tab-text)) !important;
+    outline: 1px solid color-mix(in srgb, var(--lwt-frame) 82%, var(--lwt-tab-text)) !important;
     outline-offset: 0px !important;
 }
 
