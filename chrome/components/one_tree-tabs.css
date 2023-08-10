@@ -197,7 +197,8 @@ Window controls will be all wrong without it
     
 /* ##################################################### My Code ######################################################
 ###################################### Adicional <sobre-escribir> Codigo de Arriba ####################################*/    
-    
+
+
 #nav-bar{
     border-width: 0px !important;
     padding-inline-end: calc(var(--uc-window-control-width) + 14px ) !important;
@@ -247,7 +248,25 @@ Window controls will be all wrong without it
     opacity: 0.2;
 }
     
+/* Compatibilidad para - window controls on left - en linux */
     
+@media (-moz-gtk-csd-reversed-placement){
+    :root:not([sizemode="fullscreen"]) #nav-bar{
+        border-width: 0px !important;
+        padding-inline-end: 0px !important;
+        padding-inline-start: calc(var(--uc-window-control-width) + 14px ) !important;
+    }
+    
+    :root:not([inFullscreen])[sizemode="normal"] #nav-bar{
+        padding-inline: calc(var(--uc-window-control-width) + 54px ) calc(var(--uc-window-control-width) + 0px ) !important;
+    }
+    
+    :root:not([sizemode="fullscreen"]) #nav-bar-overflow-button:after,
+    :root:not([chromehidden~="toolbar"], [sizemode="fullscreen"]) #nav-bar:not([nonemptyoverflow]) #nav-bar-customization-target > :is(toolbarbutton, toolbaritem):last-child:after{
+        content: none;
+    }
+}
+  
 /* ################################## Código para la extensión "Tab-Center-Reborn" ################################ 
    #####################################________________________________________################################### */
 
