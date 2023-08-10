@@ -7,6 +7,7 @@
 @media (prefers-color-scheme: dark) {
     :root {
         --background: #1c1b22;
+        --toolbar-bgcolor: #252836;
         --icons: rgb(251,251,254);
         --tab-separator: transparent;
         --tab-active-background: rgb(66,65,77);
@@ -28,6 +29,7 @@
 @media (prefers-color-scheme: light) {
     :root {
         --lwt-frame-personal:  #e9e6ef;
+        --toolbar-bgcolor: #ffffff;
     }
 }
 
@@ -35,7 +37,8 @@
 :root,
 body {
     overflow: hidden;
-    background-color: color-mix(in srgb, var(--background) 86%, var(--input-selected-text)) ;
+    background-color: var(--toolbar-bgcolor);
+    /*background-color: color-mix(in srgb, var(--background) 86%, var(--input-selected-text)) ;*/
 }
 /* Move topmenu to bottom */
 #topmenu {
