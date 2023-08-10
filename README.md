@@ -58,7 +58,7 @@
 <p>For the next features you need to create the rules in <b>about:config</b> page.</p>
 <ul>
 <li>You can disable the set colors of this theme to adapt the colors of your personal theme installed in about:addons: <ul><li><code>firefoxone.without-default-colors</code> <code>true</code></li></ul></li>
-<li>If you use a tree-tabs-style addon, create this rule in about:config: <ul><li><code>firefoxone.tree_tabs_style</code> <code>true</code></li></ul>if you don't want the Left-sidebar in your tree-tabs-style, create this rule too in about:config: <ul><li><code>firefoxone.tree_tabs_style_without_leftsidebar</code> <code>true</code></li></ul></li></ul>
+<li>If you use a tree-tabs-style addon (e.g. <a href="https://addons.mozilla.org/es/firefox/addon/tabcenter-reborn/">Tab-center-reborn</a>), create this rule in about:config: <ul><li><code>firefoxone.tree_tabs_style</code> <code>true</code></li></ul>if you don't want the Left-sidebar in your tree-tabs-style, create this rule too in about:config: <ul><li><code>firefoxone.tree_tabs_style_without_leftsidebar</code> <code>true</code></li></ul></li></ul>
 
 
 ## Personalizar - Customize
