@@ -117,8 +117,8 @@
         appearance: none !important;
         margin-top: calc(-6px - var(--tab-height-personal)) !important;
         padding-inline-start: 4px !important;
-        clip-path: polygon(0% 0%, 0% 100%, 1% 53%, 0 10px, var(--padding-left-tab) 10px,
-               var(--padding-left-tab) calc(var(--tab-height-personal) + 2px), 0 calc(var(--tab-height-personal) + 2px), 0 100%, 100% 100%, 100% 0%);
+        clip-path: polygon(0% 0%, 0% 100%, 1% 53%, 0 10px, calc(var(--padding-left-tab) + 4px) 10px,
+               calc(var(--padding-left-tab) + 4px) calc(var(--tab-height-personal) + 2px), 0 calc(var(--tab-height-personal) + 2px), 0 100%, 100% 100%, 100% 0%);
         --arrowpanel-menuitem-padding: 6px !important;
         --arrowpanel-border-radius: 8px !important;
         --panel-separator-margin-horizontal: 0px !important;
@@ -242,4 +242,3 @@
         --arrowpanel-menuitem-padding: 5px !important;
     }
 }
-
