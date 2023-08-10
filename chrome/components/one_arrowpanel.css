@@ -31,7 +31,7 @@ panelview {
     margin-inline: -4px !important;
 }
 
-#protections-popup, #editBookmarkPanel {
+#protections-popup, #editBookmarkPanel, #translations-panel {
     margin-top: -1px !important;
     margin-inline: -6px !important;
 }
