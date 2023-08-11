@@ -380,7 +380,7 @@ Window controls will be all wrong without it
 
 /* Tree-tabs without left-sidebar */
 
-@supports -moz-bool-pref("firefoxone.tree_tabs_style_without_leftsidebar") {
+@supports -moz-bool-pref("firefoxone.style_without_leftsidebar") {
 
     :root:not([chromehidden~="toolbar"]) #PanelUI-button, 
     :root:not([chromehidden~="toolbar"])[inFullscreen] #PanelUI-button { left: 10px !important; }
