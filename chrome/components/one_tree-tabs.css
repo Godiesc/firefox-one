@@ -375,8 +375,6 @@ Window controls will be all wrong without it
 [sidebarcommand*="tabcenter"] #sidebar-close {
     filter: invert(100%);
     }
-       
-}
 
 /* Tree-tabs without left-sidebar */
 
@@ -399,4 +397,5 @@ Window controls will be all wrong without it
     :root:not([chromehidden~="toolbar"]) toolbar[customizing] .customization-target,
     :root:not([chromehidden~="toolbar"])[inFullscreen] toolbar[customizing] .customization-target{
         margin-inline-start: calc(var(--padding-left-tab) + 4px) !important; }
+    }
 }
