@@ -37,7 +37,6 @@
 ## Important Information 💎
 <p><b>Notice:</b></p>
 <ul>
-<li>If you don't want the Left-sidebar in your base theme, you can delete the file: <code>chrome/components/one_left-sidebar.css</code></li>
 <li>You can use flexible spaces to create separatos in the tabs-bar.</li>
 <li>For Left-sidebar the theme use the bookmarks bar, so it should be always on.</li>
 <li>The social extensions used to put in the left-sidebar are: <a title="Twitch" href="https://addons.mozilla.org/es/firefox/addon/twitch-live-channels/"><img src="https://raw.githubusercontent.com/Godiesc/firefox-one/154c3c1f732f88e6fb1504ef8f83db12231411ce/chrome/images/logo_twitch.svg" alt="Twitch" width="24" height="24"/></a>
@@ -57,9 +56,9 @@
 
 <p>For the next features you need to create the rules in <b>about:config</b> page.</p>
 <ul>
-<li>You can disable the set colors of this theme to adapt the colors of your personal theme installed in about:addons: <ul><li><code>firefoxone.without-default-colors</code> <code>true</code></li></ul></li>
-<li>If you use a tree-tabs-style addon (e.g. <a href="https://addons.mozilla.org/es/firefox/addon/tabcenter-reborn/">Tab-center-reborn</a>), create this rule in about:config: <ul><li><code>firefoxone.tree_tabs_style</code> <code>true</code></li></ul>if you don't want the Left-sidebar in your tree-tabs-style, create this rule too in about:config: <ul><li><code>firefoxone.tree_tabs_style_without_leftsidebar</code> <code>true</code></li></ul></li></ul>
-
+<li>You can disable the Left-sidebar creating this rule in about:config: <a href="https://github.com/Godiesc/firefox-one/tree/main/Previews#left-sidebar-disabled">[Preview]</a> <ul><li><code>firefoxone.style_without_leftsidebar</code> <code>true</code></li></ul></li>
+<li>You can disable the set colors of this theme to adapt the colors of your personal theme installed in about:addons: <a href="https://github.com/Godiesc/firefox-one/tree/main/Previews#default-colors-disabled">[Preview]</a> <ul><li><code>firefoxone.without-default-colors</code> <code>true</code></li></ul></li>
+<li>If you use a tree-tabs-style addon (e.g. <a href="https://addons.mozilla.org/es/firefox/addon/tabcenter-reborn/">Tab-center-reborn</a>), create this rule in about:config: <a href="https://github.com/Godiesc/firefox-one/tree/main/Previews#tree-tabs-style-enabled---eg-tab-center-reborn">[Preview]</a> <ul><li><code>firefoxone.tree_tabs_style</code> <code>true</code></li></ul>   if you don't want the Left-sidebar in your tree-tabs-style, create this rule too in about:config: <a href="https://github.com/Godiesc/firefox-one/tree/main/Previews#tree-tabs-style-enabled-and-left-sidebar-disabled">[Preview]</a><ul><li><code>firefoxone.style_without_leftsidebar</code> <code>true</code></li></ul></li></ul>
 
 ## Personalizar - Customize
 
@@ -101,6 +100,11 @@
 <ul>
 <li>Not compatibility for RTL(right-to-left) languages.</li>
 </ul>
+
+## Related Topic - Tema relacionado
+Available [Fiefox-GX theme](https://github.com/Godiesc/firefox-gx)
+
+![SplashPromocionalFirefoxGX](https://github.com/Godiesc/firefox-one/assets/22057609/00021921-72e9-439d-8314-920c4e6d42f1)
 
 ## Example of about:support
 
