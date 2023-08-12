@@ -10,9 +10,10 @@
 
 /* "tab_line": "#126e82" */
 
+@supports not -moz-bool-pref("firefoxone.without-default-colors") {
 #tabbrowser-tabs {
     --lwt-tab-line-color: transparent !important;
-}
+    }}
 
 /* Color bolita de -cargando página- */
 
@@ -105,10 +106,10 @@ toolbar #firefox-view-button[aria-pressed="true"] .toolbarbutton-icon {
     :root:not([lwtheme-image],[style*="--lwt-additional-images"]) .tabbrowser-tab[selected="true"]:not([multiselected]) .tab-stack {
         box-shadow: none !important;
     }
-    :root:not([lwtheme-image],[style*="--lwt-additional-images"]) .tabbrowser-tab[selected="true"]:not([multiselected]) .tab-content{
+    /*:root:not([lwtheme-image],[style*="--lwt-additional-images"]) .tabbrowser-tab[selected="true"]:not([multiselected]) .tab-content{
         outline: 1px solid var(--identity-tab-color, var(--button-active-bgcolor)) !important;
         outline-offset: -1px !important;
-    }
+    }*/
 }
 
 /* Imagen en pestaña */
@@ -126,8 +127,14 @@ toolbar #firefox-view-button[aria-pressed="true"] .toolbarbutton-icon {
     background-size:  var(--display-theme-with-images) !important; 
     outline: 1px solid var(--identity-tab-color, var(--general-color)) !important;
     outline-offset: -1px !important;
-    z-index: 1 !important;
 }
+
+/* no Outline color in this config */
+
+@supports -moz-bool-pref("firefoxone.without-default-colors") {
+:root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) tab[selected] .tab-stack{
+    outline: none !important;
+    }}
 
 /* Colores al mover una pestaña */
 
