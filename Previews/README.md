@@ -1,5 +1,7 @@
 # Preview of features of Firefox-ONE theme
 
+![SplashPromocionalFirefoxONE](https://github.com/Godiesc/firefox-one/assets/22057609/453c2917-8cee-4424-b550-e4e38f492c84)
+
 ## Left-sidebar Disabled
 <ul><li><code>firefoxone.style_without_leftsidebar</code> <code>true</code></li></ul>
 
