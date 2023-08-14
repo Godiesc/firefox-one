@@ -106,10 +106,6 @@ toolbar #firefox-view-button[aria-pressed="true"] .toolbarbutton-icon {
     :root:not([lwtheme-image],[style*="--lwt-additional-images"]) .tabbrowser-tab[selected="true"]:not([multiselected]) .tab-stack {
         box-shadow: none !important;
     }
-    /*:root:not([lwtheme-image],[style*="--lwt-additional-images"]) .tabbrowser-tab[selected="true"]:not([multiselected]) .tab-content{
-        outline: 1px solid var(--identity-tab-color, var(--button-active-bgcolor)) !important;
-        outline-offset: -1px !important;
-    }*/
 }
 
 /* Imagen en pestaña */
@@ -184,11 +180,6 @@ toolbar #firefox-view-button[aria-pressed="true"] .toolbarbutton-icon {
 }
 
 /* separadores entre pestañas */
-
-.tabbrowser-tab[selected] .tab-stack{
-    outline: 1px solid var(--lwt-selected-tab-background-color) !important;
-    outline-offset: -1px !important;
-}
 
 .tabbrowser-tab:not(.tabbrowser-tab>stack[selected] + .tabbrowser-tab>stack>.tab-background) .tab-background:after{
     border-left: 1px solid color-mix(in srgb, currentColor 30%, transparent);
