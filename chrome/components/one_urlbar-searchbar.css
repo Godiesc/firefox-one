@@ -214,13 +214,18 @@ findbar{
     pointer-events: none;
 }
 
+@supports -moz-bool-pref("firefoxone.without-default-colors") {
+    #nav-bar, #PersonalToolbar {
+    outline: 1px solid color-mix(in srgb, var(--toolbar-bgcolor) 96%, var(--lwt-tab-text)) !important;
+    outline-offset: -1px !important;
+    }
+}
+
 /* Bordes de las toolbar cuando left-sidebar no es usada */
 
 #nav-bar, #PersonalToolbar {
     border-radius: 8px !important;
     margin-inline: 4px !important;
-    outline: 1px solid color-mix(in srgb, var(--toolbar-bgcolor) 96%, var(--lwt-tab-text)) !important;
-    outline-offset: -1px !important;
 }
 
 #nav-bar{
