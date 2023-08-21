@@ -123,6 +123,7 @@ toolbar #firefox-view-button[aria-pressed="true"] .toolbarbutton-icon {
     background-size:  var(--display-theme-with-images) !important; 
     outline: 1px solid var(--identity-tab-color, var(--general-color)) !important;
     outline-offset: -1px !important;
+    z-index: 1 !important; /* Evita que el separador entre pestañas se vea en la pestaña activa */
 }
 
 /* no Outline color in this config */
