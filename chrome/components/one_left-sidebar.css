@@ -640,7 +640,6 @@ toolbarbutton[badge="0"] .toolbarbutton-badge { display: none !important; }
     fill: var(--general-color) !important;
     animation: 2000ms infinite ease;
     animation-name: slide1;
-    margin-inline: 0px !important;
     border-radius: 50% !important;
 }
 }

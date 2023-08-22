@@ -169,7 +169,7 @@
     #PanelUI-menu-button[badge-status="update-restart"]>.toolbarbutton-badge-stack>.toolbarbutton-badge, 
     #PanelUI-menu-button[badge-status="update-unsupported"]>.toolbarbutton-badge-stack>.toolbarbutton-badge {
         box-shadow: none;
-        margin: -7px -3px 0px !important;
+        margin: -5px -3px 0px !important;
         margin-inline-end: -7px !important;
     }
     
