@@ -16,11 +16,15 @@ findbar{
     background-position: left top !important;
     background-repeat: repeat !important;
     background-size: var(--display-theme-with-images) !important;
-    outline: 1px solid color-mix(in srgb, var(--toolbar-bgcolor) 98%, var(--lwt-tab-text)) !important;
     box-shadow: none !important;
     z-index: 3 !important;
     color: var(--lwt-tab-text) !important;
     border: none !important;
+}
+
+:root:is([style*="--lwt-additional-images"],[lwtheme-image]) findbar{
+    outline: 1px solid color-mix(in srgb, var(--toolbar-bgcolor) 96%, var(--lwt-tab-text)) !important;
+    outline-offset: -1px !important;
 }
 
 .findbar-find-status[status="notfound"] {
@@ -215,7 +219,7 @@ findbar{
 }
 
 @supports -moz-bool-pref("firefoxone.without-default-colors") {
-    #nav-bar, #PersonalToolbar {
+    #nav-bar, #PersonalToolbar, findbar {
     outline: 1px solid color-mix(in srgb, var(--toolbar-bgcolor) 96%, var(--lwt-tab-text)) !important;
     outline-offset: -1px !important;
     }
@@ -495,7 +499,7 @@ description#identity-popup-content-owner-label, description#identity-popup-conte
 
 findbar{ 
     border-radius: 8px !important; 
-    margin: 6px 0px 0px 0px !important; 
+    margin: 5px -1px -1px -1px !important; 
 }
 
 .browserContainer, .browserStack, #browser{
