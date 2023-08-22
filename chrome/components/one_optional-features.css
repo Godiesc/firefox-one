@@ -4,18 +4,25 @@
 /* ____________________________ Selected tab gradient border on solid themes ____________________________ */
 
 @supports -moz-bool-pref("firefoxone.selected_tab_gradient_border") {
-  
-  @media (prefers-color-scheme: dark){
+
+    /* 19-25 : Sobreescribir lines from one_tabs-bar.css */
+    #tabbrowser-tabs:is([movingtab]) .tabbrowser-tab[selected="true"] .tab-content{
+        background-color: initial !important;
+    }    
+    :root:not([lwtheme-image],[style*="--lwt-additional-images"]) .tabbrowser-tab[selected="true"]:not([multiselected]) .tab-stack {
+        box-shadow: none !important;
+    }
+    
+    /* new color for selected tab */
     :root:not([style*="--lwt-additional-images"],[lwtheme-image]){
         --lwt-selected-tab-background-color: var(--toolbar-bgcolor) !important;
     }
-  }
-  
-  @media (prefers-color-scheme: light){
-    :root:not([style*="--lwt-additional-images"],[lwtheme-image]){
-        --lwt-selected-tab-background-color: var(--toolbar-bgcolor) !important;
+    
+    /* Fix for container line position in selected tab */
+    :root:not([style*="--lwt-additional-images"],[lwtheme-image]) .tabbrowser-tab[selected] .tab-context-line{ 
+        margin: 2px 0 0 1px !important;
+        transition: 0ms !important;
     }
-  }
 
     :root:not([style*="--lwt-additional-images"],[lwtheme-image]) .tab-background[selected]{
         outline: none !important;
@@ -24,7 +31,7 @@
         background-clip: padding-box;
         border-radius: 5px !important;
     }
-    :root:not([style*="--lwt-additional-images"],[lwtheme-image]) .tab-background[selected] > .tab-context-line{ margin: 2px 0 0 1px !important; }
+    
     :root:not([style*="--lwt-additional-images"],[lwtheme-image]) .tabbrowser-tab[selected] > .tab-stack::before{
         content: "";
         display: flex;
