@@ -68,13 +68,8 @@
 
 #urlbar-input-container[pageproxystate="valid"]>#tracking-protection-icon-container>#tracking-protection-icon-box>#tracking-protection-icon {
     list-style-image: var(--shield-icon-personal) !important;
-    fill: #4080ff !important;
-    opacity: 1 !important;
-}
-
-#urlbar-input-container[pageproxystate="valid"]>#tracking-protection-icon-container:is([open="true"],:hover)>#tracking-protection-icon-box>#tracking-protection-icon,
-#urlbar-input-container[pageproxystate="valid"]>#tracking-protection-icon-container:is([open="true"],:hover)>#tracking-protection-icon-box[hasException]>#tracking-protection-icon {
     fill: var(--toolbarbutton-icon-fill) !important;
+    opacity: 1 !important;
 }
 
 #urlbar-input-container[pageproxystate="valid"]>#tracking-protection-icon-container>#tracking-protection-icon-box[hasException]>#tracking-protection-icon {
