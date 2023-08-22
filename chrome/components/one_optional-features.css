@@ -1,0 +1,71 @@
+/* Source file made available under Mozilla Public License v. 2.0 See the main repository for updates as well as full license text. 
+   https://github.com/Godiesc/firefox-one */
+
+/* ____________________________ Selected tab gradient border on solid themes ____________________________ */
+
+@supports -moz-bool-pref("firefoxone.selected_tab_gradient_border") {
+  
+  @media (prefers-color-scheme: dark){
+    :root:not([style*="--lwt-additional-images"],[lwtheme-image]){
+        --lwt-selected-tab-background-color: var(--toolbar-bgcolor) !important;
+    }
+  }
+  
+  @media (prefers-color-scheme: light){
+    :root:not([style*="--lwt-additional-images"],[lwtheme-image]){
+        --lwt-selected-tab-background-color: var(--toolbar-bgcolor) !important;
+    }
+  }
+
+    :root:not([style*="--lwt-additional-images"],[lwtheme-image]) .tab-background[selected]{
+        outline: none !important;
+        border: 1px solid transparent !important;
+        box-shadow: none !important;
+        background-clip: padding-box;
+        border-radius: 5px !important;
+    }
+    :root:not([style*="--lwt-additional-images"],[lwtheme-image]) .tab-background[selected] > .tab-context-line{ margin: 2px 0 0 1px !important; }
+    :root:not([style*="--lwt-additional-images"],[lwtheme-image]) .tabbrowser-tab[selected] > .tab-stack::before{
+        content: "";
+        display: flex;
+        min-height: inherit;
+        border-radius: var(--tab-border-radius);
+        grid-area: 1/1;
+        margin-block: var(--tab-block-margin);
+        background: repeat linear-gradient(165deg,                                       
+        #d02f85ee 0%, #b336fcee 8%, #3567fdee 40%, #4e7afdee 60%,#4e89fdee 70%, #d02f85ee 100%) !important;
+    }
+}
+
+/* ____________________________ Image in menus in themes than use images ____________________________ */
+
+@supports -moz-bool-pref("firefoxone.image_in_menus") {
+
+    @media (prefers-color-scheme: dark){
+        :root:is([style*="--lwt-additional-images"],[lwtheme-image]){
+            --arrowpanel-background: #101019b0 !important;
+    }}
+
+    @media (prefers-color-scheme: light){
+        :root:is([style*="--lwt-additional-images"],[lwtheme-image]){
+            --arrowpanel-background: #f9f9f9b0 !important;
+    }}
+
+    .menupopup-arrowscrollbox, slot, panelview {
+        background-image: linear-gradient(var(--arrowpanel-background, transparent), var(--arrowpanel-background, transparent)), 
+                          linear-gradient(transparent, transparent), 
+                          var(--main-image, var(--lwt-additional-images, none)) !important;
+        background-size: auto 104vh !important;
+        background-position: -1px 0px !important;
+    }
+
+    @media (-moz-platform: windows), (-moz-platform: linux) {
+        :root:not([chromehidden~="toolbar"]) #PanelUI-menu-button[open]>.toolbarbutton-badge-stack,
+        :root:not([chromehidden~="toolbar"]):is([sizemode="maximized"]) #PanelUI-menu-button[open]>stack::after{
+            background-image: linear-gradient(var(--arrowpanel-background, transparent), var(--arrowpanel-background, transparent)), 
+                              linear-gradient(transparent, transparent), 
+                              var(--main-image, var(--lwt-additional-images, none)) !important;
+            background-size: auto 104vh !important;
+            background-position-x: calc(0px - var(--my-vertical-toolbar-width)) !important;
+    }}
+}
