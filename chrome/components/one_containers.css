@@ -23,30 +23,6 @@
     transition-duration: 150ms !important;
 }
 
-/*
-.tab-icon-image{
-    filter: drop-shadow(-1px -1px 0.30rem color-mix(in srgb, var(--identity-tab-color, transparent), transparent))
-      drop-shadow(1px 1px 0.30rem color-mix(in srgb, var(--identity-tab-color, transparent), transparent)) !important;
-}
-
-.tabbrowser-tab:is([selected]) .tab-icon-image{
-    filter: none !important;
-}*/
-
-/* Mover la label para hacer espacio para el ícono de sonido y darle una ligera animación */
-
-tab[soundplaying] .tab-content .tab-label {
-    padding-left: 18px !important;
-    transition-duration: 200ms !important;
-}
-
-tab[muted] .tab-content .tab-label {
-    padding-left: 0px !important;
-    transition-duration: 200ms !important;
-}
-
-
-
 /* Eliminar label del contenedor de la urlbar, manteniendo el ícono */
 
 #userContext-label {

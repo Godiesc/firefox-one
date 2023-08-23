@@ -4,6 +4,18 @@
 /* favicon siempre visible */
 .tab-icon-image,
 .tab-throbber{ opacity: 1 !important; }
+
+/* Mover la label para hacer espacio para el ícono de sonido y darle una ligera animación */
+
+tab[soundplaying] .tab-content .tab-label {
+    padding-left: 18px !important;
+    transition-duration: 200ms !important;
+}
+
+tab[muted] .tab-content .tab-label {
+    padding-left: 0px !important;
+    transition-duration: 200ms !important;
+}
     
 /* secondary audio label ain't much use with this style. */
 .tab-secondary-label{ display: none !important; }
@@ -19,22 +31,6 @@
     fill-opacity: 1 !important;
     z-index: 1 !important;
     }
-
-/* RHYTHM IMAGE IN LIGHT AND DARK MODE 
-
-tab[soundplaying]:not([pinned]) .tab-background::before{
-    content: "" !important; 
-    display: block !important;
-    position: absolute !important;
-    background: url("../images/Beats.webp") no-repeat left center !important;
-    margin-block-start: 2px  !important;
-    margin-inline-start: 5px !important;
-    background-size: 21px 16px !important;
-    width: 24px !important;
-    height: calc(var(--tab-height-personal) * 2 / 1.5) !important;
-    opacity: 1 !important;
-    filter: drop-shadow(0.5px -0.5px 0.5rem var(--lwt-frame)) drop-shadow(-0.5px 0px 0.5rem var(--lwt-frame)) !important;
-        }/**/
 
 /* reproduciendo hover */
 tab:not([pinned]) .tab-icon-overlay[soundplaying]:hover {
