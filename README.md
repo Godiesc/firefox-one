@@ -49,16 +49,53 @@
 <a title="Ublock" href="https://addons.mozilla.org/es/firefox/addon/ublock-origin/"><img src="https://raw.githubusercontent.com/Godiesc/firefox-one/154c3c1f732f88e6fb1504ef8f83db12231411ce/chrome/images/logo_ublock.svg" alt="Ublock" width="24" height="24" /></a>
 <a title="Panorama tab groups" href="https://addons.mozilla.org/es/firefox/addon/panorama-tab-groups/"><img src="https://raw.githubusercontent.com/Godiesc/firefox-one/154c3c1f732f88e6fb1504ef8f83db12231411ce/chrome/images/logo_tablero1.svg" alt="Panorama Tab Groups" width="24" height="24" fill="red"/></a>
 </li>
-<li>For themes that use 2 or more images you should change the line <code>30</code> in <code>one_root-personal.css</code> file with <code>--display-theme-with-images: cover;</code>
+<li>For themes that use 2 or more images you should change the line <code>30</code> in <code>one_root-personal.css</code> file with <code>--display-theme-with-images: cover;</code></li></ul>
    
 ![compatibilitythemes](https://github.com/Godiesc/firefox-one/assets/22057609/ce692628-2009-4cc7-8120-77fd15bdf595)
-</li></ul>
+
+## Optional Features
 
 <p>For the next features you need to create the rules in <b>about:config</b> page.</p>
 <ul>
-<li>You can disable the Left-sidebar creating this rule in about:config: <a href="https://github.com/Godiesc/firefox-one/tree/main/Previews#left-sidebar-disabled">[Preview]</a> <ul><li><code>firefoxone.style_without_leftsidebar</code> <code>true</code></li></ul></li>
-<li>You can disable the set colors of this theme to adapt the colors of your personal theme installed in about:addons: <a href="https://github.com/Godiesc/firefox-one/tree/main/Previews#default-colors-disabled">[Preview]</a> <ul><li><code>firefoxone.without-default-colors</code> <code>true</code></li></ul></li>
-<li>If you use a tree-tabs-style addon (e.g. <a href="https://addons.mozilla.org/es/firefox/addon/tabcenter-reborn/">Tab-center-reborn</a>), create this rule in about:config: <a href="https://github.com/Godiesc/firefox-one/tree/main/Previews#tree-tabs-style-enabled---eg-tab-center-reborn">[Preview]</a> <ul><li><code>firefoxone.tree_tabs_style</code> <code>true</code></li></ul>   if you don't want the Left-sidebar in your tree-tabs-style, create this rule too in about:config: <a href="https://github.com/Godiesc/firefox-one/tree/main/Previews#tree-tabs-style-enabled-and-left-sidebar-disabled">[Preview]</a><ul><li><code>firefoxone.style_without_leftsidebar</code> <code>true</code></li></ul></li></ul>
+<li><a href="https://github.com/Godiesc/firefox-one/tree/main/Previews#left-sidebar-disabled">Left-sidebar disabled</a></li>
+<table><tr>
+    <td>firefoxone.style_without_leftsidebar</td>
+    <td>true</td></tr>
+</table>
+<li><a href="https://github.com/Godiesc/firefox-one/tree/main/Previews#default-colors-disabled">Default colors disabled</a></li>
+<table><tr>
+    <td>firefoxone.without-default-colors&nbsp&nbsp&nbsp</td>
+    <td>true</td></tr>
+</table>
+<li><a href="https://github.com/Godiesc/firefox-one/tree/main/Previews#tree-tabs-style-enabled---eg-tab-center-reborn">Tree-tabs-style</a> (e.g. <a href="https://addons.mozilla.org/es/firefox/addon/tabcenter-reborn/">Tab-center-reborn</a>) </li>
+<table><tr>
+    <td>firefoxone.tree_tabs_style&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+    <td>true</td></tr>
+</table>
+<li><a href="https://github.com/Godiesc/firefox-one/tree/main/Previews#tree-tabs-style-enabled-and-left-sidebar-disabled">Tree-tabs-style without Left-sidebar</a></li>
+   <table><tr>
+    <td>firefoxone.tree_tabs_style&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+    <td>true</td></tr>
+   <tr>
+    <td>firefoxone.style_without_leftsidebar</td>
+    <td>true</td></tr>
+</table>
+<li><a href="https://github.com/Godiesc/firefox-one/blob/main/Previews/README.md#selected-tab-gradient-border-on-solid-themes">Selected tab gradient border on solid themes</a></li>
+<table><tr>
+    <td>firefoxone.selected_tab_gradient_border</td>
+    <td>true</td></tr>
+</table>
+<li><a href="https://github.com/Godiesc/firefox-one/blob/main/Previews/README.md#image-in-menus-in-themes-than-use-images">Image in menus in themes than use images</a></li>
+<table><tr>
+    <td>firefoxone.image_in_menus</td>
+    <td>true</td></tr>
+</table>   
+<li><a href="https://github.com/Godiesc/firefox-one/blob/main/Previews/README.md#rhythm-image-for-tab-with-sound">Rhythm image for tab with sound</a></li>
+<table><tr>
+    <td>firefoxone.rhythm_sound_tab</td>
+    <td>true</td></tr>
+</table>   
+</ul>
 
 ## Personalizar - Customize
 
