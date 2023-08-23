@@ -64,17 +64,17 @@
 </table>
 <li><a href="https://github.com/Godiesc/firefox-one/tree/main/Previews#default-colors-disabled">Default colors disabled</a></li>
 <table><tr>
-    <td width="320px">firefoxone.without-default-colors&nbsp&nbsp&nbsp</td>
+    <td width="320px">firefoxone.without-default-colors</td>
     <td width="50px">true</td></tr>
 </table>
 <li><a href="https://github.com/Godiesc/firefox-one/tree/main/Previews#tree-tabs-style-enabled---eg-tab-center-reborn">Tree-tabs-style</a> (e.g. <a href="https://addons.mozilla.org/es/firefox/addon/tabcenter-reborn/">Tab-center-reborn</a>) </li>
 <table><tr>
-    <td width="320px">firefoxone.tree_tabs_style&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+    <td width="320px">firefoxone.tree_tabs_style</td>
     <td width="50px">true</td></tr>
 </table>
 <li><a href="https://github.com/Godiesc/firefox-one/tree/main/Previews#tree-tabs-style-enabled-and-left-sidebar-disabled">Tree-tabs-style without Left-sidebar</a></li>
    <table><tr>
-    <td width="320px">firefoxone.tree_tabs_style&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+    <td width="320px">firefoxone.tree_tabs_style</td>
     <td width="50px">true</td></tr>
    <tr>
     <td width="320px">firefoxone.style_without_leftsidebar</td>
