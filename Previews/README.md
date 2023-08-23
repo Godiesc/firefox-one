@@ -45,7 +45,7 @@
 
 ![imagen](https://github.com/Godiesc/firefox-one/assets/22057609/60b53e12-6c72-4f2c-b47d-a41f582453c9)
 
-## Image in menus, in themes than use images
+## Image in menus, in themes that use images
 <table><tr>
     <td>firefoxone.image_in_menus</td>
     <td>true</td></tr>
