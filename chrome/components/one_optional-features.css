@@ -5,7 +5,7 @@
 
 @supports -moz-bool-pref("firefoxone.selected_tab_gradient_border") {
 
-    /* 19-25 : Sobreescribir lines from one_tabs-bar.css */
+    /* Sobreescribir lines from one_tabs-bar.css */
     #tabbrowser-tabs:is([movingtab]) .tabbrowser-tab[selected="true"] .tab-content{
         background-color: initial !important;
     }    
@@ -44,7 +44,7 @@
     }
 }
 
-/* ____________________________ Image in menus in themes than use images ____________________________ */
+/* ______________________________ Image in menus in themes than use images ______________________________ */
 
 @supports -moz-bool-pref("firefoxone.image_in_menus") {
 
@@ -61,7 +61,7 @@
     .menupopup-arrowscrollbox, slot, panelview {
         background-image: linear-gradient(var(--arrowpanel-background, transparent), var(--arrowpanel-background, transparent)), 
                           linear-gradient(transparent, transparent), 
-                          var(--main-image, var(--lwt-additional-images, none)) !important;
+                          var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
         background-size: auto 104vh !important;
         background-position: -1px 0px !important;
     }
@@ -71,8 +71,39 @@
         :root:not([chromehidden~="toolbar"]):is([sizemode="maximized"]) #PanelUI-menu-button[open]>stack::after{
             background-image: linear-gradient(var(--arrowpanel-background, transparent), var(--arrowpanel-background, transparent)), 
                               linear-gradient(transparent, transparent), 
-                              var(--main-image, var(--lwt-additional-images, none)) !important;
+                              var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
             background-size: auto 104vh !important;
             background-position-x: calc(0px - var(--my-vertical-toolbar-width)) !important;
     }}
+}
+
+/* __________________________________ Rhythm image for tab with sound __________________________________ */
+
+@supports -moz-bool-pref("firefoxone.rhythm_sound_tab") {
+    
+    tab[soundplaying]:not([pinned]) .tab-background::before{
+        content: "" !important; 
+        display: block !important;
+        position: absolute !important;
+        }
+    
+    @media (prefers-color-scheme: dark){
+        tab[soundplaying]:not([pinned]) .tab-background::before{
+            background: url("../images/Beats.webp") no-repeat left center !important;
+            background-size: 22px 16px !important;
+            width: 22px !important;
+            height: 16px !important;
+            margin-inline-start: 5px !important;
+            margin-block-start: 13px  !important;
+    }}
+
+    @media (prefers-color-scheme: light){
+        tab[soundplaying]:not([pinned]) .tab-background::before{
+            background: url("../images/Beats.gif") repeat left center !important;
+            background-size: 16px 16px !important;
+            margin-block-start: 17px  !important;
+            margin-inline-start: 6px !important;
+            width: 20px !important;
+            height: 10px !important;
+    }}   
 }
