@@ -59,41 +59,41 @@
 <ul>
 <li><a href="https://github.com/Godiesc/firefox-one/tree/main/Previews#left-sidebar-disabled">Left-sidebar disabled</a></li>
 <table><tr>
-    <td>firefoxone.style_without_leftsidebar</td>
-    <td>true</td></tr>
+    <td width="320px">firefoxone.style_without_leftsidebar</td>
+    <td width="50px">true</td></tr>
 </table>
 <li><a href="https://github.com/Godiesc/firefox-one/tree/main/Previews#default-colors-disabled">Default colors disabled</a></li>
 <table><tr>
-    <td>firefoxone.without-default-colors&nbsp&nbsp&nbsp</td>
-    <td>true</td></tr>
+    <td width="320px">firefoxone.without-default-colors&nbsp&nbsp&nbsp</td>
+    <td width="50px">true</td></tr>
 </table>
 <li><a href="https://github.com/Godiesc/firefox-one/tree/main/Previews#tree-tabs-style-enabled---eg-tab-center-reborn">Tree-tabs-style</a> (e.g. <a href="https://addons.mozilla.org/es/firefox/addon/tabcenter-reborn/">Tab-center-reborn</a>) </li>
 <table><tr>
-    <td>firefoxone.tree_tabs_style&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-    <td>true</td></tr>
+    <td width="320px">firefoxone.tree_tabs_style&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+    <td width="50px">true</td></tr>
 </table>
 <li><a href="https://github.com/Godiesc/firefox-one/tree/main/Previews#tree-tabs-style-enabled-and-left-sidebar-disabled">Tree-tabs-style without Left-sidebar</a></li>
    <table><tr>
-    <td>firefoxone.tree_tabs_style&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-    <td>true</td></tr>
+    <td width="320px">firefoxone.tree_tabs_style&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+    <td width="50px">true</td></tr>
    <tr>
-    <td>firefoxone.style_without_leftsidebar</td>
-    <td>true</td></tr>
+    <td width="320px">firefoxone.style_without_leftsidebar</td>
+    <td width="50px">true</td></tr>
 </table>
 <li><a href="https://github.com/Godiesc/firefox-one/blob/main/Previews/README.md#selected-tab-gradient-border-on-solid-themes">Selected tab gradient border on solid themes</a></li>
 <table><tr>
-    <td>firefoxone.selected_tab_gradient_border</td>
-    <td>true</td></tr>
+    <td width="320px">firefoxone.selected_tab_gradient_border</td>
+    <td width="50px">true</td></tr>
 </table>
 <li><a href="https://github.com/Godiesc/firefox-one/blob/main/Previews/README.md#image-in-menus-in-themes-than-use-images">Image in menus in themes than use images</a></li>
 <table><tr>
-    <td>firefoxone.image_in_menus</td>
-    <td>true</td></tr>
+    <td width="320px">firefoxone.image_in_menus</td>
+    <td width="50px">true</td></tr>
 </table>   
 <li><a href="https://github.com/Godiesc/firefox-one/blob/main/Previews/README.md#rhythm-image-for-tab-with-sound">Rhythm image for tab with sound</a></li>
 <table><tr>
-    <td>firefoxone.rhythm_sound_tab</td>
-    <td>true</td></tr>
+    <td width="320px">firefoxone.rhythm_sound_tab</td>
+    <td width="50px">true</td></tr>
 </table>   
 </ul>
 
