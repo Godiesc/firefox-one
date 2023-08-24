@@ -49,10 +49,10 @@
 <a title="Ublock" href="https://addons.mozilla.org/es/firefox/addon/ublock-origin/"><img src="https://raw.githubusercontent.com/Godiesc/firefox-one/154c3c1f732f88e6fb1504ef8f83db12231411ce/chrome/images/logo_ublock.svg" alt="Ublock" width="24" height="24" /></a>
 <a title="Panorama tab groups" href="https://addons.mozilla.org/es/firefox/addon/panorama-tab-groups/"><img src="https://raw.githubusercontent.com/Godiesc/firefox-one/154c3c1f732f88e6fb1504ef8f83db12231411ce/chrome/images/logo_tablero1.svg" alt="Panorama Tab Groups" width="24" height="24" fill="red"/></a>
 </li>
-<li>For themes that use 2 or more images, the background of the selected tab will show a empty border on the right, to solve that you should change the line <code>30</code> in <code>one_root-personal.css</code> file with <code>--display-theme-with-images: cover;</code></li></ul>
+<li>For themes that use 2 or more images, the background of the selected tab will show a empty border on the right, to solve that you should change the line <code>30</code> in <code>one_root-personal.css</code> file with <code>--display-theme-with-images: cover;</code>
    
 ![SelectedTabBackground](https://github.com/Godiesc/firefox-one/assets/22057609/2bbe205e-f7c0-4017-bb09-ca42ce560470)
-
+</li></ul>
 ## Optional Features
 
 <p>For the next features you need to create the rules in <b>about:config</b> page.</p>
