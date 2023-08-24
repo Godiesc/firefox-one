@@ -62,8 +62,7 @@
         background-image: linear-gradient(var(--arrowpanel-background, transparent), var(--arrowpanel-background, transparent)), 
                           linear-gradient(transparent, transparent), 
                           var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
-        background-size: auto 104vh !important;
-        background-position: -1px 0px !important;
+        background-size: auto 100vh !important;
     }
 
     @media (-moz-platform: windows), (-moz-platform: linux) {
@@ -72,8 +71,15 @@
             background-image: linear-gradient(var(--arrowpanel-background, transparent), var(--arrowpanel-background, transparent)), 
                               linear-gradient(transparent, transparent), 
                               var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
-            background-size: auto 104vh !important;
-            background-position-x: calc(0px - var(--my-vertical-toolbar-width)) !important;
+            background-size: auto 100vh !important;
+            background-position-x: 0px !important;
+            background-position-y: -8px !important;
+    }}
+    
+    @media (-moz-platform: windows), (-moz-platform: linux) {
+        :root:not([chromehidden~="toolbar"]):is([sizemode="maximized"]) #PanelUI-menu-button[open]>stack::after{
+            background-position-x: calc(-4px - var(--my-vertical-toolbar-width) + var(--my-vertical-toolbar-width) / 4) !important;
+            background-position-y: -9px !important;
     }}
 }
 
