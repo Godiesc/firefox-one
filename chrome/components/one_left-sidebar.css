@@ -349,7 +349,7 @@ toolbarbutton[badge="0"] .toolbarbutton-badge { display: none !important; }
 
 /* Tab-group Extension */
 
-#PersonalToolbar #panorama-tab-groups_example_com-BAP{
+#PersonalToolbar #panorama-tab-groups_example_com-BAP, #PersonalToolbar #simple-tab-groups_drive4ik-BAP{
     --toolbarbutton-hover-background: var(--general-color) !important;
     fill: #eaeaea !important;
     list-style-image: url("../images/logo_tablero1.svg") !important;
@@ -366,7 +366,8 @@ toolbarbutton[badge="0"] .toolbarbutton-badge { display: none !important; }
 #PersonalToolbar #_a16c3799-d903-44e3-b044-a032197f5ef8_-BAP image,
 #PersonalToolbar #_3119ae66-3c2f-47e2-b1b1-1c76cb9c4ec1_-BAP image,
 #PersonalToolbar #sidebarinstagram_godie-BAP image,
-#PersonalToolbar #panorama-tab-groups_example_com-BAP image
+#PersonalToolbar #panorama-tab-groups_example_com-BAP image,
+#PersonalToolbar #simple-tab-groups_drive4ik-BAP image
 {
     height: 20px !important;
     width: 20px !important;
@@ -381,7 +382,8 @@ toolbarbutton[badge="0"] .toolbarbutton-badge { display: none !important; }
 #PersonalToolbar #_a16c3799-d903-44e3-b044-a032197f5ef8_-BAP>.toolbarbutton-badge-stack,
 #PersonalToolbar #_3119ae66-3c2f-47e2-b1b1-1c76cb9c4ec1_-BAP>.toolbarbutton-badge-stack,
 #PersonalToolbar #sidebarinstagram_godie-BAP>.toolbarbutton-badge-stack,
-#PersonalToolbar #panorama-tab-groups_example_com-BAP>.toolbarbutton-badge-stack
+#PersonalToolbar #panorama-tab-groups_example_com-BAP>.toolbarbutton-badge-stack,
+#PersonalToolbar #simple-tab-groups_drive4ik-BAP>.toolbarbutton-badge-stack
 {
     --toolbarbutton-inner-padding: 6px !important;
 }

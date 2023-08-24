@@ -66,6 +66,7 @@
         background-color: var(--arrowpanel-background, #50505090) !important;
         border: 1px solid transparent !important;
         border-color: var(--arrowpanel-border-color) !important;
+        box-shadow: -1px 0px var(--border-contrast-color) !important;
         width: 28.5em !important;
     }
 
