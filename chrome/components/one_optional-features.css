@@ -79,7 +79,6 @@
     @media (-moz-platform: windows), (-moz-platform: linux) {
         :root:not([chromehidden~="toolbar"]):is([sizemode="maximized"]) #PanelUI-menu-button[open]>stack::after{
             background-position-x: calc(-4px - var(--my-vertical-toolbar-width) + var(--my-vertical-toolbar-width) / 4) !important;
-            background-position-y: -9px !important;
     }}
 }
 
