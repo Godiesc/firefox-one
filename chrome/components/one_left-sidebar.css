@@ -125,7 +125,7 @@
 :root:not([chromehidden~="toolbar"]) #PersonalToolbar {
     --toolbarbutton-active-background: transparent !important;
     --padding-top-left-sidebar: 43px !important;
-    --padding-bottom-left-sidebar: 4px !important;
+    --padding-bottom-left-sidebar: 8px !important;
     --height-left-sidebar: calc(100vh - 8px) !important;
     --toolbarbutton-border-radius: 8px !important;
     height: var(--height-left-sidebar) !important;
@@ -153,13 +153,24 @@
     outline: 1px solid #50505040 !important;
     outline-offset: -1px !important;
 }
+    
+/* Iconos de Marcadores - corrección de tamaño y color de background */
+    
+#PersonalToolbar #PlacesToolbarItems>.bookmark-item:not(:hover)>.toolbarbutton-icon{ background-color: transparent !important; }
+
+#PersonalToolbar #PlacesToolbarItems>.bookmark-item:not(.subviewbutton, [disabled="true"], [open]):hover{ background-color: transparent !important; }
+
+#PersonalToolbar #PlacesToolbarItems > .bookmark-item>.toolbarbutton-icon {
+    margin-block-start: 4px !important;
+    height: 28px !important;
+    width: 28px !important;
+    padding: 6px !important;
+    background-size: calc(var(--my-vertical-toolbar-width) - 10px) !important;
+    background-color: var(--toolbarbutton-hover-background) !important;
+    border-radius: var(--toolbarbutton-border-radius) !important;
+    }
 
 /* --------------------------------- Zoom on :hover items ------------------------------------ */
-
-#PersonalToolbar #PlacesToolbarItems > .bookmark-item {
-        padding-block: 7px !important;
-        margin-inline: 2px !important;
-    }
 
 #PersonalToolbar .toolbarbutton-1,
 #PersonalToolbar .toolbarbutton-1 .toolbarbutton-icon:not(.toolbarbutton-1>image), /* Extensiones */
