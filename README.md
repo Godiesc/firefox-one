@@ -53,6 +53,7 @@
    
 ![SelectedTabBackground](https://github.com/Godiesc/firefox-one/assets/22057609/2bbe205e-f7c0-4017-bb09-ca42ce560470)
 </li></ul>
+
 ## Optional Features
 
 <p>For the next features you need to create the rules in <b>about:config</b> page.</p>
