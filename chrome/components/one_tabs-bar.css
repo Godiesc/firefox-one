@@ -118,9 +118,9 @@ toolbar #firefox-view-button[aria-pressed="true"] .toolbarbutton-icon {
     background-image: linear-gradient(transparent, transparent),
                       linear-gradient(var(--toolbar-bgcolor), var(--toolbar-bgcolor)), 
                       var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
-    background-position: center center !important;
-    background-repeat:  no-repeat !important;
-    background-size:  var(--display-theme-with-images) !important; 
+    background-position: left top, right top, left center !important;
+    background-repeat: repeat, repeat, var(--lwt-background-tiling) !important;
+    background-size: var(--display-theme-with-images) !important; 
     outline: 1px solid var(--identity-tab-color, var(--general-color)) !important;
     outline-offset: -1px !important;
     z-index: 1 !important; /* Evita que el separador entre pestañas se vea en la pestaña activa */
@@ -351,9 +351,9 @@ tab:not([selected]) .tab-icon-image {
     background-image: linear-gradient(var(--toolbar-bgcolor, transparent), var(--toolbar-bgcolor, transparent)),
                       linear-gradient(var(--toolbar-bgcolor), var(--toolbar-bgcolor)), 
                       var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
-    background-position: right top !important;
-    background-repeat: repeat !important;
-    background-size: var(--display-theme-with-images) !important;   /* "cover" for compatibility for themes that use 2 or more images */
+    background-position: right top, right top, var(--lwt-background-alignment) !important;
+    background-repeat: repeat, repeat, var(--lwt-background-tiling) !important;
+    background-size: auto !important; 
     outline: 1px solid #50505040 !important;
     outline-offset: -1px !important;
 }
@@ -364,9 +364,9 @@ tab:not([selected]) .tab-icon-image {
     background-image: linear-gradient(var(--toolbar-bgcolor, transparent), var(--toolbar-bgcolor, transparent)),
                       linear-gradient(var(--toolbar-bgcolor), var(--toolbar-bgcolor)), 
                       var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
-    background-position: right calc(0px - var(--toolbar-height-personal)) !important;
-    background-repeat: repeat !important;
-    background-size: var(--display-theme-with-images) !important;
+    background-position: right top, right top, right calc(0px - var(--toolbar-height-personal)), left calc(0px - var(--toolbar-height-personal)) !important;
+    background-repeat: repeat, repeat, var(--lwt-background-tiling) !important;
+    background-size: var(--display-theme-with-images) !important; 
     outline: 1px solid #50505040 !important;
     outline-offset: -1px !important;
 }

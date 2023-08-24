@@ -304,7 +304,7 @@
   --toolbarbutton-active-background: color-mix(in srgb, 
     transparent 88%, color-mix(in srgb, var(--lwt-tab-text) 58%, var(--general-color)) ) !important;             /*"button_background_active": "#131217"*/
   --toolbarbutton-hover-personal: var(--toolbarbutton-hover-background) !important;                              /* Button :hover color personal*/
-  --lwt-background-alignment: right top, left top, right top !important;
+  --lwt-background-alignment: right top, left top, left top !important;
   }
   :root:is([style*="--lwt-additional-images"],[lwtheme-image]) tab[selected] .tab-stack,
   :root:is([style*="--lwt-additional-images"],[lwtheme-image]) #nav-bar,
@@ -327,7 +327,7 @@
   --toolbarbutton-active-background: color-mix(in srgb, 
     transparent 88%, color-mix(in srgb, var(--lwt-tab-text) 58%, var(--general-color)) ) !important;             /*"button_background_active": "#131217"*/
   --toolbarbutton-hover-personal: var(--toolbarbutton-hover-background) !important;                              /* Button :hover color personal*/
-  --lwt-background-alignment: right top, left top, right top !important;
+  --lwt-background-alignment: right top, left top, left top !important;
   }
   :root:is([style*="--lwt-additional-images"],[lwtheme-image]) tab[selected] .tab-stack,
   :root:is([style*="--lwt-additional-images"],[lwtheme-image]) #nav-bar,
