@@ -6,6 +6,7 @@
 :root[uidensity="touch"] {
     --tab-height-personal: 36px !important;
     --toolbar-height-personal: 42px !important;
+    --my-vertical-toolbar-width: 58px !important;
 }
 
 /* "tab_line": "#126e82" */
