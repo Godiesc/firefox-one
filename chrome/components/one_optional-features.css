@@ -63,6 +63,7 @@
                           linear-gradient(transparent, transparent), 
                           var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
         background-size: auto 100vh !important;
+        background-position: -1px -1px !important;
     }
 
     @media (-moz-platform: windows), (-moz-platform: linux) {
@@ -72,7 +73,7 @@
                               linear-gradient(transparent, transparent), 
                               var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
             background-size: auto 100vh !important;
-            background-position-x: 0px !important;
+            background-position-x: -1px !important;
             background-position-y: -8px !important;
     }}
     
