@@ -100,30 +100,30 @@
             width: 22px !important;
             height: 16px !important;
             margin-inline-start: 5px !important;
-            margin-block-start: 13px  !important;
+            margin-block-start: calc(var(--tab-height-personal)/2 - 1px)  !important;
     }}
 
     @media (prefers-color-scheme: light){
         tab[soundplaying]:not([pinned]) .tab-background::before{
             background: url("../images/Beats.gif") repeat left center !important;
             background-size: 16px 16px !important;
-            margin-block-start: 17px  !important;
             margin-inline-start: 6px !important;
+            margin-block-start: calc(var(--tab-height-personal)/2 + 3px)  !important;
             width: 20px !important;
             height: 10px !important;
     }}
     
-    /* Fix for non default colors config*/
+    /* Fix for non default colors config */
     @supports -moz-bool-pref("firefoxone.without-default-colors") {
         @media (prefers-color-scheme: dark){
             tab[soundplaying][selected]:not([pinned]) .tab-background::before{
                 margin-inline-start: 4px !important;
-                margin-block-start: 12px  !important;
+                margin-block-start: calc(var(--tab-height-personal)/2 - 2px)  !important;
                 }}
          @media (prefers-color-scheme: light){
             tab[soundplaying][selected]:not([pinned]) .tab-background::before{
                 margin-inline-start: 5px !important;
-                margin-block-start: 16px  !important;
+                margin-block-start: calc(var(--tab-height-personal)/2 + 2px)  !important;
                 }}
     }
 }
