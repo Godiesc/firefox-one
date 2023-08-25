@@ -83,7 +83,7 @@ menupopup > menuitem:not([disabled="true"]), menupopup > menu {
 
 menupopup > menuitem:not([disabled="true"]):hover, menupopup > menu:hover {
     appearance: none !important;
-    background: linear-gradient(to right, var(--button-active-bgcolor), var(--button-active-bgcolor)) !important;
+    background-color: var(--button-active-bgcolor) !important;
     color: white !important;
 }
 

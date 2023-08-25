@@ -11,6 +11,7 @@
 
 /*-"Radiobutton"-ProtecciónAntirastreo*/
 
+.protections-popup-tp-switch{ margin-right: -12px !important; }
 .protections-popup-tp-switch:not([enabled]):not(:hover){background-color: color-mix(in srgb, var(--arrowpanel-background) 88%, var(--lwt-tab-text)) !important;}
 .protections-popup-tp-switch::before {outline: none !important; }
 .protections-popup-tp-switch:not([enabled]):hover{background-color: var(--button-bgcolor) !important;}
@@ -170,7 +171,7 @@ richlistitem, #editBMPanel_namePicker , #editBMPanel_tagsField{
 /* margin-right ultimo botón de la nav-bar*/
 
 #nav-bar-overflow-button,
-:root:not([chromehidden~="toolbar"], [sizemode="fullscreen"]) #nav-bar:not([nonemptyoverflow]) #nav-bar-customization-target > :is(toolbarbutton, toolbaritem):last-child{
+:root:not([chromehidden~="toolbar"],[sizemode="fullscreen"]) #nav-bar:not([nonemptyoverflow]) #nav-bar-customization-target > :is(toolbarbutton, toolbaritem):last-child{
     margin-inline-end: 3px !important;
 }
 
@@ -195,7 +196,8 @@ richlistitem, #editBMPanel_namePicker , #editBMPanel_tagsField{
     padding-block: 2px !important;
 }
 
-.unified-extensions-item-menu-button:is(panelview .toolbarbutton-1, toolbarbutton.subviewbutton, .widget-overflow-list .toolbarbutton-1, .toolbaritem-combined-buttons:is(:not([cui-areatype="toolbar"]), [overflowedItem="true"]) > toolbarbutton):not([disabled]) {
+.unified-extensions-item-menu-button:is(panelview .toolbarbutton-1, toolbarbutton.subviewbutton, .widget-overflow-list .toolbarbutton-1, 
+.toolbaritem-combined-buttons:is(:not([cui-areatype="toolbar"]), [overflowedItem="true"]) > toolbarbutton):not([disabled]) {
     background: transparent !important;
     padding-inline-end: 6px !important;
 }

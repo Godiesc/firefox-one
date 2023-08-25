@@ -114,7 +114,7 @@
     }}
     
     /* Fix for non default colors config */
-    @supports -moz-bool-pref("firefoxone.without-default-colors") {
+    @supports -moz-bool-pref("firefoxone.selected_tab_gradient_border") {
         @media (prefers-color-scheme: dark){
             tab[soundplaying][selected]:not([pinned]) .tab-background::before{
                 margin-inline-start: 4px !important;

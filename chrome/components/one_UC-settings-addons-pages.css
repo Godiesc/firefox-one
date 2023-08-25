@@ -273,11 +273,6 @@ panel-list {
     /*Color de ventana de ventanas emergentes en "configuración"*/
         .dialogBox {--in-content-page-background: #f9f9f9 !important;}}
 
-/* Linea gradiente separadora en "configuración" */
-        
-.subcategory:not([hidden]) ~ .subcategory {
-    border-image: var(--panel-separator-zap-gradient1) 1 !important; }
-
 /* Color fondo y borde de elementos en about:addons */
         
 .card[active="true"]{
