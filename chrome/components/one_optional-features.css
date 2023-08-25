@@ -111,5 +111,19 @@
             margin-inline-start: 6px !important;
             width: 20px !important;
             height: 10px !important;
-    }}   
+    }}
+    
+    /* Fix for non default colors config*/
+    @supports -moz-bool-pref("firefoxone.without-default-colors") {
+        @media (prefers-color-scheme: dark){
+            tab[soundplaying][selected]:not([pinned]) .tab-background::before{
+                margin-inline-start: 4px !important;
+                margin-block-start: 12px  !important;
+                }}
+         @media (prefers-color-scheme: light){
+            tab[soundplaying][selected]:not([pinned]) .tab-background::before{
+                margin-inline-start: 5px !important;
+                margin-block-start: 16px  !important;
+                }}
+    }
 }
