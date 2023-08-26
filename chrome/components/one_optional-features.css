@@ -113,7 +113,7 @@
             height: 10px !important;
     }}
     
-    /* Fix for non default colors config */
+    /* Fix for tab_gradient_border config */
     @supports -moz-bool-pref("firefoxone.selected_tab_gradient_border") {
         @media (prefers-color-scheme: dark){
             tab[soundplaying][selected]:not([pinned]) .tab-background::before{
