@@ -133,7 +133,7 @@
     background-color: var(--toolbar-bgcolor) !important;
     padding-bottom: var(--padding-bottom-left-sidebar) !important;
     /* Alinear barra */
-    margin-top: calc( -14px - var(--toolbar-height-personal) - var(--tab-height-personal) - var(--windowed-top-padding, 0px)) !important;
+    margin-top: calc( 2px - var(--toolbar-height-personal) - var(--tab-height-personal) - var(--tab-block-margin, 0px) * 2) !important;
     padding-top: var(--padding-top-left-sidebar) !important;
     border-radius: 8px !important;
     z-index: 1 !important;
