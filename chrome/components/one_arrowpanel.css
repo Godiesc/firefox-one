@@ -165,13 +165,13 @@ toolbar .text-link:-moz-lwtheme:hover, panel .text-link:-moz-lwtheme:hover {
 
 :root:not([sizemode="fullscreen"]) #sidebar-box {
     margin-block: 2px 5px !important;
+    margin-inline: 5px 1px !important;
+    border-radius: 8px !important;
 }
 
 #sidebar-box {
     max-width: none !important;
-    min-width: 30px !important;
-    margin-inline: 5px 1px !important;
-    border-radius: 8px !important;
+    min-width: 30px !important;   
     /*outline: 1px solid #50505050 !important;
     outline-offset: -1px !important;*/
     box-shadow: 0 0 0 1px color-mix(in srgb, var(--lwt-frame) 90%, var(--lwt-tab-text)) !important;
