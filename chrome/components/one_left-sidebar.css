@@ -272,64 +272,17 @@
 
 /* Contador de la extension */
 
-@keyframes anima89 {
-from{
-    background-color: color-mix(in srgb, red 80%, transparent);
-    color: transparent;
-    box-shadow: none;
-    outline: 1px solid var(--contrast-color);
-    border-radius: 50%;
-    height: 4px;
-    width: 4px;
-    min-height: 4px;
-    min-width: 4px;
-    transform: translate(-1px, -1px);
-    opacity: 0
-    }
-10%{ opacity: 0.99;}
-25%{ opacity: 1;}
-50%{
-    background-color: color-mix(in srgb, red 80%, transparent);
-    color: transparent;
-    box-shadow: none;
-    outline: 1px solid var(--contrast-color);
-    border-radius: 50%;
-    height: 4px;
-    width: 4px;
-    min-height: 4px;
-    min-width: 4px;
-    transform: translate(-1px, -1px);
-    opacity: 0
-    }
-51%{
-    background-color: inherit;
-    color: none;
-    outline: none;
-    height: inherit;
-    width: inherit;
-    min-height: inherit;
-    min-width: inherit;
-    border-radius: 0 8px 0 4px;
-    transform: translate(2px, -5px);
-    opacity: 0;
-    }
-60%{ opacity: 0.99; }
-85%{ opacity: 1; }
-100%{
-    color: none;
-    outline: none;
-    height: inherit;
-    width: inherit;
-    min-height: inherit;
-    min-width: inherit;
-    border-radius: 0 8px 0 4px;
-    transform: translate(2px, -5px);
-    opacity: 0;
-    }
-}
-
-#PersonalToolbar toolbaritem .toolbarbutton-badge {
-    animation: anima89 6s ease-in-out normal infinite;
+#PersonalToolbar toolbaritem toolbarbutton:not(:hover,[open],:active) .toolbarbutton-badge:not(:hover) {
+    background-color: color-mix(in srgb, red 80%, transparent) !important;
+    color: transparent !important;
+    box-shadow: none !important;
+    outline: 1px solid var(--contrast-color) !important;
+    border-radius: 50% !important;
+    height: 4px !important;
+    width: 4px !important;
+    min-height: 4px !important;
+    min-width: 4px !important;
+    transform: translate(-1px, -1px) !important;
 }
 
 #PersonalToolbar toolbaritem toolbarbutton:is(:hover,[open],:active) .toolbarbutton-badge {
