@@ -1,0 +1,38 @@
+/* Source file made available under Mozilla Public License v. 2.0 See the main repository for updates as well as full license text. 
+   https://github.com/Godiesc/Chameleons-Beauty */
+
+/*WindowsControls borde redondeado*/
+
+@media (-moz-platform: windows){ .titlebar-button:not(.titlebar-close) {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+   }}
+@media (-moz-platform: windows){ .titlebar-button:not(.titlebar-close):hover {
+    background-color: var(--toolbarbutton-hover-background) !important
+   }}
+@media (-moz-platform: windows){ .titlebar-min, .titlebar-max, .titlebar-restore, .titlebar-close {
+    border-radius: 6px !important;
+    border: 3px solid #00000000 !important;
+    margin-bottom: -1px !important
+   }}
+@media (-moz-platform: windows){ .titlebar-min:hover, .titlebar-max:hover, .titlebar-restore:hover, .titlebar-close:hover {
+    border-radius: 6px !important;
+    border: 3px solid transparent !important;
+    background-clip: padding-box !important;
+   }}
+@media (-moz-platform: windows){ .titlebar-close:hover {
+    border-radius: 6px 0px 6px 6px !important;
+   }}
+/* Keep the same windows control icons in all the themes, includint the themes with images */
+.titlebar-button{
+    background-color: transparent !important;
+    -moz-context-properties: stroke !important;
+    stroke: currentColor !important;
+}
+.titlebar-button:hover{ background-color: hsla(0,0%,100%,.32) !important }
+.titlebar-close:hover{ background-color: hsl(355,86%,49%) !important; color: white !important; 
+}
+.titlebar-close   { list-style-image: url(chrome://browser/skin/window-controls/close.svg) !important }
+.titlebar-min     { list-style-image: url(chrome://browser/skin/window-controls/minimize.svg) !important }
+.titlebar-max     { list-style-image: url(chrome://browser/skin/window-controls/maximize.svg) !important }
+.titlebar-restore { list-style-image: url(chrome://browser/skin/window-controls/restore.svg) !important }
