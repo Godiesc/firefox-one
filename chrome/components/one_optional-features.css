@@ -12,6 +12,9 @@
     :root:not([lwtheme-image],[style*="--lwt-additional-images"]) .tabbrowser-tab[selected="true"]:not([multiselected]) .tab-stack {
         box-shadow: none !important;
     }
+    :root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) tab[selected] .tab-background{
+        outline: none !important;
+    }
     
     /* new color for selected tab */
     :root:not([style*="--lwt-additional-images"],[lwtheme-image]){
@@ -19,43 +22,52 @@
     }
     
     /* Fix for container line position in selected tab */
-    :root:not([style*="--lwt-additional-images"],[lwtheme-image]) .tabbrowser-tab[selected] .tab-context-line{ 
+    .tabbrowser-tab[selected] .tab-context-line{ 
         margin: 2px 0 0 1px !important;
         transition: 0ms !important;
     }
 
-    :root:not([style*="--lwt-additional-images"],[lwtheme-image]) .tab-background[selected]{
+     .tab-background[selected]{
         outline: none !important;
         border: 1px solid transparent !important;
         box-shadow: none !important;
         background-clip: padding-box;
         border-radius: 5px !important;
+        z-index: 2 !important;
     }
     
-    :root:not([style*="--lwt-additional-images"],[lwtheme-image]) .tabbrowser-tab[selected] > .tab-stack::before{
+     .tabbrowser-tab[selected] > .tab-stack::before{
         content: "";
         display: flex;
         min-height: inherit;
         border-radius: var(--tab-border-radius);
         grid-area: 1/1;
         margin-block: var(--tab-block-margin);
-        background: repeat linear-gradient(165deg,                                       
-        #d02f85ee 0%, #b336fcee 8%, #3567fdee 40%, #4e7afdee 60%,#4e89fdee 70%, #d02f85ee 100%) !important;
+        background: linear-gradient(165deg,
+        var(--gradient-colors)) !important;
+        z-index: 1 !important;
     }
 }
 
 /* ______________________________ Image in menus in themes than use images ______________________________ */
 
 @supports -moz-bool-pref("firefoxone.image_in_menus") {
+    
+    /* Image for solid themes */    
+    :root:not([style*="--lwt-additional-images"],[lwtheme-image]){
+        --lwt-header-image: url("../images/newtab/menu-image.png") !important;
+    }
 
     @media (prefers-color-scheme: dark){
-        :root:is([style*="--lwt-additional-images"],[lwtheme-image]){
-            --arrowpanel-background: #101019b0 !important;
+        :root:is([style*="--lwt-additional-images"],[lwtheme-image]),
+        :root:not([style*="--lwt-additional-images"],[lwtheme-image]){
+            --arrowpanel-background: #101019d0 !important;
     }}
 
     @media (prefers-color-scheme: light){
-        :root:is([style*="--lwt-additional-images"],[lwtheme-image]){
-            --arrowpanel-background: #f9f9f9b0 !important;
+        :root:is([style*="--lwt-additional-images"],[lwtheme-image]),
+        :root:not([style*="--lwt-additional-images"],[lwtheme-image]){
+            --arrowpanel-background: #f9f9f9d0 !important;
     }}
 
     .menupopup-arrowscrollbox, slot, panelview {
@@ -67,20 +79,34 @@
     }
 
     @media (-moz-platform: windows), (-moz-platform: linux) {
-        :root:not([chromehidden~="toolbar"]) #PanelUI-menu-button[open]>.toolbarbutton-badge-stack,
+        :root:not([chromehidden~="toolbar"]):is([sizemode="maximized"]) #PanelUI-menu-button[open]>.toolbarbutton-badge-stack,
         :root:not([chromehidden~="toolbar"]):is([sizemode="maximized"]) #PanelUI-menu-button[open]>stack::after{
             background-image: linear-gradient(var(--arrowpanel-background, transparent), var(--arrowpanel-background, transparent)), 
                               linear-gradient(transparent, transparent), 
                               var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
             background-size: auto 100vh !important;
-            background-position-x: -1px !important;
+            background-position-x: 0px !important;
             background-position-y: -8px !important;
     }}
     
     @media (-moz-platform: windows), (-moz-platform: linux) {
         :root:not([chromehidden~="toolbar"]):is([sizemode="maximized"]) #PanelUI-menu-button[open]>stack::after{
-            background-position-x: calc(-2px - var(--my-vertical-toolbar-width) + var(--my-vertical-toolbar-width) / 4) !important;
+            background-position-x: calc(0px - var(--my-vertical-toolbar-width, 0) + var(--margin-left-icons-personal)) !important;
+            background-position-y: -10px !important;
     }}
+    
+    /* Alinear imagen con left-sidebar deshabilitada */
+    @supports -moz-bool-pref("firefoxone.style_without_leftsidebar") {
+    @media (-moz-platform: windows), (-moz-platform: linux) {
+        :root:not([chromehidden~="toolbar"]):is([sizemode="maximized"]) #PanelUI-menu-button[open]>.toolbarbutton-badge-stack,
+        :root:not([chromehidden~="toolbar"]):is([sizemode="maximized"]) #PanelUI-menu-button[open]>stack::after{
+            background-position-x: 0px !important;
+            background-position-y: -2px !important;
+        }
+        :root:not([chromehidden~="toolbar"]):is([sizemode="maximized"]) #PanelUI-menu-button[open]>stack::after{
+            background-position-x: -30px !important;
+            background-position-y: -4px !important;
+        }}}
 }
 
 /* __________________________________ Rhythm image for tab with sound __________________________________ */
@@ -116,14 +142,13 @@
     /* Fix for tab_gradient_border config */
     @supports -moz-bool-pref("firefoxone.selected_tab_gradient_border") {
         @media (prefers-color-scheme: dark){
-            tab[soundplaying][selected]:not([pinned]) .tab-background::before{
+           tab[soundplaying][selected]:not([pinned]) .tab-background::before{
                 margin-inline-start: 4px !important;
                 margin-block-start: calc(var(--tab-height-personal)/2 - 2px)  !important;
                 }}
-         @media (prefers-color-scheme: light){
-            tab[soundplaying][selected]:not([pinned]) .tab-background::before{
+        @media (prefers-color-scheme: light){
+           tab[soundplaying][selected]:not([pinned]) .tab-background::before{
                 margin-inline-start: 5px !important;
                 margin-block-start: calc(var(--tab-height-personal)/2 + 2px)  !important;
-                }}
-    }
+                }}}
 }

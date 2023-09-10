@@ -16,41 +16,43 @@
 /*---------------------------------------------- <-Personalizaciones Varias-> ---------------------------------------------------*/
 
 @media (prefers-color-scheme: dark){ :root{
-  --lwt-main-image:  url("../images/newtab/wallpaper-dark.png") !important;                  /* new-tab page image - dark theme */ 
-  --lwt-private-image:  url("../images/newtab/private-dark.png") !important;                 /* new-tab private-page image - dark theme */ }}
+  --lwt-main-image:  url("../images/newtab/wallpaper-dark.png") !important;                       /* new-tab page image - dark theme */ 
+  --lwt-private-image:  url("../images/newtab/private-dark.png") !important;                      /* new-tab private-page image - dark theme */ 
+  --brightness-wallpaper: 90%;                                                                    /* darker wallpaper */                           }}
   
 @media (prefers-color-scheme: light){ :root{
-  --lwt-main-image:  url("../images/newtab/wallpaper-light.png") !important;                 /* new-tab page image - white theme*/
-  --lwt-private-image:  url("../images/newtab/private-light.png") !important;                /* new-tab private-page image - white theme*/ }}
+  --lwt-main-image:  url("../images/newtab/wallpaper-light.png") !important;                      /* new-tab page image - white theme*/
+  --lwt-private-image:  url("../images/newtab/private-light.png") !important;                     /* new-tab private-page image - white theme*/ 
+  --brightness-wallpaper: 99%;                                                                    /* darker wallpaper */                           }}
 
-:root[privatebrowsingmode="temporary"]{ --general-color: var(--purple) !important; }         /* Accent color private mode */
+:root[privatebrowsingmode="temporary"]{ --general-color: var(--purple) !important; }              /* Accent color private mode */
   
 :root{  
-  --wallpaper-size: cover;                                                                   /* cover-> default ; auto auto -> to not adapted image */
-  --display-theme-with-images: auto;                                                         /* auto-> defautl ; cover -> themes with 2 or more images*/
+  --wallpaper-size: cover;                                                                        /* cover-> default ; auto auto -> to not adapted image */
+  --display-theme-with-images: auto;                                                              /* auto-> defautl ; 50vw -> themes with 2 or more images*/
   
-  --tab-height-personal: 28px ;                                                              /* Tamaño altura de pestañas */
-  --toolbar-height-personal: 38px ;                                                          /* Toolbar height */
+  --tab-height-personal: 28px ;                                                                   /* Tamaño altura de pestañas */
+  --toolbar-height-personal: 38px ;                                                               /* Toolbar height */
+
+  --my-vertical-toolbar-width: 48px ;                                                             /* Tamaño horizontal left-sidebar */
   
-  --menu-label: "Menu" ;                                                                     /* Label botón -Menú- */
-  --padding-left-tab: 74px ;                                                                 /* Tamaño horizontal botón -Menú- */
-  --my-vertical-toolbar-width: 48px ;                                                        /* Tamaño horizontal left-sidebar */
+  --left-color: var(--pink);                                                                      /* Color left wordmark */
+  --right-color: #0060bf ;                                                                        /* Color right wordmark */
   
-  --left-color: var(--general-color);                                                        /* Color left logo y wordmark */
-  --right-color: #0060bfdd ;                                                                 /* Color right logo y wordmark */
+  --logo-wordmark-visibility: 1 ;                                                                 /* :1 visible, :0 invisible ; Logo-wordmark*/
+  --logo-wordmark-display: none ;                                                                 /* :none ->eliminar , :flex ->Mostrar;  Logo-wordmark*/
+  --searchbar-on-off: 1 ;                                                                         /* :1 visible, :0 invisible ; searchbar*/
+  --searchbar-display: flex ;                                                                     /* :none ->eliminar , :flex ->Mostrar; searchbar*/
+  --orientation-display: block ;                                                                  /* :block -> vertical , :flex -> horizontal ; Logo-wordmark y searchbar*/
   
-  --logo-wordmark-visibility: 1 ;                                                            /* :1 visible, :0 invisible ; Logo-wordmark*/
-  --logo-wordmark-display: none ;                                                            /* :none ->eliminar , :flex ->Mostrar;  Logo-wordmark*/
-  --searchbar-on-off: 1 ;                                                                    /* :1 visible, :0 invisible ; searchbar*/
-  --searchbar-display: flex ;                                                                /* :none ->eliminar , :flex ->Mostrar; searchbar*/
-  --orientation-display: block ;                                                             /* :block -> vertical , :flex -> horizontal ; Logo-wordmark y searchbar*/
+  --newtab-pinnedsites-background: color-mix(in srgb, white 14%, transparent) ;                   /* color - fondo de sitios fijados y barra de búsqueda*/
+  --newtab-pinnedsites-position-top: 0px ;                                                        /* Posición pinnedsites - top-> : 0px ; default-> : auto*/
   
-  --newtab-pinnedsites-background: color-mix(in srgb, white 22%, transparent) ;              /* color - fondo de sitios fijados y barra de búsqueda*/
-  --newtab-pinnedsites-position-top: 0px ;                                                   /* Posición pinnedsites - top-> : 0px ; default-> : auto*/
-  
-  --selected-text-background: var(--general-color);                                          /* Selected text background */
+  --selected-text-background: var(--general-color) ;                                              /* Selected text background */
    
-  --personal-blur: blur(8px) ;                                                               /* Utilizado para personalizar newtab page */
+  --personal-blur: blur(14px) ;                                                                   /* Utilizado para personalizar newtab page */
+  
+  --gradient-colors: #d02f85 0%, #b336fc 8%, #3567fd 40%, #4e7afd 60%,#4e89fd 70%, #d02f85 100%;  /* For - selected_tab_gradient_border - config */
 }
 
 @media (prefers-color-scheme: dark){

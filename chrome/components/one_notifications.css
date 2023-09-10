@@ -65,8 +65,8 @@ browser[primary="true"][tabDialogShowing="true"], .dialogOverlay[topmost="true"]
 /* COlor botones - checkbox - etc */
 
 @-moz-document url(chrome://global/content/commonDialog.xhtml),
-    url("chrome://mozapps/content/handling/permissionDialog.xhtml"),
-    url("chrome://mozapps/content/handling/appChooser.xhtml")
+               url("chrome://mozapps/content/handling/permissionDialog.xhtml"),
+               url("chrome://mozapps/content/handling/appChooser.xhtml")
 {
     #commonDialogWindow,
     #commonDialogWindow * {
@@ -93,7 +93,40 @@ browser[primary="true"][tabDialogShowing="true"], .dialogOverlay[topmost="true"]
     --checkbox-checked-color: white !important;                                         /*color de la palomita check*/
     --checkbox-checked-hover-bgcolor: var(--general-color) !important;                  /*color de los checkbox con check :hover*/
     --checkbox-checked-active-bgcolor: var(--button-active-bgcolor) !important;         
-    }    
+    }
+    
+    dialog[subdialog], :root[dialogroot] {
+        backdrop-filter: blur(8px) !important;
+    }
+}
+
+/* Dialogos emergentes -add bookmark- panel */
+
+dialog[subdialog], :root[dialogroot]{
+    backdrop-filter: blur(8px) !important;
+    --in-content-link-color: var(--button-active-bgcolor) !important;
+    --in-content-link-color-hover: var(--general-color) !important;
+    --in-content-link-color-active: var(--button-active-bgcolor) !important;
+        
+    --in-content-primary-button-background: var(--button-active-bgcolor) !important;
+    --in-content-primary-button-background-hover: var(--general-color) !important;
+    --in-content-primary-button-background-active: var(--button-active-bgcolor) !important;
+    --in-content-primary-button-text-color: white !important;
+    /*--in-content-button-background: none !important;*/
+    --in-content-button-background-hover: #da3633 !important;
+    /*--in-content-button-text-color: red !important;*/
+        
+    --checkbox-checked-border-color: transparent !important;        
+    --checkbox-border-color:  color-mix(in srgb, var(--arrowpanel-background)75%,var(--in-content-text-color) ) !important;
+        
+    --checkbox-unchecked-bgcolor: color-mix(in srgb, var(--arrowpanel-background) 90%,var(--in-content-text-color) ) !important;
+    --checkbox-unchecked-hover-bgcolor: var(--general-color) !important;                /*color de los checkbox hover*/
+    --checkbox-unchecked-active-bgcolor: var(--button-hover-bgcolor) !important;        /*color de los checkbox al darle clic*/
+
+    --checkbox-checked-bgcolor: var(--button-active-bgcolor) !important;                /*color de los checkbox con check*/
+    --checkbox-checked-color: white !important;                                         /*color de la palomita check*/
+    --checkbox-checked-hover-bgcolor: var(--general-color) !important;                  /*color de los checkbox con check :hover*/
+    --checkbox-checked-active-bgcolor: var(--button-active-bgcolor) !important;         
 }
 
 /* HTML5 dark mode web notifs */

@@ -7,7 +7,7 @@
 
     .titlebar-button{
         background-color: transparent !important;
-        padding-block-start: 10px !important;
+        padding-block-start: calc(var(--tab-block-margin-personal) + 4px) !important;
         padding-inline: 4px !important;
     }
     

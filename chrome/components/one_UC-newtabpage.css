@@ -1,8 +1,9 @@
 /* Source file made available under Mozilla Public License v. 2.0 See the main repository for updates as well as full license text.
-   https://github.com/Godiesc/firefox-gx */
+   https://github.com/Godiesc/firefox-one */
 
 @media (prefers-color-scheme: dark){:root{ scrollbar-color: #38375580 #18173530 !important; }}      /*Color de la barra de desplazamiento*/
 @media(prefers-color-scheme: light){:root{ scrollbar-color: #d8d9da #f4f2f7!important; }}           /*Color de la barra de desplazamiento*/
+
 /**{ scrollbar-width: thin !important}*/                                                            /*Barra de desplazamiento delgada*/
 
 .alt-stop { stop-color: var(--left-color) !important; }                                             /* left color logo-and-wordmark */
@@ -31,7 +32,7 @@
         var(--newtab-wordmark-color)) !important;
 
     --newtab-text-primary-color: var(--newtab-wordmark-color) !important;                     /* label general */
-    --newtab-text-secondary-color: var(--general-color) !important;                           /* Label secundaria */
+    --newtab-text-secondary-color: var(--newtab-wordmark-color) !important;                   /* Label secundaria */
 
     --newtab-overlay-color: color-mix(in srgb, #090909 54%, transparent) !important;          /* fondo al editar sitio, transparente */
 
@@ -65,7 +66,7 @@
         var(--newtab-wordmark-color)) !important;
         
     --newtab-text-primary-color: var(--newtab-wordmark-color) !important;                     /* label general */
-    --newtab-text-secondary-color: var(--general-color) !important;                           /* Label secundaria */
+    --newtab-text-secondary-color: var(--newtab-wordmark-color) !important;                   /* Label secundaria */
         
     --newtab-overlay-color: color-mix(in srgb,                                                /* fondo al editar sitio, transparente */
       var(--arrowpanel-background-personal) 34%, transparent) !important;
@@ -86,23 +87,24 @@
     background-size:  var(--wallpaper-size) !important;
     background-position-y: var(--background-align-y) !important;
     border-radius: 8px !important;
-    filter: brightness(99%) !important;
+    filter: brightness(var(--brightness-wallpaper)) !important;
     }
+    
 body{
-    background: var(--lwt-main-image) no-repeat right top fixed !important;
-    background-size:  var(--wallpaper-size) !important;
-    background-position-y: var(--background-align-y) !important;
     border-radius: 8px !important;
     filter: none !important;
+    backdrop-filter: none !important;
     }  
 
 .logo{
-    background: url("../images/foxlogo.svg") no-repeat !important;
+    background: url("../images/foxlogo1.png") no-repeat !important;
     background-size: cover !important;
-    height: 80px !important;
-    width: 75px !important;
+    height: 90px !important;
+    width: 100px !important;
     Opacity: var(--logo-wordmark-visibility) !important;
     display: var(--logo-wordmark-display) !important;
+    -moz-context-properties: fill !important;
+    fill: var(--general-color) !important;
     }
     
 .wordmark {
@@ -180,7 +182,7 @@ main {
     
 input[type="text"]{
     border-radius: 4px !important;
-    border-color: color-mix(in srgb, var(--border-contrast-color) 80%, transparent) !important;
+    border-color: var(--border-contrast-color) !important;
     }
     
 input:focus-visible, input:focus-visible{
@@ -195,6 +197,7 @@ input:focus-visible, input:focus-visible{
     box-shadow: 0px 0px 0 1px var(--border-contrast-color) !important;
     border: 1px solid color-mix(in srgb, var(--arrowpanel-background-personal) 92%, var(--newtab-text-primary-color)) !important;
     border-radius: 8px !important;
+    z-index: 2 !important;
     }
     
 .context-menu > ul > li > button:hover {
@@ -307,11 +310,12 @@ input:focus-visible, input:focus-visible{
     
 .search-inner-wrapper{
     position: relative;
-    background: var(--newtab-pinnedsites-background) !important;
+    background: transparent !important;
     opacity: var(--searchbar-on-off, 1) !important;
     display: var(--searchbar-display, flex) !important;
     margin-top: 16px !important;
-    outline: 1px solid #50505030 !important;
+    outline: none !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important;
     }
     
 .search-inner-wrapper:not(:focus){
@@ -321,7 +325,9 @@ input:focus-visible, input:focus-visible{
     
 @supports -moz-bool-pref("browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar"){
 .search-inner-wrapper:not(:focus){
+    background: var(--newtab-pinnedsites-background) !important;
     backdrop-filter: var(--personal-blur) !important;
+    filter: saturate(140%) !important;
     }}
     
 .search-inner-wrapper:is(:hover){
@@ -329,7 +335,9 @@ input:focus-visible, input:focus-visible{
     }
     
 .search-inner-wrapper:not(:focus) input, .search-wrapper:not(:active) input:focus{
-    backdrop-filter: blur(20px) !important;
+    background-color: var(--newtab-pinnedsites-background) !important;
+    backdrop-filter: var(--personal-blur) !important;
+    filter: saturate(140%) !important;
     border-radius: 34px !important;
     }
     
@@ -341,6 +349,7 @@ input:focus-visible, input:focus-visible{
     
 .search-wrapper .search-inner-wrapper:active input, .search-wrapper input:focus {
     outline: 1px solid var(--button-active-bgcolor) !important;
+    outline-offset: -1px !important;
     border: transparent !important;
     margin-left: 1px !important;
     z-index: 1 !important;
@@ -359,70 +368,70 @@ browser[primary="true"][tabDialogShowing="true"],
 #main-window[window-modal-open="true"] > body > #browser{
     filter: blur(10px)
     }
-    
-#newtab-search-text{
-    
-    font-weight: 501 !important;
-    }
 
 /* --------------------------------------- Sitios anclados ---------------------------------------- */
     
 /* Fondo pequeño de los favICON de los sitios anclados */
     
-.top-site-icon{ 
-    background-color: transparent !important; 
-    }
+.top-site-icon{ background-color: transparent !important; }
    
 /* Pinned icon */
     
-.title.has-icon.pinned { 
-    margin-left: -4px !important;
-    }
-.top-site-outer .title span:is(:hover) .icon.icon-pin-small{ 
-    transition-delay: 150ms !important; 
-    }
-.top-site-outer .title span:not(:hover) .icon.icon-pin-small{ 
-    opacity: 0 !important; 
-    }
+.top-site-outer .title span .icon.icon-pin-small { display: none !important; }
     
-.top-site-outer .title span {
+/* Label - pinned site */
+    
+.top-site-outer .title  {
+    width: 80px !important;
     font-weight: 501 !important;
     font-size: 14px !important;
-    text-shadow: 1px -1px 2px color-mix(in srgb, var(--contrast-color) 70%, transparent) !important;
+    margin-top: -40px !important;
+    text-shadow: 1px -1px 2px color-mix(in srgb, var(--contrast-color) 60%, transparent) !important;
+    margin-inline: 10px !important;
+    }   
+    
+/* Alinear los -sitios anclados- con -Actividad Reciente- */
+    
+.collapsible-section{
+        margin-left: -12px !important;
     }
 
-/* Colores al pasar el mouse sobre los sitios anclados en :hover */
+/* Colores sitios anclados (fondo pequeño) */
     
 .top-site-outer .tile {
     border-radius: 12px !important;
     width: 100px !important;
-    border: 1px solid #50505030 !important;
+    height: 100px !important;
+    align-items: start !important;
+    padding-top: 12px !important;
+    outline: 1px solid #50505030 !important;
+    outline-offset: -1px !important;
     background: var(--newtab-pinnedsites-background) !important;
     backdrop-filter: var(--personal-blur) !important;
-    filter: none !important;
     filter: saturate(140%) !important;
     }
+
+/* Colores :hover sitios anclados (fondo más grande) */
     
-.top-site-outer:is(.active, :focus, :hover) .tile{
-    backdrop-filter: var(--personal-blur) !important;
+.top-site-outer, .top-site-outer.active{
+    background-color: transparent !important;
+    }
+    
+/* Colores al pasar el mouse en :hover sobre los sitios anclados y actividad reciente */
+    
+.top-site-outer:hover .tile, .card-outer:hover .card{
+    background-color: color-mix(in srgb, var(--newtab-pinnedsites-background)80%, var(--newtab-wordmark-color)) !important;
+    }
+    
+/* Quita el borde que aparece luego de dar clic a un sitio anclado y mover el mouse fuera */
+    
+.top-site-outer:is(:focus-within) .tile, .card-outer:is(.active,:focus-within) .card{
+    background-color: color-mix(in srgb, var(--newtab-pinnedsites-background)80%, var(--newtab-wordmark-color)) !important;
     box-shadow: none !important;
     }
     
-    /* Animation on :hover */
-    
-    .top-site-outer .tile .top-site-icon{
-        transform: scale(0.8) !important;
-        transition-duration: 250ms !important;
-    }
-    .top-site-outer:is(.active, :focus, :hover) .tile .top-site-icon{
-        transform: scale(1.0) !important;
-        transition-duration: 150ms !important;
-    }
-    
-/* Colores al pasar el mouse sobre los sitios anclados (fondo más grande) */
-    
-.top-site-outer:is(.active, :focus, :hover){
-    background: transparent !important;
+.top-site-outer:is(:focus-within) .title, .card-outer:is(.active,:focus-within) .card{
+    text-decoration: underline !important;
     }
     
 /* Botón de editar sitio anclado */
@@ -430,6 +439,7 @@ browser[primary="true"][tabDialogShowing="true"],
 .top-site-outer .context-menu-button {
     background-image: url("../images/more.svg") !important;
     background-color: transparent !important;
+    border-radius: 50% !important;
     inset-inline-end: -10px !important;
     top: 2px !important;
     transition: opacity 200ms;
@@ -438,51 +448,58 @@ browser[primary="true"][tabDialogShowing="true"],
     
 .top-site-outer .context-menu-button:is(:hover, :focus) {
     background-color: color-mix(in srgb, var(--contrast-color), transparent) !important;
-    border-radius: 50% !important;
-    inset-inline-end: -10px !important;
-    top: 2px !important;
     transition: opacity 200ms;
     fill: var(--newtab-text-primary-color) !important;
     }
+    
     
 /* -------------------------- Actividad reciente --------------------------- */
     
 .card-outer .card {
     background: var(--newtab-pinnedsites-background) !important;
     backdrop-filter: var(--personal-blur) !important;
+    filter: saturate(140%) !important;
     border-radius: 14px !important;
     border: 1px solid #50505030 !important;
 }
     
 .compact-cards .card-outer .card-preview-image-outer { 
-    border-radius: 14px !important; 
+    border-radius: 14px 14px 0 0 !important; 
     }
     
 .ds-highlights .section .section-list .card-outer .card-host-name {
-    font-weight: 501 !important;
-    font-size: 14px !important;
-    text-shadow: 1px -1px 2px color-mix(in srgb, var(--contrast-color), transparent) !important;
-    text-decoration: underline !important;
+    text-shadow: 1px -1px 2px color-mix(in srgb, var(--contrast-color) 60%, transparent) !important;
     color: var(--newtab-text-primary-color) !important;
     }
     
 .card-outer:not(.placeholder) .card-title {
-    text-shadow: 1px -1px 2px color-mix(in srgb, var(--contrast-color), transparent) !important;
+    text-shadow: 1px -1px 2px color-mix(in srgb, var(--contrast-color) 60%, transparent) !important;
     }
     
+.card-outer:is(:hover, :focus, :active, :focus-within, .active):not(.placeholder) .card-title, 
 .card-outer:is(:hover, :focus, .active):not(.placeholder) .card-title {
+    --newtab-primary-action-background: blue !important;
     color: var(--newtab-text-primary-color) !important;
-    text-shadow: 1px -1px 2px color-mix(in srgb, var(--contrast-color), transparent) !important;
+    text-shadow: 1px -1px 2px color-mix(in srgb, var(--contrast-color) 60%, transparent) !important;
     text-decoration: underline !important;
+    }
+    
+.compact-cards .card-outer .card-context>.card-context-icon {
+    fill: var(--newtab-wordmark-color) !important;
+    opacity: 0.7 !important;
+    /*filter: drop-shadow( 0px 1px 0px var(--contrast-color)) !important;*/
     }
     
 /* Ícono de 3 puntos al hacerle hover y clic */
     
-.context-menu-button, .context-menu-button:active, .context-menu-button:focus{
+.card-outer .context-menu-button, .card-outer .context-menu-button:active, .card-outer .context-menu-button:focus{
+    margin-top: 15px !important;
+    margin-right: 16px !important;
     background-image: url("../images/more.svg") !important;
     background-color: color-mix(in srgb, var(--contrast-color) 70%, transparent) !important;
     fill: var(--newtab-text-primary-color) !important;
     border-color: #50505030 !important;
+    transition-delay: 0ms !important;
     }
     
 /* Fondo de <popup> al intentar eliminar un sitio anclado*/
@@ -581,20 +598,30 @@ body{
 /*..........................................Firefox--------------------------------------------
 ---------------------------------------------view-----------------------------------------------*/
 
-@-moz-document url(about:firefoxview), regexp("^about:.*") {
+@-moz-document url(about:firefoxview), url(about:firefoxview-next) /*, regexp("^about:.*") */ {
     
-    @media (prefers-color-scheme: dark){
-        
-    body{ 
-        --in-content-zap-gradient: linear-gradient(90deg, #9059FF 0%, #FF4AA2 52.08%, #FFBD4F 100%) !important;
-        background-color: #101019 !important;
-        }}
+    @media (prefers-color-scheme: dark) {
+  :host, :root {
+         --newtab-background-color: #14141d !important;
+         --newtab-background-color-secondary: rgba(52, 55, 69, 0.7) !important;
+         --newtab-primary-action-background: var(--general-color) !important;
+         --in-content-primary-button-text-color: white !important;
+         --in-content-primary-button-background: var(--general-color) !important;
+         --in-content-primary-button-background-hover: var(--button-hover-bgcolor) !important;
+         --in-content-primary-button-background-active: var(--button-active-bgcolor) !important;
+        }
+    }
     
     @media (prefers-color-scheme: light){
-        
-    body{
-        --in-content-zap-gradient: linear-gradient(90deg, #9059FF 0%, #FF4AA2 52.08%, #FFBD4F 100%) !important;
-        background-color: #efeff5 !important; }
+        :root{
+         --newtab-background-color: #efeff5 !important;
+         /*--newtab-background-color-secondary: white !important;*/
+         --newtab-primary-action-background: var(--general-color) !important;
+         --in-content-primary-button-text-color: white !important;
+         --in-content-primary-button-background: var(--general-color) !important;
+         --in-content-primary-button-background-hover: var(--button-hover-bgcolor) !important;
+         --in-content-primary-button-background-active: var(--button-active-bgcolor) !important;
+        }
     }
     
     .synced-tab-a{

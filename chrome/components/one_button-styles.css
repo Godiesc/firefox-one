@@ -3,20 +3,17 @@
 
 /*Botones generales*/
 
-/* Botón info*/
+/* Information button */
 
-.panel-info-button{ border-radius: 3px !important; color: var(--toolbarbutton-icon-fill) !important; }
-.panel-info-button:is(:hover){ background-color: var(--button-bgcolor) !important; border-radius: 4px !important; color: white !important;}
-.panel-info-button:not(:hover)[checked]{ background-color: var(--button-hover-bgcolor) !important; border-radius: 4px !important; color: white !important;}
+.panel-info-button{ margin-right: 6px !important;  }
 
-/*-"Radiobutton"-ProtecciónAntirastreo*/
+/* Radiobutton - Protección Antirastreo */
 
-.protections-popup-tp-switch{ margin-right: -12px !important; }
-.protections-popup-tp-switch:not([enabled]):not(:hover){background-color: color-mix(in srgb, var(--arrowpanel-background) 88%, var(--lwt-tab-text)) !important;}
-.protections-popup-tp-switch::before {outline: none !important; }
-.protections-popup-tp-switch:not([enabled]):hover{background-color: var(--button-bgcolor) !important;}
-.protections-popup-tp-switch[enabled]:hover {background-color: var(--button-hover-bgcolor) !important; border-color: transparent !important; }
-.protections-popup-tp-switch[enabled]{background-color: var(--button-active-bgcolor) !important; border-color: transparent !important; }
+.toggle-button:enabled { 
+    --toggle-background-color-pressed: var(--general-color) !important;
+}
+
+/*-------------------------- Marcadores - Arrowpanel ----------------------------------*/
 
 /*color Rojo de boton "borrar marcador"*/
 
@@ -50,36 +47,39 @@ background: url("../images/delete.svg") no-repeat center/16px !important;
     border-radius: 4px !important;
 }
 
-/*Color del botón menú deplegable*/
+/*Color de "highlight" inputtext*/
 
-panel menulist, panel menulist:not([open]) {
+richlistitem[selected="true"], #editBMPanel_namePicker::selection , #editBMPanel_tagsField::selection{
+    background-color: var(--general-color) !important;
+    color: #ffffff !important;
+}
+
+richlistitem, #editBMPanel_namePicker , #editBMPanel_tagsField{
+    color: var(--lwt-tab-text) !important;
+}
+
+/* Color del botón menú deplegable - Color -fondo y borde-(flecha hacia abajo)*/
+
+panel menulist, panel menulist:not([open]),
+#editBookmarkPanel .expander-up, #editBookmarkPanel .expander-down{
     background-color: var(--input-border-color) !important;
     box-shadow: inset 0px 0px 0 1px var(--input-border-color) !important;
     border-radius: 3px !important;
-}
-
-panel menulist:hover, panel menulist[open] {
-    background-color: var(--general-color) !important;
-    color: #ffffff !important;
-    box-shadow: none !important;
-}
-
-/*Color -fondo y borde-(flecha hacia abajo)*/
-
-#editBookmarkPanel .expander-up, #editBookmarkPanel .expander-down {
-    background-color: var(--input-border-color) !important;
-    box-shadow: inset 0px 0px 0 1px var(--input-border-color) !important;
     border: none !important;
-    border-radius: 3px !important
 }
 
-#editBookmarkPanel .expander-up:hover, #editBookmarkPanel .expander-down:hover {
-    box-shadow: none !important;
+panel menulist:hover, panel menulist[open],
+#editBookmarkPanel .expander-up:hover, #editBookmarkPanel .expander-down:hover{
     background-color: var(--general-color) !important;
     color: #ffffff !important;
+    box-shadow: none !important;
 }
 
-/*Color -fondo y "letras" - menu desplegable*/
+/* Color -fondo y "letras" - menu desplegable flecha*/
+
+#editBMPanel_folderTree, #editBMPanel_tagsSelector{
+    border-color: var(--arrowpanel-border-color) !important;
+}
 
 treechildren::-moz-tree-row(selected) {
     background-color: var(--button-active-bgcolor) !important;
@@ -100,20 +100,14 @@ treechildren::-moz-tree-image(selected), treechildren::-moz-tree-twisty(selected
     border: 1px solid var(--button-bgcolor) !important;
 }
 
-/* Quitar linea gradiente en botones de extensiones puestas en la Barra de herramientas y de pestañas */
-
-:is(#nav-bar,#TabsToolbar, #PersonalToolbar) toolbaritem .toolbarbutton-1 { background-image: none !important; }
-
-/*--------------------------Marcadores----------------------------------*/
-
-/* Barra de marcadores - color [open] */
+/* --------------------------- Barra de marcadores - color [open] -------------------------------- */
 
 toolbarbutton.bookmark-item:not(.subviewbutton, [disabled="true"])[open] {
     color: var(--lwt-tab-text) !important;  
     fill:  var(--lwt-tab-text) !important; 
 }
 
-/* Barra de marcadores - color :hover */
+/* Barra de marcadores - color :hover 
 
 #PersonalToolbar .toolbarbutton-1 , toolbarbutton.bookmark-item:not(.subviewbutton, [disabled="true"]) {text-shadow: none !important; }
 
@@ -121,18 +115,9 @@ toolbarbutton.bookmark-item:not(.subviewbutton, [disabled="true"])[open] {
     color: var(--toolbarbutton-icon-fill) !important;  
     fill:  var(--toolbarbutton-icon-fill) !important; 
     --toolbarbutton-hover-background: var(--toolbarbutton-hover-personal) !important; 
-}
+}*/
 
-/*Color de "highlight" inputtext*/
 
-richlistitem[selected="true"], #editBMPanel_namePicker::selection , #editBMPanel_tagsField::selection{
-    background-color: var(--general-color) !important;
-    color: #ffffff !important;
-}
-
-richlistitem, #editBMPanel_namePicker , #editBMPanel_tagsField{
-    color: var(--lwt-tab-text) !important;
-}
 
 /*################# Color de iconos de la tabs-bar cuando están :hover ###################### */
 
@@ -175,8 +160,18 @@ richlistitem, #editBMPanel_namePicker , #editBMPanel_tagsField{
     margin-inline-end: 3px !important;
 }
 
-/* :hover en botones de: all-tabs and unified extensions  */
+/* Botones de: all-tabs and unified extensions */
 
+/* botón >> ALL tabs */
+
+.all-tabs-item {
+    margin-inline: 0px !important;
+    border-radius: var(--arrowpanel-menuitem-border-radius) !important;
+}
+
+.all-tabs-mute-button.all-tabs-secondary-button.subviewbutton image{
+    margin-left: 2px !important;
+}
 
 .all-tabs-secondary-button{
     margin-inline-end: 4px !important;
@@ -185,21 +180,28 @@ richlistitem, #editBMPanel_namePicker , #editBMPanel_tagsField{
     width: 35px !important;
 }
 
+/* botón >> Unified extentions */
+
 :root{ --uei-icon-size: 18px !important; }
+
+.toolbaritem-combined-buttons:is(:not([cui-areatype="toolbar"]), [overflowedItem="true"]) > toolbarbutton:not(.toolbarbutton-1)[disabled] {
+    opacity: 1 !important;
+}
 
 #unified-extensions-panel .unified-extensions-item{
     padding-block: 0 !important;
     margin-block: 0px !important;
 }
 
-#unified-extensions-panel .subviewbutton{
+.unified-extensions-item-action-button.panel-no-padding.webextension-browser-action.subviewbutton.subviewbutton-iconic{
     padding-block: 2px !important;
+    margin-block: 0px !important;
 }
 
 .unified-extensions-item-menu-button:is(panelview .toolbarbutton-1, toolbarbutton.subviewbutton, .widget-overflow-list .toolbarbutton-1, 
 .toolbaritem-combined-buttons:is(:not([cui-areatype="toolbar"]), [overflowedItem="true"]) > toolbarbutton):not([disabled]) {
     background: transparent !important;
-    padding-inline-end: 6px !important;
+    padding: 0px 6px !important;
 }
 
 .unified-extensions-item-menu-button.subviewbutton.subviewbutton-iconic:hover image {
@@ -208,10 +210,6 @@ richlistitem, #editBMPanel_namePicker , #editBMPanel_tagsField{
 }
 
 /* Second label del botón de extenciones */
-
-#unified-extensions-area toolbaritem:hover .unified-extensions-item-message-deck label{
-    color: #ffffff !important;
-}
 
 @media (-moz-platform: linux) {
 #unified-extensions-area toolbaritem .unified-extensions-item-message-deck label{
@@ -223,13 +221,17 @@ richlistitem, #editBMPanel_namePicker , #editBMPanel_tagsField{
 
 /* Separador linea Vertical para tabs-bar, usando "espacio flexible" */
 :is(#TabsToolbar) toolbarpaletteitem[place="toolbar"][id^="wrapper-customizableui-special-spring"],:is(#TabsToolbar) toolbarspring {
-    background: #484d65 !important;
-    max-width: 1px !important;
-    min-width: 1px !important;
-    max-height: 16px !important;
-    min-height: 16px !important;
+    background-color: transparent !important;
+    max-width: 0px !important;
+    min-width: 0px !important;
+    max-height: calc(var(--tab-height-personal) + var(--tab-block-margin) * 2) !important;
     margin-inline: 3px !important;
-    margin-block-start: calc(var(--tab-block-margin) + 6px) !important;
+    border-left: 1px solid red !important;
+    border-image: 0 1 linear-gradient(
+    transparent 32%,
+    color-mix(in srgb, currentColor 20%, transparent) 32%,
+    color-mix(in srgb, currentColor 20%, transparent) 68%,
+    transparent 68%) !important;
 }
 
 /* Status panel */

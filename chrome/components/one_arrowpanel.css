@@ -88,8 +88,8 @@ menuitem.subviewbutton:not([disabled])[_moz-menuactive],
 
 .subviewbutton:is([disabled]), .subviewbutton:where([disabled="true"]):hover {       
     -moz-context-properties: fill;
-    color: #808080 !important;
-    fill:  #808080 !important;
+    color: #70707090 !important;
+    fill:  #70707090 !important;
     }
 
 /* Linea separadora en los menús principales */
@@ -118,8 +118,10 @@ toolbarseparator {
 
 /* Márgenes protección antirastreo */
 
-#protections-popup-blocking-section-header, #protections-popup-not-blocking-section-header, #protections-popup-not-found-section-header, 
-#protections-popup-tp-switch-section, .protections-popup-category, .protections-popup-footer-button {
+#protections-popup-tp-switch-section>hbox:not(#protections-popup-tp-switch-section-footer), 
+#protections-popup-tp-switch-section-footer>toolbarbutton, #protections-popup-blocking-section-header, 
+#protections-popup-not-blocking-section-header, #protections-popup-not-found-section-header,
+.protections-popup-category, .protections-popup-footer-button, #protections-popup-trackers-blocked-counter-box{
     padding-left: 16px !important;
     padding-right: 16px !important;
 }
@@ -140,7 +142,7 @@ toolbar .text-link:-moz-lwtheme:hover, panel .text-link:-moz-lwtheme:hover {
     border-radius: 0px !important;
     background-image: none !important;
     background-color: transparent !important;
-    padding-inline: 4px 4px !important;
+    padding-inline-start: 4px !important;
     color: var(--arrowpanel-color, var(--lwt-tab-text)) !important;
 }
 
@@ -148,6 +150,10 @@ toolbar .text-link:-moz-lwtheme:hover, panel .text-link:-moz-lwtheme:hover {
     background: var(--button-active-bgcolor) !important;
     color: #ffffff !important;
     fill: #ffffff !important;
+}
+
+.downloadButton{
+    margin-right: 10px !important;
 }
 
 .downloadButton:hover{
@@ -167,6 +173,11 @@ toolbar .text-link:-moz-lwtheme:hover, panel .text-link:-moz-lwtheme:hover {
     margin-block: 2px 5px !important;
     margin-inline: 5px 1px !important;
     border-radius: 8px !important;
+}
+
+/* margin for sidebar on right side */
+:root:not([sizemode="fullscreen"]) #sidebar-box[positionend="true"]{
+    margin-inline: -3px 5px !important;
 }
 
 #sidebar-box {
@@ -245,7 +256,7 @@ treechildren::-moz-tree-separator {
 }
 
 .panel-header > .subviewbutton-back {
-    border-radius: var(--toolbarbutton-border-radius) !important;
+    border-radius: 5px !important;
 }
 
 .panel-header > .subviewbutton-back:hover {

@@ -2,30 +2,33 @@
    https://github.com/Godiesc/firefox-one */
 
 /* favicon siempre visible */
+
 .tab-icon-image,
 .tab-throbber{ opacity: 1 !important; }
 
-/* Mover la label para hacer espacio para el ícono de sonido y darle una ligera animación */
+/* Mover -label- para hacer espacio para el ícono de sonido y darle una ligera animación */
 
 tab[soundplaying] .tab-content .tab-label {
     padding-left: 18px !important;
     transition-duration: 200ms !important;
-}
+    }
 
 tab[muted] .tab-content .tab-label {
     padding-left: 0px !important;
     transition-duration: 200ms !important;
-}
+    }
     
-/* secondary audio label ain't much use with this style. */
+/* Secondary audio label ain't much use with this style. */
+
 .tab-secondary-label{ display: none !important; }
 
 /* Reproduciendo */
+
 .tab-icon-overlay[soundplaying]:not([pinned]){
     opacity: 1 !important;
     fill: var(--lwt-tab-text) !important;
     background: transparent !important;
-    border-radius: 4px !important;
+    border-radius: 3px !important;
     padding: 1px !important;
     left: 20px !important;
     fill-opacity: 1 !important;
@@ -33,37 +36,54 @@ tab[muted] .tab-content .tab-label {
     }
 
 /* reproduciendo hover */
+
 tab:not([pinned]) .tab-icon-overlay[soundplaying]:hover {
     fill: var(--lwt-tab-text) !important;
     background-color: color-mix(in srgb, var(--toolbarbutton-hover-background) 40%, var(--border-contrast-color)) !important;
-    fill-opacity: 1 !important; }
-:root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) tab:not([pinned]) .tab-icon-overlay[soundplaying]:hover {
-     background-color: var(--toolbarbutton-hover-background) !important; }
-tab:not([pinned],[selected]) .tab-icon-overlay[soundplaying]:hover,
-:root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) tab:not([pinned],[selected]) .tab-icon-overlay[soundplaying]:hover{
-    fill: var(--lwt-tab-text) !important;
-    background-color: color-mix(in srgb, var(--lwt-frame) 70%, transparent) !important;
+    fill-opacity: 1 !important; 
     }
 
-/*Compartiendo microfono y cámara*/
-.tab-icon-overlay[soundplaying]:not([crashed]):is([sharing]) {
-      top: 0px !important; stroke: transparent !important; background-color: transparent !important;  }
-tab:hover .tab-icon-overlay:not([crashed],[muted]):is([sharing]) {
-      top: 0px !important; 
-      stroke: transparent !important; 
-      width: 16px !important; 
-      height: 16px !important;
+:root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) 
+    tab:not([pinned]) .tab-icon-overlay[soundplaying]:hover {
+        background-color: var(--toolbarbutton-hover-background) !important; 
     }
+
+:root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) 
+tab:not([pinned],[selected]) .tab-icon-overlay[soundplaying]:hover,
+    tab:not([pinned],[selected]) .tab-icon-overlay[soundplaying]:hover{
+        fill: var(--lwt-tab-text) !important;
+        background-color: color-mix(in srgb, var(--lwt-frame) 70%, transparent) !important;
+    }
+
+/* Compartiendo microfono y cámara */
+
+.tab-icon-overlay[soundplaying]:not([crashed]):is([sharing]) {
+    top: 0px !important; 
+    stroke: transparent !important; 
+    background-color: transparent !important;  
+    }
+
+tab:hover .tab-icon-overlay:not([crashed],[muted]):is([sharing]) {
+    top: 0px !important; 
+    stroke: transparent !important; 
+    width: 16px !important; 
+    height: 16px !important;
+    }
+
 tab:hover .tab-icon-image:is([sharing]) {opacity: 1 !important; }
     
 /* ------------------------------------ muteado -----------------------------------*/
+
 tab:hover .tab-icon-overlay:not([pinned], :hover):is([muted]), 
 tab:hover .tab-icon-overlay:not(:hover):is([muted][pinned]){
     opacity: 0.7 !important;
 }
+
 .tab-icon-overlay:not([pinned]):is([muted]){
     list-style-image: url("../images/paused.svg") !important;
-    top: -5px;  left: 7px !important; border-radius: 50% !important;
+    top: -5px;  
+    left: 7px !important; 
+    border-radius: 50% !important;
     height: 14px !important;
     width: 14px !important;
     color: var(--lwt-tab-text) !important;
@@ -71,22 +91,27 @@ tab:hover .tab-icon-overlay:not(:hover):is([muted][pinned]){
     stroke: transparent !important;
     padding: 0 !important;
     }
-/*muteado hover*/
+
+/* muteado hover */
+
 .tab-icon-overlay:not([pinned])[muted]:hover {
     border-radius: 50% !important;
     list-style-image: url("chrome://browser/skin/tabbrowser/tab-audio-blocked-small.svg") !important;
     fill: var(--lwt-tab-text) !important;
     opacity: 1 !important;
     }
+
 /* favicon de pestañas recortado para mostrar mejor el ícono de silenciado */
-@media (-moz-platform: windows),(-moz-platform: linux){
+
 tab:hover .tab-icon-stack:not([crashed]):is([muted], [activemedia-blocked]) :is(.tab-icon-pending, .tab-icon-image, .tab-sharing-icon-overlay) {
     mask-image: url("../images/tab_icon_masks.svg#SoundMask") !important;
-    }}
+    }
+
 /* Audio bloqueado */
+
 .tab-icon-overlay:not([pinned]):is([activemedia-blocked]), .tab-icon-overlay:is([pinned]):is([activemedia-blocked]){
     list-style-image: url("../images/blocked.svg") !important;
-    top: -6px;  left: 7px !important; border-radius: 2px !important;
+    top: -5px;  left: 7px !important; border-radius: 2px !important;
     height: 14px !important;
     width: 14px !important;
     color: var(--toolbarbutton-icon-fill) !important;
@@ -94,6 +119,7 @@ tab:hover .tab-icon-stack:not([crashed]):is([muted], [activemedia-blocked]) :is(
     stroke: transparent !important;
     padding: 0 !important;
     }
+
 .tab-icon-overlay:not([pinned]):is([activemedia-blocked]):hover, .tab-icon-overlay:is([pinned]):is([activemedia-blocked]):hover{
     fill: var(--lwt-tab-text) !important;
 }
@@ -103,12 +129,13 @@ tab:hover .tab-icon-stack:not([crashed]):is([muted], [activemedia-blocked]) :is(
 .tab-icon-overlay[pinned] { opacity: 0 !important; }
 tab:hover .tab-icon-overlay { opacity: 1 !important; }
 
-@media (-moz-platform: windows),(-moz-platform: linux){
+
 .tab-icon-stack:not([crashed]):is([soundplaying])[pinned] :is(.tab-icon-pending, .tab-icon-image, .tab-sharing-icon-overlay) {
     mask-image: url("../images/tab_icon_masks.svg#SoundMask") !important;
-    }}
+    }
     
-/* Reproduciendo pinned */    
+/* Reproduciendo pinned */
+
 .tab-icon-overlay:is([pinned])[soundplaying]{
     fill: var(--identity-tab-color, var(--lwt-tab-text)) !important;
     stroke: transparent !important;
@@ -119,7 +146,9 @@ tab:hover .tab-icon-overlay { opacity: 1 !important; }
     fill-opacity: 1 !important;
     opacity: 1 !important;
     }
+
 /* reproduciendo hover pinned */
+
 tab:is([pinned]) .tab-icon-overlay[soundplaying]:hover {
     list-style-image: url("../images/paused.svg") !important;
     /*clip-path: polygon(20% 0%, 100% 0%, 100% 14%, 100% 100%, 100% 100%, 14% 100%, 0% 100%, 0% 20%);*/
@@ -128,7 +157,9 @@ tab:is([pinned]) .tab-icon-overlay[soundplaying]:hover {
     fill: var(--lwt-tab-text) !important;
     border-radius: 2px !important;
     }
+
 /* muteado pinned */
+
 tab:hover .tab-icon-overlay:is([pinned])[muted] { 
     opacity: 1 !important;
     height: 12px !important;
@@ -140,6 +171,7 @@ tab:hover .tab-icon-overlay:is([pinned])[muted] {
     stroke: transparent !important;
     padding: 0px !important;
 }
+
 .tab-icon-overlay:is([pinned])[muted]{
     list-style-image: url("../images/paused.svg") !important;
     height: 14px !important;
@@ -150,7 +182,9 @@ tab:hover .tab-icon-overlay:is([pinned])[muted] {
     stroke: transparent !important;
     fill-opacity: 0.8 !important;
     }
-/*muteado pinned :hover*/
+
+/* muteado pinned :hover */
+
 tab:hover .tab-icon-overlay:is([pinned])[muted]:hover {
     list-style-image: url("chrome://browser/skin/tabbrowser/tab-audio-blocked-small.svg") !important;
     border-radius: 50% !important;
@@ -159,29 +193,7 @@ tab:hover .tab-icon-overlay:is([pinned])[muted]:hover {
     }
 
 /* ocultar ícono [muted] en pestaba <cargando> */
-@media (-moz-platform: windows),(-moz-platform: linux){
+
 tab[busy] .tab-icon-overlay:not([pinned]):is([muted]), tab[busy][pinned] .tab-icon-overlay:is([muted]){
     opacity: 0 !important;
-    }}
-
-/*_________________________________________MacOS________________________________________*/
-
-@media (-moz-platform: macos){
-.tabbrowser-tab:not([pinned]) .tab-icon-stack:is([muted],[activemedia-blocked]){
-  grid-template-areas: "a s";
     }
-.tabbrowser-tab:not([pinned]) .tab-icon-overlay:is([muted],[activemedia-blocked]){ 
-    opacity: 1 !important;
-    top: initial !important;
-    left: initial !important;
-    height: 16px !important;
-    width: 16px !important;
-    fill: var(--identity-tab-color, var(--general-color)) !important;
-    padding: 0px !important;
-    margin-inline: -2px 3px !important;
-    grid-area: s; 
-    }
-.tabbrowser-tab:not([pinned]) .tab-icon-overlay:is([muted],[activemedia-blocked]):hover{ 
-    fill: currentColor !important;
-    fill-opacity: 1 !important;
-}}

@@ -248,22 +248,18 @@ findbar{
 /* Search-bar */
 
 #searchbar {
-    min-height: 29px !important;
-    max-height: 29px !important;
-}
-
-#search-container {
-    padding-block: 4px 3px !important;
+    min-height: 28px !important;
+    max-height: 30px !important;
 }
 
 #searchbar:hover {
-    background-color: color-mix(in srgb, var(--general-color) 25%, transparent) !important;
+    background-color: var(--toolbarbutton-hover-background) !important;
 }
 
 #searchbar:focus-within {
     border-color: var(--toolbar-field-focus-background-color) !important;
     box-shadow: none !important;
-    background-color: var(--toolbar-field-focus-background-color) !important;
+    background-color: var(--toolbarbutton-hover-background) !important;
 }
 
 #PopupSearchAutoComplete {
@@ -487,7 +483,7 @@ description#identity-popup-content-owner-label, description#identity-popup-conte
     border-radius: 8px !important;
     outline: 2px solid var(--lwt-frame) !important;
     outline-offset: 1px !important;
-    box-shadow: 0 0 1px 0px color-mix(in srgb, var(--lwt-frame) 84%, var(--lwt-tab-text)) !important;
+    box-shadow: 0 0 4px 0px color-mix(in srgb, var(--lwt-frame) 85%, var(--lwt-tab-text)) !important;
 }
 
 :root:is([sizemode="fullscreen"]) :is(.browserContainer,.browserStack>browser) {

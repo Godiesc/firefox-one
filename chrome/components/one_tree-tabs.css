@@ -11,7 +11,7 @@
     .titlebar-button{
         background-color: transparent !important;
         padding-inline: 4px !important;
-        padding-block-start: calc(var(--toolbar-height-personal) / 2 - 8px) !important;
+        padding-block-start: calc(var(--tab-block-margin-personal) + 6px) !important;
         background: transparent !important;
     }
     
@@ -178,6 +178,18 @@ Window controls will be all wrong without it
   border-radius: 8px 0px 0px 8px !important;
   box-shadow: inset 0 4px var(--lwt-frame) !important;
 }
+    
+#main-menubar{
+    height: calc(var(--tab-min-height) +  1 * var(--tab-block-margin,0px) + 6px);
+    background-image: linear-gradient(var(--toolbar-bgcolor), var(--toolbar-bgcolor)),
+                      linear-gradient(transparent, transparent), 
+                      var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
+    background-position: right top, right top, right center, left center, center top !important;
+    background-repeat: repeat, repeat, var(--lwt-background-tiling) !important;
+    background-size: auto !important; 
+    color: var(--arrowpanel-color);
+    box-shadow: inset 0 4px var(--lwt-frame), inset 0 4px var(--lwt-frame), inset 0 4px var(--lwt-frame) !important;
+}
 
 #toolbar-menubar:not([inactive]){ z-index: 2 }
 #toolbar-menubar[autohide="true"][inactive] > #menubar-items {
@@ -186,18 +198,12 @@ Window controls will be all wrong without it
   margin-left: var(--uc-window-drag-space-pre,0px)
 }
     
-#toolbar-menubar::after{
-  content: "";
-  display: flex;
-  width: 30px;
-  height: calc(var(--toolbar-height-personal) +  4px);
-  background-image: linear-gradient(to right, var(--toolbar-bgcolor) 30%, transparent);
-  box-shadow: inset 0 4px var(--lwt-frame) !important;
+#toolbar-menubar[autohide="true"] #menubar-items::after{
+    display: none;
 }
     
 /* ##################################################### My Code ######################################################
-###################################### Adicional <sobre-escribir> Codigo de Arriba ####################################*/    
-
+###################################### Adicional <sobre-escribir> Codigo de Arriba ####################################*/
 
 #nav-bar{
     border-width: 0px !important;
@@ -222,17 +228,13 @@ Window controls will be all wrong without it
 }
     
 :root:not([chromehidden~="toolbar"])[inFullscreen] #PanelUI-button { left: 0px !important; }
-:root:not([chromehidden~="toolbar"])[inFullscreen] #PanelUI-menu-button { min-height: calc(var(--toolbar-height-personal) + var(--tab-block-margin)/2 ) !important; }
+:root:not([chromehidden~="toolbar"])[inFullscreen] #PanelUI-menu-button { min-height: calc(var(--toolbar-height-personal) + var(--tab-block-margin)) !important; }
 
 /* Espacio de arrastre en ventana normal */
     
 :root:not([inFullscreen])[sizemode="normal"] #nav-bar{
     padding-inline: 40px calc(var(--uc-window-control-width) + 50px ) !important;
 }
-
-:root:not([chromehidden~="toolbar"]) #PersonalToolbar {   
-    margin-top: calc( 2px - var(--uc-toolbar-height)) !important;
-    }
     
 /* Separador entre los controles de ventana y los íconos de la toolbar */
     
@@ -381,9 +383,9 @@ Window controls will be all wrong without it
 @supports -moz-bool-pref("firefoxone.style_without_leftsidebar") {
 
     :root:not([chromehidden~="toolbar"]) #PanelUI-button, 
-    :root:not([chromehidden~="toolbar"])[inFullscreen] #PanelUI-button { left: 10px !important; }
+    :root:not([chromehidden~="toolbar"])[inFullscreen] #PanelUI-button { left: 7px !important; }
 
-    :root:not([chromehidden~="toolbar"])[sizemode="maximized"] #PanelUI-menu-button[open] { margin-inline-start: -6px !important; }
+    :root:not([chromehidden~="toolbar"])[sizemode="maximized"] #PanelUI-menu-button[open] { margin-inline-start: -3px !important; }
 
     :root:not([chromehidden~="toolbar"]) #PanelUI-menu-button,
     :root:not([chromehidden~="toolbar"])[inFullscreen] #PanelUI-menu-button { min-height: calc(var(--toolbar-height-personal) + var(--tab-block-margin) ) !important; }
@@ -397,5 +399,16 @@ Window controls will be all wrong without it
     :root:not([chromehidden~="toolbar"]) toolbar[customizing] .customization-target,
     :root:not([chromehidden~="toolbar"])[inFullscreen] toolbar[customizing] .customization-target{
         margin-inline-start: calc(var(--padding-left-tab) + 4px) !important; }
+    
+    /* margen izquierda menu-bar*/
+    
+    :root:not([chromehidden~="toolbar"]) #toolbar-menubar {
+        padding-inline-start: calc(var(--padding-left-tab) + 14px) !important;
     }
+    
+    /* sin borde redondeado la menu-bar*/
+    #main-menubar{
+        border-radius: 0px !important;
+    }
+  }
 }

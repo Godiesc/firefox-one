@@ -99,11 +99,58 @@
     list-style-image: url("../images/read-mode.svg") !important;
 }
 
-/* ícono de olvidar, clean history on left-sidebar */
+/* Colored folders for bookmarks */
 
-#PersonalToolbar #panic-button image {
-    list-style-image: url("../images/cleaner.svg") !important;
-    padding: 1px !important;
+#PlacesToolbarItems > .bookmark-item:nth-of-type(9n+1) > .toolbarbutton-icon {
+  fill: var(--lightblue) !important;
+  list-style-image: url("../images/folder1.svg") !important;
+}
+
+#PlacesToolbarItems > .bookmark-item:nth-of-type(9n+2) > .toolbarbutton-icon {
+  fill: var(--green) !important;
+  list-style-image: url("../images/folder2.svg") !important;
+}
+
+#PlacesToolbarItems > .bookmark-item:nth-of-type(9n+3) > .toolbarbutton-icon {
+  fill: var(--lightgreen) !important;
+  list-style-image: url("../images/folder3.svg") !important;
+}
+
+#PlacesToolbarItems > .bookmark-item:nth-of-type(9n+4) > .toolbarbutton-icon {
+  fill: var(--yellowbrown) !important;
+  list-style-image: url("../images/folder4.svg") !important;
+}
+
+#PlacesToolbarItems > .bookmark-item:nth-of-type(9n+5) > .toolbarbutton-icon {
+  fill: var(--orange) !important;
+  list-style-image: url("../images/folder5.svg") !important;
+}
+
+#PlacesToolbarItems > .bookmark-item:nth-of-type(9n+6) > .toolbarbutton-icon {
+  fill: var(--red) !important;
+  list-style-image: url("../images/folder6.svg") !important;
+}
+
+#PlacesToolbarItems > .bookmark-item:nth-of-type(9n+7) > .toolbarbutton-icon {
+  fill: var(--pink) !important;
+  list-style-image: url("../images/folder7.svg") !important;
+}
+
+#PlacesToolbarItems > .bookmark-item:nth-of-type(9n+8) > .toolbarbutton-icon {
+  fill: var(--purple) !important;
+  list-style-image: url("../images/folder8.svg") !important;
+}
+
+#PlacesToolbarItems > .bookmark-item:nth-of-type(9n+9) > .toolbarbutton-icon {
+  fill: #1b57fe !important;
+  list-style-image: url("../images/folder9.svg") !important;
+}
+
+/* Carpeta "Otros Marcadores" */
+
+#OtherBookmarks > .toolbarbutton-icon{
+    list-style-image: url("../images/folder-otherbookmarks.svg") !important;
+    fill: color-mix(in srgb, var(--button-active-bgcolor) 80%, var(--lwt-tab-text)) !important;
 }
 
 /* separador izquierda y derecha urlbar */
