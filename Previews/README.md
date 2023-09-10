@@ -8,7 +8,7 @@
     <td>true</td></tr>
 </table>
 
-![imagen](https://github.com/Godiesc/firefox-one/assets/22057609/c4a979d5-c086-4459-a5b6-98d649899bf0)
+![imagen](https://github.com/Godiesc/firefox-one/assets/22057609/b1ef0a67-39db-4668-bef3-ada10a02db6a)
 
 ## Default colors disabled
 <table><tr>
@@ -35,9 +35,9 @@
     <td>true</td></tr>
 </table>
 
-![imagen](https://github.com/Godiesc/firefox-one/assets/22057609/f61b4677-3673-487f-97fb-aa88dd51f76a)
+![imagen](https://github.com/Godiesc/firefox-one/assets/22057609/978cc30c-020f-45d8-ac7e-72f9a9cdbfa7)
 
-## Selected tab gradient border on solid themes
+## Selected tab gradient border
 <table><tr>
     <td>firefoxone.selected_tab_gradient_border</td>
     <td>true</td></tr>
@@ -45,13 +45,17 @@
 
 ![imagen](https://github.com/Godiesc/firefox-one/assets/22057609/60b53e12-6c72-4f2c-b47d-a41f582453c9)
 
-## Image in menus, in themes that use images
+![imagen](https://github.com/Godiesc/firefox-one/assets/22057609/544e391d-4bf8-4ce2-9b14-9992b0b4edd7)
+
+## Image in menus
 <table><tr>
     <td>firefoxone.image_in_menus</td>
     <td>true</td></tr>
 </table>
 
-![imagen](https://github.com/Godiesc/firefox-one/assets/22057609/773b8dcc-1a35-4771-80cc-edc5b23acbcf)
+<p>For solid themes the image is taken from: <code>chrome/images/menu-image.png</code></p>
+
+![ImageInMenus](https://github.com/Godiesc/firefox-one/assets/22057609/216af894-f35f-418a-b309-81a9e703929e)
 
 ## Rhythm image for tab with sound
 <table><tr>
