@@ -3,8 +3,7 @@
 <ul><li>(ES) Tema para los amantes de la skin de Opera-ONE.</li>
 <li>(EN) A theme for Opera-ONE Skin Lovers.</li></ul>
 
-![Firefox-One](https://github.com/Godiesc/firefox-one/assets/22057609/55e39c67-7588-456a-a30b-278f1dc4bd19)
-
+![Light_dark_splash](https://github.com/Godiesc/firefox-one/assets/22057609/dd708561-8227-48a9-b287-64696f8116fb)
 
 ## ¿Cómo instalar? - How to install?
 
@@ -49,10 +48,9 @@
 <a title="Ublock" href="https://addons.mozilla.org/es/firefox/addon/ublock-origin/"><img src="https://raw.githubusercontent.com/Godiesc/firefox-one/154c3c1f732f88e6fb1504ef8f83db12231411ce/chrome/images/logo_ublock.svg" alt="Ublock" width="24" height="24" /></a>
 <a title="Panorama tab groups" href="https://addons.mozilla.org/es/firefox/addon/panorama-tab-groups/"><img src="https://raw.githubusercontent.com/Godiesc/firefox-one/154c3c1f732f88e6fb1504ef8f83db12231411ce/chrome/images/logo_tablero1.svg" alt="Panorama Tab Groups" width="24" height="24" fill="red"/></a>
 </li>
-<li>For themes that use 2 or more images, the background of the selected tab will show a empty border on the right, to solve that you should change the line <code>30</code> in <code>one_root-personal.css</code> file with <code>--display-theme-with-images: cover;</code>
-   
-![SelectedTabBackground](https://github.com/Godiesc/firefox-one/assets/22057609/2bbe205e-f7c0-4017-bb09-ca42ce560470)
-</li></ul>
+<li>For themes that use 2 or more images, the background of the selected tab will show a empty border on the right, to solve that you should change the line <code>30</code> in <code>one_root-personal.css</code> file with <code>--display-theme-with-images: 50vw;</code>
+</li>
+</ul>
 
 ## Optional Features
 
@@ -116,7 +114,7 @@
 <b>Fondo Nueva Pestaña - NewTab Wallpaper</b>
 <ul>
    <li><p>(Option 1) In the directory: <code>chrome/images/newtab</code> there is a set of wallpapers, the images that the theme will select by default are: <b><i>wallpaper-light.png</i></b> and <b><i>wallpaper-dark.png</i></b>, you could rename the images you want with that names and the theme will select them, you can add your own images. If you don't want a wallpaper just delete the files with the specified names. You can find more images in: <a href="https://imgur.com/a/j78IhJN"><b>This Gallery</b></a>. <b>Restarting the browser after changing the wallpaper is required. </b></p></li>
-<li><p>(Option 2) Editing the code <code>chrome/components/one_root-personal.css</code> lines: <code>19</code> and <code>23</code>.<p></li></ul></br>
+<li><p>(Option 2) Editing the code <code>chrome/components/one_root-personal.css</code> lines: <code>19</code> and <code>24</code>.<p></li></ul></br>
 
 <b>Color Principal - Accent Color</b>
 <ul>
