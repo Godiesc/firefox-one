@@ -70,7 +70,8 @@
 /* Linux default window control icons */
 
 @media (-moz-platform: linux) {
-    .titlebar-button {
+    
+    .titlebar-button{
         list-style-image: none !important;
         appearance: auto !important;
     }
@@ -87,7 +88,9 @@
         -moz-default-appearance: -moz-window-button-close !important;
     }
     .titlebar-buttonbox {
-        max-height: var(--tab-height-personal) !important;
+        min-height: calc(var(--tab-block-margin-personal) * 2 + var(--tab-height-personal)) !important;
+        max-height: calc(var(--tab-block-margin-personal) * 2 + var(--tab-height-personal)) !important;
+        
     }
 }
 
