@@ -53,7 +53,7 @@
     <td>true</td></tr>
 </table>
 
-<p>For solid themes the image is taken from: <code>chrome/images/menu-image.png</code></p>
+<p>For solid themes the image is taken from: <code>chrome/images/newtab/menu-image.png</code></p>
 
 ![ImageInMenus](https://github.com/Godiesc/firefox-one/assets/22057609/216af894-f35f-418a-b309-81a9e703929e)
 
