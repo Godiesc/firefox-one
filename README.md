@@ -79,12 +79,12 @@
     <td width="320px">firefoxone.style_without_leftsidebar</td>
     <td width="50px">true</td></tr>
 </table>
-<li><a href="https://github.com/Godiesc/firefox-one/blob/main/Previews/README.md#selected-tab-gradient-border-on-solid-themes">Selected tab gradient border on solid themes</a></li>
+<li><a href="https://github.com/Godiesc/firefox-one/blob/main/Previews/README.md#selected-tab-gradient-border-on-solid-themes">Selected tab gradient border</a></li>
 <table><tr>
     <td width="320px">firefoxone.selected_tab_gradient_border</td>
     <td width="50px">true</td></tr>
 </table>
-<li><a href="https://github.com/Godiesc/firefox-one/blob/main/Previews/README.md#image-in-menus-in-themes-than-use-images">Image in menus in themes than use images</a></li>
+<li><a href="https://github.com/Godiesc/firefox-one/blob/main/Previews/README.md#image-in-menus-in-themes-than-use-images">Image in menus</a></li>
 <table><tr>
     <td width="320px">firefoxone.image_in_menus</td>
     <td width="50px">true</td></tr>
