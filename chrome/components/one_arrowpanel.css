@@ -175,11 +175,6 @@ toolbar .text-link:-moz-lwtheme:hover, panel .text-link:-moz-lwtheme:hover {
     border-radius: 8px !important;
 }
 
-/* margin for sidebar on right side */
-:root:not([sizemode="fullscreen"]) #sidebar-box[positionend="true"]{
-    margin-inline: -3px 5px !important;
-}
-
 #sidebar-box {
     max-width: none !important;
     min-width: 30px !important;   
@@ -219,10 +214,18 @@ toolbar .text-link:-moz-lwtheme:hover, panel .text-link:-moz-lwtheme:hover {
     border-width: 4px !important;
 }
 
-/* Espacio top de la sidebar[open] y más espacio para el splitter */
+/* Espacios de la sidebar[open] y más espacio para el splitter - <left> <right> side */
 
 :root:not([sizemode="fullscreen"]) #sidebar-box[checked="true"] + #sidebar-splitter + #appcontent .browserContainer {
     padding: 2px 5px 5px 1px !important;
+}
+
+:root:not([sizemode="fullscreen"]) #sidebar-box[checked="true"][positionend="true"] + #sidebar-splitter + #appcontent .browserContainer {
+    padding: 2px 0px 5px 5px !important;
+}
+
+:root:not([sizemode="fullscreen"]) #sidebar-box[positionend="true"]{
+    margin-inline: 2px 5px !important;
 }
 
 @media (-moz-platform: linux) {

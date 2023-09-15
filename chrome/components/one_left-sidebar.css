@@ -148,6 +148,10 @@
         padding: 1px 5px 5px 1px !important;
     }
     
+    :root:not([sizemode="fullscreen"]) #sidebar-box[checked="true"][positionend="true"] + #sidebar-splitter + #appcontent .browserContainer {
+        padding: 1px 0px 5px 5px !important;
+    }
+    
     /* Posición y estilo de la barra lateral izquierda de marcadores */
 
     :root:not([chromehidden~="toolbar"]) #PersonalToolbar {
