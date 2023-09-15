@@ -105,8 +105,7 @@
 <li>Wallpaper.</li>
 <li>Height of the tabs and toolbar.</li>
 <li>Width of the left-sidebar</li>
-<li>Label of the menu button.</li>
-<li>Logo and wordmark color from the new-tab page.</li>
+<li>Wordmark color from the new-tab page.</li>
 <li>Hide or show the firefox logo or the search bar in the new-tab page.</li>
 </ul>
 <p>Every variable has a description on the right, so you know what to customize without breaking the file.</p></li></ul></br>
