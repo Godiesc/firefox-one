@@ -26,7 +26,7 @@
     .titlebar-button.titlebar-min .toolbarbutton-icon,
     .titlebar-button.titlebar-restore .toolbarbutton-icon, .titlebar-button.titlebar-max .toolbarbutton-icon,
     .titlebar-button.titlebar-close .toolbarbutton-icon{
-        width: 31px !important;
+        width: 30px !important;
         height: calc(var(--toolbar-height-personal) - 6px) !important;
         border-radius: 5px !important;
     }
@@ -202,6 +202,18 @@ Window controls will be all wrong without it
     display: none;
 }
     
+/* Border in -non default colors- config - solid themes */
+@supports -moz-bool-pref("firefoxone.without-default-colors") {
+    #main-menubar{
+          box-shadow: inset 0 1px 0 0 var(--lwt-frame), inset 0 1px 0 0 var(--lwt-frame),inset 0 1px 0 0 var(--lwt-frame),
+                      inset 0px -1px 0 0  #50505040,  /* abajo */
+                      inset 0 4px var(--lwt-frame),
+                      inset 0px 5px 0 0  #50505040,   /* top */
+                      inset -1px 0 0 0  #50505040,    /* right */ 
+                      inset 1px 0 0 0  #50505040      /* Left */
+                      !important;
+        }}
+    
 /* ##################################################### My Code ######################################################
 ###################################### Adicional <sobre-escribir> Codigo de Arriba ####################################*/
 
@@ -311,8 +323,24 @@ Window controls will be all wrong without it
     z-index: 1;
     top: 0;
     bottom: 0;
-    outline: 1px solid color-mix(in srgb, var(--lwt-frame) 82%, var(--lwt-tab-text)) !important;
+    outline: 1px solid color-mix(in srgb, var(--toolbar-bgcolor) 96%, var(--lwt-tab-text)) !important;
     outline-offset: 0px !important;
+    box-shadow: none !important;
+}
+    
+#sidebar-box[sidebarcommand*="tabcenter"][positionend="true"]:not([hidden]) {
+    display: block;
+    position: var(--positionX2);
+    min-width: 48px;
+    max-width: 48px;
+    overflow: hidden;
+    z-index: 1;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    outline: 1px solid color-mix(in srgb, var(--toolbar-bgcolor) 96%, var(--lwt-tab-text)) !important;
+    outline-offset: 0px !important;
+    box-shadow: none !important;
 }
 
 /* use :where() selector to lower specificity */
@@ -353,6 +381,11 @@ Window controls will be all wrong without it
 
 #main-window:not([inFullscreen]) #sidebar-box[sidebarcommand*="tabcenter"]:not([hidden]) ~ #appcontent {
     margin-left: calc(var(--positionX1) + 10px);
+}
+    
+#main-window:not([inFullscreen]) #sidebar-box[sidebarcommand*="tabcenter"][positionend="true"]:not([hidden]) ~ #appcontent {
+    margin-left: 0px;
+    margin-right: 59px;
 }
 
 #main-window[inFullscreen]:not([inDOMFullscreen]) #sidebar-box[sidebarcommand*="tabcenter"]:not([hidden]) ~ #appcontent {

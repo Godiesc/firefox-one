@@ -102,7 +102,7 @@ treechildren::-moz-tree-image(selected), treechildren::-moz-tree-twisty(selected
 
 /* --------------------------- Barra de marcadores - color [open] -------------------------------- */
 
-toolbarbutton.bookmark-item:not(.subviewbutton, [disabled="true"])[open] {
+toolbarbutton.bookmark-item:not(.subviewbutton, [disabled="true"]):is([open],:active, :hover) {
     color: var(--lwt-tab-text) !important;  
     fill:  var(--lwt-tab-text) !important; 
 }
@@ -116,8 +116,6 @@ toolbarbutton.bookmark-item:not(.subviewbutton, [disabled="true"])[open] {
     fill:  var(--toolbarbutton-icon-fill) !important; 
     --toolbarbutton-hover-background: var(--toolbarbutton-hover-personal) !important; 
 }*/
-
-
 
 /*################# Color de iconos de la tabs-bar cuando están :hover ###################### */
 
@@ -169,15 +167,16 @@ toolbarbutton.bookmark-item:not(.subviewbutton, [disabled="true"])[open] {
     border-radius: var(--arrowpanel-menuitem-border-radius) !important;
 }
 
-.all-tabs-mute-button.all-tabs-secondary-button.subviewbutton image{
-    margin-left: 2px !important;
-}
-
 .all-tabs-secondary-button{
     margin-inline-end: 4px !important;
     border-radius: var(--toolbarbutton-border-radius) !important;
     border: none !important;
-    width: 35px !important;
+    width: 30px !important;
+}
+
+.all-tabs-secondary-button .toolbarbutton-icon{
+    width: 14px !important;
+    height: 14px !important;
 }
 
 /* botón >> Unified extentions */

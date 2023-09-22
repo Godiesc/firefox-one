@@ -266,7 +266,7 @@
         background-color: var(--general-color) !important;
         fill: #d5dadd !important;
     }
-    #PersonalToolbar .toolbarbutton-1:is([open],:active) {
+    #PersonalToolbar .toolbarbutton-1:is([open],:active,[checked="true"]) {
         fill: #d5dadd !important;
     }
     
