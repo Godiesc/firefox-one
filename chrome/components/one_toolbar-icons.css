@@ -3,12 +3,6 @@
 
 /* --------------- Íconos -------------------*/
 
-/* back button */
-
-#nav-bar #back-button {
-    padding-inline-start: 5px !important;
-}
-
 #nav-bar #back-button image {
     margin-left: 0px !important;
     list-style-image: url("../images/back.svg") !important;
@@ -101,49 +95,54 @@
 
 /* Colored folders for bookmarks */
 
+#PlacesToolbarItems > .bookmark-item > .toolbarbutton-icon{
+    height: 14px !important;
+    width: 14px !important;
+}
+
 #PlacesToolbarItems > .bookmark-item:nth-of-type(9n+1) > .toolbarbutton-icon {
-  fill: var(--lightblue) !important;
-  list-style-image: url("../images/folder1.svg") !important;
+    fill: var(--green) !important;
+    list-style-image: url("../images/folder1.svg") !important;
 }
 
 #PlacesToolbarItems > .bookmark-item:nth-of-type(9n+2) > .toolbarbutton-icon {
-  fill: var(--green) !important;
-  list-style-image: url("../images/folder2.svg") !important;
+    fill: var(--lightgreen) !important;    
+    list-style-image: url("../images/folder2.svg") !important;
 }
 
 #PlacesToolbarItems > .bookmark-item:nth-of-type(9n+3) > .toolbarbutton-icon {
-  fill: var(--lightgreen) !important;
-  list-style-image: url("../images/folder3.svg") !important;
+    fill: var(--yellowbrown) !important;
+    list-style-image: url("../images/folder3.svg") !important;
 }
 
 #PlacesToolbarItems > .bookmark-item:nth-of-type(9n+4) > .toolbarbutton-icon {
-  fill: var(--yellowbrown) !important;
-  list-style-image: url("../images/folder4.svg") !important;
+    fill: var(--orange) !important;
+    list-style-image: url("../images/folder4.svg") !important;
 }
 
 #PlacesToolbarItems > .bookmark-item:nth-of-type(9n+5) > .toolbarbutton-icon {
-  fill: var(--orange) !important;
-  list-style-image: url("../images/folder5.svg") !important;
+    fill: var(--red) !important;
+    list-style-image: url("../images/folder5.svg") !important;
 }
 
 #PlacesToolbarItems > .bookmark-item:nth-of-type(9n+6) > .toolbarbutton-icon {
-  fill: var(--red) !important;
-  list-style-image: url("../images/folder6.svg") !important;
+    fill: var(--pink) !important;
+    list-style-image: url("../images/folder6.svg") !important;
 }
 
 #PlacesToolbarItems > .bookmark-item:nth-of-type(9n+7) > .toolbarbutton-icon {
-  fill: var(--pink) !important;
-  list-style-image: url("../images/folder7.svg") !important;
+    fill: var(--purple) !important;
+    list-style-image: url("../images/folder7.svg") !important;
 }
 
 #PlacesToolbarItems > .bookmark-item:nth-of-type(9n+8) > .toolbarbutton-icon {
-  fill: var(--purple) !important;
-  list-style-image: url("../images/folder8.svg") !important;
+    fill: #1b57fe !important;
+    list-style-image: url("../images/folder8.svg") !important;
 }
 
 #PlacesToolbarItems > .bookmark-item:nth-of-type(9n+9) > .toolbarbutton-icon {
-  fill: #1b57fe !important;
-  list-style-image: url("../images/folder9.svg") !important;
+    fill: var(--lightblue) !important;
+    list-style-image: url("../images/folder9.svg") !important;
 }
 
 /* Carpeta "Otros Marcadores" */

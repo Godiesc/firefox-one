@@ -100,6 +100,8 @@
   --tabs-shadow-size: 0px !important;                                                       /* sombras de pestaña */
   --tab-border-radius: 4px !important;                                                      /* forma de la pestaña */
   
+  --toolbar-start-end-padding: 5px !important;                                              /* Margen primer y ultimo icono de la toolbar*/
+  
   --arrowpanel-menuitem-padding: 8px !important;                                            /* menu mas pequeño */
   --arrowpanel-border-radius: 6px !important;                                               /* forma de los menús */
   --panel-subview-body-padding: 4px 0px !important;                                         /* Padding menús */
@@ -211,6 +213,8 @@
   --tab-min-height: var(--tab-height-personal) !important;                                  /* tamaño pestañas */
   --tabs-shadow-size: 0px !important;                                                       /* sombras de pestaña */
   --tab-border-radius: 4px !important;                                                      /* forma de la pestaña */
+  
+  --toolbar-start-end-padding: 5px !important;                                              /* Margen primer y ultimo icono de la toolbar*/
   
   --arrowpanel-menuitem-padding: 8px !important;                                            /* menu mas pequeño */
   --arrowpanel-border-radius: 6px !important;                                               /* forma de los menús */

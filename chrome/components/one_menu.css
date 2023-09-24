@@ -173,17 +173,26 @@
     
     :root:not([chromehidden~="toolbar"])[sizemode="maximized"]{
         
-    #appMenu-popup .subviewbutton:not(.subviewbutton-iconic, .toolbarbutton-text, [checked="true"])> .toolbarbutton-icon,   /* Mayoría de botones */
-    #appMenu-popup #appMenu-fxa-status2[fxastatus="signedin"] #appMenu-fxa-label2::before, #appMenu-popup #fxa-manage-account-button::before,             /* Account icon signedin */
-    #appMenu-popup #appMenu-fxa-status2:not([fxastatus="signedin"])::before,                                                               /* Account icon not signedin */
+    #appMenu-popup .subviewbutton:not(.subviewbutton-iconic, .toolbarbutton-text, [checked="true"])> .toolbarbutton-icon,                       /* Mayoría de botones */
+    #appMenu-popup #appMenu-fxa-status2[fxastatus="signedin"] #appMenu-fxa-label2::before, #appMenu-popup #fxa-manage-account-button::before,   /* Account icon signedin */
+    #appMenu-popup #appMenu-fxa-status2:not([fxastatus="signedin"])::before,                                                                    /* Account icon not signedin */
     #appMenu-popup #appMenu-zoom-controls:before, #appMenu-popup .syncNowBtn{           
-        width: 16px; height: 16px;   
+        width: 16px; height: 16px;
         margin-inline-start: var(--margin-left-icons-personal) !important;
         margin-inline-end: var(--margin-right-icons-personal) !important;
     }
     
-    #appMenu-popup .subviewbutton.subviewbutton-iconic:not(.subviewbutton-back){
+    #appMenu-popup .subviewbutton.subviewbutton-iconic:not(.subviewbutton-back) image{
         margin-inline-start: var(--margin-left-icons-personal) !important;
+    }
+
+    /* Margen-left en varios textos al lado de íconos */
+    .subviewbutton-iconic> .toolbarbutton-text, 
+    .subviewbutton[image]> .toolbarbutton-text, 
+    .subviewbutton[targetURI]> .toolbarbutton-text, 
+    .subviewbutton.bookmark-item > .toolbarbutton-text, 
+    .subviewbutton[checked="true"] > .toolbarbutton-text {
+        padding-inline-start: var(--margin-right-icons-personal) !important;
     }}
 
 /* Margin top en Cuenta no iniciada */

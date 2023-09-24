@@ -153,9 +153,11 @@ toolbarbutton.bookmark-item:not(.subviewbutton, [disabled="true"]):is([open],:ac
 
 /* margin-right ultimo botón de la nav-bar*/
 
+#PanelUI-button{ padding-inline-end: 0px !important; }
+
 #nav-bar-overflow-button,
 :root:not([chromehidden~="toolbar"],[sizemode="fullscreen"]) #nav-bar:not([nonemptyoverflow]) #nav-bar-customization-target > :is(toolbarbutton, toolbaritem):last-child{
-    margin-inline-end: 3px !important;
+    padding-inline-end: var(--toolbar-start-end-padding) !important;
 }
 
 /* Botones de: all-tabs and unified extensions */

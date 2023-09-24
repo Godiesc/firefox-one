@@ -5,13 +5,11 @@
 
 :root {
         --label-color: color-mix(in srgb, var(--arrowpanel-color, var(--lwt-tab-text))80%, var(--Button-background-personal));
-        --margin-left-icons-personal: 3px !important;
-        --margin-right-icons-personal: 6px !important;
     }
 
 /* Tamaño menu Open ventana no maximizada */
 
-#appMenu-popup panelview{ width: 26em !important;
+#appMenu-popup panelview{ width: 26.5em !important;
 }
 
 /* Color de íconos y label */
@@ -24,8 +22,29 @@
 
 /* Alinear lista de pestañas sincronizadas */
     
-.PanelUI-remotetabs-clientcontainer label {
-    padding-inline-start: 0px !important;
+.PanelUI-remotetabs-clientcontainer>.subviewbutton>label {
+    margin-inline-start: calc(0px - var(--margin-right-icons-personal)) !important;
+}
+
+/* Tamaño y margen de los íconos */
+
+.subviewbutton:not(.subviewbutton-iconic, .toolbarbutton-text, [checked="true"])> .toolbarbutton-icon,          /* Mayoría de botones */
+#appMenu-fxa-status2[fxastatus="signedin"] #appMenu-fxa-label2::before, #fxa-manage-account-button::before,     /* Account icon signedin */
+#appMenu-fxa-status2:not([fxastatus="signedin"])::before,                                                       /* Account icon not signedin */
+.panel-banner-item::before,                                                                                     /* Baner de actualización disponible */
+#appMenu-zoom-controls:before, .syncNowBtn{           
+    width: 16px; height: 16px;
+    margin-inline-start: 0px !important;
+    margin-inline-end: 8px !important;
+}
+
+/* Margen derecha de las funciones Ctrl + */
+
+#appMenu-new-tab-button2, #appMenuRecentlyClosedTabs, #sidebar-switcher-tabs, #appMenu-new-window-button2, #appMenuRecentlyClosedWindows,
+#appMenu-new-private-window-button2, #appMenu-downloads-button, #appMenu-library-downloads-button, #appMenu-extensions-themes-button,
+#appMenu-print-button2, #appMenu-save-file-button2, #appMenu-find-button2, #panelMenu_searchBookmarks, #appMenu-translate-button,
+#appMenu-quit-button2 {
+    padding-inline-end: 26px !important;
 }
 
 /* Ícono de Actualización disponible */
@@ -46,7 +65,7 @@
     background: var(--button-active-bgcolor) !important;
 }
     
-/* ----------------------------- ícono account - first ------------------------------ */
+/* ----------------------------- Ícono Account ------------------------------ */
     
 /* Cuenta no iniciada  */
 
@@ -71,49 +90,27 @@
     background-size: 16px !important;
     background-image: var(--avatar-image-url) !important;
 }
-                                                                            
-/* Tamaño y margen de los íconos */
-
-.subviewbutton:not(.subviewbutton-iconic, .toolbarbutton-text, [checked="true"])> .toolbarbutton-icon,          /* Mayoría de botones */
-#appMenu-fxa-status2[fxastatus="signedin"] #appMenu-fxa-label2::before, #fxa-manage-account-button::before,     /* Account icon signedin */
-#appMenu-fxa-status2:not([fxastatus="signedin"])::before,                                                       /* Account icon not signedin */
-.panel-banner-item::before,                                                                                     /* Baner de actualización disponible */
-#appMenu-zoom-controls:before, .syncNowBtn{           
-    width: 16px; height: 16px;   
-    margin-inline-start: 0px !important;
-    margin-inline-end: 7px !important;
-}
-
-/* Item -tamaño- */
-
-#appMenu-zoom-controls:before{
-    content: url(../images/zoom.svg);
-}
     
 /* Ícono Nueva Pestaña */
 
 #appMenu-new-tab-button2 {
     list-style-image: url("chrome://browser/skin/new-tab.svg");
-    padding-inline-end: 25px !important;
 }
 
 /* Ícono Nueva Ventana - PestañasCerradasRecientes */
 
 #appMenuRecentlyClosedTabs, #sidebar-switcher-tabs {
     list-style-image: url("chrome://browser/skin/window.svg");
-    padding-inline-end: 25px !important;
 }
 
 #appMenu-new-window-button2, #appMenuRecentlyClosedWindows {
     list-style-image: url("chrome://browser/skin/tab.svg");
-    padding-inline-end: 25px !important;
 }
 
 /* Ícono Ventana Privada */
 
 #appMenu-new-private-window-button2 {
     list-style-image: url("chrome://browser/skin/privateBrowsing.svg");
-    padding-inline-end: 25px !important;
 }
 
 /* Ícono Marcadores */
@@ -136,7 +133,6 @@
 
 #appMenu-downloads-button, #appMenu-library-downloads-button {
     list-style-image: url("chrome://browser/skin/downloads/downloads.svg");
-    padding-inline-end: 25px !important;
 }
 
 /* Ícono Contraseñas */
@@ -149,35 +145,36 @@
 
 #appMenu-extensions-themes-button {
     list-style-image: url("chrome://mozapps/skin/extensions/extension.svg");
-    padding-inline-end: 25px !important;
 }
 
 /* Ícono Imprimir */
 
 #appMenu-print-button2 {
     list-style-image: url("chrome://global/skin/icons/print.svg");
-    padding-inline-end: 25px !important;
 }
 
 /* Guardar como... */
 
 #appMenu-save-file-button2{
     list-style-image: url("../images/save.svg");
-    padding-inline-end: 25px !important;
 }
 
 /* Ícono buscar */
 
 #appMenu-find-button2, #panelMenu_searchBookmarks {
     list-style-image: url("chrome://global/skin/icons/search-glass.svg");
-    padding-inline-end: 25px !important;
 }
 
 /* Ícono translate */
 
 #appMenu-translate-button{
     list-style-image: url(chrome://browser/skin/translations.svg);
-    padding-inline-end: 25px !important;
+}
+
+/* Item -tamaño- */
+
+#appMenu-zoom-controls:before{
+    content: url(../images/zoom.svg);
 }
 
 /* Ícono Ajustes */
@@ -199,12 +196,12 @@
 
 #appMenu-quit-button2 {
     list-style-image: url("../images/quit1.svg");
-    padding-inline-end: 25px !important;
 }
+
 #appMenu-quit-button2:hover {
     list-style-image: url("../images/quit2.svg");
-    padding-inline-end: 25px !important;
 }
+
 #panelMenu_viewBookmarksToolbar {
     list-style-image: url("chrome://browser/skin/bookmarks-toolbar.svg");
 }

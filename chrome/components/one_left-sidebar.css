@@ -427,8 +427,8 @@
 /* ############################################ Nuevos margenes Botón menú ############################################ */
     
     :root {
-    --margin-left-icons-personal: calc(var(--my-vertical-toolbar-width) / 2 - 14px) !important;                                  /* Nuevo margen-left del ícono -menu- */
-    --margin-right-icons-personal: 10px !important;                                 /* Nuevo margen-left del ícono -menu- */
+    --margin-left-icons-personal: calc(var(--my-vertical-toolbar-width) / 2 - 14px) !important;     /* Nuevo margen-left del ícono -menu- */
+    --margin-right-icons-personal: 10px !important;                                                 /* Nuevo margen-left del ícono -menu- */
     }
 
     @media (-moz-platform: windows), (-moz-platform: linux) {

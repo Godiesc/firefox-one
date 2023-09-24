@@ -255,7 +255,7 @@ treechildren::-moz-tree-separator {
 /* Botón flecha atrás */
 
 .panel-header > .subviewbutton-back image{
-    margin-right: 1px !important;
+    margin-right: 2px !important;
 }
 
 .panel-header > .subviewbutton-back {
