@@ -49,7 +49,7 @@ findbar{
 .urlbarView-row[selected], .urlbarView-row[row-selectable]:not([selected]):hover {
     --urlbar-popup-url-color: #ffffff !important; 
     background-color: var(--autocomplete-popup-hover-background) !important;
-    color: #ffffff !important;
+    --link-color: #ffffff !important;
     border-radius: 0px !important;
 }
 
