@@ -38,6 +38,7 @@ menuseparator {
 menupopup:not(#PlacesToolbar) menupopup {
     appearance: none !important;
     margin-block-start: -9px !important;
+    margin-inline-start: -10px !important;
 }
 
 #permission-popup menupopup {
