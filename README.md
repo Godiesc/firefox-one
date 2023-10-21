@@ -88,7 +88,12 @@
 <table><tr>
     <td width="320px">firefoxone.image_in_menus</td>
     <td width="50px">true</td></tr>
-</table>   
+</table>
+<li><a href="https://github.com/Godiesc/firefox-one/tree/main/Previews#main-image">Main-image</a></li>
+<table><tr>
+    <td width="320px">firefoxone.main-image</td>
+    <td width="50px">true</td></tr>
+</table> 
 <li><a href="https://github.com/Godiesc/firefox-one/blob/main/Previews/README.md#rhythm-image-for-tab-with-sound">Rhythm image for tab with sound</a></li>
 <table><tr>
     <td width="320px">firefoxone.rhythm_sound_tab</td>
