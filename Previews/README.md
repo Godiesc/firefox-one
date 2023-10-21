@@ -63,6 +63,8 @@
     <td>true</td></tr>
 </table>
 
+<p>You need to use an image with the same width and at least 150px higher of the resolution of your monitor for a perfect align. The image taken for this config is: <code>chrome/images/newtab/wallpaper-dark.png</code> and <code>chrome/images/newtab/wallpaper-light.png</code></p>
+
 ![imagen](https://github.com/Godiesc/firefox-one/assets/22057609/aa08987f-cf41-4ec7-9f9e-a838a145a997)
 
 ## Rhythm image for tab with sound
