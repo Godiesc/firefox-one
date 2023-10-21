@@ -17,13 +17,13 @@
 
 @media (prefers-color-scheme: dark){ :root{
   --lwt-main-image:  url("../images/newtab/wallpaper-dark.png") !important;                       /* new-tab page image - dark theme */ 
-  --lwt-private-image:  url("../images/newtab/private-dark.png") !important;                      /* new-tab private-page image - dark theme */ 
-  --brightness-wallpaper: 90%;                                                                    /* darker wallpaper */                           }}
+  --lwt-private-image:  url("../images/newtab/private-dark.png") !important;                      /* new-tab private-page image - dark theme */
+  --brightness-wallpaper: #10101920;                                                              /* darker wallpaper */                           }}
   
 @media (prefers-color-scheme: light){ :root{
   --lwt-main-image:  url("../images/newtab/wallpaper-light.png") !important;                      /* new-tab page image - white theme*/
   --lwt-private-image:  url("../images/newtab/private-light.png") !important;                     /* new-tab private-page image - white theme*/ 
-  --brightness-wallpaper: 99%;                                                                    /* darker wallpaper */                           }}
+  --brightness-wallpaper: transparent;                                                            /* darker wallpaper */                           }}
 
 :root[privatebrowsingmode="temporary"]{ --general-color: var(--purple) !important; }              /* Accent color private mode */
   
@@ -36,11 +36,11 @@
 
   --my-vertical-toolbar-width: 48px ;                                                             /* Tamaño horizontal left-sidebar */
   
-  --left-color: var(--pink);                                                                      /* Color left wordmark */
-  --right-color: #0060bf ;                                                                        /* Color right wordmark */
+  --left-color: #19abf4;                                                                      /* Color left wordmark */
+  --right-color: #8b61c3 ;                                                                        /* Color right wordmark */
   
   --logo-wordmark-visibility: 1 ;                                                                 /* :1 visible, :0 invisible ; Logo-wordmark*/
-  --logo-wordmark-display: none ;                                                                 /* :none ->eliminar , :flex ->Mostrar;  Logo-wordmark*/
+  --logo-wordmark-display: flex ;                                                                 /* :none ->eliminar , :flex ->Mostrar;  Logo-wordmark*/
   --searchbar-on-off: 1 ;                                                                         /* :1 visible, :0 invisible ; searchbar*/
   --searchbar-display: flex ;                                                                     /* :none ->eliminar , :flex ->Mostrar; searchbar*/
   --orientation-display: block ;                                                                  /* :block -> vertical , :flex -> horizontal ; Logo-wordmark y searchbar*/
@@ -53,6 +53,21 @@
   --personal-blur: blur(14px) ;                                                                   /* Utilizado para personalizar newtab page */
   
   --gradient-colors: #d02f85 0%, #b336fc 8%, #3567fd 40%, #4e7afd 60%,#4e89fd 70%, #d02f85 100%;  /* For - selected_tab_gradient_border - config */
+}
+
+@supports -moz-bool-pref("firefoxone.main-image") {
+  
+  @media (prefers-color-scheme: dark){ :root{ --brightness-wallpaper: #10101930;                /* brightness */ }}
+  
+  @media (prefers-color-scheme: light){:root{ --brightness-wallpaper: #fafafa30;                /* brightness */ }}
+  
+  :root{  
+  --wallpaper-size: auto auto;                                                                  /* cover-> default ; auto auto -> to <<main-image>> config */    
+  --background-align-x: calc(100% + 4px);
+  --background-align-y: -84px ;                                                                 /* Alinear new-tab wallpaper to <<main-image>> config 
+                                                                                                  -84px ventana normal con left-sidebar ; 
+                                                                                                  -112px con Barra de Marcadores; */
+  }
 }
 
 @media (prefers-color-scheme: dark){

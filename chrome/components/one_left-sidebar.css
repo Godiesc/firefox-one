@@ -170,8 +170,7 @@
     
     /* Image in the left-sidebar in themes that use images */
 
-    :root:not([chromehidden~="toolbar"]):is([lwtheme-image]) #PersonalToolbar, 
-    :root:not([chromehidden~="toolbar"]):is([style*="--lwt-additional-images"]) #PersonalToolbar {
+    :root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) #PersonalToolbar {
         background-position: left top !important;
         background-size: cover !important;
     }

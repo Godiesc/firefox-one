@@ -49,7 +49,7 @@
     }
 }
 
-/* ______________________________ Image in menus in themes than use images ______________________________ */
+/* ___________________________________________ Image in menus ___________________________________________ */
 
 @supports -moz-bool-pref("firefoxone.image_in_menus") {
     
@@ -109,7 +109,7 @@
         }}}
 }
 
-/* __________________________________ Rhythm image for tab with sound __________________________________ */
+/* ______________________________________ Rhythm image for tab with sound _______________________________________ */
 
 @supports -moz-bool-pref("firefoxone.rhythm_sound_tab") {
     
@@ -151,4 +151,74 @@
                 margin-inline-start: 5px !important;
                 margin-block-start: calc(var(--tab-height-personal)/2 + 2px)  !important;
                 }}}
+}
+
+/* ____________________________________________ Main-Image config ____________________________________________ */
+
+@supports -moz-bool-pref("firefoxone.main-image") {
+
+/* Sombra en la pestaña activa  eleminada */
+    :root:not([lwtheme-image],[style*="--lwt-additional-images"]) .tabbrowser-tab[selected="true"]:not([multiselected]) .tab-stack {
+            box-shadow: none !important; }
+    
+/* Borde en la pestaña activa - temas solidos y con imágenes */
+    tab[selected] .tab-background{
+        outline: 1px solid var(--identity-tab-color, var(--button-active-bgcolor)) !important;
+        outline-offset: -1px !important;
+        }
+
+/* Alineamos la imagen correctamente cuando se usa left-sidebar */
+@supports not -moz-bool-pref("firefoxone.style_without_leftsidebar") {
+    #PersonalToolbar,
+    :root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) #PersonalToolbar{
+        background-position: right top, right top, left -2px, left top !important;
+        background-size: auto auto !important;
+    }}
+
+@media (prefers-color-scheme: dark){ 
+    :root,
+    :root:is([brighttext]):-moz-lwtheme,
+    :root[lwt-toolbar-field-focus-brighttext],
+    :root:-moz-lwtheme{
+    
+  --toolbar-field-background-color: transparent !important;                                                      /* toolbar_field */
+  --toolbar-field-border-color: transparent !important;                                                          /* toolbar_field_border */
+  --lwt-selected-tab-background-color: var(--toolbarbutton-hover-background) !important;                         /* tab_selected */
+  --toolbar-field-focus-background-color: color-mix(in srgb, var(--general-color) 4%, #2e273ff7) !important;     /* toolbar_field_focus */
+  --toolbarbutton-hover-background: color-mix(in srgb, 
+    transparent 88%, color-mix(in srgb, var(--lwt-tab-text) 68%, var(--general-color)) ) !important;             /* button_background_hover */
+  --toolbarbutton-active-background: color-mix(in srgb, 
+    transparent 88%, color-mix(in srgb, var(--lwt-tab-text) 90%, var(--general-color)) ) !important;             /* button_background_active */
+  --toolbarbutton-hover-personal: var(--toolbarbutton-hover-background) !important;                              /* Button :hover color personal */
+  --lwt-background-alignment: left top, left top, left top !important;
+  --lwt-header-image: var(--lwt-main-image) !important; 
+  --lwt-additional-images: var(--lwt-main-image) !important;
+
+  tab[selected] .tab-background, #nav-bar, findbar, #PersonalToolbar{
+        --toolbar-bgcolor: #10101940 !important;                                                                 /* toolbar */
+        }
+    }}
+  
+@media (prefers-color-scheme: light){
+    :root,
+    :root:not([lwtheme-brighttext="true"]),
+    :root:-moz-lwtheme{
+
+  --toolbar-field-background-color: transparent !important;                                                      /* toolbar_field */
+  --toolbar-field-border-color: transparent !important;                                                          /* toolbar_field_border */
+  --lwt-selected-tab-background-color: var(--toolbarbutton-hover-background) !important;                         /* tab_selected */
+  --toolbar-field-focus-background-color: color-mix(in srgb, var(--general-color) 14%, #f9f9f9f7) !important;    /* toolbar_field_focus */
+  --toolbarbutton-hover-background: color-mix(in srgb, 
+    transparent 88%, color-mix(in srgb, var(--lwt-tab-text) 68%, var(--general-color)) ) !important;             /* button_background_hover */
+  --toolbarbutton-active-background: color-mix(in srgb, 
+    transparent 78%, color-mix(in srgb, var(--lwt-tab-text) 58%, var(--general-color)) ) !important;             /* button_background_active */
+  --toolbarbutton-hover-personal: var(--toolbarbutton-hover-background) !important;                              /* Button :hover color personal */
+  --lwt-background-alignment: right top, left top, left top !important;
+  --lwt-header-image: var(--lwt-main-image) !important; 
+  --lwt-additional-images: var(--lwt-main-image) !important;
+
+  tab[selected] .tab-background, #nav-bar, findbar, #PersonalToolbar{
+        --toolbar-bgcolor: #ffffff40 !important;                                                                 /* toolbar */
+    }
+  }}
 }

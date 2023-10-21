@@ -89,15 +89,25 @@ toolbar #firefox-view-button[aria-pressed="true"]:hover .toolbarbutton-icon {
     }
 }
 
-/* Imagen en pestaña */
+/* color Pestaña activa */
+
+tab[selected] .tab-background{
+    --toolbar-bgcolor: var(--lwt-selected-tab-background-color) !important;
+    background-image: linear-gradient(var(--toolbar-bgcolor), var(--toolbar-bgcolor)),
+                      linear-gradient(var(--toolbar-bgcolor), var(--toolbar-bgcolor)),
+                      var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
+    background-position: initial, initial, left top, right top, right top !important;
+    background-repeat: repeat, repeat, var(--lwt-background-tiling) !important;
+    background-size: var(--display-theme-with-images) !important; 
+    z-index: 1 !important;
+}
+
+/* Imagen en pestaña activa */
 
 :root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) tab[selected] .tab-background{
     background-image: linear-gradient(var(--toolbar-bgcolor), var(--toolbar-bgcolor)),
                       linear-gradient(var(--toolbar-bgcolor), var(--toolbar-bgcolor)), 
                       var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
-    background-position: initial, initial, left top, right top, right top !important;
-    background-repeat: repeat, repeat, var(--lwt-background-tiling) !important;
-    background-size: var(--display-theme-with-images) !important; 
     outline: 1px solid var(--identity-tab-color, var(--button-active-bgcolor)) !important;
     outline-offset: -1px !important;
     z-index: 1 !important;
@@ -128,7 +138,7 @@ toolbar #firefox-view-button[aria-pressed="true"]:hover .toolbarbutton-icon {
     outline-offset: -1px !important;
 }
 
-/* Mantener una imagen al mover pestaña en temas con imagenes */
+/* Mantener una imagen al mover pestaña en temas con imagenes 
 
 :root:is([lwtheme-image], [style*="--lwt-additional-images"]) 
     #tabbrowser-tabs:is([movingtab]) > #tabbrowser-arrowscrollbox > .tabbrowser-tab > .tab-stack > .tab-background[selected="true"]{
@@ -138,7 +148,7 @@ toolbar #firefox-view-button[aria-pressed="true"]:hover .toolbarbutton-icon {
     background-position: left top, right top, left center !important;
     background-repeat: no-repeat !important;
     background-size: auto auto !important;
-}
+}*/
 
 /* Multiselected tabs */
 
@@ -331,11 +341,11 @@ spacer{
 
 /* Nav-bar */
 
-:root:not([chromehidden~="toolbar"]):is([style*="--lwt-additional-images"],[lwtheme-image]) #nav-bar{
+#nav-bar{
     background-image: linear-gradient(var(--toolbar-bgcolor, transparent), var(--toolbar-bgcolor, transparent)),
                       linear-gradient(var(--toolbar-bgcolor), var(--toolbar-bgcolor)), 
                       var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
-    background-position: right top, right top, calc(100% + 4px) calc(-2px - var(--toolbar-height-personal)), left calc(-2px - var(--toolbar-height-personal)) !important;
+    background-position: right top, right top, calc(100% + 4px) calc(-4px - var(--toolbar-height-personal)), left calc(-4px - var(--toolbar-height-personal)) !important;
     background-repeat: repeat, repeat, var(--lwt-background-tiling) !important;
     background-size: auto !important; 
     outline: 1px solid #50505040 !important;
@@ -344,7 +354,7 @@ spacer{
 
 /* Bookmark-bar */
 
-:root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) #PersonalToolbar {
+#PersonalToolbar {
     background-image: linear-gradient(var(--toolbar-bgcolor, transparent), var(--toolbar-bgcolor, transparent)),
                       linear-gradient(var(--toolbar-bgcolor), var(--toolbar-bgcolor)), 
                       var(--lwt-header-image, var(--lwt-additional-images, none)) !important;

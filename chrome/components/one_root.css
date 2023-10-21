@@ -122,7 +122,8 @@
   --urlbar-popup-url-color: #96ddff !important;                                             /* Color urls de sujerencias de búsqueda */
   --autocomplete-popup-hover-background: var(--general-color) !important;                   /* Color hover de sujerencias de búsqueda */
   --autocomplete-popup-separator-color: transparent !important;                             /* color separador urlbar y sugerencias de búsqueda */
-  --link-color: var(--general-color) !important;                                            /* Color links urlbar open */
+  --link-color: color-mix(in srgb, 
+    var(--general-color) 70%, var(--lwt-tab-text)) !important;                              /* Color links urlbar open */
   
   scrollbar-color: #38375580 #18173530 !important;                                          /* Colores - Barra de deplazamiento */
   --shield-icon-personal: url("../images/shield-enable.svg") !important;                    /* Ícono protección contra rastreo */
@@ -241,7 +242,8 @@
   scrollbar-color: #d8d9da var(--toolbar-bgcolor) !important;                               /* Colores - Barra de deplazamiento */
   --shield-icon-personal: url("../images/shield-enable.svg") !important;                    /* Ícono protección contra rastreo */
   --noise-urlbar-personal: url("../images/urlbar-noise-light.png") !important;              /* imagen de desenfoque urlbar open */
-  --link-color: var(--general-color) !important;                                            /* Color links urlbar open */
+  --link-color: color-mix(in srgb, 
+    var(--general-color) 70%, var(--lwt-tab-text)) !important;                              /* Color links urlbar open */
   
   
   --button-primary-bgcolor: var(--general-color) !important;                                /* ColorBotónGuardar */   

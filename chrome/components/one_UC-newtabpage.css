@@ -82,25 +82,22 @@
     
 /*------------------------fondo (imagen), Logo y Wordmark------------------------*/
     
-#root{
-    background: var(--lwt-main-image) no-repeat right top fixed !important;
-    background-size:  var(--wallpaper-size) !important;
-    background-position-y: var(--background-align-y) !important;
-    border-radius: 8px !important;
-    filter: brightness(var(--brightness-wallpaper)) !important;
-    }
-    
 body{
+    background-image: linear-gradient(var(--brightness-wallpaper), var(--brightness-wallpaper)),
+                      linear-gradient(var(--brightness-wallpaper), var(--brightness-wallpaper)), 
+                      var(--lwt-main-image) !important;
+    background-size:  var(--wallpaper-size) !important;
+    background-position-x: var(--background-align-x) !important;
+    background-position-y: var(--background-align-y) !important;
+    background-attachment: fixed;
     border-radius: 8px !important;
-    filter: none !important;
-    backdrop-filter: none !important;
-    }  
+    }
 
 .logo{
-    background: url("../images/foxlogo1.png") no-repeat !important;
+    background: url("../images/foxlogo.svg") no-repeat !important;
     background-size: cover !important;
-    height: 90px !important;
-    width: 100px !important;
+    height: 70px !important;
+    width: 70px !important;
     Opacity: var(--logo-wordmark-visibility) !important;
     display: var(--logo-wordmark-display) !important;
     -moz-context-properties: fill !important;

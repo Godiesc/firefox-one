@@ -3,7 +3,7 @@
 
 /*---------------------------------library ----------------------------------*/
 
-@-moz-document url(chrome://browser/content/places/places.xhtml) {
+@-moz-document url(chrome://browser/content/places/places.xhtml) , url(chrome://browser/content/webext-panels.xhtml){
     @media (prefers-color-scheme: dark){
         :root{
         --arrowpanel-background: #1c1726 !important;
@@ -22,12 +22,13 @@
         --organizer-pane-background: #f9f9f9 !important;
         --organizer-border-color:#cdcdcd !important;
         --organizer-pane-background2: color-mix(in srgb, var(--organizer-pane-background) 94%, black) !important;
-        --contrast-color: white !important;
         --organizer-color: black !important;
     }}
     /* ---------------- Borde contextual - menu ------------------ */
     .menupopup-arrowscrollbox{
-    box-shadow: 0px 0px 0 1px var(--border-contrast-color) !important;
+        background-color: var(--arrowpanel-background) !important;
+        border-color: var(--organizer-border-color) !important;
+        box-shadow: 0px 0px 0 1px var(--border-contrast-color) !important;
     }
     /* -------------- Border color to "nombre"-"Etiquetas"-"Dirección" -------------- */
     treecol, treecolpicker {
