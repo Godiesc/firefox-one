@@ -57,6 +57,14 @@
 
 ![ImageInMenus](https://github.com/Godiesc/firefox-one/assets/22057609/216af894-f35f-418a-b309-81a9e703929e)
 
+## Main image
+<table><tr>
+    <td>firefoxone.main-image</td>
+    <td>true</td></tr>
+</table>
+
+![imagen](https://github.com/Godiesc/firefox-one/assets/22057609/aa08987f-cf41-4ec7-9f9e-a838a145a997)
+
 ## Rhythm image for tab with sound
 <table><tr>
     <td>firefoxone.rhythm_sound_tab</td>
