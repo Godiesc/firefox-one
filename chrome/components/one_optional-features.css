@@ -162,10 +162,11 @@
             box-shadow: none !important; }
     
 /* Borde en la pestaña activa - temas solidos y con imágenes */
+    @media not (-moz-bool-pref:"firefoxone.selected_tab_gradient_border"){
     tab[selected] .tab-background{
         outline: 1px solid var(--identity-tab-color, var(--button-active-bgcolor)) !important;
         outline-offset: -1px !important;
-        }
+        }}  
 
 /* Alineamos la imagen correctamente cuando se usa left-sidebar */
 @media not (-moz-bool-pref:"firefoxone.style_without_leftsidebar") {
