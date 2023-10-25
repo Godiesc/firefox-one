@@ -341,11 +341,11 @@ spacer{
 
 /* Nav-bar */
 
-#nav-bar{
+:root:not([chromehidden~="toolbar"]):is([style*="--lwt-additional-images"],[lwtheme-image]) #nav-bar{
     background-image: linear-gradient(var(--toolbar-bgcolor, transparent), var(--toolbar-bgcolor, transparent)),
                       linear-gradient(var(--toolbar-bgcolor), var(--toolbar-bgcolor)), 
                       var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
-    background-position: right top, right top, calc(100% + 4px) calc(-4px - var(--toolbar-height-personal)), left calc(-4px - var(--toolbar-height-personal)) !important;
+    background-position: right top, right top, calc(100% + 4px) calc(-2px - var(--toolbar-height-personal)), left calc(-2px - var(--toolbar-height-personal)) !important;
     background-repeat: repeat, repeat, var(--lwt-background-tiling) !important;
     background-size: auto !important; 
     outline: 1px solid #50505040 !important;
@@ -354,7 +354,7 @@ spacer{
 
 /* Bookmark-bar */
 
-#PersonalToolbar {
+:root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) #PersonalToolbar {
     background-image: linear-gradient(var(--toolbar-bgcolor, transparent), var(--toolbar-bgcolor, transparent)),
                       linear-gradient(var(--toolbar-bgcolor), var(--toolbar-bgcolor)), 
                       var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
