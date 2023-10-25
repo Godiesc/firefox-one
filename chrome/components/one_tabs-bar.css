@@ -3,7 +3,7 @@
 
 /* "tab_line": "#126e82" */
 
-@supports not -moz-bool-pref("firefoxone.without-default-colors") {
+@media not (-moz-bool-pref:"firefoxone.without-default-colors") {
     #tabbrowser-tabs {
         --lwt-tab-line-color: transparent !important;
     }}
@@ -83,7 +83,7 @@ toolbar #firefox-view-button[aria-pressed="true"]:hover .toolbarbutton-icon {
     z-index: 1 !important;
 }
 
-@supports -moz-bool-pref("firefoxone.without-default-colors") {
+@media (-moz-bool-pref:"firefoxone.without-default-colors") {
     :root:not([lwtheme-image],[style*="--lwt-additional-images"]) .tabbrowser-tab[selected="true"]:not([multiselected]) .tab-stack {
         box-shadow: none !important;
     }
@@ -115,7 +115,7 @@ tab[selected] .tab-background{
 
 /* no Outline color in this config */
 
-@supports -moz-bool-pref("firefoxone.without-default-colors") {
+@media (-moz-bool-pref:"firefoxone.without-default-colors") {
 :root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) tab[selected] .tab-stack{
     outline: none !important;
     }}
@@ -126,7 +126,7 @@ tab[selected] .tab-background{
     background-color: var(--lwt-selected-tab-background-color) !important;
 }
 
-@supports -moz-bool-pref("firefoxone.without-default-colors") {
+@media (-moz-bool-pref:"firefoxone.without-default-colors") {
     #tabbrowser-tabs:is([movingtab]) .tabbrowser-tab[selected="true"] .tab-content{
     background-color: initial !important;
     }
@@ -387,7 +387,7 @@ spacer{
                 !important;
 }
 
-@supports not -moz-bool-pref("firefoxone.tree_tabs_style") {
+@media not (-moz-bool-pref:"firefoxone.tree_tabs_style") {
 
 /* ________________________________________________________ Menubar ______________________________________________________ */
 
@@ -455,7 +455,7 @@ spacer{
 }
     
 /* Border in -non default colors- config - solid themes */
-@supports -moz-bool-pref("firefoxone.without-default-colors") {
+@media (-moz-bool-pref:"firefoxone.without-default-colors") {
     #main-menubar{
           box-shadow: inset 0 1px 0 0 var(--lwt-frame), inset 0 1px 0 0 var(--lwt-frame),inset 0 1px 0 0 var(--lwt-frame),
                       inset 0px -1px 0 0  #50505040,  /* abajo */

@@ -55,7 +55,7 @@
   --gradient-colors: #d02f85 0%, #b336fc 8%, #3567fd 40%, #4e7afd 60%,#4e89fd 70%, #d02f85 100%;  /* For - selected_tab_gradient_border - config */
 }
 
-@supports -moz-bool-pref("firefoxone.main-image") {
+@media (-moz-bool-pref:"firefoxone.main-image") {
   
   @media (prefers-color-scheme: dark){ :root{ --brightness-wallpaper: #10101930;                /* brightness */ }}
   

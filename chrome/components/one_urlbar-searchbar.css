@@ -218,7 +218,7 @@ findbar{
     pointer-events: none;
 }
 
-@supports -moz-bool-pref("firefoxone.without-default-colors") {
+@media (-moz-bool-pref:"firefoxone.without-default-colors") {
     #nav-bar, #PersonalToolbar, findbar {
     outline: 1px solid color-mix(in srgb, var(--toolbar-bgcolor) 96%, var(--lwt-tab-text)) !important;
     outline-offset: -1px !important;

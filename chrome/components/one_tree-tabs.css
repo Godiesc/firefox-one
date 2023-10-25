@@ -2,7 +2,7 @@
    https://github.com/Godiesc/firefox-one */
 
 
-@supports -moz-bool-pref("firefoxone.tree_tabs_style") {
+@media (-moz-bool-pref:"firefoxone.tree_tabs_style") {
     
 /* ##################################### Controles de ventana ##################################### */
 
@@ -115,7 +115,7 @@ See the above repository for updates as well as full license text. */
 
 /* Use this pref to check Mac OS where window controls are on left */
 /* This pref defaults to true on Mac and doesn't actually do anything on other platforms. So if your system has window controls on LEFT side you can set the pref to true */
-@supports -moz-bool-pref("layout.css.osx-font-smoothing.enabled"){
+@media (-moz-bool-pref:"layout.css.osx-font-smoothing.enabled"){
   :root:is([tabsintitlebar], [sizemode="fullscreen"]) {
     --uc-window-control-width: 72px;
   }
@@ -203,7 +203,7 @@ Window controls will be all wrong without it
 }
     
 /* Border in -non default colors- config - solid themes */
-@supports -moz-bool-pref("firefoxone.without-default-colors") {
+@media (-moz-bool-pref:"firefoxone.without-default-colors") {
     #main-menubar{
           box-shadow: inset 0 1px 0 0 var(--lwt-frame), inset 0 1px 0 0 var(--lwt-frame),inset 0 1px 0 0 var(--lwt-frame),
                       inset 0px -1px 0 0  #50505040,  /* abajo */
@@ -413,7 +413,7 @@ Window controls will be all wrong without it
 
 /* Tree-tabs without left-sidebar */
 
-@supports -moz-bool-pref("firefoxone.style_without_leftsidebar") {
+@media (-moz-bool-pref:"firefoxone.style_without_leftsidebar") {
 
     :root:not([chromehidden~="toolbar"]) #PanelUI-button, 
     :root:not([chromehidden~="toolbar"])[inFullscreen] #PanelUI-button { left: 7px !important; }

@@ -2,7 +2,7 @@
    https://github.com/Godiesc/firefox-one */
 
 
-@supports not -moz-bool-pref("firefoxone.without-default-colors") {
+@media not (-moz-bool-pref:"firefoxone.without-default-colors") {
   
   @media (prefers-color-scheme: dark){
     :root:is([brighttext]):-moz-lwtheme,
