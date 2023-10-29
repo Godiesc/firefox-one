@@ -341,29 +341,33 @@ spacer{
 
 /* Nav-bar */
 
-:root:not([chromehidden~="toolbar"]):is([style*="--lwt-additional-images"],[lwtheme-image]) #nav-bar{
+#nav-bar{
     background-image: linear-gradient(var(--toolbar-bgcolor, transparent), var(--toolbar-bgcolor, transparent)),
                       linear-gradient(var(--toolbar-bgcolor), var(--toolbar-bgcolor)), 
                       var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
     background-position: right top, right top, calc(100% + 4px) calc(-4px - var(--toolbar-height-personal)), left calc(-4px - var(--toolbar-height-personal)) !important;
     background-repeat: repeat, repeat, var(--lwt-background-tiling) !important;
     background-size: auto !important; 
-    outline: 1px solid #50505040 !important;
-    outline-offset: -1px !important;
 }
 
 /* Bookmark-bar */
 
-:root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) #PersonalToolbar {
+#PersonalToolbar {
     background-image: linear-gradient(var(--toolbar-bgcolor, transparent), var(--toolbar-bgcolor, transparent)),
                       linear-gradient(var(--toolbar-bgcolor), var(--toolbar-bgcolor)), 
                       var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
     background-position: right top, right top, calc(100% + 4px) calc(-2px - var(--toolbar-height-personal)*2), left calc(-2px - var(--toolbar-height-personal)*2) !important;
     background-repeat: repeat, repeat, var(--lwt-background-tiling) !important;
     background-size: auto, auto, var(--display-theme-with-images) !important; 
-    outline: 1px solid #50505040 !important;
-    outline-offset: -1px !important;
 }
+
+/* Outline border solo en temas que usas imágenes */
+
+:root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]){
+    #PersonalToolbar, #nav-bar{
+        outline: 1px solid #50505040 !important;
+        outline-offset: -1px !important;
+    }}
 
 /* ################################################## Menu-bar sin Tree-tab style ######################################################*/
 
