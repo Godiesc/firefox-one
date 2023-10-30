@@ -82,14 +82,13 @@
     
 /*------------------------fondo (imagen), Logo y Wordmark------------------------*/
     
-body{
-    background-image: linear-gradient(var(--brightness-wallpaper), var(--brightness-wallpaper)),
-                      linear-gradient(var(--brightness-wallpaper), var(--brightness-wallpaper)), 
-                      var(--lwt-main-image) !important;
-    background-size:  var(--wallpaper-size) !important;
+#root{
+    background: linear-gradient(var(--brightness-wallpaper), var(--brightness-wallpaper)),
+                linear-gradient(var(--brightness-wallpaper), var(--brightness-wallpaper)), 
+                var(--lwt-main-image) no-repeat right top !important;
+    background-size: var(--wallpaper-size) !important;
     background-position-x: var(--background-align-x) !important;
     background-position-y: var(--background-align-y) !important;
-    background-attachment: fixed;
     border-radius: 8px !important;
     }
 
@@ -159,8 +158,11 @@ main {
 
 /* Color de borde del radio-button en "Personalizar" */
     
-.home-section .section .slider {border-color: transparent !important;}
-.home-section .section .slider:hover {background-color: var(--button-hover-bgcolor) !important;}
+.toggle-button {
+  --toggle-background-color-pressed: var(--button-active-bgcolor) !important;
+  --toggle-background-color-pressed-hover: var(--button-hover-bgcolor) !important;
+  --toggle-background-color-pressed-active: var(--general-color) !important;
+    }
 
 /* Colores al "editar" un sitio anclado */
     

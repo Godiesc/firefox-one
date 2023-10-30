@@ -172,7 +172,7 @@
 @media not (-moz-bool-pref:"firefoxone.style_without_leftsidebar") {
     #PersonalToolbar,
     :root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) #PersonalToolbar{
-        background-position: right top, right top, left -2px, left top !important;
+        background-position: -4px -2px !important;
         background-size: auto auto !important;
     }}
 
