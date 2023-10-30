@@ -85,12 +85,18 @@
 #root{
     background: linear-gradient(var(--brightness-wallpaper), var(--brightness-wallpaper)),
                 linear-gradient(var(--brightness-wallpaper), var(--brightness-wallpaper)), 
-                var(--lwt-main-image) no-repeat right top !important;
-    background-size: var(--wallpaper-size) !important;
-    background-position-x: var(--background-align-x) !important;
+                var(--lwt-main-image) no-repeat right top fixed !important;
+    background-size:  var(--wallpaper-size) !important;
     background-position-y: var(--background-align-y) !important;
     border-radius: 8px !important;
+    filter: brightness(99%) !important;
     }
+    
+body{
+    border-radius: 8px !important;
+    filter: none !important;
+    backdrop-filter: none !important;
+    }  
 
 .logo{
     background: url("../images/foxlogo.svg") no-repeat !important;
