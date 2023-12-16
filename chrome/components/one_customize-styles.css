@@ -6,36 +6,32 @@
 /*"Color de fondo e íconos en "Perzonalizar barra de herramientas"*/
 #customization-container {color: var(--lwt-text-color) !important; background-color: var(--toolbar-bgcolor) !important;} 
 
-.customizationmode-button {
+#customization-footer .footer-button:not(#customization-done-button,:hover,:active,[open]) {
     appearance: none !important;
     background-color: var(--toolbarbutton-hover-personal) !important;
     border-color: var(--toolbarbutton-hover-personal) !important;
     color: var(--lwt-tab-text) !important;
-    border-radius: var(--toolbarbutton-border-radius) !important;
-    padding: 2px 8px !important;
 }
-.customizationmode-button:is(:active, :hover):not([disabled]), .customizationmode-button[open], .customizationmode-button[checked] {
-    appearance: none !important;
-    background-color: var(--button-active-bgcolor) !important;
-    border-color: var(--button-active-bgcolor) !important;
-    color: white !important;
-}
+
 #customization-done-button {
     appearance: none !important;
-    color: white !important;
-    border-color: var(--button-active-bgcolor) !important;
-    background-color: var(--button-active-bgcolor) !important;
+    color: var(--lwt-tab-text) !important;
+    border-color: var(--button-hover-bgcolor) !important;
+    background-color: var(--button-hover-bgcolor) !important;
     padding: 2px 24px !important;
 }
+
+#customization-footer .footer-button:is([open]), 
 #customization-done-button:is(:active, :hover):not([disabled]) {
     appearance: none !important;
-    color: white !important;
-    background-color: var(--button-hover-bgcolor) !important;
-    border-color: var(--button-hover-bgcolor) !important;
+    color: var(--lwt-tab-text) !important;
+    background-color: var(--button-active-bgcolor) !important;
+    border-color: var(--button-active-bgcolor) !important;
 }
+
 /* Menú de desbordamiento*/
 .panel-arrowcontent { border-radius: 12px !important; margin-right: 0px !important; padding-right: 0px !important; }
 #customization-panel-container{  padding-right: 2px !important; }
 #customization-panelWrapper > .panel-arrowbox > .panel-arrow[side="top"] {
-    margin-inline-end: calc(var(--panel-arrow-offset) - var(--customization-panel-padding) + 6px) !important; 
+    margin-inline-end: calc(var(--panel-arrow-offset) - var(--customization-panel-padding) + 10px) !important; 
 }

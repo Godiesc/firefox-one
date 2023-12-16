@@ -86,7 +86,7 @@ menupopup > menuitem:is([disabled="true"]):hover {
 
 /* Necesario para quitar glitch indeseado al mover el mouse sobre items inhabilitados */
 
-menupopup > menuitem:is([disabled="true"]), menupopup > menu:is([disabled="true"]) {
+menupopup > menuitem:is([disabled="true"]), menupopup > menu:is([disabled="true"]), #context-navigation > menuitem:not([selected="true"]){
     /*display: none !important;*/
     appearance: none !important;
     background-color: transparent !important;

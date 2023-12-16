@@ -138,18 +138,6 @@ tab[selected] .tab-background{
     outline-offset: -1px !important;
 }
 
-/* Mantener una imagen al mover pestaña en temas con imagenes 
-
-:root:is([lwtheme-image], [style*="--lwt-additional-images"]) 
-    #tabbrowser-tabs:is([movingtab]) > #tabbrowser-arrowscrollbox > .tabbrowser-tab > .tab-stack > .tab-background[selected="true"]{
-    background-image: linear-gradient(transparent, transparent), 
-                      linear-gradient(var(--toolbar-bgcolor, transparent), var(--toolbar-bgcolor, transparent)), 
-                      var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
-    background-position: left top, right top, left center !important;
-    background-repeat: no-repeat !important;
-    background-size: auto auto !important;
-}*/
-
 /* Multiselected tabs */
 
 .tabbrowser-tab[multiselected]:is([selected]) :is(.tab-stack, .tab-content, .tab-background){
@@ -345,7 +333,7 @@ spacer{
     background-image: linear-gradient(var(--toolbar-bgcolor, transparent), var(--toolbar-bgcolor, transparent)),
                       linear-gradient(var(--toolbar-bgcolor), var(--toolbar-bgcolor)), 
                       var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
-    background-position: right top, right top, calc(100% + 4px) calc(-4px - var(--toolbar-height-personal)), left calc(-4px - var(--toolbar-height-personal)) !important;
+    background-position: right top, right top, right calc(-4px - var(--toolbar-height-personal)), left calc(-4px - var(--toolbar-height-personal)) !important;
     background-repeat: repeat, repeat, var(--lwt-background-tiling) !important;
     background-size: auto !important; 
 }
@@ -356,7 +344,7 @@ spacer{
     background-image: linear-gradient(var(--toolbar-bgcolor, transparent), var(--toolbar-bgcolor, transparent)),
                       linear-gradient(var(--toolbar-bgcolor), var(--toolbar-bgcolor)), 
                       var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
-    background-position: right top, right top, calc(100% + 4px) calc(-2px - var(--toolbar-height-personal)*2), left calc(-2px - var(--toolbar-height-personal)*2) !important;
+    background-position: right top, right top, right calc(-6px - var(--toolbar-height-personal)*2), left calc(-6px - var(--toolbar-height-personal)*2) !important;
     background-repeat: repeat, repeat, var(--lwt-background-tiling) !important;
     background-size: auto, auto, var(--display-theme-with-images) !important; 
 }
@@ -364,7 +352,7 @@ spacer{
 /* Outline border solo en temas que usas imágenes */
 
 :root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]){
-    #PersonalToolbar, #nav-bar{
+    #nav-bar, #PersonalToolbar{
         outline: 1px solid #50505040 !important;
         outline-offset: -1px !important;
     }}

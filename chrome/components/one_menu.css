@@ -4,11 +4,11 @@
 @media (-moz-platform: windows), (-moz-platform: linux) {
     :root {
         --label-color: color-mix(in srgb, var(--arrowpanel-color, var(--lwt-tab-text))80%, var(--Button-background-personal));
-        --margin-left-icons-personal: 2px !important;
+        --margin-left-icons-personal: 0px !important;
         --margin-right-icons-personal: 6px !important;
         --margin-left-separators: calc(var(--margin-left-icons-personal) + var(--margin-right-icons-personal) + 22px) !important;
         --menu-label: "" ;
-        --padding-left-tab: 32px;
+        --padding-left-tab: 40px ;
     }
 
 /* ------------Menú hamburguesa-> top-left ------------- */
@@ -19,7 +19,9 @@
         position: fixed;
         display: flex;
         top: var(--windowed-top-padding, 0px);
+        left: 0 !important;
         z-index: 2 !important;
+        height: calc(var(--tab-height-personal) + var(--tab-block-margin) * 2) !important;
     }
     
 /* Tamaño menu [Open] - ventana maximizada y no maximizada*/
@@ -42,22 +44,15 @@
 /* margen izquierda pestañas*/
     
     :root:not([chromehidden~="toolbar"]) #toolbar-menubar, :root:not([chromehidden~="toolbar"]) #toolbar-menubar[autohide="true"]+#TabsToolbar {
-        padding-inline-start: calc(var(--padding-left-tab) + 8px) !important;
+        padding-inline-start: var(--padding-left-tab) !important;
     }
     
 /* tamaño botón Menú */
     
     :root:not([chromehidden~="toolbar"]) #PanelUI-menu-button {
-        padding: 0px !important;
-        height: calc(var(--tab-height-personal) + var(--tab-block-margin) * 2) !important;
+        padding-inline: 4px !important;
     }
-    
-    :root:not([chromehidden~="toolbar"]) #PanelUI-menu-button>.toolbarbutton-badge-stack {
-        height: calc(var(--tab-height-personal) + var(--tab-block-margin) / 2) !important;
-        width: var(--padding-left-tab) !important;
-        padding-inline: 2px !important;
-    }
-    
+
 /* menu :hover y open */
 
     :root:not([chromehidden~="toolbar"]) #PanelUI-menu-button:not([open]):hover>.toolbarbutton-badge-stack {
@@ -68,9 +63,11 @@
     :root:not([chromehidden~="toolbar"],[sizemode="normal"],[sizemode="fullscreen"]) 
         #PanelUI-menu-button[open]>.toolbarbutton-badge-stack {
             --menu-label: "Menu" ;
-            --padding-left-tab: 74px;
-            background-image: var(--noise-urlbar-personal) !important;
-            background-color: var(--arrowpanel-background, #50505090) !important;
+            min-height: calc(var(--tab-height-personal) + 4px) !important; /* Sirve para alinear al cambiar the height de pestañas */
+            max-height: calc(var(--tab-height-personal) + 4px) !important;
+            background-image: var(--noise-urlbar-personal, var(--noise-urlbar-personal, none)),
+                          linear-gradient(var(--arrowpanel-background), var(--arrowpanel-background)),
+                          linear-gradient(var(--arrowpanel-background), var(--arrowpanel-background)) !important;
             /* Simula el borde que falta al botón menú open */
             outline: 1px solid var(--arrowpanel-border-color) !important;
             outline-offset: -1px !important;
@@ -86,43 +83,42 @@
     :root:not([chromehidden~="toolbar"]) #PanelUI-menu-button image {
         height: 18px !important;
         width: 18px !important;
-        margin-inline: 5px !important;
+    }
+    
+    :root:not([chromehidden~="toolbar"]) #PanelUI-menu-button[open] image {
+        background-size: 44px !important;
     }
     
 /* Label Menú */
     
-    :root:not([chromehidden~="toolbar"]) #PanelUI-menu-button > stack{
-        display: flex;
-        align-items: center !important;
-    }
-    
     :root:not([chromehidden~="toolbar"])[sizemode="maximized"] #PanelUI-menu-button[open]>stack::after {
-        width: var(--padding-left-tab) !important;
         content: var(--menu-label);
         color: var(--label-color) !important;
-        background-image: var(--noise-urlbar-personal, var(--noise-urlbar-personal, none)),
-                          linear-gradient(var(--arrowpanel-background), var(--arrowpanel-background)),
-                          linear-gradient(var(--arrowpanel-background), var(--arrowpanel-background)) !important;
-        padding-inline: calc(var(--margin-right-icons-personal) - 5px) 6px !important;
-        padding-block: 6px !important;
+        padding-inline: var(--margin-right-icons-personal) !important;
+        padding-block: 2px !important;
         text-shadow: none !important;
+    }
+    
+:root:not([chromehidden~="toolbar"]) #PanelUI-menu-button > stack{
+        display: flex;
+        align-items: center !important;
     }
     
 /* Padding top para hacer espacio para la fila del Label menú */
     
     :root:not([chromehidden~="toolbar"])[sizemode="maximized"] #appMenu-popup>panelmultiview>box>box>panelview {
-        padding-top: var(--tab-height-personal) !important;
+        padding-top: calc(var(--tab-height-personal) + 2px) !important;
     }
     
 /* Margin top para subir el menú [open] */
     
     :root:not([chromehidden~="toolbar"])[sizemode="maximized"] #appMenu-popup {
-        --padding-left-tab: 74px !important;
+        --menu-plus-label-width: 72px !important;
         appearance: none !important;
-        margin-top: calc(0px - var(--tab-block-margin) - var(--tab-height-personal)) !important;
+        margin-top: calc(-8px - var(--tab-height-personal)) !important;
         padding-inline-start: 4px !important;
-        clip-path: polygon(0% 0%, 0% 100%, 1% 53%, 0 10px, calc(var(--padding-left-tab) + 4px) 10px,
-               calc(var(--padding-left-tab) + 4px) calc(var(--tab-height-personal) + 2px), 0 calc(var(--tab-height-personal) + 2px), 0 100%, 100% 100%, 100% 0%);
+        clip-path: polygon(0% 0%, 0% 100%, 1% 53%, 0 10px, calc(var(--menu-plus-label-width) + 4px) 10px,
+               calc(var(--menu-plus-label-width) + 4px) calc(var(--tab-height-personal) + 2px), 0 calc(var(--tab-height-personal) + 2px), 0 100%, 100% 100%, 100% 0%);
         --arrowpanel-menuitem-padding: 6px !important;
         --arrowpanel-border-radius: 8px !important;
         --panel-separator-margin-horizontal: 0px !important;

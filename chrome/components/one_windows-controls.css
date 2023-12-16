@@ -7,8 +7,8 @@
 
     .titlebar-button{
         background-color: transparent !important;
-        padding-block-start: calc(var(--tab-block-margin-personal) + 4px) !important;
         padding-inline: 4px !important;
+        padding-block-start: calc(var(--tab-block-margin-personal) + 4px) !important;
     }
     
     .titlebar-button:hover{
@@ -19,23 +19,13 @@
     .titlebar-button.titlebar-restore .toolbarbutton-icon, .titlebar-button.titlebar-max .toolbarbutton-icon,
     .titlebar-button.titlebar-close .toolbarbutton-icon{
         width: 32px !important;
-        height: calc(var(--tab-height-personal) + 8px) !important;
+        height: 32px !important;
+        padding: 9px !important;
     }
     
     .titlebar-button:hover .toolbarbutton-icon{
-        background-color:  var(--lwt-selected-tab-background-color) !important;
+        background-color:  var(--toolbarbutton-hover-background) !important;
         border-radius: var(--tab-border-radius) !important;
-        border-radius: 5px !important;
-    }
-
-    /* maximizar-restore-close buttons */
-    
-    .titlebar-button.titlebar-min .toolbarbutton-icon,
-    .titlebar-button.titlebar-restore .toolbarbutton-icon, 
-    .titlebar-button.titlebar-max .toolbarbutton-icon,
-    .titlebar-button.titlebar-close .toolbarbutton-icon{
-        padding-block: calc(var(--tab-height-personal) / 2 - 3px) !important;
-        padding-inline: 9px !important;
     }
     
     .titlebar-button.titlebar-close:hover .toolbarbutton-icon{        

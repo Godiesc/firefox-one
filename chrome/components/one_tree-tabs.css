@@ -414,18 +414,70 @@ Window controls will be all wrong without it
 /* Tree-tabs without left-sidebar */
 
 @media (-moz-bool-pref:"firefoxone.style_without_leftsidebar") {
-
-    :root:not([chromehidden~="toolbar"]) #PanelUI-button, 
-    :root:not([chromehidden~="toolbar"])[inFullscreen] #PanelUI-button { left: 7px !important; }
-
-    :root:not([chromehidden~="toolbar"])[sizemode="maximized"] #PanelUI-menu-button[open] { margin-inline-start: -3px !important; }
-
-    :root:not([chromehidden~="toolbar"]) #PanelUI-menu-button,
-    :root:not([chromehidden~="toolbar"])[inFullscreen] #PanelUI-menu-button { min-height: calc(var(--toolbar-height-personal) + var(--tab-block-margin) ) !important; }
+    @media (-moz-platform: windows), (-moz-platform: linux) {
     
-    /*:root:is([inFullscreen]) #PanelUI-menu-button { min-height: calc(var(--toolbar-height-personal) + 0px ) !important; }*/
+    :root:not([invisibleBMS]) {
+        --margin-left-icons-personal: 7px !important;     /* Nuevo margen-left del ícono -menu- */
+        --margin-right-icons-personal: 10px !important;                                                 /* Nuevo margen-left del ícono -menu- */
+        --padding-left-tab: 44px !important;                                /* Nuevo tamaño botón -Menu- */
+    }
 
-    :root:not([chromehidden~="toolbar"]) #PersonalToolbar { margin-top: initial !important; }
+/* Tamaño */
+    
+    :root:not([chromehidden~="toolbar"],[invisibleBMS]) #PanelUI-button {
+        height: var(--toolbar-height-personal) !important;
+    }
+   
+    :root:not([chromehidden~="toolbar"],[invisibleBMS]) #PanelUI-menu-button:not([open]) {
+        width: calc(var(--padding-left-tab) + 4px) !important;
+        padding-inline: calc(var(--padding-left-tab)/2 - 14px) !important;
+    }
+    
+/* Alinear botón en ventana maximizada, ventana normal y fullscreen */
+        
+    :root:not([chromehidden~="toolbar"],[invisibleBMS],[sizemode="normal"],[sizemode="fullscreen"]) #PanelUI-menu-button[open] .toolbarbutton-badge-stack {
+        padding-inline-start: calc(var(--margin-left-icons-personal) + 4px) !important;
+    }
+    
+    :root:not([chromehidden~="toolbar"],[invisibleBMS]):is([sizemode="normal"],[sizemode="fullscreen"]) #PanelUI-menu-button[open] .toolbarbutton-badge-stack {
+        margin-inline-start: calc(var(--margin-left-icons-personal) - 2px) !important;
+    }
+       
+/* Posición margin-top */
+        
+    :root:not([chromehidden~="toolbar"],[sizemode="fullscreen"],[invisibleBMS]) #PanelUI-menu-button>.toolbarbutton-badge-stack {
+        margin-block-start: 8px !important;
+    }
+    
+    :root:not([chromehidden~="toolbar"],[invisibleBMS])[sizemode="fullscreen"] #PanelUI-menu-button>.toolbarbutton-badge-stack {
+        margin-block-start: 0px !important;
+    }
+    
+/* menu :hover y open */
+    
+    :root:not([chromehidden~="toolbar"],[sizemode="normal"],[sizemode="fullscreen"],[invisibleBMS]) 
+        #PanelUI-menu-button[open]>.toolbarbutton-badge-stack {
+            min-height: 30px !important; /* Sirve para alinear al cambiar the height de pestañas */
+            max-height: 30px !important;
+    }
+    
+/* Padding top para hacer espacio para la fila del Label menú */
+    
+    :root:not([chromehidden~="toolbar"],[invisibleBMS])[sizemode="maximized"] #appMenu-popup>panelmultiview>box>box>panelview {
+        padding-top: 32px !important;
+    }
+    
+/* Margin top para subir el menú [open] */
+    
+    :root:not([chromehidden~="toolbar"],[invisibleBMS])[sizemode="maximized"] #appMenu-popup {
+        --menu-plus-label-width: 88px !important;
+        --button-height-personal: 32px !important;
+        margin-top: calc(-4px - var(--button-height-personal)) !important;
+        clip-path: polygon(0% 0%, 0% 100%, 1% 53%, 0 10px, var(--menu-plus-label-width) 10px,
+                   var(--menu-plus-label-width) var(--button-height-personal), 0 var(--button-height-personal), 0 100%, 100% 100%, 100% 0%);
+    }
+  }
+    /* Margen back-button */
 
     :root:not([chromehidden~="toolbar"]) #nav-bar-customization-target > :is(toolbarbutton, toolbaritem):first-child,
     :root:not([chromehidden~="toolbar"])[inFullscreen] #nav-bar-customization-target > :is(toolbarbutton, toolbaritem):first-child,

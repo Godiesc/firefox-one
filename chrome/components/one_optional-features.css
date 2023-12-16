@@ -54,7 +54,8 @@
 @media (-moz-bool-pref:"firefoxone.image_in_menus") {
     
     /* Image for solid themes */    
-    :root:not([style*="--lwt-additional-images"],[lwtheme-image]){
+    :root:not([style*="--lwt-additional-images"],[lwtheme-image]) :is(slot, panelview, menupopup),
+    :root:not([style*="--lwt-additional-images"],[lwtheme-image]):is([sizemode="maximized"]) #PanelUI-menu-button{
         --lwt-header-image: url("../images/newtab/menu-image.png") !important;
     }
 
@@ -91,7 +92,7 @@
     
     @media (-moz-platform: windows), (-moz-platform: linux) {
         :root:not([chromehidden~="toolbar"]):is([sizemode="maximized"]) #PanelUI-menu-button[open]>stack::after{
-            background-position-x: calc(0px - var(--my-vertical-toolbar-width, 0) + var(--margin-left-icons-personal)) !important;
+            background-position-x: calc(-12px - var(--margin-left-icons-personal) - var(--margin-right-icons-personal)) !important;
             background-position-y: -10px !important;
     }}
     
