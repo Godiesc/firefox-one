@@ -195,9 +195,7 @@ tab[selected] .tab-background{
 
 /* "toolbar_top_separator": "#17161c" */
 
-#navigator-toolbox {
-    --lwt-tabs-border-color: transparent !important;
-}
+#nav-bar:not([tabs-hidden="true"]) { box-shadow: none !important; }
 
 /* Borde entre pestañas */
 
