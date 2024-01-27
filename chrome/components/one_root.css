@@ -142,16 +142,17 @@
   --input-border-color: color-mix(in srgb, var(--arrowpanel-background) 88%, var(--lwt-tab-text)) !important;           /* Color borde en InputText */
   --Button-background-personal: color-mix(in srgb, var(--arrowpanel-background) 82%, var(--general-color)) !important;  /* Background of buttons - variable personal */
 
-    /*Colores checkbox —v*/
-  --checkbox-unchecked-bgcolor: var(--toolbarbutton-hover-personal) !important;
-  --checkbox-unchecked-hover-bgcolor: var(--button-primary-bgcolor) !important;      
-  --checkbox-unchecked-active-bgcolor: var(--general-color) !important;
-  --checkbox-unchecked-border-color: blue !important;
-  --checkbox-checked-border-color: var(--button-hover-bgcolor) !important;
-  --checkbox-checked-bgcolor: var(--button-primary-bgcolor) !important;
-  --checkbox-checked-color: #eaeaea !important;
-  --checkbox-checked-hover-bgcolor: var(--button-primary-hover-bgcolor) !important;
-  --checkbox-checked-active-bgcolor: var(--button-primary-bgcolor) !important;
+  --link-color: color-mix(in srgb, 
+    var(--general-color) 70%, var(--lwt-tab-text)) !important;                              /* Color links urlbar open */
+  --link-color-hover: var(--blue) !important;
+  --link-color-active: var(--purple);
+  --link-color-visited: var(--purple);
+  
+    accent-color: var(--general-color) !important;
+  
+  --color-accent-primary: var(--button-active-bgcolor) !important;                      /* Radiobutton */
+  --color-accent-primary-hover: var(--button-hover-bgcolor) !important;                 /* Radiobutton :hover */
+  --color-accent-primary-active: var(--general-color) !important;                       /* Radiobutton :active */
 }
 }
 
@@ -243,10 +244,7 @@
   
   scrollbar-color: #d8d9da var(--toolbar-bgcolor) !important;                               /* Colores - Barra de deplazamiento */
   --shield-icon-personal: url("../images/shield-enable.svg") !important;                    /* Ícono protección contra rastreo */
-  --noise-urlbar-personal: url("../images/urlbar-noise-light.png") !important;              /* imagen de desenfoque urlbar open */
-  --link-color: color-mix(in srgb, 
-    var(--general-color) 70%, var(--lwt-tab-text)) !important;                              /* Color links urlbar open */
-  
+  --noise-urlbar-personal: url("../images/urlbar-noise-light.png") !important;              /* imagen de desenfoque urlbar open */  
   
   --button-primary-bgcolor: var(--general-color) !important;                                /* ColorBotónGuardar */   
   --button-primary-color: #eaeaea !important;                                               /* ColorLetrasBotónGuardar */
@@ -259,15 +257,17 @@
   --input-border-color: color-mix(in srgb, var(--arrowpanel-background) 66%, black) !important;                         /*Color borde en InputText*/
   --Button-background-personal: color-mix(in srgb, var(--arrowpanel-background) 82%, var(--general-color)) !important;  /*Background of buttons - variable personal */
 
-    /*Colores checkbox —v*/
-  --checkbox-unchecked-bgcolor: var(--toolbarbutton-hover-personal) !important;
-  --checkbox-unchecked-hover-bgcolor: var(--button-primary-bgcolor) !important;      
-  --checkbox-unchecked-active-bgcolor: var(--button-primary-bgcolor) !important;
-  --checkbox-checked-border-color: transparent !important;
-  --checkbox-checked-bgcolor: var(--button-primary-bgcolor) !important;
-  --checkbox-checked-color: #eaeaea !important;
-  --checkbox-checked-hover-bgcolor: var(--button-primary-hover-bgcolor) !important;
-  --checkbox-checked-active-bgcolor: var(--button-primary-bgcolor) !important;
+  --link-color: color-mix(in srgb, 
+    var(--general-color) 70%, var(--lwt-tab-text)) !important;                              /* Color links urlbar open */
+  --link-color-hover: var(--blue) !important;
+  --link-color-active: var(--purple);
+  --link-color-visited: var(--purple);
+  
+    accent-color: var(--general-color) !important;
+  
+  --color-accent-primary: var(--button-active-bgcolor) !important;                      /* Radiobutton */
+  --color-accent-primary-hover: var(--button-hover-bgcolor) !important;                 /* Radiobutton :hover */
+  --color-accent-primary-active: var(--general-color) !important;                       /* Radiobutton :active */
 }}
 
 /* Private Browsing Mode - Dark */
@@ -329,7 +329,7 @@
   --toolbarbutton-active-background: color-mix(in srgb, 
     transparent 88%, color-mix(in srgb, var(--lwt-tab-text) 58%, var(--general-color)) ) !important;             /* button_background_active */
   --toolbarbutton-hover-personal: var(--toolbarbutton-hover-background) !important;                              /* Button :hover color personal */
-  --lwt-background-alignment: right top, left top, left top !important;
+  --lwt-background-alignment: calc(100% - 4px) top, left top, left top !important;
 
   tab[selected] .tab-background, #nav-bar, findbar, #PersonalToolbar{
         --toolbar-bgcolor: #10101970 !important;                                                                 /* toolbar */

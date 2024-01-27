@@ -105,9 +105,13 @@ tab[selected] .tab-background{
 /* Imagen en pestaña activa */
 
 :root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) tab[selected] .tab-background{
-    background-image: linear-gradient(var(--toolbar-bgcolor), var(--toolbar-bgcolor)),
-                      linear-gradient(var(--toolbar-bgcolor), var(--toolbar-bgcolor)), 
-                      var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
+    background-image: linear-gradient(var(--toolbar-bgcolor, transparent), var(--toolbar-bgcolor, transparent)), 
+                      var(--lwt-additional-images,none), var(--lwt-header-image, none) !important;
+    background-position: 0 0, var(--lwt-background-alignment), right top !important;
+    background-repeat: repeat-x, var(--lwt-background-tiling), no-repeat !important;
+    background-size: auto 100%, var(--lwt-background-size, auto auto), auto auto !important;
+    background-attachment: scroll, fixed, fixed !important;
+    background-color: transparent !important;
     outline: 1px solid var(--identity-tab-color, var(--button-active-bgcolor)) !important;
     outline-offset: -1px !important;
     z-index: 1 !important;
