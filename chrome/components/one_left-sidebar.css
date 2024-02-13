@@ -218,10 +218,14 @@
         transition: ease-in-out 200ms !important;
     }
 
+    #PersonalToolbar .toolbarbutton-1:is(:hover,[open]) .toolbarbutton-icon:not(.toolbarbutton-1>image){ /* Extensiones */
+        transform: scale(1.2) !important;
+        transition:  200ms !important;
+    }
+    
     #PersonalToolbar #PlacesToolbarItems>.bookmark-item:is(:hover,[open])>.toolbarbutton-icon,           /* Marcadores */
-    #PersonalToolbar .toolbarbutton-1:is(:hover,[open]) .toolbarbutton-icon:not(.toolbarbutton-1>image), /* Extensiones */
     #PersonalToolbar .toolbarbutton-1:is(:hover,[open])>image,                                           /* demás iconos */
-    #PersonalToolbar #OtherBookmarks:not(bookmark-item):is(:hover,[open])>.toolbarbutton-icon{                              /* Other bookmarks button */
+    #PersonalToolbar #OtherBookmarks:not(bookmark-item):is(:hover,[open])>.toolbarbutton-icon{           /* Other bookmarks button */
         transform: scale(1.12) !important;
         transition:  200ms !important;
     }
@@ -369,7 +373,9 @@
     #PersonalToolbar #_3119ae66-3c2f-47e2-b1b1-1c76cb9c4ec1_-BAP image,
     #PersonalToolbar #sidebarinstagram_godie-BAP image,
     #PersonalToolbar #panorama-tab-groups_example_com-BAP image,
-    #PersonalToolbar #simple-tab-groups_drive4ik-BAP image
+    #PersonalToolbar #simple-tab-groups_drive4ik-BAP image,
+    #PersonalToolbar #sidebarspotyplay_godie-BAP image,
+    #PersonalToolbar #_63ec59d8-ba50-4d88-917e-fb65af892a39_-BAP image
     {
         height: 20px !important;
         width: 20px !important;
@@ -385,7 +391,9 @@
     #PersonalToolbar #_3119ae66-3c2f-47e2-b1b1-1c76cb9c4ec1_-BAP>.toolbarbutton-badge-stack,
     #PersonalToolbar #sidebarinstagram_godie-BAP>.toolbarbutton-badge-stack,
     #PersonalToolbar #panorama-tab-groups_example_com-BAP>.toolbarbutton-badge-stack,
-    #PersonalToolbar #simple-tab-groups_drive4ik-BAP>.toolbarbutton-badge-stack
+    #PersonalToolbar #simple-tab-groups_drive4ik-BAP>.toolbarbutton-badge-stack,
+    #PersonalToolbar #sidebarspotyplay_godie-BAP>.toolbarbutton-badge-stack,
+    #PersonalToolbar #_63ec59d8-ba50-4d88-917e-fb65af892a39_-BAP>.toolbarbutton-badge-stack
     {
         --toolbarbutton-inner-padding: 6px !important;
     }
@@ -424,6 +432,14 @@
     /* Instagram Extension */
     #PersonalToolbar #sidebarinstagram_godie-BAP{
         list-style-image: url("../images/logo_instagram.svg") !important; }
+    
+    /* Spotify Extension */
+    #PersonalToolbar #sidebarspotyplay_godie-BAP{
+        list-style-image: url("../images/logo_spotify.svg") !important; }
+    
+    /* Chatgpt Extension */
+    #PersonalToolbar #_63ec59d8-ba50-4d88-917e-fb65af892a39_-BAP{
+        list-style-image: url("../images/logo_chatgpt.svg") !important; }
 
     /* mostrar más marcaddores - button */
     #PersonalToolbar #bookmarks-menu-button {
@@ -569,13 +585,15 @@
         animation-name: slide1;
         border-radius: 50% !important;
     }
-    /* Nueva posición de Paneles [open] de left-sidebar 
+    
+    /* Nueva posición de Paneles [open] de left-sidebar */
     
     #PlacesToolbarItems > .bookmark-item >  menupopup, #OtherBookmarks #OtherBookmarksPopup {
         margin-inline-start: calc(var(--padding-left-tab) - 0px) !important;
         margin-top: -56px  !important;
     }
-
+    
+    /* Nueva posición de Paneles [open] de left-sidebar 
     #PersonalToolbar>toolbarbutton>menupopup {
         margin-right: calc(var(--padding-left-tab) - 8px) !important;
         margin-top: -39px  !important;

@@ -60,6 +60,18 @@ toolbar #firefox-view-button[aria-pressed="true"]:hover .toolbarbutton-icon {
 
 /* _________________________________________ Pestaña activa _____________________________________ */
 
+:root[tabsintitlebar] #titlebar:-moz-window-inactive { opacity: 1 !important; }
+
+/* Necesario  para que la primera pestaña :selected no quede bajo left-sidebar */
+
+.tabbrowser-tab[selected] { z-index: 1 !important; }
+
+#titlebar{
+  will-change: unset !important;
+  transition: none !important;
+  opacity: 1 !important;
+}
+
 .tab-stack, .tab-background, .tab-content{
     border-radius: var(--tab-border-radius) !important;
 }
@@ -209,9 +221,14 @@ tab[selected] .tab-background{
 
 /* Color :hover de las pestañas no seleccionadas */
 
+.tabbrowser-tab:not(:hover) > .tab-stack:not([selected],[multiselected]) {
+    transition: background-color 0.2s ease !important;
+}
+
 .tabbrowser-tab:not([selected="true"], [multiselected]):hover > .tab-stack:not([selected="true"], [multiselected]) {
     background-color: color-mix(in srgb, var(--lwt-tab-text) 4%, var(--lwt-frame)) !important;
     z-index: 1 !important;
+    transition: background-color 0.2s ease !important;
 }
 
 /* Botón "Open Newtab" */

@@ -177,11 +177,11 @@ toolbar .text-link:-moz-lwtheme:hover, panel .text-link:-moz-lwtheme:hover {
 
 #sidebar-box {
     max-width: none !important;
-    min-width: 30px !important;   
+    min-width: 0px !important;   
     /*outline: 1px solid #50505050 !important;
     outline-offset: -1px !important;*/
     box-shadow: 0 0 0 1px color-mix(in srgb, var(--lwt-frame) 90%, var(--lwt-tab-text)) !important;
-    z-index: 1 !important;
+    /*z-index: 1 !important;/**/
     outline: 2px solid var(--lwt-frame) !important;
     outline-offset: 1px !important;
 }
@@ -190,7 +190,8 @@ toolbar .text-link:-moz-lwtheme:hover, panel .text-link:-moz-lwtheme:hover {
 
 #sidebar-header, #bookmarksPanel{
     background-color: var(--lwt-sidebar-background-color) !important;
-    padding: 4px 6px !important;
+    padding: 2px 2px !important;
+    font-size: small !important;
 }
 
 :root:not([sizemode="fullscreen"]) #sidebar-header{
