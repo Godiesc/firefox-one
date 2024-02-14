@@ -54,6 +54,9 @@
     }
 
 /* menu :hover y open */
+    
+    /* Elimina transición indeseada */
+    #PanelUI-menu-button>.toolbarbutton-badge-stack { transition: none !important; }
 
     :root:not([chromehidden~="toolbar"]) #PanelUI-menu-button:not([open]):hover>.toolbarbutton-badge-stack {
         background-color: var(--toolbarbutton-hover-personal) !important;
@@ -182,14 +185,11 @@
         margin-inline-start: var(--margin-left-icons-personal) !important;
     }
 
-    /* Margen-left en varios textos al lado de íconos */
-    .subviewbutton-iconic> .toolbarbutton-text, 
-    .subviewbutton[image]> .toolbarbutton-text, 
-    .subviewbutton[targetURI]> .toolbarbutton-text, 
-    .subviewbutton.bookmark-item > .toolbarbutton-text, 
-    .subviewbutton[checked="true"] > .toolbarbutton-text {
-        padding-inline-start: var(--margin-right-icons-personal) !important;
-    }}
+    /* Alinear lista de pestañas sincronizadas */
+    
+    #appMenu-popup .PanelUI-remotetabs-clientcontainer>.subviewbutton>label {
+        margin-inline-start: calc(4px - var(--margin-right-icons-personal)) !important;
+    }
 
 /* Margin top en Cuenta no iniciada */
     

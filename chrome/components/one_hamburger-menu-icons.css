@@ -22,7 +22,7 @@
 
 /* Alinear lista de pestañas sincronizadas */
     
-.PanelUI-remotetabs-clientcontainer>.subviewbutton>label {
+#appMenu-popup .PanelUI-remotetabs-clientcontainer>.subviewbutton>label {
     margin-inline-start: calc(0px - var(--margin-right-icons-personal)) !important;
 }
 
@@ -38,13 +38,10 @@
     margin-inline-end: 8px !important;
 }
 
-/* Margen derecha de las funciones Ctrl + */
+/* Margen derecha de los shortcut Ctrl + */
 
-#appMenu-new-tab-button2, #appMenuRecentlyClosedTabs, #sidebar-switcher-tabs, #appMenu-new-window-button2, #appMenuRecentlyClosedWindows,
-#appMenu-new-private-window-button2, #appMenu-downloads-button, #appMenu-library-downloads-button, #appMenu-extensions-themes-button,
-#appMenu-print-button2, #appMenu-save-file-button2, #appMenu-find-button2, #panelMenu_searchBookmarks, #appMenu-translate-button,
-#appMenu-quit-button2 {
-    padding-inline-end: 26px !important;
+#appMenu-popup .subviewbutton[shortcut]::after{
+    padding-inline-end: 22px !important;
 }
 
 /* Ícono de Actualización disponible */
@@ -181,6 +178,12 @@
 
 #appMenu-settings-button {
     list-style-image: url("chrome://global/skin/icons/settings.svg");
+}
+
+/* Ícono Ajustes */
+
+#appMenu-report-broken-site-button {
+    list-style-image: url("chrome://global/skin/icons/lightbulb.svg");
 }
 
 /* Ícono Ayuda */

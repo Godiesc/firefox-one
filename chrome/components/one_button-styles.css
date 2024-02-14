@@ -17,23 +17,21 @@
 
 /*color Rojo de boton "borrar marcador"*/
 
-#editBookmarkPanelBottomButtons>#editBookmarkPanelRemoveButton label{
-display: none !important;
+#editBookmarkPanelRemoveButton label{
+    display: none !important;
 }
 
-#editBookmarkPanelBottomButtons>#editBookmarkPanelRemoveButton{
-background: url("../images/delete.svg") no-repeat center/16px !important;
+#editBookmarkPanelRemoveButton{
+    background: url("../images/delete.svg") no-repeat center/16px !important;
+    background-color: var(--input-border-color) !important;
     fill: var(--toolbarbutton-icon-fill) !important;
     -moz-context-properties: fill !important;
-}
-
-#editBookmarkPanelBottomButtons>#editBookmarkPanelRemoveButton {
-    background-color: var(--input-border-color) !important;
     box-shadow: inset 0px 0px 0 1px var(--input-border-color) !important;
     border-radius: 3px !important;
+    padding-inline: 16px !important;
 }
 
-#editBookmarkPanelBottomButtons>#editBookmarkPanelRemoveButton:hover {
+#editBookmarkPanelRemoveButton:hover {
     background-color: #da3633 !important;
     color: #f0f6fc !important;
     box-shadow: none !important;
@@ -241,4 +239,28 @@ toolbarbutton.bookmark-item:not(.subviewbutton, [disabled="true"]):is([open],:ac
     background-color: var(--toolbar-bgcolor) !important;
     border-color: var(--lwt-frame) !important;
     border-radius: 0 8px 0 6px !important;
+}
+
+/* ---------------------------------------------- Used for various smooth transition ---------------------------------------------- */
+
+panel :is(menulist, button, toolbarbutton:not(#firefox-view-button,[.subviewbutton])):not([open]),   /* Botones dentro de arrowpanels */
+.titlebar-button .toolbarbutton-icon,                                                                /* Window controls */
+.toolbarbutton-1 .toolbarbutton-icon,                                                                /* Botones default */
+.toolbarbutton-1 .toolbarbutton-badge-stack,                                                         /* Extensiones */
+#PersonalToolbar #PlacesToolbarItems>.bookmark-item {                                                /* Bookmark items */
+    transition: all 0.2s ease !important;
+}
+
+/* Transición del botón de página segura, bookmark y Tracking Protection de la url */
+
+#identity-box[pageproxystate="valid"].chromeUI #identity-icon,
+#pageAction-panel-bookmark[starred], #star-button[starred],
+#urlbar-input-container #tracking-protection-icon{ 
+    transition: fill 0.2s ease !important;
+}
+
+/* Transición para los demás botones de la url */
+
+#urlbar box, #page-action-buttons hbox { 
+    transition: background-color 0.2s ease !important;
 }

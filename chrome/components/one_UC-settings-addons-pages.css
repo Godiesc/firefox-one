@@ -73,9 +73,9 @@
     --in-content-primary-button-background-active: var(--button-active-bgcolor) !important;     /* Color botones principales :active */
     
     --link-color: var(--general-color) !important;                                              /* Color de links */
-    --link-color-hover: var(--blue) !important;                                                 /* Color de links :hover */
+    --link-color-hover: var(--aqua) !important;                                                 /* Color de links :hover */
     --link-color-active: var(--purple) !important;                                              /* Color de links :active */
-    --link-color-visited: var(--general-color) !important;                                      /* Color de links :visited */
+    --link-color-visited: var(--purple) !important;                                             /* Color de links :visited */
     
     --gradiente-casual: linear-gradient(to right,                                               /* Gradiente personal about:preferences */
       var(--in-content-box-border-color) 90%, transparent ) !important;
@@ -122,25 +122,42 @@
         
 /* Toggle button */
         
-.toggle-button[checked="true"]:enabled {
-  background: red !important;
+.toggle-button[aria-pressed="true"]:enabled {
+  background: var(--button-active-bgcolor) !important;
 }
         
-.toggle-button[checked="true"]:enabled:hover {
-  background: red !important;
+.toggle-button[aria-pressed="true"]:enabled:hover {
+  background: var(--button-hover-bgcolor) !important;
 }
-
+        
 /* Botón más opciones */        
                     
-.more-options-button {
-    background-color: color-mix( in srgb, var(--in-content-border-color) 96%, var(--in-content-text-color))  !important;
-    border-color: color-mix( in srgb, var(--in-content-border-color) 96%, var(--in-content-text-color))  !important;
+.more-options-button[aria-expanded="true"] {
+    background-color: var(--button-active-bgcolor) !important;
 }
+        
+/* Buttons :hover */
 
 button:hover:not(.toggle-button) {
     background-color: var(--button-active-bgcolor) !important;
     color: #fafafa !important;
     border-color: transparent !important;
+}
+        
+/* Checkbox */
+        
+checkbox:not(:hover) .checkbox-check:not([checked="true"]) {
+    appearance: none !important;
+    border: 2px solid color-mix(in srgb, var(--gray) 20%, transparent) !important;
+    background: var(--opaque) !important;
+    border-radius: 2px !important;
+}
+        
+checkbox:hover .checkbox-check:not([checked="true"]) {
+    appearance: none !important; 
+    border: 2px solid color-mix(in srgb, var(--gray) 60%, transparent) !important;
+    background: var(--opaque) !important;
+    border-radius: 2px !important;
 }
         
 /* Color de Botones resaltados por default */
@@ -330,6 +347,20 @@ search-addons > search-textbox[focused] {
 
 #searchInput[focused]{ 
     outline: 2px solid var(--general-color) !important; 
+}
+        
+/* Various smooth transitions */
+        
+button, menulist, treecol, .sidebar-footer-link{
+    transition: background-color 0.2s ease !important;
+}
+        
+search-textbox{
+    transition: border 0.2s ease !important;
+}
+        
+#categories > .category .category-name{
+    transition: all 0.1s ease !important;
 }
 
 body{

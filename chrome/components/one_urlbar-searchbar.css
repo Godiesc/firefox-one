@@ -93,7 +93,7 @@ findbar{
 }
 
 .urlbarView-row-inner {
-    padding-left: 14px !important;
+    padding-left: 8px !important;
 }
 
 #urlbar .search-panel-header {
@@ -118,12 +118,40 @@ findbar{
 }
 
 .urlbarView-favicon {
-    color: var(--lwt-tab-text) !important;
     padding: 6px !important;
     border-radius: 8px !important;
-    margin-top: -2px !important;
-    margin-bottom: -2px !important;
+    margin-block: -3px !important;
+    margin-inline-end: 6px !important;
     clip-path: circle(50%);
+}
+
+/* Sugerencias enriquecidas */
+
+.urlbarView-row[rich-suggestion] > .urlbarView-row-inner > .urlbarView-favicon {
+    max-height: 16px !important;
+    max-width: 16px !important;
+    margin-inline: 6px !important;
+}
+
+/* No hacer doble fila url results en cuadro pequeño */
+
+@media screen and (min-height: 600px) {
+  .urlbarView-results[wrap] > .urlbarView-row {
+    &:where(:not([rich-suggestion])) > .urlbarView-row-inner {
+      & > .urlbarView-no-wrap {
+        flex-basis: 0% !important;
+      }
+    }
+  }
+}
+
+/* Botón 'cambiar a pestaña' */
+
+.urlbarView-row:is([type="switchtab"], [type="remotetab"], [type="clipboard"]) {
+  & > .urlbarView-row-inner > .urlbarView-no-wrap > .urlbarView-action
+{
+    margin-block: -4px !important;
+  }
 }
 
 /* Botones de acciones rápidas urlbar open */
@@ -164,7 +192,7 @@ findbar{
 #urlbar:not([open], [focused]) #urlbar-background {
     border-radius: 7px !important;
     transition: ease-in 150ms !important;
-    transition-delay: 80ms !important;
+    transition-delay: 100ms !important;
 }
 
 #urlbar:not([open], [focused]):hover #urlbar-background {
@@ -182,6 +210,7 @@ findbar{
 #urlbar[focused] #urlbar-background {
     border-radius: 7px !important;
     box-shadow: none !important;
+    transition: background-color 0.4s ease !important;
 }
 
 #urlbar[open] #urlbar-background {
@@ -206,16 +235,21 @@ findbar{
 
 /* Brighness when urlbar [open]*/
 
-#nav-bar[urlbar-exceeds-toolbar-bounds="true"]::before {
+#nav-bar::before {
     position: fixed;
     content: "";
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: transparent;
     z-index: 4;
     pointer-events: none;
+    transition: background-color 0.3s ease !important; 
+}
+
+#nav-bar[urlbar-exceeds-toolbar-bounds="true"]::before {
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 @media (-moz-bool-pref:"firefoxone.without-default-colors") {

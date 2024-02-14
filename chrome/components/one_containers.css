@@ -7,7 +7,7 @@
     height: calc(var(--tab-height-personal) - 6px) !important;
     width: 3px !important;
     margin-top: 3px !important;
-    box-shadow: none !important;
+    box-shadow: 2px 0 8px color-mix(in srgb, var(--identity-tab-color) 90%, white) !important;
     margin-left: 2px !important;
 }
 
@@ -15,7 +15,6 @@
     height: calc(var(--tab-height-personal) - 12px) !important;
     width: 3px !important;
     margin-top: 6px !important;
-    box-shadow: 2px 0 8px color-mix(in srgb, var(--identity-tab-color) 90%, white) !important;
     transition-duration: 0ms !important;
 }
 

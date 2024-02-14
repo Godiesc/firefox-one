@@ -158,7 +158,7 @@
 
 @media (-moz-bool-pref:"firefoxone.main-image") {
 
-/* Sombra en la pestaña activa  eleminada */
+/* Sombra en la pestaña activa  eliminada */
     :root:not([lwtheme-image],[style*="--lwt-additional-images"]) .tabbrowser-tab[selected="true"]:not([multiselected]) .tab-stack {
             box-shadow: none !important; }
     

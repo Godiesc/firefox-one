@@ -603,7 +603,7 @@ body{
 /*..........................................Firefox--------------------------------------------
 ---------------------------------------------view-----------------------------------------------*/
 
-@-moz-document url(about:firefoxview), url(about:firefoxview-next) /*, regexp("^about:.*") */ {
+@-moz-document url(about:firefoxview), url(about:firefoxview) /*, regexp("^about:.*") */ {
     
     @media (prefers-color-scheme: dark) {
   :host, :root {

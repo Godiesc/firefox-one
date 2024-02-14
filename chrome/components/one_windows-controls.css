@@ -15,17 +15,15 @@
         background-color: transparent !important;
     }
     
-    .titlebar-button.titlebar-min .toolbarbutton-icon,
-    .titlebar-button.titlebar-restore .toolbarbutton-icon, .titlebar-button.titlebar-max .toolbarbutton-icon,
-    .titlebar-button.titlebar-close .toolbarbutton-icon{
-        width: 32px !important;
-        height: 32px !important;
+    .titlebar-button .toolbarbutton-icon{
+        min-width: 30px !important;
+        min-height: 30px !important;
         padding: 9px !important;
+        border-radius: var(--tab-border-radius) !important;
     }
     
     .titlebar-button:hover .toolbarbutton-icon{
         background-color:  var(--toolbarbutton-hover-background) !important;
-        border-radius: var(--tab-border-radius) !important;
     }
     
     .titlebar-button.titlebar-close:hover .toolbarbutton-icon{        
