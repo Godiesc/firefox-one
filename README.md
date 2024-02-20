@@ -38,17 +38,15 @@
 <ul>
 <li>You can use flexible spaces to create separatos in the tabs-bar.</li>
 <li>For Left-sidebar the theme use the bookmarks bar, so it should be always on.</li>
-<li>The social extensions used to put in the left-sidebar are: <a title="Twitch" href="https://addons.mozilla.org/es/firefox/addon/twitch-live-channels/"><img src="https://raw.githubusercontent.com/Godiesc/firefox-one/154c3c1f732f88e6fb1504ef8f83db12231411ce/chrome/images/logo_twitch.svg" alt="Twitch" width="24" height="24"/></a>
-<a title="Whatsapp" href="https://addons.mozilla.org/es/firefox/addon/chatwapp-in-sidebar/"><img src="https://raw.githubusercontent.com/Godiesc/firefox-one/154c3c1f732f88e6fb1504ef8f83db12231411ce/chrome/images/logo_whatsapp.svg" alt="Whatsapp" width="24" height="24"/></a>
-<a title="Telegram" href="https://addons.mozilla.org/es/firefox/addon/telegram-in-sidebar/"><img src="https://raw.githubusercontent.com/Godiesc/firefox-one/154c3c1f732f88e6fb1504ef8f83db12231411ce/chrome/images/logo_telegram.svg" alt="Telegram" width="24" height="24" /></a>
-<a title="Facebook Messenger" href="https://addons.mozilla.org/es/firefox/addon/messenger-sidebar-with-toolbar/"><img src="https://raw.githubusercontent.com/Godiesc/firefox-one/154c3c1f732f88e6fb1504ef8f83db12231411ce/chrome/images/logo_messenger.svg" alt="Facebook Messenger" width="24" height="24" /></a>
-<a title="Twitter" href="https://addons.mozilla.org/es/firefox/addon/twitter-as-a-sidebar/"><img src="https://raw.githubusercontent.com/Godiesc/firefox-one/154c3c1f732f88e6fb1504ef8f83db12231411ce/chrome/images/logo_twitter.svg" alt="Twitter" width="24" height="24" /></a>
-<a title="Instagram Chat" href="https://addons.mozilla.org/es/firefox/addon/instagram-chat-in-sidebar/"><img src="https://raw.githubusercontent.com/Godiesc/firefox-one/154c3c1f732f88e6fb1504ef8f83db12231411ce/chrome/images/logo_instagram.svg" alt="Instagram Chat" width="24" height="24" /></a>
-<a title="Discord" href="https://addons.mozilla.org/es/firefox/addon/discord-in-sidebar/"><img src="https://raw.githubusercontent.com/Godiesc/firefox-one/154c3c1f732f88e6fb1504ef8f83db12231411ce/chrome/images/logo_discord.svg" alt="Discord" width="24" height="24" /></a>
-<a title="Ublock" href="https://addons.mozilla.org/es/firefox/addon/ublock-origin/"><img src="https://raw.githubusercontent.com/Godiesc/firefox-one/154c3c1f732f88e6fb1504ef8f83db12231411ce/chrome/images/logo_ublock.svg" alt="Ublock" width="24" height="24" /></a>
-<a title="Panorama tab groups" href="https://addons.mozilla.org/es/firefox/addon/panorama-tab-groups/"><img src="https://raw.githubusercontent.com/Godiesc/firefox-one/154c3c1f732f88e6fb1504ef8f83db12231411ce/chrome/images/logo_tablero1.svg" alt="Panorama Tab Groups" width="24" height="24" fill="red"/></a>
-</li>
-<li>For themes that use 2 or more images, the background of the selected tab will show a empty border on the right, to solve that you should change the line <code>32</code> in <code>one_root-personal.css</code> file with <code>--display-theme-with-images: 50vw;</code>
+<li>The social extensions used to put in the left-sidebar are: <a title="Twitch" href="https://addons.mozilla.org/firefox/addon/twitch-live-channels/"><img src="https://raw.githubusercontent.com/Godiesc/firefox-one/154c3c1f732f88e6fb1504ef8f83db12231411ce/chrome/images/logo_twitch.svg" alt="Twitch" width="24" height="24"/></a>
+<a title="Whatsapp" href="https://addons.mozilla.org/firefox/addon/chatwapp-in-sidebar/"><img src="https://raw.githubusercontent.com/Godiesc/firefox-one/154c3c1f732f88e6fb1504ef8f83db12231411ce/chrome/images/logo_whatsapp.svg" alt="Whatsapp" width="24" height="24"/></a>
+<a title="Telegram" href="https://addons.mozilla.org/firefox/addon/telegram-in-sidebar/"><img src="https://raw.githubusercontent.com/Godiesc/firefox-one/154c3c1f732f88e6fb1504ef8f83db12231411ce/chrome/images/logo_telegram.svg" alt="Telegram" width="24" height="24" /></a>
+<a title="Facebook Messenger" href="https://addons.mozilla.org/firefox/addon/messenger-sidebar-with-toolbar/"><img src="https://raw.githubusercontent.com/Godiesc/firefox-one/154c3c1f732f88e6fb1504ef8f83db12231411ce/chrome/images/logo_messenger.svg" alt="Facebook Messenger" width="24" height="24" /></a>
+<a title="Twitter" href="https://addons.mozilla.org/firefox/addon/twitter-as-a-sidebar/"><img src="https://raw.githubusercontent.com/Godiesc/firefox-one/154c3c1f732f88e6fb1504ef8f83db12231411ce/chrome/images/logo_twitter.svg" alt="Twitter" width="24" height="24" /></a>
+<a title="Instagram Chat" href="https://addons.mozilla.org/firefox/addon/instachat-in-sidebar/"><img src="https://raw.githubusercontent.com/Godiesc/firefox-one/154c3c1f732f88e6fb1504ef8f83db12231411ce/chrome/images/logo_instagram.svg" alt="Instagram Chat" width="24" height="24" /></a>
+<a title="Discord" href="https://addons.mozilla.org/firefox/addon/discord-in-sidebar/"><img src="https://raw.githubusercontent.com/Godiesc/firefox-one/154c3c1f732f88e6fb1504ef8f83db12231411ce/chrome/images/logo_discord.svg" alt="Discord" width="24" height="24" /></a>
+<a title="Ublock" href="https://addons.mozilla.org/firefox/addon/ublock-origin/"><img src="https://raw.githubusercontent.com/Godiesc/firefox-one/154c3c1f732f88e6fb1504ef8f83db12231411ce/chrome/images/logo_ublock.svg" alt="Ublock" width="24" height="24" /></a>
+<a title="Tab groups" href="https://addons.mozilla.org/firefox/addon/simple-tab-groups/"><img src="https://raw.githubusercontent.com/Godiesc/firefox-one/154c3c1f732f88e6fb1504ef8f83db12231411ce/chrome/images/logo_tablero1.svg" alt="Panorama Tab Groups" width="24" height="24" fill="red"/></a>
 </li>
 </ul>
 
@@ -142,9 +140,8 @@
 </ul>
 
 ## Related Topic - Tema relacionado
-Available [Fiefox-GX theme](https://github.com/Godiesc/firefox-gx)
 
-![SplashPromocionalFirefoxGX](https://github.com/Godiesc/firefox-one/assets/22057609/00021921-72e9-439d-8314-920c4e6d42f1)
+<a href="https://github.com/Godiesc/firefox-gx"><img src="https://github.com/Godiesc/firefox-one/assets/22057609/00021921-72e9-439d-8314-920c4e6d42f1"></a>
 
 ## Example of about:support
 
