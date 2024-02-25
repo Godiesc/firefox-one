@@ -129,10 +129,11 @@
 <ul>
 <li>Linux - Manjaro KDE (Tested - Probado) ✔ - <a href="https://imgur.com/a/Di7Db9z">Preview</a></li>
 <li>Windows 10 (Tested - Probado) ✔ - <a href="https://github.com/Godiesc/firefox-one/assets/22057609/55e39c67-7588-456a-a30b-278f1dc4bd19">Preview</a></li>
-<li>Windows 11 (Not tested - No probado) ⚠  Could work well for compatibility with windows 10. </li>
+<li>Windows 11 (Tested - Probado) ✔ - <a href="https://github.com/Godiesc/firefox-one/assets/110120798/8fd76876-4746-45fa-80e5-c6b09c1af71e">Preview</a></li>
 <li>Windows 7 (Not tested - No probado) ❌ </li>
-<li>MacOS (Not tested - No probado) ❌ </li>
+<li>MacOS (Tested - Probado) ✔ - <a href="https://github.com/Godiesc/firefox-one/assets/110120798/f9669f3e-a429-48d7-a3ee-eb45fb938d3c">Preview</a></li>
 </ul>
+
 
 ## Known Issues - Problemas Conocidos
 <ul>
