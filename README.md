@@ -129,10 +129,16 @@
 <ul>
 <li>Linux - Manjaro KDE (Tested - Probado) ✔ - <a href="https://imgur.com/a/Di7Db9z">Preview</a></li>
 <li>Windows 10 (Tested - Probado) ✔ - <a href="https://github.com/Godiesc/firefox-one/assets/22057609/55e39c67-7588-456a-a30b-278f1dc4bd19">Preview</a></li>
-<li>Windows 11 (Not tested - No probado) ⚠  Could work well for compatibility with windows 10. </li>
+<li>Windows 11 (Tested - Probado) ✔ - <a href="https://imgur.com/a/WhypdHU">Preview</a></li>
 <li>Windows 7 (Not tested - No probado) ❌ </li>
-<li>MacOS (Not tested - No probado) ❌ </li>
+<li>MacOS (Tested - probado) ⚠ - <a href="https://imgur.com/a/UQ1TiUr">Preview</a></li>
+   <ul>
+      <li>Left-sidebar active ❌ </li>
+      <li>Tree-tab configuration ❌ </li>
+   </ul>
 </ul>
+
+>   PD: Tested in Windows 11 and MacOS by: <a href="https://github.com/Bali10050">Bali10050</a></p>
 
 ## Known Issues - Problemas Conocidos
 <ul>
