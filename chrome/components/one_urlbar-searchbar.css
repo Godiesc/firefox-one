@@ -150,7 +150,8 @@ findbar{
 .urlbarView-row:is([type="switchtab"], [type="remotetab"], [type="clipboard"]) {
   & > .urlbarView-row-inner > .urlbarView-no-wrap > .urlbarView-action
 {
-    margin-block: -4px !important;
+    padding-block: 3px 5px !important;
+    margin-block: -2px -3px !important;
   }
 }
 

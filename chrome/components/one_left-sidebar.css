@@ -65,8 +65,8 @@
     
   #PersonalToolbar #PlacesToolbarItems > toolbarseparator{
     height: 7px;
-    width: calc(var(--my-vertical-toolbar-width) - 18px) !important;                                    /* My code */
-    margin-inline: 9px !important;                                                                      /* My code */
+    width: calc(var(--my-vertical-toolbar-width) - 22px) !important;                                    /* My code */
+    margin-inline: 13px !important;                                                                     /* My code */
     background-color: color-mix(in srgb, var(--toolbar-bgcolor) 80%, var(--lwt-tab-text)) !important;   /* My edit */
     background-clip: padding-box;
     border-block: 3px solid transparent !important;

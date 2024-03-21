@@ -445,8 +445,8 @@ browser[primary="true"][tabDialogShowing="true"],
     background-image: url("../images/more.svg") !important;
     background-color: transparent !important;
     border-radius: 50% !important;
-    inset-inline-end: -10px !important;
-    top: 2px !important;
+    inset-inline-end: 6px !important;
+    top: 22px !important;
     transition: opacity 200ms;
     fill: var(--newtab-text-primary-color) !important;
     }
