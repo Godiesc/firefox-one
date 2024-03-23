@@ -42,7 +42,7 @@
     treecol, treecolpicker {
         appearance: none;
         border-color: var(--organizer-border-color) !important; 
-}
+    }
     /* ---------------------------------- Menú principal ---------------------------------- */
     
     toolbox{
@@ -144,8 +144,8 @@
     #editBMPanel_tagsField:focus-visible, #editBMPanel_keywordField:focus-visible{
         outline: 2px solid var(--general-color) !important;
         outline-offset: -1px !important;
-        border-color: transparent !important;
-}
+        border-color: red !important;
+        }
     #editBMPanel_tagsSelectorExpander{
         appearance: none !important;
         padding-inline: 14px !important;
@@ -160,7 +160,8 @@
         }
     #placesView>splitter {
         appearance: none !important;
-        border-right: 1px solid var(--organizer-border-color, #414149) !important;
+        border-right: 4px solid transparent !important;
+        margin-inline: -3px 0px !important;
         }}
     
     /* ---------------------------------- Sidebar derecha ---------------------------------- */
