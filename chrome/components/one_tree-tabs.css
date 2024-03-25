@@ -51,6 +51,10 @@
         padding-inline: 9px !important;
     }
   }
+    
+@media (-moz-platform: linux) {
+    .titlebar-buttonbox { margin-inline-end: 10px !important; }
+    }
 
 /*###################################### Mantener Window Controls quitando las pestañas ###########################
 ############################################## Codigo sin editar de MrOtherGuy ####################################*/

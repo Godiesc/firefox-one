@@ -63,6 +63,9 @@
         list-style-image: none !important;
         appearance: auto !important;
     }
+    .titlebar-button > .toolbarbutton-icon{
+        background: none !important;
+    }
     .titlebar-min {
         -moz-default-appearance: -moz-window-button-minimize !important;
     }
@@ -78,7 +81,6 @@
     .titlebar-buttonbox {
         min-height: calc(var(--tab-block-margin-personal) * 2 + var(--tab-height-personal)) !important;
         max-height: calc(var(--tab-block-margin-personal) * 2 + var(--tab-height-personal)) !important;
-        
     }
 }
 
