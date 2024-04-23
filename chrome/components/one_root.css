@@ -5,9 +5,10 @@
 @media not (-moz-bool-pref:"firefoxone.without-default-colors") {
   
   @media (prefers-color-scheme: dark){
-    :root:is([brighttext]):-moz-lwtheme,
+    :root[brighttext],
     :root[lwt-toolbar-field-focus-brighttext],
-    :root:-moz-lwtheme{   
+    :root[lwtheme],
+    :root:not([lwtheme]){
       --lwt-accent-color: #030615 !important;                                               /* frame */
       --toolbar-bgcolor: #252836 !important;                                                /* toolbar */
       --tab-selected-bgcolor: #484d65 !important;                                           /* tab_selected */
@@ -22,7 +23,9 @@
   
   @media (prefers-color-scheme: light){
     :root:not([lwtheme-brighttext="true"]),
-    :root:-moz-lwtheme{
+    :root:not([lwt-toolbar-field-focus-brighttext]),
+    :root[lwtheme],
+    :root:not([lwtheme]){
       --lwt-accent-color: #d0dbe3 !important;                                               /* frame */
       --toolbar-bgcolor: #ffffff !important;                                                /* toolbar */
       --tab-selected-bgcolor: #ffffff !important;                                           /* tab_selected */
@@ -39,9 +42,11 @@
 /* Dark theme */
 
 @media (prefers-color-scheme: dark){
-:root:is([brighttext]):-moz-lwtheme,
-:root[lwt-toolbar-field-focus-brighttext],
-:root:-moz-lwtheme{
+  :root[brighttext],
+  :root[lwt-toolbar-field-focus-brighttext],
+  :root[lwtheme],
+  :root:not([lwtheme]){
+    
   --contrast-color: #000000 !important;
   --border-contrast-color: color-mix(in srgb, var(--arrowpanel-background) 40%, var(--contrast-color)) !important; 
   
@@ -159,8 +164,11 @@
 /* White Theme */
 
 @media (prefers-color-scheme: light){
-:root:not([lwtheme-brighttext="true"]),
-:root:-moz-lwtheme{
+  :root:not([lwtheme-brighttext="true"]),
+  :root:not([lwt-toolbar-field-focus-brighttext]),
+  :root[lwtheme],
+  :root:not([lwtheme]){
+    
   --contrast-color: #f9f9f9 !important;
   --border-contrast-color: #acacac90 !important; 
   

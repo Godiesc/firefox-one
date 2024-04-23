@@ -211,7 +211,7 @@ tab[selected] .tab-background{
 
 /* "toolbar_top_separator": "#17161c" */
 
-#nav-bar:not([tabs-hidden="true"]) { box-shadow: none !important; }
+#nav-bar:not([tabs-hidden="true"]) { box-shadow: none !important; border-color: transparent !important; }
 
 /* Borde entre pestañas */
 
