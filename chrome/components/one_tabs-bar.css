@@ -26,8 +26,8 @@
 
 /* Firefox view icon */
 
-#firefox-view-button { list-style-image: url("../images/firefoxview-close.svg") !important; }
-#firefox-view-button[aria-pressed="true"] { list-style-image: url("../images/firefoxview-open.svg") !important; }
+#firefox-view-button { list-style-image: url("../icons/firefoxview-close.svg") !important; }
+#firefox-view-button[aria-pressed="true"] { list-style-image: url("../icons/firefoxview-open.svg") !important; }
 
 :root:not([privatebrowsingmode="temporary"]) :is(toolbarbutton, toolbarpaletteitem) + #tabbrowser-tabs , 
 :root[privatebrowsingmode="temporary"] :is(toolbarbutton:not(#firefox-view-button), toolbarpaletteitem:not(#wrapper-firefox-view-button)) + #tabbrowser-tabs {
@@ -44,12 +44,12 @@ toolbar:is(#TabsToolbar) #firefox-view-button[aria-pressed="true"] .toolbarbutto
 
 #firefox-view-button[aria-pressed="true"] .toolbarbutton-icon {
     outline: none !important;
-    background: var(--general-color) !important;
+    background: var(--button-active-bgcolor) !important;
     fill: #eaeaea !important;
 }
 
 toolbar #firefox-view-button[aria-pressed="true"]:hover .toolbarbutton-icon {
-    fill: var(--lwt-tab-text) !important;
+    fill: white !important;
 }
 
 /* Quitar imagen de la interfaz principal */
@@ -88,18 +88,13 @@ toolbar #firefox-view-button[aria-pressed="true"]:hover .toolbarbutton-icon {
     z-index: 2 !important;
 }
 
-/* Sombra en la pestaña activa */
+/* Sombra en la pestaña activa al usar colores default */
 
+@media not (-moz-bool-pref:"firefoxone.without-default-colors") {
 :root:not([lwtheme-image],[style*="--lwt-additional-images"]) .tabbrowser-tab[selected="true"]:not([multiselected]) .tab-stack {
     box-shadow: 0px 4px 7px 0px color-mix(in srgb, var(--lwt-frame) 84%, var(--lwt-tab-text)) !important;
     z-index: 1 !important;
-}
-
-@media (-moz-bool-pref:"firefoxone.without-default-colors") {
-    :root:not([lwtheme-image],[style*="--lwt-additional-images"]) .tabbrowser-tab[selected="true"]:not([multiselected]) .tab-stack {
-        box-shadow: none !important;
-    }
-}
+    }}
 
 /* color Pestaña activa */
 
@@ -183,14 +178,13 @@ tab[selected] .tab-background{
     border-left: 1px solid color-mix(in srgb, currentColor 30%, transparent);
     height: calc(var(--tab-height-personal) + var(--tab-block-margin) / 2) !important;
     border-image: 0 1 linear-gradient(
-    transparent 20%,
-    color-mix(in srgb, currentColor 20%, transparent) 20%,
-    color-mix(in srgb, currentColor 20%, transparent) 80%,
-    transparent 80%
-  ) !important;
+        transparent 20%,
+        color-mix(in srgb, currentColor 20%, transparent) 20%,
+        color-mix(in srgb, currentColor 20%, transparent) 80%,
+        transparent 80% ) !important;
     position:absolute;
-    
 }
+
 .tab-background:after{
     content:"";
     left: -1px !important;
@@ -206,7 +200,7 @@ tab[selected] .tab-background{
 #tabbrowser-tabs:not([movingtab]) .tabbrowser-tab:hover + .tabbrowser-tab:not([first-visible-unpinned-tab]) .tab-background:after,
 #tabbrowser-tabs:not([movingtab]) .tabbrowser-tab[multiselected] + .tabbrowser-tab .tab-background:after,
 #tabbrowser-tabs:not([movingtab]) .tabbrowser-tab[selected] + .tabbrowser-tab .tab-background:after{
-    content: none !important;
+    content: none;
 }
 
 /* "toolbar_top_separator": "#17161c" */
@@ -221,44 +215,40 @@ tab[selected] .tab-background{
 
 /* Color :hover de las pestañas no seleccionadas */
 
-.tabbrowser-tab:not(:hover) > .tab-stack:not([selected],[multiselected]) {
-    transition: background-color 0.2s ease !important;
-}
-
-.tabbrowser-tab:not([selected="true"], [multiselected]):hover > .tab-stack:not([selected="true"], [multiselected]) {
+.tabbrowser-tab:not([selected], [multiselected]):hover > .tab-stack:not([selected], [multiselected]) {
     background-color: color-mix(in srgb, var(--lwt-tab-text) 4%, var(--lwt-frame)) !important;
     z-index: 1 !important;
-    transition: background-color 0.2s ease !important;
 }
 
 /* Botón "Open Newtab" */
 
 #tabs-newtab-button, #TabsToolbar #new-tab-button {
-    padding-block-start: calc(var(--margin-top-personal)) !important;
+    padding-block: var(--tab-block-margin-personal) !important;
     padding-inline-start: 6px !important;
     fill: var(--lwt-tab-text) !important;
 }
 
 #TabsToolbar #tabs-newtab-button image:not(.menu-iconic-icon), #TabsToolbar #new-tab-button image:not(.menu-iconic-icon) {
-    background: var(--toolbar-bgcolor) !important;
-    padding-block-start: calc(var(--margin-top-personal)) !important;
+    background-color: color-mix(in srgb, var(--lwt-tab-text) 12%, var(--lwt-frame)) !important;
+    padding-block: var(--tab-block-margin-personal) !important;
     padding: 4px !important;
     max-height: 20px !important;
     min-height: 20px !important;
     max-width: 20px !important;
     min-width: 20px !important;
     border-radius: 50% !important;
+    transition: none !important;
 }
 
 #TabsToolbar #tabs-newtab-button:hover image:not(.menu-iconic-icon), #TabsToolbar #new-tab-button:hover image:not(.menu-iconic-icon) {
-    background: var(--lwt-selected-tab-background-color) !important;
+    background: var(--toolbarbutton-active-background) !important;
     transform: scale(1.1,1.1) !important;
 }
 
 /* Favicon de pagina newtab */
 
 .tab-icon-image[src="chrome://branding/content/icon32.png"] {
-    content: url("../images/foxlogofavicon.svg");
+    content: url("../icons/foxlogofavicon.svg");
     fill: var(--lwt-tab-text) !important;
 }
 
@@ -273,7 +263,8 @@ tab:not([selected]) .tab-icon-image {
 }
 
 #scrollbutton-up, #scrollbutton-down {
-    border: 8px solid transparent !important;
+    border-block-start: 5px solid transparent !important;
+    border-block-end: 8px solid transparent !important;
     border-inline-width: 4px !important;
 }
 
@@ -344,63 +335,50 @@ spacer{
   max-height: calc(var(--tab-height-personal) + var(--tab-block-margin) + 4px) !important;
 }
 
-/* _______________________ Nav-bar and Bookmark-bar - Compatibilidad con temas que usan imágenes ________________________ */
+/* __________________________________ Nav-bar and Bookmark-bar - Compatibilidad con temas que usan imágenes __________________________________ */
 
 /* Nav-bar */
 
 #nav-bar{
     background-image: linear-gradient(var(--toolbar-bgcolor, transparent), var(--toolbar-bgcolor, transparent)),
-                      linear-gradient(var(--toolbar-bgcolor), var(--toolbar-bgcolor)), 
+                      linear-gradient(transparent, transparent), 
                       var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
     background-position: right top, right top, right calc(-4px - var(--toolbar-height-personal)), left calc(-4px - var(--toolbar-height-personal)) !important;
     background-repeat: repeat, repeat, var(--lwt-background-tiling) !important;
-    background-size: auto !important; 
+    background-size: auto !important;
 }
 
 /* Bookmark-bar */
 
 #PersonalToolbar {
     background-image: linear-gradient(var(--toolbar-bgcolor, transparent), var(--toolbar-bgcolor, transparent)),
-                      linear-gradient(var(--toolbar-bgcolor), var(--toolbar-bgcolor)), 
+                      linear-gradient(transparent, transparent), 
                       var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
     background-position: right top, right top, right calc(-6px - var(--toolbar-height-personal)*2), left calc(-6px - var(--toolbar-height-personal)*2) !important;
     background-repeat: repeat, repeat, var(--lwt-background-tiling) !important;
     background-size: auto, auto, var(--display-theme-with-images) !important; 
 }
 
-/* Outline border solo en temas que usas imágenes */
+/* Borde para temas que usas imágenes: navbar - findbar - y cuando no se use 'left-sidebar' config */
 
 :root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]){
-    #nav-bar, #PersonalToolbar{
-        outline: 1px solid #50505040 !important;
+    #nav-bar, #PersonalToolbar, findbar{
+        outline: 1px solid var(--general-border-color) !important;
         outline-offset: -1px !important;
     }}
 
-/* ################################################## Menu-bar sin Tree-tab style ######################################################*/
 
-@media (prefers-color-scheme: dark){
-    :root:is([style*="--lwt-additional-images"],[lwtheme-image]) #main-menubar{
-        --toolbar-bgcolor: #101019b0 !important;
-    }}
-    
-@media (prefers-color-scheme: light){
-    :root:is([style*="--lwt-additional-images"],[lwtheme-image]) #main-menubar{
-        --toolbar-bgcolor: #ffffff80 !important;
+/* Border when 'without-default-colors' , 'main-image' , 'temas con imágenes'  - y cuando no se use 'left-sidebar' config */
+
+@media (-moz-bool-pref:"firefoxone.without-default-colors") or (-moz-bool-pref:"firefoxone.main-image"){
+    #nav-bar, #PersonalToolbar, findbar{
+    outline: 1px solid var(--general-border-color) !important;
+    outline-offset: -1px !important;
     }}
 
-:root:is([style*="--lwt-additional-images"],[lwtheme-image]) #main-menubar{
-    box-shadow: inset 0 1px 0 0 var(--lwt-frame), inset 0 1px 0 0 var(--lwt-frame),inset 0 1px 0 0 var(--lwt-frame),
-                inset 0px -1px 0 0  #50505040,  /* abajo */
-                inset 0 4px var(--lwt-frame),
-                inset 0px 5px 0 0  #50505040,   /* Top */
-                inset -1px 0 0 0  #50505040,    /* right */ 
-                inset 1px 0 0 0  #50505040      /* Left */
-                !important;
-}
+/* _______________________________________________________ Menu-bar sin Tree-tab style _______________________________________________________ */
 
 @media not (-moz-bool-pref:"firefoxone.tree_tabs_style") {
-
-/* ________________________________________________________ Menubar ______________________________________________________ */
 
 :root:not([customizing]) #titlebar{
   -moz-box-orient: horizontal; /* Fx <112 compatibility */
@@ -469,11 +447,11 @@ spacer{
 @media (-moz-bool-pref:"firefoxone.without-default-colors") {
     #main-menubar{
           box-shadow: inset 0 1px 0 0 var(--lwt-frame), inset 0 1px 0 0 var(--lwt-frame),inset 0 1px 0 0 var(--lwt-frame),
-                      inset 0px -1px 0 0  #50505040,  /* abajo */
+                      inset 0px -1px 0 0  var(--general-border-color),  /* abajo */
                       inset 0 4px var(--lwt-frame),
-                      inset 0px 5px 0 0  #50505040,   /* top */
-                      inset -1px 0 0 0  #50505040,    /* right */ 
-                      inset 1px 0 0 0  #50505040      /* Left */
+                      inset 0px 5px 0 0  var(--general-border-color),   /* top */
+                      inset -1px 0 0 0  var(--general-border-color),    /* right */ 
+                      inset 1px 0 0 0  var(--general-border-color)      /* Left */
                       !important;
         }}
 
@@ -481,7 +459,21 @@ spacer{
   #toolbar-menubar[autohide="true"]:not([inactive]) > .titlebar-buttonbox-container{ display: none }  
 }}
 
-/* __ Menu trick round border __*/
+/* _____________________________________________________________ Menu-bar style _____________________________________________________________ */
+
+/* Añado borde a la barra de menú en temas con imágenes */
+
+:root:is([style*="--lwt-additional-images"],[lwtheme-image]) #main-menubar{
+    box-shadow: inset 0 1px 0 0 var(--lwt-frame), inset 0 1px 0 0 var(--lwt-frame),inset 0 1px 0 0 var(--lwt-frame),
+                inset 0px -1px 0 0  var(--general-border-color),  /* abajo */
+                inset 0 4px var(--lwt-frame),
+                inset 0px 5px 0 0  var(--general-border-color),   /* Top */
+                inset -1px 0 0 0  var(--general-border-color),    /* right */ 
+                inset 1px 0 0 0  var(--general-border-color)      /* Left */
+                !important;
+}
+
+/* __ Menu trick rounded border __*/
 
 /* Barra de menú */
 
@@ -491,9 +483,8 @@ spacer{
     background-color: transparent !important;
 }
 
-
 #main-menubar>menu>label{
-    margin-bottom: 4px !important;
+    margin-bottom: 3px !important;
 }
 
 #main-menubar>menu:is(:hover, [open]){
@@ -501,13 +492,15 @@ spacer{
 }
 
 #main-menubar>menu>label{
-    padding: 5px  5px 6px 5px !important;
+    padding: 4px 5px 5px 5px !important;
     border-radius: var(--toolbarbutton-border-radius) !important;
+    transition: background-color 0.2s ease;
 }
 
 #main-menubar>menu:is(:hover, [open])>label{
     background-color: var(--button-active-bgcolor) !important;
     color: white !important;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 #toolbar-menubar {
@@ -516,7 +509,6 @@ spacer{
     }
 
 #toolbar-menubar>toolbaritem>menubar>menu {
-    
     background-clip: content-box !important;
     border-top: 6px solid transparent !important;
     }
@@ -525,8 +517,14 @@ spacer{
     padding-inline-start: 4px !important;
     }
 
-/* ------------------------ config to MacOS ---------------------------
-   ------------- partial compatibility to window Controls ----------*/
+/* _______________________ Configuration for Linux _______________________ */
+
+@media (-moz-platform: linux) {    
+/* Elimina padding indeseado de la barra de menú en linux*/
+    toolbar { &[type="menubar"] { padding: 0px !important; }}
+}
+
+/* _______________________ Configuration for MacOS _______________________ */
 
 @media (-moz-platform: macos) {
     :root:not([sizemode="fullscreen"]) #tabbrowser-tabs {

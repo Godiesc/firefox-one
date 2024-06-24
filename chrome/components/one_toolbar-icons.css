@@ -5,24 +5,24 @@
 
 #nav-bar #back-button image {
     margin-left: 0px !important;
-    list-style-image: url("../images/back.svg") !important;
+    list-style-image: url("../icons/back.svg") !important;
 }
 
 /* forward - go button */
 
 #nav-bar #forward-button image {
-    list-style-image: url("../images/forward.svg") !important;
+    list-style-image: url("../icons/forward.svg") !important;
 }
 
 /* Reload button */
 
 #reload-button {
-    list-style-image: url("../images/reload.svg") !important;
+    list-style-image: url("../icons/reload.svg") !important;
     animation: none !important;
 }
 
 #stop-button {
-    list-style-image: url("../images/stop.svg") !important;
+    list-style-image: url("../icons/stop.svg") !important;
     animation: none !important;
 }
 
@@ -35,13 +35,13 @@
 /* home button*/
 
 #home-button image {
-    list-style-image: url("../images/home.svg") !important;
+    list-style-image: url("../icons/home.svg") !important;
 }
 
 /* Ícono bookmark */
 
 #pageAction-panel-bookmark[starred], #star-button[starred] {
-    list-style-image: url("../images/bookmark.svg") !important;
+    list-style-image: url("../icons/bookmark.svg") !important;
     fill: #db4444 !important;
 }
 
@@ -50,7 +50,7 @@
 }
 
 #pageAction-panel-bookmark, #star-button {
-    list-style-image: url("../images/bookmark-empty.svg") !important;
+    list-style-image: url("../icons/bookmark-empty.svg") !important;
 }
 
 /* Ícono protección contra rastreo */
@@ -60,37 +60,42 @@
     order: 2 !important;
 }
 
-#urlbar-input-container[pageproxystate="valid"]>#tracking-protection-icon-container>#tracking-protection-icon-box>#tracking-protection-icon {
+.urlbar-input-container[pageproxystate="valid"] > #tracking-protection-icon-container > #tracking-protection-icon-box {
+  & not([hasException]) {
+    list-style-image: var(--shield-icon-personal) !important;
+    fill: var(--general-color) !important;
+  }
+  &[active] {
     list-style-image: var(--shield-icon-personal) !important;
     fill: var(--toolbarbutton-icon-fill) !important;
-    opacity: 1 !important;
-}
+  }}
 
-#urlbar-input-container[pageproxystate="valid"]>#tracking-protection-icon-container>#tracking-protection-icon-box[hasException]>#tracking-protection-icon {
-    list-style-image: url("../images/shield-disabled.svg") !important;
-    fill: var(--buttons-destructive-bgcolor) !important;
-}
+.urlbar-input-container[pageproxystate="valid"] > #tracking-protection-icon-container > #tracking-protection-icon-box {
+  &[hasException] {
+      list-style-image: url("../icons/shield-disabled.svg") !important;
+      fill: var(--buttons-destructive-bgcolor) !important;
+  }}
 
 /* ícono candado */
 
 #identity-box[pageproxystate="valid"].verifiedDomain #identity-icon, #identity-box[pageproxystate="valid"].mixedActiveBlocked #identity-icon {
-    list-style-image: url("../images/security.svg") !important;
+    list-style-image: url("../icons/security.svg") !important;
 }
 
 /* Ícono permisos adicionales */
 
 #permissions-granted-icon {
-    list-style-image: url("../images/permissions.svg") !important;
+    list-style-image: url("../icons/permissions.svg") !important;
 }
 
 .desktop-notification-icon {
-    list-style-image: url("../images/notification.svg") !important;
+    list-style-image: url("../icons/notification.svg") !important;
 }
 
 /* reader mode */
 
 #reader-mode-button>.urlbar-icon {
-    list-style-image: url("../images/read-mode.svg") !important;
+    list-style-image: url("../icons/read-mode.svg") !important;
 }
 
 /* Colored folders for bookmarks */
@@ -102,77 +107,85 @@
 
 #PlacesToolbarItems > .bookmark-item:nth-of-type(9n+1) > .toolbarbutton-icon {
     fill: var(--green) !important;
-    list-style-image: url("../images/folder1.svg") !important;
+    list-style-image: url("../icons/folder1.svg") !important;
 }
 
 #PlacesToolbarItems > .bookmark-item:nth-of-type(9n+2) > .toolbarbutton-icon {
     fill: var(--lightgreen) !important;    
-    list-style-image: url("../images/folder2.svg") !important;
+    list-style-image: url("../icons/folder2.svg") !important;
 }
 
 #PlacesToolbarItems > .bookmark-item:nth-of-type(9n+3) > .toolbarbutton-icon {
     fill: var(--yellowbrown) !important;
-    list-style-image: url("../images/folder3.svg") !important;
+    list-style-image: url("../icons/folder3.svg") !important;
 }
 
 #PlacesToolbarItems > .bookmark-item:nth-of-type(9n+4) > .toolbarbutton-icon {
     fill: var(--orange) !important;
-    list-style-image: url("../images/folder4.svg") !important;
+    list-style-image: url("../icons/folder4.svg") !important;
 }
 
 #PlacesToolbarItems > .bookmark-item:nth-of-type(9n+5) > .toolbarbutton-icon {
     fill: var(--red) !important;
-    list-style-image: url("../images/folder5.svg") !important;
+    list-style-image: url("../icons/folder5.svg") !important;
 }
 
 #PlacesToolbarItems > .bookmark-item:nth-of-type(9n+6) > .toolbarbutton-icon {
     fill: var(--pink) !important;
-    list-style-image: url("../images/folder6.svg") !important;
+    list-style-image: url("../icons/folder6.svg") !important;
 }
 
 #PlacesToolbarItems > .bookmark-item:nth-of-type(9n+7) > .toolbarbutton-icon {
     fill: var(--purple) !important;
-    list-style-image: url("../images/folder7.svg") !important;
+    list-style-image: url("../icons/folder7.svg") !important;
 }
 
 #PlacesToolbarItems > .bookmark-item:nth-of-type(9n+8) > .toolbarbutton-icon {
     fill: #1b57fe !important;
-    list-style-image: url("../images/folder8.svg") !important;
+    list-style-image: url("../icons/folder8.svg") !important;
 }
 
 #PlacesToolbarItems > .bookmark-item:nth-of-type(9n+9) > .toolbarbutton-icon {
     fill: var(--lightblue) !important;
-    list-style-image: url("../images/folder9.svg") !important;
+    list-style-image: url("../icons/folder9.svg") !important;
 }
 
 /* Carpeta "Otros Marcadores" */
 
 #OtherBookmarks > .toolbarbutton-icon{
-    list-style-image: url("../images/folder-otherbookmarks.svg") !important;
+    list-style-image: url("../icons/folder-otherbookmarks.svg") !important;
     fill: color-mix(in srgb, var(--button-active-bgcolor) 80%, var(--lwt-tab-text)) !important;
 }
 
 /* separador izquierda y derecha urlbar */
 
-#urlbar:not([open], [focused], :hover) #urlbar-background::before {
+#urlbar-background::before {
     content: ""; display: flex;
-    background: url("../images/urlbar-separator.svg") no-repeat left;
+    background: url("../icons/urlbar-separator.svg") no-repeat left center;
     background-size: 6px 16px;
     margin-left: -3px !important;
-    height: calc(var(--toolbar-height-personal) - var(--tab-block-margin));
+    height: calc(var(--toolbar-height-personal) - 8px);
     -moz-context-properties: fill;
     fill: var(--toolbarbutton-icon-fill);
     opacity: 0.2;
+    transition-duration: 400ms !important;
 }
 
-#urlbar:not([open], [focused], :hover) #urlbar-background::after {
+#urlbar-background::after {
     content: ""; display: flex;
-    background: url("../images/urlbar-separator.svg") no-repeat right;
+    background: url("../icons/urlbar-separator.svg") no-repeat right center;
     background-size: 6px 16px;
     margin-right: -3px !important;
     height: calc(var(--toolbar-height-personal) - 8px);
     margin-top: calc( 7px - var(--toolbar-height-personal)) !important;
     -moz-context-properties: fill;
     fill: var(--toolbarbutton-icon-fill);
-    opacity: 0.2;    
+    opacity: 0.2;
+    transition-duration: 400ms !important;
+}
+
+#urlbar:is([open], [focused], :hover) #urlbar-background::before,
+#urlbar:is([open], [focused], :hover) #urlbar-background::after{
+    opacity: 0 !important;
+    transition-duration: 400ms !important;
 }

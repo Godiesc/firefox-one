@@ -22,8 +22,8 @@
 
 /* Alinear lista de pestañas sincronizadas */
     
-#appMenu-popup .PanelUI-remotetabs-clientcontainer>.subviewbutton>label {
-    margin-inline-start: calc(0px - var(--margin-right-icons-personal)) !important;
+#appMenu-popup .subviewbutton[image] > .toolbarbutton-text, .subviewbutton[targetURI] > .toolbarbutton-text{
+    padding-inline-start: calc(0px - var(--margin-right-icons-personal)) !important;
 }
 
 /* Tamaño y margen de los íconos */
@@ -47,7 +47,7 @@
 /* Ícono de Actualización disponible */
 
 .panel-banner-item::before {
-    background: url("../images/foxFill.svg") no-repeat center/16px;
+    background: url("../icons/foxFill.svg") no-repeat center/16px;
     content: ""; 
     display: inline-flex;
     -moz-context-properties: fill;
@@ -113,11 +113,11 @@
 /* Ícono Marcadores */
 
 #panelMenuBookmarkThisPage[starred]{
-    list-style-image: url("../images/bookmark.svg");
+    list-style-image: url("../icons/bookmark.svg");
     fill: var(--general-color) !important;
 }
 #appMenu-bookmarks-button, #appMenu-library-bookmarks-button, #sidebar-switcher-bookmarks,#panelMenuBookmarkThisPage:not([starred]) {
-    list-style-image: url("../images/bookmark-empty.svg");
+    list-style-image: url("../icons/bookmark-empty.svg");
 }
 
 /* ícono Historial */
@@ -153,7 +153,7 @@
 /* Guardar como... */
 
 #appMenu-save-file-button2{
-    list-style-image: url("../images/save.svg");
+    list-style-image: url("../icons/save.svg");
 }
 
 /* Ícono buscar */
@@ -171,7 +171,7 @@
 /* Item -tamaño- */
 
 #appMenu-zoom-controls:before{
-    content: url(../images/zoom.svg);
+    content: url(../icons/zoom.svg);
 }
 
 /* Ícono Ajustes */
@@ -198,11 +198,11 @@
 /* Ícono salir */
 
 #appMenu-quit-button2 {
-    list-style-image: url("../images/quit1.svg");
+    list-style-image: url("../icons/quit1.svg");
 }
 
 #appMenu-quit-button2:hover {
-    list-style-image: url("../images/quit2.svg");
+    list-style-image: url("../icons/quit2.svg");
 }
 
 #panelMenu_viewBookmarksToolbar {
@@ -252,5 +252,5 @@
 
 /* Ícono de -Cerrar sesión- */
 #PanelUI-fxa-menu-account-signout-button{
-    list-style-image: url("../images/logout.svg");
+    list-style-image: url("../icons/logout.svg");
 }

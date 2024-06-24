@@ -22,7 +22,7 @@
 }
 
 #editBookmarkPanelRemoveButton{
-    background: url("../images/delete.svg") no-repeat center/16px !important;
+    background: url("../icons/delete.svg") no-repeat center/16px !important;
     background-color: var(--input-border-color) !important;
     fill: var(--toolbarbutton-icon-fill) !important;
     -moz-context-properties: fill !important;
@@ -98,60 +98,18 @@ treechildren::-moz-tree-image(selected), treechildren::-moz-tree-twisty(selected
     border: 1px solid var(--button-bgcolor) !important;
 }
 
-/* --------------------------- Barra de marcadores - color [open] -------------------------------- */
+/* --------------------------- Barra de pestañas -------------------------------- */
 
 toolbarbutton.bookmark-item:not(.subviewbutton, [disabled="true"]):is([open],:active, :hover) {
     color: var(--lwt-tab-text) !important;  
     fill:  var(--lwt-tab-text) !important; 
 }
 
-/* Barra de marcadores - color :hover 
+/* Alinear botones de la barra de pestañas */
 
-#PersonalToolbar .toolbarbutton-1 , toolbarbutton.bookmark-item:not(.subviewbutton, [disabled="true"]) {text-shadow: none !important; }
-
-#PersonalToolbar .toolbarbutton-1:hover , toolbarbutton.bookmark-item:not(.subviewbutton, [disabled="true"], [open]):hover {
-    color: var(--toolbarbutton-icon-fill) !important;  
-    fill:  var(--toolbarbutton-icon-fill) !important; 
-    --toolbarbutton-hover-background: var(--toolbarbutton-hover-personal) !important; 
-}*/
-
-/*################# Color de iconos de la tabs-bar cuando están :hover ###################### */
-
-#TabsToolbar .toolbarbutton-1:hover:not([disabled="true"],[open="true"],#tabs-newtab-button,  #new-tab-button) > .toolbarbutton-icon,
-#TabsToolbar .toolbarbutton-1:hover:not([disabled="true"],[open="true"],#tabs-newtab-button,  #new-tab-button) > .toolbarbutton-text,
-#TabsToolbar .toolbarbutton-1:hover:not([disabled="true"],[open="true"],#tabs-newtab-button,  #new-tab-button) > .toolbarbutton-badge-stack{
-    background-color: color-mix(in srgb, var(--lwt-frame) 86%, var(--lwt-tab-text)) !important;
-}
-
-#TabsToolbar .toolbarbutton-1[open="true"] > .toolbarbutton-icon,
-#TabsToolbar .toolbarbutton-1[open="true"] > .toolbarbutton-text,
-#TabsToolbar .toolbarbutton-1[open="true"] > .toolbarbutton-badge-stack {
-    background-color: color-mix(in srgb, var(--lwt-frame) 90%, var(--lwt-tab-text)) !important;
-}
-
-/*Color de iconos de la tabs-bar cuando están :hover en temas con imágenes */
-
-:root:is([lwtheme-image],[style*="--lwt-additional-images"])
-#TabsToolbar .toolbarbutton-1:hover:not([disabled="true"],[open="true"],#tabs-newtab-button,  #new-tab-button) > .toolbarbutton-icon,
-:root:is([lwtheme-image],[style*="--lwt-additional-images"])
-#TabsToolbar .toolbarbutton-1:hover:not([disabled="true"],[open="true"],#tabs-newtab-button,  #new-tab-button) > .toolbarbutton-text,
-:root:is([lwtheme-image],[style*="--lwt-additional-images"])
-#TabsToolbar .toolbarbutton-1:hover:not([disabled="true"],[open="true"],#tabs-newtab-button,  #new-tab-button) > .toolbarbutton-badge-stack{
-    background-color: var(--toolbarbutton-hover-background) !important;
-}
-
-:root:is([lwtheme-image],[style*="--lwt-additional-images"])
-#TabsToolbar .toolbarbutton-1[open="true"] > .toolbarbutton-icon,
-:root:is([lwtheme-image],[style*="--lwt-additional-images"])
-#TabsToolbar .toolbarbutton-1[open="true"] > .toolbarbutton-text,
-:root:is([lwtheme-image],[style*="--lwt-additional-images"])
-#TabsToolbar .toolbarbutton-1[open="true"] > .toolbarbutton-badge-stack {
-    background-color: var(--toolbarbutton-active-background) !important;
-}
+#TabsToolbar .toolbarbutton-1 { padding-block: var(--tab-block-margin-personal) !important; }
 
 /* margin-right ultimo botón de la nav-bar*/
-
-#PanelUI-button{ padding-inline-end: 0px !important; }
 
 #nav-bar-overflow-button,
 :root:not([chromehidden~="toolbar"],[sizemode="fullscreen"]) #nav-bar:not([nonemptyoverflow]) #nav-bar-customization-target > :is(toolbarbutton, toolbaritem):last-child{
@@ -219,6 +177,7 @@ toolbarbutton.bookmark-item:not(.subviewbutton, [disabled="true"]):is([open],:ac
 }
 
 /* Separador linea Vertical para tabs-bar, usando "espacio flexible" */
+
 :is(#TabsToolbar) toolbarpaletteitem[place="toolbar"][id^="wrapper-customizableui-special-spring"],:is(#TabsToolbar) toolbarspring {
     background-color: transparent !important;
     max-width: 0px !important;
@@ -227,16 +186,26 @@ toolbarbutton.bookmark-item:not(.subviewbutton, [disabled="true"]):is([open],:ac
     margin-inline: 3px !important;
     border-left: 1px solid red !important;
     border-image: 0 1 linear-gradient(
-    transparent 32%,
-    color-mix(in srgb, currentColor 20%, transparent) 32%,
-    color-mix(in srgb, currentColor 20%, transparent) 68%,
-    transparent 68%) !important;
+    transparent 28%,
+    color-mix(in srgb, currentColor 20%, transparent) 28%,
+    color-mix(in srgb, currentColor 20%, transparent) 70%,
+    transparent 70%) !important;
+}
+
+/* Estilo separador en 'Customization mode', permite mayor zona para arrastre */
+
+:is(#TabsToolbar) toolbarpaletteitem[place="toolbar"][id^="wrapper-customizableui-special-spring"] {
+    min-width: 10px !important;
+    min-height: var(--tabs-height-personal) !important;
+    max-height: var(--tabs-height-personal) !important;
+    margin-block: 0 !important;
 }
 
 /* Status panel */
 
 #statuspanel label{
     background-color: var(--toolbar-bgcolor) !important;
+    color: var(--toolbar-color) !important;
     border-color: var(--lwt-frame) !important;
     border-radius: 0 8px 0 6px !important;
 }

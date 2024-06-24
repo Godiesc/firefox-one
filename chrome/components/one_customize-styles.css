@@ -15,16 +15,16 @@
 
 #customization-done-button {
     appearance: none !important;
-    color: var(--lwt-tab-text) !important;
+    color: white !important;
     border-color: var(--button-hover-bgcolor) !important;
     background-color: var(--button-hover-bgcolor) !important;
     padding: 2px 24px !important;
 }
 
-#customization-footer .footer-button:is([open]), 
+#customization-footer .footer-button:is([open],:hover), 
 #customization-done-button:is(:active, :hover):not([disabled]) {
     appearance: none !important;
-    color: var(--lwt-tab-text) !important;
+    color: white !important;
     background-color: var(--button-active-bgcolor) !important;
     border-color: var(--button-active-bgcolor) !important;
 }

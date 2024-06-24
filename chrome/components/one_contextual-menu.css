@@ -73,7 +73,7 @@ menupopup > menuitem:not([disabled="true"]), menupopup > menu {
 
 /* Color to :hover items */
 
-menupopup > menuitem:not([disabled="true"]):hover, menupopup > menu:hover {
+menupopup > menuitem:not([disabled="true"]):is(:hover,[_moz-menuactive]), menupopup > menu:is(:hover,[_moz-menuactive]) {
     appearance: none !important;
     background-color: var(--button-active-bgcolor) !important;
     color: white !important;
@@ -211,7 +211,7 @@ menugroup > menuitem:not([selected="true"]), menugroup > menu {
     
 #context-navigation > menuitem[_moz-menuactive="true"]:not([disabled]) {
     appearance: none !important;
-    background: var(--button-bgcolor) !important;
+    background: var(--button-active-bgcolor) !important;
     color: #ffffff !important;
 }
     

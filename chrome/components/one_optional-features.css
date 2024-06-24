@@ -56,7 +56,7 @@
     /* Image for solid themes */    
     :root:not([style*="--lwt-additional-images"],[lwtheme-image]) :is(slot, panelview, menupopup),
     :root:not([style*="--lwt-additional-images"],[lwtheme-image]):is([sizemode="maximized"]) #PanelUI-menu-button{
-        --lwt-header-image: url("../images/newtab/menu-image.png") !important;
+        --lwt-header-image: url("../newtab/menu-image.png") !important;
     }
 
     @media (prefers-color-scheme: dark){
@@ -87,13 +87,13 @@
                               var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
             background-size: auto 100vh !important;
             background-position-x: 0px !important;
-            background-position-y: -8px !important;
+            background-position-y: -5px !important;
     }}
     
     @media (-moz-platform: windows), (-moz-platform: linux) {
         :root:not([chromehidden~="toolbar"]):is([sizemode="maximized"]) #PanelUI-menu-button[open]>stack::after{
-            background-position-x: calc(-12px - var(--margin-left-icons-personal) - var(--margin-right-icons-personal)) !important;
-            background-position-y: -10px !important;
+            background-position-x: calc(-10px - var(--margin-left-icons-personal) - var(--margin-right-icons-personal)) !important;
+            background-position-y: -11px !important;
     }}
     
     /* Alinear imagen con left-sidebar deshabilitada */
@@ -102,10 +102,10 @@
         :root:not([chromehidden~="toolbar"]):is([sizemode="maximized"]) #PanelUI-menu-button[open]>.toolbarbutton-badge-stack,
         :root:not([chromehidden~="toolbar"]):is([sizemode="maximized"]) #PanelUI-menu-button[open]>stack::after{
             background-position-x: 0px !important;
-            background-position-y: -2px !important;
+            background-position-y: 0px !important;
         }
         :root:not([chromehidden~="toolbar"]):is([sizemode="maximized"]) #PanelUI-menu-button[open]>stack::after{
-            background-position-x: -30px !important;
+            background-position-x: -24px !important;
             background-position-y: -4px !important;
         }}}
 }
@@ -122,7 +122,7 @@
     
     @media (prefers-color-scheme: dark){
         tab[soundplaying]:not([pinned]) .tab-background::before{
-            background: url("../images/Beats.webp") no-repeat left center !important;
+            background: url("../icons/Beats.webp") no-repeat left center !important;
             background-size: 22px 16px !important;
             width: 22px !important;
             height: 16px !important;
@@ -132,7 +132,7 @@
 
     @media (prefers-color-scheme: light){
         tab[soundplaying]:not([pinned]) .tab-background::before{
-            background: url("../images/Beats.gif") repeat left center !important;
+            background: url("../icons/Beats.gif") repeat left center !important;
             background-size: 16px 16px !important;
             margin-inline-start: 6px !important;
             margin-block-start: calc(var(--tab-height-personal)/2 + 3px)  !important;
@@ -167,13 +167,26 @@
     tab[selected] .tab-background{
         outline: 1px solid var(--identity-tab-color, var(--button-active-bgcolor)) !important;
         outline-offset: -1px !important;
-        }}  
+        }}
+    
+    tab[selected] .tab-background{
+        background-image: linear-gradient(var(--toolbar-bgcolor, transparent), var(--toolbar-bgcolor, transparent)), 
+                          var(--lwt-additional-images,none), var(--lwt-header-image, none) !important;
+        background-position: 0 0, calc(100% - 4px) top, left top, left top, right top !important;
+        background-repeat: repeat-x, var(--lwt-background-tiling), no-repeat !important;
+        background-size: auto 100%, var(--lwt-background-size, auto auto), auto auto !important;
+        background-attachment: scroll, fixed, fixed !important;
+        background-color: transparent !important;
+        outline: 1px solid var(--identity-tab-color, var(--button-active-bgcolor)) !important;
+        outline-offset: -1px !important;
+        z-index: 1 !important;
+    }
 
 /* Alineamos la imagen correctamente cuando se usa left-sidebar */
 @media not (-moz-bool-pref:"firefoxone.style_without_leftsidebar") {
     #PersonalToolbar,
     :root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) #PersonalToolbar{
-        background-position: -4px -2px !important;
+        background-position: -4px -4px !important;
         background-size: auto auto !important;
     }}
 

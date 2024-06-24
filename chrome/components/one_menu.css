@@ -4,7 +4,7 @@
 @media (-moz-platform: windows), (-moz-platform: linux) {
     :root {
         --label-color: color-mix(in srgb, var(--arrowpanel-color, var(--lwt-tab-text))80%, var(--Button-background-personal));
-        --margin-left-icons-personal: 0px !important;
+        --margin-left-icons-personal: 2px !important;
         --margin-right-icons-personal: 6px !important;
         --margin-left-separators: calc(var(--margin-left-icons-personal) + var(--margin-right-icons-personal) + 22px) !important;
         --menu-label: "" ;
@@ -26,7 +26,7 @@
     
 /* Tamaño menu [Open] - ventana maximizada y no maximizada*/
     
-    :root[sizemode="maximized"]:not([chromehidden~="toolbar"]) #appMenu-popup panelview {
+    :root:not([chromehidden~="toolbar"])[sizemode="maximized"] #appMenu-popup panelview {
         width: 28.5em !important;
     }
     #appMenu-popup panelview {
@@ -43,17 +43,18 @@
     
 /* margen izquierda pestañas*/
     
-    :root:not([chromehidden~="toolbar"]) #toolbar-menubar, :root:not([chromehidden~="toolbar"]) #toolbar-menubar[autohide="true"]+#TabsToolbar {
+    :root:not([chromehidden~="toolbar"]) #toolbar-menubar, 
+    :root:not([chromehidden~="toolbar"]) #toolbar-menubar[autohide="true"]+#TabsToolbar {
         padding-inline-start: var(--padding-left-tab) !important;
     }
     
-/* tamaño botón Menú */
+/* Margen izquierda botón Menú */
     
     :root:not([chromehidden~="toolbar"]) #PanelUI-menu-button {
-        padding-inline: 4px !important;
+        padding-inline-start: 4px !important;
     }
 
-/* menu :hover y open */
+/* menu :hover */
     
     /* Elimina transición indeseada */
     #PanelUI-menu-button>.toolbarbutton-badge-stack { transition: none !important; }
@@ -61,13 +62,32 @@
     :root:not([chromehidden~="toolbar"]) #PanelUI-menu-button:not([open]):hover>.toolbarbutton-badge-stack {
         background-color: var(--toolbarbutton-hover-personal) !important;
         border-radius: 7px !important;
+    }   
+
+/* Logo */
+    
+    :root:not([chromehidden~="toolbar"]) #PanelUI-menu-button {
+        list-style-image: url("chrome://branding/content/icon128.png") !important;
     }
+    
+    :root:not([chromehidden~="toolbar"]) #PanelUI-menu-button image {
+        height: 20px !important;
+        width: 20px !important;
+        margin-bottom: -1px !important; /* Sirve para centrar el logo */
+    }
+}
+
+/* ____________________________________________ Style only for Windows OS ____________________________________________ */
+
+@media (-moz-platform: windows) {
+    
+/* menu [open] */
     
     :root:not([chromehidden~="toolbar"],[sizemode="normal"],[sizemode="fullscreen"]) 
         #PanelUI-menu-button[open]>.toolbarbutton-badge-stack {
             --menu-label: "Menu" ;
-            min-height: calc(var(--tab-height-personal) + 4px) !important; /* Sirve para alinear al cambiar the height de pestañas */
-            max-height: calc(var(--tab-height-personal) + 4px) !important;
+            min-height: calc(var(--tab-height-personal) + 3px) !important; /* Sirve para alinear al cambiar the height de pestañas */
+            max-height: calc(var(--tab-height-personal) + 3px) !important;
             background-image: var(--noise-urlbar-personal, var(--noise-urlbar-personal, none)),
                           linear-gradient(var(--arrowpanel-background), var(--arrowpanel-background)),
                           linear-gradient(var(--arrowpanel-background), var(--arrowpanel-background)) !important;
@@ -75,21 +95,6 @@
             outline: 1px solid var(--arrowpanel-border-color) !important;
             outline-offset: -1px !important;
             box-shadow: -1px 0px var(--border-contrast-color)  !important;
-    }
-
-/* Logo */
-    
-    :root:not([chromehidden~="toolbar"]) #PanelUI-menu-button {
-        list-style-image: url("chrome://branding/content/icon32.png") !important;
-    }
-    
-    :root:not([chromehidden~="toolbar"]) #PanelUI-menu-button image {
-        height: 18px !important;
-        width: 18px !important;
-    }
-    
-    :root:not([chromehidden~="toolbar"]) #PanelUI-menu-button[open] image {
-        background-size: 44px !important;
     }
     
 /* Label Menú */
@@ -110,7 +115,7 @@
 /* Padding top para hacer espacio para la fila del Label menú */
     
     :root:not([chromehidden~="toolbar"])[sizemode="maximized"] #appMenu-popup>panelmultiview>box>box>panelview {
-        padding-top: calc(var(--tab-height-personal) + 2px) !important;
+        padding-top: calc(var(--tab-height-personal) - 4px) !important;
     }
     
 /* Margin top para subir el menú [open] */
@@ -118,32 +123,65 @@
     :root:not([chromehidden~="toolbar"])[sizemode="maximized"] #appMenu-popup {
         --menu-plus-label-width: 72px !important;
         appearance: none !important;
-        margin-top: calc(-8px - var(--tab-height-personal)) !important;
+        margin-top: calc(-5px - var(--tab-height-personal)) !important;
         padding-inline-start: 4px !important;
-        clip-path: polygon(0% 0%, 0% 100%, 1% 53%, 0 10px, calc(var(--menu-plus-label-width) + 4px) 10px,
-               calc(var(--menu-plus-label-width) + 4px) calc(var(--tab-height-personal) + 2px), 0 calc(var(--tab-height-personal) + 2px), 0 100%, 100% 100%, 100% 0%);
+        clip-path: polygon(0% 0%, 0% 100%, 1% 53%, 0 7px, calc(var(--menu-plus-label-width) + 4px) 7px,
+               calc(var(--menu-plus-label-width) + 4px) calc(var(--tab-height-personal) + 1px), 0 calc(var(--tab-height-personal) + 1px), 0 100%, 100% 100%, 100% 0%);
+        transition: none !important;
         --arrowpanel-menuitem-padding: 6px !important;
         --arrowpanel-border-radius: 8px !important;
         --panel-separator-margin-horizontal: 0px !important;
     }
 
-/* Separadores */
+/* Linea sobre label Account solo en ventana maximizada */
     
     :root:not([chromehidden~="toolbar"])[sizemode="maximized"]{
-    #appMenu-popup.cui-widget-panel toolbarseparator {
-        margin-inline-start: var(--margin-left-separators) !important;
-        --panel-separator-margin-vertical: 2px !important;
-        --panel-separator-margin: var(--panel-separator-margin-vertical) var(--panel-separator-margin-horizontal) !important;
-        }
-        
-    /* Linea sobre label Account solo en ventana maximizada */
-    
     #appMenu-fxa-status2 {
         padding-top: 2px !important;
         border-top: 1px solid var(--panel-separator-color) !important;
         border-image: linear-gradient(to left, var(--panel-separator-color), 
             var(--panel-separator-color) calc(100% - var(--margin-left-separators)), 
                              transparent calc(100% - var(--margin-left-separators))) 1 !important;
+    }}
+}
+
+/* _________________________________________________________________________________________________________________________ */
+
+:root:not([chromehidden~="toolbar"])[sizemode="maximized"]{
+
+/* Separadores */
+    
+    #appMenu-popup.cui-widget-panel toolbarseparator {
+        margin-inline-start: var(--margin-left-separators) !important;
+        --panel-separator-margin-vertical: 2px !important;
+        --panel-separator-margin: var(--panel-separator-margin-vertical) var(--panel-separator-margin-horizontal) !important;
+        }
+
+/* Sobreescribir nuevo Tamaño y margen de los íconos - Trick para aplicar margen nuevo solo al menu hamburguesa maximizado */
+        
+    #appMenu-popup .subviewbutton:not(.subviewbutton-iconic, .toolbarbutton-text, [checked="true"])> .toolbarbutton-icon,                       /* Mayoría de botones */
+    #appMenu-popup #appMenu-fxa-status2[fxastatus="signedin"] #appMenu-fxa-label2::before, #appMenu-popup #fxa-manage-account-button::before,   /* Account icon signedin */
+    #appMenu-popup #appMenu-fxa-status2:not([fxastatus="signedin"])::before,                                                                    /* Account icon not signedin */
+    #appMenu-popup #appMenu-zoom-controls:before, #appMenu-popup .syncNowBtn{           
+        width: 16px; height: 16px;
+        margin-inline-start: var(--margin-left-icons-personal) !important;
+        margin-inline-end: var(--margin-right-icons-personal) !important;
+    }
+    
+    #appMenu-popup .subviewbutton.subviewbutton-iconic:not(.subviewbutton-back) image{
+        margin-inline-start: var(--margin-left-icons-personal) !important;
+    }
+
+/* Alinear lista de pestañas sincronizadas */
+    
+    #appMenu-popup .PanelUI-remotetabs-clientcontainer>.subviewbutton>label {
+        margin-inline-start: calc(4px - var(--margin-right-icons-personal)) !important;
+    }
+
+/* Margin top en Cuenta no iniciada */
+    
+    :root:not([chromehidden~="toolbar"]) #appMenu-fxa-status2:not([fxastatus="signedin"]) {
+        padding-top: 4px !important;
     }}
     
 /* circulo de notificación de actualización */
@@ -167,44 +205,15 @@
     .panel-banner-item::before {
         margin-inline-end: var(--margin-right-icons-personal) !important;
     }
-    
-/* Sobreescribir nuevo Tamaño y margen de los íconos - Trick para aplicar margen nuevo solo al menu hamburguesa maximizado */
-    
-    :root:not([chromehidden~="toolbar"])[sizemode="maximized"]{
-        
-    #appMenu-popup .subviewbutton:not(.subviewbutton-iconic, .toolbarbutton-text, [checked="true"])> .toolbarbutton-icon,                       /* Mayoría de botones */
-    #appMenu-popup #appMenu-fxa-status2[fxastatus="signedin"] #appMenu-fxa-label2::before, #appMenu-popup #fxa-manage-account-button::before,   /* Account icon signedin */
-    #appMenu-popup #appMenu-fxa-status2:not([fxastatus="signedin"])::before,                                                                    /* Account icon not signedin */
-    #appMenu-popup #appMenu-zoom-controls:before, #appMenu-popup .syncNowBtn{           
-        width: 16px; height: 16px;
-        margin-inline-start: var(--margin-left-icons-personal) !important;
-        margin-inline-end: var(--margin-right-icons-personal) !important;
-    }
-    
-    #appMenu-popup .subviewbutton.subviewbutton-iconic:not(.subviewbutton-back) image{
-        margin-inline-start: var(--margin-left-icons-personal) !important;
-    }
 
-    /* Alinear lista de pestañas sincronizadas */
-    
-    #appMenu-popup .PanelUI-remotetabs-clientcontainer>.subviewbutton>label {
-        margin-inline-start: calc(4px - var(--margin-right-icons-personal)) !important;
-    }
-
-/* Margin top en Cuenta no iniciada */
-    
-    :root:not([chromehidden~="toolbar"]) #appMenu-fxa-status2:not([fxastatus="signedin"]) {
-        padding-top: 4px !important;
-    }
-}
-
-/* Menú más pequeño en linux*/
+/* ____________________________________________ Configuration for Linux OS ____________________________________________ */
 
 @media (-moz-platform: linux) {
+
     :root {
-        --margin-left-icons-personal: 9px !important;
+        --margin-left-icons-personal: 2px !important;
     }
-    :root:not([chromehidden~="toolbar"])[sizemode="maximized"] #appMenu-popup {
+    :root:not([chromehidden~="toolbar"]) #appMenu-popup {
         --arrowpanel-menuitem-padding: 5px !important;
     }
 }

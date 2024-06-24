@@ -13,6 +13,7 @@
       --toolbar-bgcolor: #252836 !important;                                                /* toolbar */
       --tab-selected-bgcolor: #484d65 !important;                                           /* tab_selected */
       --toolbarbutton-hover-background: #484d65 !important;                                 /* button_background_hover */
+      --toolbar-field-focus-background-color: #252836 !important;                           /* toolbar_field_focus */
     }
      
     :root:not([style*="--lwt-additional-images"],[lwtheme-image]){       
@@ -29,7 +30,8 @@
       --lwt-accent-color: #d0dbe3 !important;                                               /* frame */
       --toolbar-bgcolor: #ffffff !important;                                                /* toolbar */
       --tab-selected-bgcolor: #ffffff !important;                                           /* tab_selected */
-      --toolbarbutton-hover-background: #d6e0e7 !important;                                 /* button_background_hover */
+      --toolbarbutton-hover-background: #becfda !important;                                 /* button_background_hover */
+      --toolbar-field-focus-background-color: #e7edf1 !important;                           /* toolbar_field_focus */
     }
     
     :root:not([style*="--lwt-additional-images"],[lwtheme-image]){ 
@@ -47,8 +49,10 @@
   :root[lwtheme],
   :root:not([lwtheme]){
     
-  --contrast-color: #000000 !important;
-  --border-contrast-color: color-mix(in srgb, var(--arrowpanel-background) 40%, var(--contrast-color)) !important; 
+  --contrast-color: #000000 ;
+  --border-contrast-color: color-mix(in srgb, var(--arrowpanel-background) 40%, var(--contrast-color)) ;
+  --general-border-color: color-mix(in srgb, var(--toolbar-bgcolor) 96%, var(--lwt-tab-text)) ;
+  --content-border-color: color-mix(in srgb, var(--lwt-frame) 94%, var(--lwt-tab-text)) ;
   
   /*--lwt-accent-color: #030615 !important;                                                 /* frame */
   --lwt-frame: var(--lwt-accent-color, #030615) !important;                                 /* frame */
@@ -72,10 +76,10 @@
   --toolbar-field-color: var(--lwt-tab-text) !important;                                    /* toolbar_field_text */
   --toolbar-field-border-color: var(--toolbar-bgcolor) !important;                          /* toolbar_field_border */
   
-  --toolbar-field-focus-background-color: #252836 !important;                               /* toolbar_field_focus */
+  /*--toolbar-field-focus-background-color: #252836 !important;                             /* toolbar_field_focus */
   --toolbar-field-focus-color: var(--lwt-tab-text) !important;                              /* toolbar_field_text_focus */
   --toolbar-field-focus-border-color: transparent !important;                               /* toolbar_field_border_focus */
-  --lwt-toolbar-field-highlight: var(--general-color) !important;                           /* toolbar_field_highlight */
+  --lwt-toolbar-field-highlight: var(--button-active-bgcolor) !important;                   /* toolbar_field_highlight */
   --lwt-toolbar-field-highlight-text: var(--lwt-tab-text) !important;                       /* toolbar_field_highlight_text */
     
   --lwt-selected-tab-background-color: var(--tab-selected-bgcolor) !important;              /* tab_selected */
@@ -98,8 +102,8 @@
   --toolbarbutton-outer-padding: 2px !important;                                            /* Toolbar buttons más espaciados */
   --toolbarbutton-border-radius: 6px !important;                                            /* forma de los buttons */
   
-  --tab-block-margin: 8px !important;                                                       /* margenes pestañas */
-  --tab-block-margin-personal: 8px !important;                                              /* margenes pestañas - need to be the same */
+  --tab-block-margin: 5px !important;                                                       /* margenes pestañas */
+  --tab-block-margin-personal: 5px 8px !important;                                          /* margenes pestañas - need to be the same */
   
   --tab-min-height: var(--tab-height-personal) !important;                                  /* tamaño pestañas */
   --tabs-shadow-size: 0px !important;                                                       /* sombras de pestaña */
@@ -126,14 +130,14 @@
     var(--arrowpanel-background) 90%, var(--lwt-tab-text)) !important;                      /* separadores de menu desplegable de marcadores */
   
   --urlbar-popup-url-color: #96ddff !important;                                             /* Color urls de sujerencias de búsqueda */
-  --autocomplete-popup-hover-background: var(--general-color) !important;                   /* Color hover de sujerencias de búsqueda */
+  --autocomplete-popup-hover-background: var(--button-active-bgcolor) !important;            /* Color hover de sujerencias de búsqueda */
   --urlbarView-separator-color: transparent !important;                                     /* color separador urlbar y sugerencias de búsqueda */
   --link-color: color-mix(in srgb, 
     var(--general-color) 70%, var(--lwt-tab-text)) !important;                              /* Color links urlbar open */
   
   scrollbar-color: #38375580 #18173530 !important;                                          /* Colores - Barra de deplazamiento */
-  --shield-icon-personal: url("../images/shield-enable.svg") !important;                    /* Ícono protección contra rastreo */
-  --noise-urlbar-personal: url("../images/urlbar-noise-light.png") !important;              /* imagen de desenfoque urlbar open */
+  --shield-icon-personal: url("../icons/shield-enable.svg") !important;                     /* Ícono protección contra rastreo */
+  --noise-urlbar-personal: url("../icons/urlbar-noise-light.png") !important;               /* imagen de desenfoque urlbar open */
   
   
   --button-primary-bgcolor: var(--button-hover-bgcolor) !important;                         /* ColorBotónGuardar */   
@@ -170,7 +174,9 @@
   :root:not([lwtheme]){
     
   --contrast-color: #f9f9f9 !important;
-  --border-contrast-color: #acacac90 !important; 
+  --border-contrast-color: #acacac90 !important;
+  --general-border-color: color-mix(in srgb, var(--lwt-frame) 96%, var(--lwt-tab-text)) ;
+  --content-border-color: color-mix(in srgb, var(--lwt-frame) 90%, var(--lwt-tab-text)) ;
   
   /*--lwt-accent-color: #d0dbe3 !important;                                                 /* frame */
   --lwt-frame: var(--lwt-accent-color, #d0dbe3) !important;                                 /* frame */
@@ -194,10 +200,10 @@
   --toolbar-field-color: var(--lwt-tab-text) !important;                                    /* toolbar_field_text */
   --toolbar-field-border-color: var(--toolbar-bgcolor) !important;                          /* toolbar_field_border */
   
-  --toolbar-field-focus-background-color: #e7edf1 !important;                               /* toolbar_field_focus */
+  /*--toolbar-field-focus-background-color: #e7edf1 !important;                             /* toolbar_field_focus */
   --toolbar-field-focus-color: var(--lwt-tab-text) !important;                              /* toolbar_field_text_focus */
   --toolbar-field-focus-border-color: transparent !important;                               /* toolbar_field_border_focus */
-  --lwt-toolbar-field-highlight: var(--general-color) !important;                           /* toolbar_field_highlight */
+  --lwt-toolbar-field-highlight: var(--button-active-bgcolor) !important;                   /* toolbar_field_highlight */
   --lwt-toolbar-field-highlight-text: #ffffff !important;                                   /* toolbar_field_highlight_text */
     
   --lwt-selected-tab-background-color: var(--tab-selected-bgcolor) !important;              /* tab_selected */
@@ -219,8 +225,8 @@
   --toolbarbutton-outer-padding: 2px !important;                                            /* Toolbar buttons más espaciados */
   --toolbarbutton-border-radius: 6px !important;                                            /* forma de los buttons */
   
-  --tab-block-margin: 8px !important;                                                       /* margenes pestañas - change this will break the theme */
-  --tab-block-margin-personal: 8px !important;                                              /* margenes pestañas - variable personal */
+  --tab-block-margin: 5px !important;                                                       /* margenes pestañas */
+  --tab-block-margin-personal: 5px 8px !important;                                          /* margenes pestañas - need to be the same */
   
   --tab-min-height: var(--tab-height-personal) !important;                                  /* tamaño pestañas */
   --tabs-shadow-size: 0px !important;                                                       /* sombras de pestaña */
@@ -247,12 +253,12 @@
     var(--arrowpanel-background) 90%, var(--lwt-tab-text)) !important;                      /* separadores de menu desplegable de marcadores */
   
   --urlbar-popup-url-color: #0199ff !important;                                             /* Color urls de sujerencias de búsqueda */
-  --autocomplete-popup-hover-background: var(--general-color) !important;                   /* Color hover de sujerencias de búsqueda */
+  --autocomplete-popup-hover-background: var(--button-active-bgcolor) !important;           /* Color hover de sujerencias de búsqueda */
   --urlbarView-separator-color: transparent !important;                                     /* color separador urlbar y sugerencias de búsqueda */
   
   scrollbar-color: #d8d9da var(--toolbar-bgcolor) !important;                               /* Colores - Barra de deplazamiento */
-  --shield-icon-personal: url("../images/shield-enable.svg") !important;                    /* Ícono protección contra rastreo */
-  --noise-urlbar-personal: url("../images/urlbar-noise-light.png") !important;              /* imagen de desenfoque urlbar open */  
+  --shield-icon-personal: url("../icons/shield-enable.svg") !important;                     /* Ícono protección contra rastreo */
+  --noise-urlbar-personal: url("../icons/urlbar-noise-light.png") !important;               /* imagen de desenfoque urlbar open */  
   
   --button-primary-bgcolor: var(--general-color) !important;                                /* ColorBotónGuardar */   
   --button-primary-color: #eaeaea !important;                                               /* ColorLetrasBotónGuardar */
@@ -286,8 +292,8 @@
          [privatebrowsingmode="temporary"][style*="--lwt-additional-images"],
          [privatebrowsingmode="temporary"][lwtheme-image]){
   
-  --lwt-header-image: url("../images/newtab/private-dark.png") !important; 
-  --lwt-additional-images: url("../images/newtab/private-dark.png") !important;
+  --lwt-header-image: url("../icons/newtab/private-dark.png") !important; 
+  --lwt-additional-images: url("../icons/newtab/private-dark.png") !important;
   --lwt-accent-color: #0d0c15 !important;                                                                       /* frame */
   --arrowpanel-background: #1c1726 !important;                                                                  /* popup */
   --toolbar-field-focus-background-color: #2e273ffb !important;                                                 /* toolbar_field_focus */    
@@ -308,8 +314,8 @@
          [privatebrowsingmode="temporary"][style*="--lwt-additional-images"],
          [privatebrowsingmode="temporary"][lwtheme-image]){
   
-  --lwt-header-image: url("../images/newtab/private-light.png") !important; 
-  --lwt-additional-images: url("../images/newtab/private-light.png") !important;
+  --lwt-header-image: url("../icons/newtab/private-light.png") !important; 
+  --lwt-additional-images: url("../icons/newtab/private-light.png") !important;
   --lwt-accent-color: #e0dfec !important;                                                                       /* frame */
   --arrowpanel-background: #f0eff6 !important;                                                                  /* popup */
   --toolbar-field-focus-background-color: #e0dfecfb !important;                                                 /* toolbar_field_focus */
@@ -335,12 +341,14 @@
   --toolbarbutton-hover-background: color-mix(in srgb, 
     transparent 88%, color-mix(in srgb, var(--lwt-tab-text) 68%, var(--general-color)) ) !important;             /* button_background_hover */
   --toolbarbutton-active-background: color-mix(in srgb, 
-    transparent 88%, color-mix(in srgb, var(--lwt-tab-text) 58%, var(--general-color)) ) !important;             /* button_background_active */
-  --toolbarbutton-hover-personal: var(--toolbarbutton-hover-background) !important;                              /* Button :hover color personal */
-  --lwt-background-alignment: calc(100% - 4px) top, left top, left top !important;
+    transparent 82%, color-mix(in srgb, var(--lwt-tab-text) 58%, var(--general-color)) ) !important;             /* button_background_active */
+  --toolbarbutton-hover-personal: var(--toolbarbutton-hover-background) !important;                              /* Button hover color personal */
+  --lwt-background-alignment: calc(100% - 4px) top, left top, left top !important;                               /* posición imágenes */
+  --general-border-color: color-mix(in srgb,                                                                     /* Color de bordes */
+        var(--toolbar-bgcolor) 40%, transparent) !important;
 
-  tab[selected] .tab-background, #nav-bar, findbar, #PersonalToolbar{
-        --toolbar-bgcolor: #10101970 !important;                                                                 /* toolbar */
+  tab[selected] .tab-background, #nav-bar, findbar, #PersonalToolbar, #main-menubar {
+        --toolbar-bgcolor: #10101990 !important;                                                                 /* toolbar */
     }
   }
 }
@@ -356,12 +364,13 @@
   --toolbarbutton-hover-background: color-mix(in srgb, 
     transparent 88%, color-mix(in srgb, var(--lwt-tab-text) 68%, var(--general-color)) ) !important;             /* button_background_hover */
   --toolbarbutton-active-background: color-mix(in srgb, 
-    transparent 88%, color-mix(in srgb, var(--lwt-tab-text) 58%, var(--general-color)) ) !important;             /* button_background_active */
-  --toolbarbutton-hover-personal: var(--toolbarbutton-hover-background) !important;                              /* Button :hover color personal */
-  --lwt-background-alignment: right top, left top, left top !important;
+    transparent 82%, color-mix(in srgb, var(--lwt-tab-text) 58%, var(--general-color)) ) !important;             /* button_background_active */
+  --toolbarbutton-hover-personal: var(--toolbarbutton-hover-background) !important;                              /* Button hover color personal */
+  --lwt-background-alignment: right top, left top, left top !important;                                          /* posición imágenes */
+  --general-border-color: var(--content-border-color) !important;
 
-  tab[selected] .tab-background, #nav-bar, findbar, #PersonalToolbar{
-        --toolbar-bgcolor: #ffffff40 !important;                                                                 /* toolbar */
+  tab[selected] .tab-background, #nav-bar, findbar, #PersonalToolbar, #main-menubar {
+        --toolbar-bgcolor: #ffffff90 !important;                                                                 /* toolbar */
     }
   }
 }
@@ -372,7 +381,7 @@
     --tab-block-margin: 5px !important;
     --tab-block-margin-personal: 5px !important;
     --toolbar-height-personal: 36px !important;
-    --my-vertical-toolbar-width: 40px !important;
+    --my-vertical-toolbar-width: 44px !important;
     --toolbarbutton-inner-padding: 4px !important;
     --toolbarbutton-outer-padding: 2px !important;
 }

@@ -80,7 +80,7 @@ tab:hover .tab-icon-overlay:not(:hover):is([muted][pinned]){
 }
 
 .tab-icon-overlay:not([pinned]):is([muted]){
-    list-style-image: url("../images/paused.svg") !important;
+    list-style-image: url("../icons/paused.svg") !important;
     top: -5px;  
     left: 7px !important; 
     border-radius: 50% !important;
@@ -104,13 +104,13 @@ tab:hover .tab-icon-overlay:not(:hover):is([muted][pinned]){
 /* favicon de pestañas recortado para mostrar mejor el ícono de silenciado */
 
 tab:hover .tab-icon-stack:not([crashed]):is([muted], [activemedia-blocked]) :is(.tab-icon-pending, .tab-icon-image, .tab-sharing-icon-overlay) {
-    mask-image: url("../images/tab_icon_masks.svg#SoundMask") !important;
+    mask-image: url("../icons/tab_icon_masks.svg#SoundMask") !important;
     }
 
 /* Audio bloqueado */
 
 .tab-icon-overlay:not([pinned]):is([activemedia-blocked]), .tab-icon-overlay:is([pinned]):is([activemedia-blocked]){
-    list-style-image: url("../images/blocked.svg") !important;
+    list-style-image: url("../icons/blocked.svg") !important;
     top: -5px;  left: 7px !important; border-radius: 2px !important;
     height: 14px !important;
     width: 14px !important;
@@ -131,7 +131,7 @@ tab:hover .tab-icon-overlay { opacity: 1 !important; }
 
 
 .tab-icon-stack:not([crashed]):is([soundplaying])[pinned] :is(.tab-icon-pending, .tab-icon-image, .tab-sharing-icon-overlay) {
-    mask-image: url("../images/tab_icon_masks.svg#SoundMask") !important;
+    mask-image: url("../icons/tab_icon_masks.svg#SoundMask") !important;
     }
     
 /* Reproduciendo pinned */
@@ -150,7 +150,7 @@ tab:hover .tab-icon-overlay { opacity: 1 !important; }
 /* reproduciendo hover pinned */
 
 tab:is([pinned]) .tab-icon-overlay[soundplaying]:hover {
-    list-style-image: url("../images/paused.svg") !important;
+    list-style-image: url("../icons/paused.svg") !important;
     /*clip-path: polygon(20% 0%, 100% 0%, 100% 14%, 100% 100%, 100% 100%, 14% 100%, 0% 100%, 0% 20%);*/
     stroke: transparent !important;
     background-color: transparent !important;
@@ -173,7 +173,7 @@ tab:hover .tab-icon-overlay:is([pinned])[muted] {
 }
 
 .tab-icon-overlay:is([pinned])[muted]{
-    list-style-image: url("../images/paused.svg") !important;
+    list-style-image: url("../icons/paused.svg") !important;
     height: 14px !important;
     width: 14px !important;
     top: -5px !important;

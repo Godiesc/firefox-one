@@ -98,7 +98,7 @@
   }
 }
     
-/* --------------------------------------- My Code to Adapt to -ONE- Style --------------------------- */
+/* ______________________________________________________ My Code to Adapt to -ONE- Style ______________________________________________________ */
     
     :root {
     --uc-vertical-toolbar-width: var(--my-vertical-toolbar-width) !important;       /* Nuevo tamaño sidebar */
@@ -125,37 +125,23 @@
         padding-inline-start: calc(var(--padding-left-tab) + 4px) !important;
     }
     
+    /* Alinea Imagen en pestaña activa en temas con imágenes */
+
+    :root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) tab[selected] .tab-background{
+        background-position: 0 0, calc(100% - 4px) top, calc(var(--padding-left-tab) + 4px) top, left top, 0 0 !important;
+    }
+    
     /* Borde izquierda-derecha de la toolbar */
 
     :root:not([chromehidden~="toolbar"],[sizemode="fullscreen"]) #nav-bar {
-        border-radius: 8px !important;
-        margin-inline-start: calc(var(--padding-left-tab) + 4px) !important;
-        margin-inline-end: 4px !important;
-        margin-bottom: 2px !important;
-    }
-    
-    /* Nuevo espacio alrededor del contenido web */
-
-    .browserContainer {
-        padding: 1px 5px 5px 5px !important;
-    }
-
-    :root:not([sizemode="fullscreen"]) #sidebar-box  {
-        margin-block: 1px 5px !important;
-    }
-
-    :root:not([sizemode="fullscreen"]) #sidebar-box[checked="true"] + #sidebar-splitter + #appcontent .browserContainer {
-        padding: 1px 5px 5px 1px !important;
-    }
-    
-    :root:not([sizemode="fullscreen"]) #sidebar-box[checked="true"][positionend="true"] + #sidebar-splitter + #appcontent .browserContainer {
-        padding: 1px 0px 5px 5px !important;
+        margin-inline: calc(var(--padding-left-tab) + 4px) 4px !important;
+        margin-block-end: 1px !important;
     }
     
     /* Posición y estilo de la barra lateral izquierda de marcadores */
 
     :root:not([chromehidden~="toolbar"]) #PersonalToolbar {
-        --toolbarbutton-active-background: var(--general-color) !important;
+        --toolbarbutton-active-background: var(--button-active-bgcolor) !important;
         --padding-top-left-sidebar: 46px !important;
         --padding-bottom-left-sidebar: 8px !important;
         --height-left-sidebar: calc(100vh - 8px) !important;
@@ -163,6 +149,7 @@
         max-height: var(--height-left-sidebar) !important;
         background-color: var(--toolbar-bgcolor) !important;
         top: 4px !important;
+        margin-block: 0px !important;
         padding-top: var(--padding-top-left-sidebar) !important;
         padding-bottom: var(--padding-bottom-left-sidebar) !important;
         z-index: 1 !important;
@@ -187,50 +174,61 @@
         outline: none !important;
         box-shadow: inset 1px 0 0 0 var(--lwt-frame), inset 1px 0 0 0 var(--lwt-frame), inset 1px 0 0 0 var(--lwt-frame),
                     inset 4px 0 var(--lwt-frame),
-                    inset 0px -1px 0 0  #50505040,  /* abajo */
-                    inset 5px 0 0 0  #50505040,     /* left */
-                    inset -1px 0 0 0 #50505040,     /* right */ 
-                    inset 0 1px 0 0  #50505040      /* Left */
+                    inset 0px -1px 0 0  var(--general-border-color),  /* abajo */
+                    inset 5px 0 0 0  var(--general-border-color),     /* left */
+                    inset -1px 0 0 0 var(--general-border-color),     /* right */ 
+                    inset 0 1px 0 0  var(--general-border-color)      /* Left */
                     !important;
         }
     
-/* outline en todos los temas "without-default-colors" config */
+/* outline en todos los temas "without-default-colors" and 'main-image' config */
 
-    @media (-moz-bool-pref:"firefoxone.without-default-colors") {
+    @media (-moz-bool-pref:"firefoxone.without-default-colors") or (-moz-bool-pref:"firefoxone.main-image") {
         :root:not([chromehidden~="toolbar"]) #PersonalToolbar{
                 outline: none !important;
                 box-shadow: inset 1px 0 0 0 var(--lwt-frame), inset 1px 0 0 0 var(--lwt-frame), inset 1px 0 0 0 var(--lwt-frame),
                             inset 4px 0 var(--lwt-frame),
-                            inset 0px -1px 0 0  #50505040,  /* abajo */
-                            inset 5px 0 0 0  #50505040,     /* left */
-                            inset -1px 0 0 0 #50505040,     /* right */ 
-                            inset 0 1px 0 0  #50505040      /* Left */
+                            inset 0px -1px 0 0  var(--general-border-color),  /* abajo */
+                            inset 5px 0 0 0  var(--general-border-color),     /* left */
+                            inset -1px 0 0 0 var(--general-border-color),     /* right */ 
+                            inset 0 1px 0 0  var(--general-border-color)      /* Left */
                             !important;
                 }}
     
-    /* --------------------------------- Zoom on :hover items ------------------------------------ */
-
-    #PersonalToolbar .toolbarbutton-1,
-    #PersonalToolbar .toolbarbutton-1 .toolbarbutton-icon:not(.toolbarbutton-1>image), /* Extensiones */
-    #PersonalToolbar #PlacesToolbarItems>.bookmark-item>.toolbarbutton-icon,
-    #PersonalToolbar #OtherBookmarks>.toolbarbutton-icon{
-        transform: scale(1.0) !important;
-        transition: ease-in-out 200ms !important;
-    }
-
-    #PersonalToolbar .toolbarbutton-1:is(:hover,[open]) .toolbarbutton-icon:not(.toolbarbutton-1>image){ /* Extensiones */
+/* --------------------------------- Zoom on :hover items ------------------------------------ */
+    
+    /* animación */
+    @keyframes scalezoom{
+        0%{ transform:scale(1.12) }
+        50%{ transform:scale(0.7) }
+        100%{ transform:scale(1.0) }}
+    
+   /* :hover */
+    
+    #PersonalToolbar .toolbarbutton-1:is(:hover):not(:active,[open]) .toolbarbutton-icon:not(.toolbarbutton-1>image){ /* Extensiones */
         transform: scale(1.2) !important;
         transition:  200ms !important;
     }
     
-    #PersonalToolbar #PlacesToolbarItems>.bookmark-item:is(:hover,[open])>.toolbarbutton-icon,           /* Marcadores */
-    #PersonalToolbar .toolbarbutton-1:is(:hover,[open])>image,                                           /* demás iconos */
-    #PersonalToolbar #OtherBookmarks:not(bookmark-item):is(:hover,[open])>.toolbarbutton-icon{           /* Other bookmarks button */
-        transform: scale(1.12) !important;
-        transition:  200ms !important;
-    }
+    #PersonalToolbar {
+        & .toolbarbutton-1:is(:hover):not(:active,[open])>image,                                           /* íconos default */
+        & #PlacesToolbarItems>.bookmark-item:is(:hover,:active):not([open])>.toolbarbutton-icon,           /* Marcadores */
+        & #OtherBookmarks:not(bookmark-item):is(:hover,:active):not([open])>.toolbarbutton-icon{           /* Other bookmarks button */
+            transform: scale(1.12) !important;
+            transition:  200ms !important;
+        }}
     
-    /* Color, tamaño  y alineación de Items de la barra lateral */
+    /* Animación clic */
+    #PersonalToolbar {
+        & .toolbarbutton-1:is(:active, [open]) .toolbarbutton-icon:not(.toolbarbutton-1>image),            /* Extensiones */
+        & .toolbarbutton-1:is(:active,[open])>image,                                                       /* íconos default */
+        & #PlacesToolbarItems>.bookmark-item:is([open]):not(:active)>.toolbarbutton-icon,                  /* Marcadores */
+        & #OtherBookmarks:not(bookmark-item):is([open]):not(:active)>.toolbarbutton-icon{                  /* Other bookmarks button */
+            animation: scalezoom ease-in-out 250ms !important;
+            transition:  200ms !important;
+        }}
+    
+    /* Color, tamaño y alineación de Items de la barra lateral */
 
     #PersonalToolbar .toolbarbutton-1{
         --toolbarbutton-inner-padding: 6px !important;
@@ -305,8 +303,10 @@
     /* :hover de botones: extensiones ; bookmark Folders ; other bookmarks folder */
 
     #PersonalToolbar .toolbarbutton-1:is([open],:active) stack  {
-        background-color: var(--general-color) !important;
+        background-color: var(--button-active-bgcolor) !important;
         fill: #d5dadd !important;
+        transition: background-color 450ms ease-in-out !important;/**/
+        
     }
     #PersonalToolbar .toolbarbutton-1:is([open],:active,[checked="true"]) {
         fill: #d5dadd !important;
@@ -356,9 +356,9 @@
 
     #PersonalToolbar #panorama-tab-groups_example_com-BAP>stack, 
     #PersonalToolbar #simple-tab-groups_drive4ik-BAP>stack{
-        background-color: var(--general-color) !important;
+        background-color: var(--button-active-bgcolor) !important;
         fill: #eaeaea !important;
-        list-style-image: url("../images/logo_tablero.svg") !important;
+        list-style-image: url("../icons/logo_tablero.svg") !important;
     }
 
 /* _________ Trick for social extensions __________*/
@@ -371,7 +371,7 @@
     #PersonalToolbar #ublock0_raymondhill_net-BAP image,
     #PersonalToolbar #_a16c3799-d903-44e3-b044-a032197f5ef8_-BAP image,
     #PersonalToolbar #_3119ae66-3c2f-47e2-b1b1-1c76cb9c4ec1_-BAP image,
-    #PersonalToolbar #sidebarinstagram_godie-BAP image,
+    #PersonalToolbar #sidebarinstachat_godie-BAP image,
     #PersonalToolbar #panorama-tab-groups_example_com-BAP image,
     #PersonalToolbar #simple-tab-groups_drive4ik-BAP image,
     #PersonalToolbar #sidebarspotyplay_godie-BAP image,
@@ -389,7 +389,7 @@
     #PersonalToolbar #ublock0_raymondhill_net-BAP>.toolbarbutton-badge-stack,
     #PersonalToolbar #_a16c3799-d903-44e3-b044-a032197f5ef8_-BAP>.toolbarbutton-badge-stack,
     #PersonalToolbar #_3119ae66-3c2f-47e2-b1b1-1c76cb9c4ec1_-BAP>.toolbarbutton-badge-stack,
-    #PersonalToolbar #sidebarinstagram_godie-BAP>.toolbarbutton-badge-stack,
+    #PersonalToolbar #sidebarinstachat_godie-BAP>.toolbarbutton-badge-stack,
     #PersonalToolbar #panorama-tab-groups_example_com-BAP>.toolbarbutton-badge-stack,
     #PersonalToolbar #simple-tab-groups_drive4ik-BAP>.toolbarbutton-badge-stack,
     #PersonalToolbar #sidebarspotyplay_godie-BAP>.toolbarbutton-badge-stack,
@@ -402,48 +402,48 @@
 
     /* Twitch Extension */
     #PersonalToolbar #_d3d2a327-1ae0-4fd6-b732-0844d0b7fd4c_-BAP {
-        list-style-image: url("../images/logo_twitch.svg") !important; }
+        list-style-image: url("../icons/logo_twitch.svg") !important; }
 
     /* Messenger Extension */
     #PersonalToolbar #xrst_vardakis_gmail_com-BAP {
-        list-style-image:url("../images/logo_messenger.svg") !important; }
+        list-style-image:url("../icons/logo_messenger.svg") !important; }
 
     /* Whatsapp Extension */
     #PersonalToolbar #_34a257f3-adfe-460d-b6ca-7dd18d18506b_-BAP,
     #PersonalToolbar #chatwappinsidebar_godie-BAP{
-        list-style-image: url("../images/logo_whatsapp.svg") !important; }
+        list-style-image: url("../icons/logo_whatsapp.svg") !important; }
 
     /* Telegram Extension */
     #PersonalToolbar #_14390478-b41b-4e29-8307-8a3c714f7783_-BAP{
-        list-style-image: url("../images/logo_telegram.svg") !important; }
+        list-style-image: url("../icons/logo_telegram.svg") !important; }
 
     /* ublock Extension */
     #PersonalToolbar #ublock0_raymondhill_net-BAP{
-        list-style-image: url("../images/logo_ublock.svg") !important; }
+        list-style-image: url("../icons/logo_ublock.svg") !important; }
 
     /* Discord Extension */
     #PersonalToolbar #_a16c3799-d903-44e3-b044-a032197f5ef8_-BAP{
-        list-style-image: url("../images/logo_discord.svg") !important; }
+        list-style-image: url("../icons/logo_discord.svg") !important; }
 
     /* Twitter Extension */
     #PersonalToolbar #_3119ae66-3c2f-47e2-b1b1-1c76cb9c4ec1_-BAP{
-        list-style-image: url("../images/logo_twitter.svg") !important; }
+        list-style-image: url("../icons/logo_twitter.svg") !important; }
 
     /* Instagram Extension */
-    #PersonalToolbar #sidebarinstagram_godie-BAP{
-        list-style-image: url("../images/logo_instagram.svg") !important; }
+    #PersonalToolbar #sidebarinstachat_godie-BAP{
+        list-style-image: url("../icons/logo_instagram.svg") !important; }
     
     /* Spotify Extension */
     #PersonalToolbar #sidebarspotyplay_godie-BAP{
-        list-style-image: url("../images/logo_spotify.svg") !important; }
+        list-style-image: url("../icons/logo_spotify.svg") !important; }
     
     /* Chatgpt Extension */
     #PersonalToolbar #_63ec59d8-ba50-4d88-917e-fb65af892a39_-BAP{
-        list-style-image: url("../images/logo_chatgpt.svg") !important; }
+        list-style-image: url("../icons/logo_chatgpt.svg") !important; }
 
     /* mostrar más marcaddores - button */
     #PersonalToolbar #bookmarks-menu-button {
-      list-style-image: url("../images/logo_marcadores.svg") !important; }
+      list-style-image: url("../icons/logo_marcadores.svg") !important; }
 
     /* ----------------------------- items en modo "customize toolbar" --------------------------------- */
 
@@ -478,7 +478,7 @@
     }   
     
 
-/* ############################################ Nuevos margenes Botón menú ############################################ */
+/* _______________________________________________ Nuevos márgenes Botón menú _______________________________________________ */
     
 @media (-moz-platform: windows), (-moz-platform: linux) {
     
@@ -487,18 +487,11 @@
         --margin-right-icons-personal: 12px !important;                                                 /* Nuevo margen-left del ícono -menu- */
         --padding-left-tab: var(--uc-vertical-toolbar-width) !important;                                /* Nuevo tamaño botón -Menu- */
     }
-    
-/* Tamaño Logo */
-    
-:root:not([chromehidden~="toolbar"]) #PanelUI-menu-button image {
-        height: 20px !important;
-        width: 20px !important;
-    }
 
 /* Tamaño */
     
-    :root:not([chromehidden~="toolbar"],[invisibleBMS]) #PanelUI-button {
-        height: 40px !important;
+    :root:not([chromehidden~="toolbar"],[invisibleBMS],[sizemode="fullscreen"]) #PanelUI-button {
+        height: 50px !important;
     }
    
     :root:not([chromehidden~="toolbar"],[invisibleBMS]) #PanelUI-menu-button:not([open]) {
@@ -506,50 +499,74 @@
         padding-inline: calc(var(--padding-left-tab)/2 - 14px) !important;
     }
     
-/* Alinear botón en ventana maximizada, ventana normal y fullscreen */
+/* Posición margin-top 'normal-maximized' */
+        
+    :root:not([chromehidden~="toolbar"],[invisibleBMS],[sizemode="fullscreen"]) #PanelUI-menu-button>.toolbarbutton-badge-stack {
+        margin-block-start: 4px !important;
+    }
+    
+    :root:not([chromehidden~="toolbar"],[invisibleBMS])[sizemode="fullscreen"] #PanelUI-menu-button image {
+        height: calc(var(--tab-height-personal) - 7px) !important;
+        width:  calc(var(--tab-height-personal) - 7px) !important;
+    }
+}
+    
+@media (-moz-platform: windows){
+    
+/* Alinear botón [open] en ventana maximizada */
         
     :root:not([chromehidden~="toolbar"],[invisibleBMS],[sizemode="normal"],[sizemode="fullscreen"]) #PanelUI-menu-button[open] .toolbarbutton-badge-stack {
         padding-inline-start: calc(var(--margin-left-icons-personal) + 4px) !important;
     }
     
+/* Alinear botón [open] en ventana normal y fullscreen */
+    
     :root:not([chromehidden~="toolbar"],[invisibleBMS]):is([sizemode="normal"],[sizemode="fullscreen"]) #PanelUI-menu-button[open] .toolbarbutton-badge-stack {
         margin-inline-start: calc(var(--margin-left-icons-personal) - 2px) !important;
     }
-       
-/* Posición margin-top */
-        
-    :root:not([chromehidden~="toolbar"],[sizemode="fullscreen"],[invisibleBMS]) #PanelUI-menu-button>.toolbarbutton-badge-stack {
-        margin-block-start: 12px !important;
-    }
     
-    :root:not([chromehidden~="toolbar"],[invisibleBMS])[sizemode="fullscreen"] #PanelUI-menu-button>.toolbarbutton-badge-stack {
-        margin-block-start: 4px !important;
-    }
-    
-/* menu :hover y open */
+/* menu [open ] -sobreescribo-  Sirve para alinear al cambiar the height de pestañas 
+   Mismo número que la variable de abajo: --button-height-personal */
     
     :root:not([chromehidden~="toolbar"],[sizemode="normal"],[sizemode="fullscreen"],[invisibleBMS]) 
         #PanelUI-menu-button[open]>.toolbarbutton-badge-stack {
-            min-height: 30px !important; /* Sirve para alinear al cambiar the height de pestañas */
-            max-height: 30px !important;
+            min-height: 35px !important; 
+            max-height: 35px !important;
     }
     
 /* Padding top para hacer espacio para la fila del Label menú */
     
     :root:not([chromehidden~="toolbar"],[invisibleBMS])[sizemode="maximized"] #appMenu-popup>panelmultiview>box>box>panelview {
-        padding-top: 36px !important;
+        padding-top: 38px !important;
     }
     
 /* Margin top para subir el menú [open] */
     
     :root:not([chromehidden~="toolbar"],[invisibleBMS])[sizemode="maximized"] #appMenu-popup {
         --menu-plus-label-width: 94px !important;
-        --button-height-personal: 34px !important;
-        margin-top: calc(-5px - var(--button-height-personal)) !important;
+        --button-height-personal: 35px !important;
+        margin-top: calc(-8px - var(--button-height-personal)) !important;
         clip-path: polygon(0% 0%, 0% 100%, 1% 53%, 0 13px, var(--menu-plus-label-width) 13px,
                    var(--menu-plus-label-width) var(--button-height-personal), 0 var(--button-height-personal), 0 100%, 100% 100%, 100% 0%);
     }
-  }
+}
+
+/* _______________________ Configuration Menu for Linux _______________________ */
+    
+@media (-moz-platform: linux){
+    
+:root:not([invisibleBMS]) {
+        --margin-left-icons-personal: calc(var(--my-vertical-toolbar-width) / 3 - 14px) !important;     /* Nuevo margen-left del ícono -menu- */
+        --margin-right-icons-personal: 8px !important;                                                  /* Nuevo margen-left del ícono -menu- */
+        --padding-left-tab: var(--uc-vertical-toolbar-width) !important;                                /* Nuevo tamaño botón -Menu- */
+    }
+    
+/* Alinear botón en ventana maximizada, ventana normal y fullscreen */
+        
+    :root:not([chromehidden~="toolbar"],[invisibleBMS]) #PanelUI-menu-button{
+        width: calc(var(--padding-left-tab) + 4px) !important;
+    }
+}
 
 /* _______________________________ Baner de -actualización disponible- _______________________________ */
 
@@ -579,7 +596,7 @@
     :root:not([chromehidden~="toolbar"]) #PanelUI-menu-button[badge-status="update-unsupported"]:not([open]) .toolbarbutton-badge-stack, 
     :root:not([chromehidden~="toolbar"]) #PanelUI-menu-button[badge-status="addon-alert"]:not([open]) .toolbarbutton-badge-stack, 
     :root:not([chromehidden~="toolbar"]) #PanelUI-menu-button[badge-status="fxa-needs-authentication"]:not([open]) .toolbarbutton-badge-stack {
-        list-style-image: url("../images/foxFill.svg") !important;
+        list-style-image: url("../icons/foxFill.svg") !important;
         fill: var(--general-color) !important;
         animation: 2000ms infinite ease;
         animation-name: slide1;

@@ -9,21 +9,38 @@
   
 /*                                                                                                                                 
     Accent color -----> UI del navegador.  -----|                  |---- userContent <------------ Accent color
-                                                |                  |     (Add-ons, preferences and newtab page.)
+                                                |                  |     (Add-ons, preferences and about: pages.)
                                                 v                  v                                                          */
   --general-color: var(--lwt-toolbarbutton-icon-fill-attention, var(--blue));
 }
-/*---------------------------------------------- <-Personalizaciones Varias-> ---------------------------------------------------*/
+/* ------------------------------------------------------ <-Personalizaciones Varias-> ------------------------------------------------------ */
+:root{
+                  /* Dark wallpapers */                                               /* Accentcolor for each wallpaper */
+  --wallpaper-dark1: url("../newtab/wallpaper-dark1.png") !important;           --general-color-dark1: var(--lightblue) !important;
+  --wallpaper-dark2: url("../newtab/wallpaper-dark2.png") !important;           --general-color-dark2: var(--blue) !important;
+  --wallpaper-dark3: url("../newtab/wallpaper-dark3.png") !important;           --general-color-dark3: var(--aqua) !important;
+  --wallpaper-dark4: url("../newtab/wallpaper-dark4.png") !important;           --general-color-dark4: var(--gray) !important;
+  --wallpaper-dark5: url("../newtab/wallpaper-dark5.png") !important;           --general-color-dark5: var(--gray) !important;
+  --wallpaper-dark6: url("../newtab/wallpaper-dark6.png") !important;           --general-color-dark6: var(--gray) !important;
+  
+                  /* Light wallpapers */                                             /* Accentcolor for each wallpaper */
+  --wallpaper-light1: url("../newtab/wallpaper-light1.png") !important;         --general-color-light1: var(--purple) !important;
+  --wallpaper-light2: url("../newtab/wallpaper-light2.png") !important;         --general-color-light2: var(--lightblue) !important;
+  --wallpaper-light3: url("../newtab/wallpaper-light3.png") !important;         --general-color-light3: var(--aqua) !important;
+  --wallpaper-light4: url("../newtab/wallpaper-light4.png") !important;         --general-color-light4: var(--lightblue ) !important;
+  --wallpaper-light5: url("../newtab/wallpaper-light5.png") !important;         --general-color-light5: var(--lightgreen) !important;
+  --wallpaper-light6: url("../newtab/wallpaper-light6.png") !important;         --general-color-light6: var(--purple) !important;
+    }
 
 @media (prefers-color-scheme: dark){ :root{
-  --lwt-main-image:  url("../images/newtab/wallpaper-dark.png") !important;                       /* new-tab page image - dark theme */ 
-  --lwt-private-image:  url("../images/newtab/private-dark.png") !important;                      /* new-tab private-page image - dark theme */
-  --brightness-wallpaper: #10101920;                                                              /* darker wallpaper */                           }}
+  --lwt-main-image:  url("../newtab/wallpaper-dark1.png") !important;                             /* 'about:' pages image - dark theme */ 
+  --lwt-private-image:  url("../newtab/private-dark.png") !important;                             /* new-tab private-page image - dark theme */
+  --brightness-wallpaper: brightness(99%);                                                        /* darker wallpaper */                           }}
   
 @media (prefers-color-scheme: light){ :root{
-  --lwt-main-image:  url("../images/newtab/wallpaper-light.png") !important;                      /* new-tab page image - white theme*/
-  --lwt-private-image:  url("../images/newtab/private-light.png") !important;                     /* new-tab private-page image - white theme*/ 
-  --brightness-wallpaper: transparent;                                                            /* darker wallpaper */                           }}
+  --lwt-main-image:  url("../newtab/wallpaper-light1.png") !important;                            /* 'about:' pages image - white theme*/
+  --lwt-private-image:  url("../newtab/private-light.png") !important;                            /* new-tab private-page image - white theme*/ 
+  --brightness-wallpaper: brightness(99%);                                                        /* darker wallpaper */                           }}
 
 :root[privatebrowsingmode="temporary"]{ --general-color: var(--purple) !important; }              /* Accent color private mode */
   
@@ -36,7 +53,7 @@
 
   --my-vertical-toolbar-width: 52px ;                                                             /* Tamaño horizontal left-sidebar */
   
-  --left-color: #19abf4;                                                                      /* Color left wordmark */
+  --left-color: #19abf4;                                                                          /* Color left wordmark */
   --right-color: #8b61c3 ;                                                                        /* Color right wordmark */
   
   --logo-wordmark-visibility: 1 ;                                                                 /* :1 visible, :0 invisible ; Logo-wordmark*/
@@ -45,8 +62,8 @@
   --searchbar-display: flex ;                                                                     /* :none ->eliminar , :flex ->Mostrar; searchbar*/
   --orientation-display: block ;                                                                  /* :block -> vertical , :flex -> horizontal ; Logo-wordmark y searchbar*/
   
-  --newtab-pinnedsites-background: color-mix(in srgb, white 14%, transparent) ;                   /* color - fondo de sitios fijados y barra de búsqueda*/
-  --newtab-pinnedsites-position-top: 0px ;                                                        /* Posición pinnedsites - top-> : 0px ; default-> : auto*/
+  --newtab-pinnedsites-background: color-mix(in srgb, white 12%, transparent) ;                   /* color - fondo de sitios fijados y barra de búsqueda*/
+  --newtab-pinnedsites-position-top: start ;                                                      /* Posición pinnedsites -> : start ; center ; end */
   
   --selected-text-background: var(--general-color) ;                                              /* Selected text background */
    
@@ -57,31 +74,35 @@
 
 @media (-moz-bool-pref:"firefoxone.main-image") {
   
-  @media (prefers-color-scheme: dark){ :root{ --brightness-wallpaper: #10101930;                /* brightness */ }}
+  @media (prefers-color-scheme: dark){ :root{
+    --lwt-main-image:  url("../newtab/main-image-dark.png") !important;                           /* main-image wallpaper - dark theme */ 
+    --brightness-wallpaper: brightness(89%);                                                      /* brightness */                       }}
   
-  @media (prefers-color-scheme: light){:root{ --brightness-wallpaper: #fafafa30;                /* brightness */ }}
+  @media (prefers-color-scheme: light){ :root{
+    --lwt-main-image:  url("../newtab/main-image-light.png") !important;                          /* main-image wallpaper - white theme*/
+    --brightness-wallpaper: brightness(99%);                                                      /* brightness */                       }}
   
   :root{  
-  --wallpaper-size: auto auto;                                                                  /* cover-> default ; auto auto -> to <<main-image>> config */    
+  --wallpaper-size: auto auto;                                                                    /* cover-> default ; auto auto -> to <<main-image>> config */    
   --background-align-x: calc(100% + 4px);
-  --background-align-y: -84px ;                                                                 /* Alinear new-tab wallpaper to <<main-image>> config 
-                                                                                                  -84px ventana normal con left-sidebar ; 
-                                                                                                  -112px con Barra de Marcadores; */
+  --background-align-y: -84px ;                                                                   /* Alinear new-tab wallpaper to <<main-image>> config 
+                                                                                                    -84px ventana normal con left-sidebar ; 
+                                                                                                    -112px con Barra de Marcadores; */
   }
 }
 
 @media (prefers-color-scheme: dark){
 :root{
-  /*------------------------------Botones :hover, clic--------------------------------*/
+  /* ------------------------------ Botones hover, clic -------------------------------- */
   --button-bgcolor: color-mix(in srgb, var(--general-color) 40%, transparent) !important;             /* Color de buttons */
-  --button-hover-bgcolor: color-mix(in srgb, var(--general-color) 55%, transparent) !important;       /* Color :hover en menuitems */
+  --button-hover-bgcolor: color-mix(in srgb, var(--general-color) 55%, transparent) !important;       /* Color hover en menuitems */
   --button-active-bgcolor: color-mix(in srgb, var(--general-color) 75%, transparent) !important;      /* color clic en menuitems*/
   }}
 
 @media (prefers-color-scheme: light){
 :root{
-  /*------------------------------Botones :hover, clic--------------------------------*/
+  /* ------------------------------ Botones hover, clic -------------------------------- */
   --button-bgcolor: color-mix(in srgb, var(--general-color) 65%, transparent) !important;             /* Color de buttons */
-  --button-hover-bgcolor: color-mix(in srgb, var(--general-color) 80%, transparent) !important;       /* Color :hover en menuitems */
+  --button-hover-bgcolor: color-mix(in srgb, var(--general-color) 80%, transparent) !important;       /* Color hover en menuitems */
   --button-active-bgcolor: color-mix(in srgb, var(--general-color) 95%, transparent) !important;      /* color clic en menuitems*/
   }}

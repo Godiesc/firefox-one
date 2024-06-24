@@ -11,7 +11,7 @@
     .titlebar-button{
         background-color: transparent !important;
         padding-inline: 4px !important;
-        padding-block-start: calc(var(--tab-block-margin-personal) + 6px) !important;
+        padding-block-start: calc(var(--tab-block-margin) + 12px) !important;
         background: transparent !important;
     }
     
@@ -50,11 +50,17 @@
         padding-block: calc(var(--toolbar-height-personal) / 2 - 9px) !important;
         padding-inline: 9px !important;
     }
-  }
+}
     
 @media (-moz-platform: linux) {
-    .titlebar-buttonbox { margin-inline-end: 10px !important; }
+    .titlebar-buttonbox { 
+        margin-inline-end: 10px !important; 
     }
+    
+    .titlebar-button{
+        height: calc(var(--toolbar-height-personal) + 8px) !important;
+    }
+}
 
 /*###################################### Mantener Window Controls quitando las pestañas ###########################
 ############################################## Codigo sin editar de MrOtherGuy ####################################*/
@@ -130,8 +136,8 @@ See the above repository for updates as well as full license text. */
   :root[sizemode="fullscreen"] #window-controls{ right: unset }
 }
 
-/*########################################## OCULTAR TABS-BAR ##############################################
-####################################Codigo sin editar de MrOtherGuy ########################################*/
+/* ############################################# OCULTAR TABS-BAR ############################################
+   #################################### Código editado  de MrOtherGuy ########################################  */
 
 /* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/hide_tabs_toolbar.css made available under Mozilla Public License v. 2.0
 See the above repository for updates as well as full license text. */
@@ -176,7 +182,7 @@ Window controls will be all wrong without it
 }
     
 #main-menubar{
-  height: calc(var(--toolbar-height-personal) +  4px);
+  height: calc(var(--toolbar-height-personal) +  8px) !important;
   background-color: var(--toolbar-bgcolor) !important;
   color: var(--arrowpanel-color);
   border-radius: 8px 0px 0px 8px !important;
@@ -210,11 +216,11 @@ Window controls will be all wrong without it
 @media (-moz-bool-pref:"firefoxone.without-default-colors") {
     #main-menubar{
           box-shadow: inset 0 1px 0 0 var(--lwt-frame), inset 0 1px 0 0 var(--lwt-frame),inset 0 1px 0 0 var(--lwt-frame),
-                      inset 0px -1px 0 0  #50505040,  /* abajo */
+                      inset 0px -1px 0 0  var(--general-border-color),  /* abajo */
                       inset 0 4px var(--lwt-frame),
-                      inset 0px 5px 0 0  #50505040,   /* top */
-                      inset -1px 0 0 0  #50505040,    /* right */ 
-                      inset 1px 0 0 0  #50505040      /* Left */
+                      inset 0px 5px 0 0  var(--general-border-color),   /* top */
+                      inset -1px 0 0 0  var(--general-border-color),    /* right */ 
+                      inset 1px 0 0 0  var(--general-border-color)      /* Left */
                       !important;
         }}
     
@@ -223,12 +229,12 @@ Window controls will be all wrong without it
 
 #nav-bar{
     border-width: 0px !important;
-    padding-inline-end: calc(var(--uc-window-control-width) + 14px ) !important;
+    padding-inline-end: calc(var(--uc-window-control-width) + 28px ) !important;
 }
     
 /* Margen para simular el borde */
     
-#nav-bar:not([inFullscreen]){
+:root:not([inFullscreen]) #nav-bar{
     margin-top: calc(4px - var(--uc-toolbar-height, 0px)) !important;
 }
     
@@ -244,7 +250,7 @@ Window controls will be all wrong without it
 }
     
 :root:not([chromehidden~="toolbar"])[inFullscreen] #PanelUI-button { left: 0px !important; }
-:root:not([chromehidden~="toolbar"])[inFullscreen] #PanelUI-menu-button { min-height: calc(var(--toolbar-height-personal) + var(--tab-block-margin)) !important; }
+:root:not([chromehidden~="toolbar"])[inFullscreen] #PanelUI-menu-button { min-height: calc(var(--toolbar-height-personal) + var(--tab-block-margin) + 2px) !important; }
 
 /* Espacio de arrastre en ventana normal */
     
@@ -252,36 +258,76 @@ Window controls will be all wrong without it
     padding-inline: 40px calc(var(--uc-window-control-width) + 50px ) !important;
 }
     
-/* Separador entre los controles de ventana y los íconos de la toolbar */
+/* Separador ultimo icono de la nav-bar + window controls */
     
-#nav-bar-overflow-button:after,
-:root:not([chromehidden~="toolbar"], [sizemode="fullscreen"]) #nav-bar:not([nonemptyoverflow]) #nav-bar-customization-target > :is(toolbarbutton, toolbaritem):last-child:after{
-    background: url("../images/urlbar-separator.svg") no-repeat center !important; 
-    content: ""; display: block !important;
-    background-size: 6px 16px !important;
-    height: 16px;
-    -moz-context-properties: fill !important;
-    padding-inline: 8px 4px !important;
-    margin-left: 2px !important;
-    opacity: 0.2;
+:root:not([sizemode="normal"]) .titlebar-buttonbox:before{
+        background: url("../icons/urlbar-separator.svg") no-repeat center !important; 
+        content: ""; display: block !important;
+        background-size: 16px 16px !important;
+        width: 22px !important;
+        margin-left: -2px !important;
+        height: calc(var(--toolbar-height-personal) + 8px);
+        -moz-context-properties: fill !important;
+        fill: var(--toolbarbutton-icon-fill) !important;
+        opacity: 0.2;
+    }
+    
+/* ________________________________ Compatibilidad para - window controls on linux ________________________________ */
+    
+/* Espacio y Separador Window controls on right*/
+    
+@media (-moz-gtk-csd-available) {
+    
+    :root:is([tabsintitlebar],[sizemode="fullscreen"]) {
+        --uc-window-control-width: 100px !important;
+    }
+    
+    :root:not([sizemode="normal"]) .titlebar-buttonbox:before{
+        width: 44px !important;
+    }
 }
     
 /* Compatibilidad para - window controls on left - en linux */
-    
+  
 @media (-moz-gtk-csd-reversed-placement){
+    
+    :root:is([tabsintitlebar],[sizemode="fullscreen"]) {
+        --uc-window-control-width: 0px !important;
+        --uc-window-control-width-left: 108px !important;
+    }
+    
     :root:not([sizemode="fullscreen"]) #nav-bar{
         border-width: 0px !important;
         padding-inline-end: 0px !important;
-        padding-inline-start: calc(var(--uc-window-control-width) + 14px ) !important;
+        padding-inline-start: var(--uc-window-control-width-left) !important;
     }
     
     :root:not([inFullscreen])[sizemode="normal"] #nav-bar{
-        padding-inline: calc(var(--uc-window-control-width) + 54px ) calc(var(--uc-window-control-width) + 0px ) !important;
+        padding-inline: calc(var(--uc-window-control-width-left) + 24px) calc(var(--uc-window-control-width-left) - 24px) !important;
     }
     
-    :root:not([sizemode="fullscreen"]) #nav-bar-overflow-button:after,
-    :root:not([chromehidden~="toolbar"], [sizemode="fullscreen"]) #nav-bar:not([nonemptyoverflow]) #nav-bar-customization-target > :is(toolbarbutton, toolbaritem):last-child:after{
-        content: none;
+    /* Separador */
+    :root:not([sizemode="normal"],[sizemode="fullscreen"]) .titlebar-buttonbox:before{
+        background: url("../icons/urlbar-separator.svg") no-repeat center !important; 
+        content: ""; display: block !important;
+        background-size: 16px 16px !important;
+        width: 16px !important;
+        height: calc(var(--toolbar-height-personal) + 8px) !important;
+        margin-inline-end: -108px !important;
+        margin-left: calc(var(--uc-window-control-width-left) - 16px) !important;
+        -moz-context-properties: fill !important;
+        fill: var(--toolbarbutton-icon-fill) !important;
+        opacity: 0.2;
+    }
+    
+    /* Elimino los window controls en fullscreen */
+    :root:is([sizemode="fullscreen"]) .titlebar-buttonbox-container{
+        display: none !important;
+    }
+    
+    /* Elimino espacio indeseado a la derecha de la nav-bar en fullscreen */
+    :root:is([sizemode="fullscreen"]) #nav-bar{
+        padding-inline-end: calc(var(--uc-window-control-width) + 0px ) !important;
     }
 }
   
@@ -321,8 +367,8 @@ Window controls will be all wrong without it
 #sidebar-box[sidebarcommand*="tabcenter"]:not([hidden]) {
     display: block;
     position: var(--positionX2);
-    min-width: 48px;
-    max-width: 48px;
+    min-width: 48px !important;
+    max-width: 48px !important;
     overflow: hidden;
     z-index: 1;
     top: 0;
@@ -352,6 +398,7 @@ Window controls will be all wrong without it
     min-width: var(--fullscreen-sidebar-width) !important;
     max-width: var(--fullscreen-sidebar-width) !important;
     margin-left: 0px !important;
+    margin-right: 0px !important;
 }
 #sidebar-box[sidebarcommand*="tabcenter"]:hover #sidebar,
 #sidebar-box[sidebarcommand*="tabcenter"]:hover {
@@ -384,12 +431,12 @@ Window controls will be all wrong without it
 }
 
 #main-window:not([inFullscreen]) #sidebar-box[sidebarcommand*="tabcenter"]:not([hidden]) ~ #appcontent {
-    margin-left: calc(var(--positionX1) + 10px);
+    margin-left: calc(var(--positionX1) + 8px);
 }
     
 #main-window:not([inFullscreen]) #sidebar-box[sidebarcommand*="tabcenter"][positionend="true"]:not([hidden]) ~ #appcontent {
     margin-left: 0px;
-    margin-right: 59px;
+    margin-right: 56px;
 }
 
 #main-window[inFullscreen]:not([inDOMFullscreen]) #sidebar-box[sidebarcommand*="tabcenter"]:not([hidden]) ~ #appcontent {
@@ -415,14 +462,15 @@ Window controls will be all wrong without it
     filter: invert(100%);
     }
 
-/* Tree-tabs without left-sidebar */
+/* _________________________________________________ Tree-tabs without left-sidebar _________________________________________________ */
 
 @media (-moz-bool-pref:"firefoxone.style_without_leftsidebar") {
+    
     @media (-moz-platform: windows), (-moz-platform: linux) {
     
     :root:not([invisibleBMS]) {
-        --margin-left-icons-personal: 7px !important;     /* Nuevo margen-left del ícono -menu- */
-        --margin-right-icons-personal: 10px !important;                                                 /* Nuevo margen-left del ícono -menu- */
+        --margin-left-icons-personal: 7px !important;                       /* Nuevo margen-left del ícono -menu- */
+        --margin-right-icons-personal: 10px !important;                     /* Nuevo margen-left del ícono -menu- */
         --padding-left-tab: 44px !important;                                /* Nuevo tamaño botón -Menu- */
     }
 
@@ -437,31 +485,31 @@ Window controls will be all wrong without it
         padding-inline: calc(var(--padding-left-tab)/2 - 14px) !important;
     }
     
-/* Alinear botón en ventana maximizada, ventana normal y fullscreen */
+/* Alinea menú button en [fullscreen] */
         
-    :root:not([chromehidden~="toolbar"],[invisibleBMS],[sizemode="normal"],[sizemode="fullscreen"]) #PanelUI-menu-button[open] .toolbarbutton-badge-stack {
-        padding-inline-start: calc(var(--margin-left-icons-personal) + 4px) !important;
+    :root:not([chromehidden~="toolbar"])[inFullscreen] #PanelUI-menu-button {
+        min-height: calc(var(--toolbar-height-personal) + var(--tab-block-margin) + 4px) !important;
+    }
+ 
+@media (-moz-platform: windows){
+
+/* Alinear botón en ventana maximizada - 'ventana normal y fullscreen' */
+        
+    :root:not([chromehidden~="toolbar"],[invisibleBMS])[sizemode="maximized"] #PanelUI-menu-button[open] .toolbarbutton-badge-stack {
+        padding-inline-start: calc(var(--margin-left-icons-personal) + 3px) !important;
     }
     
     :root:not([chromehidden~="toolbar"],[invisibleBMS]):is([sizemode="normal"],[sizemode="fullscreen"]) #PanelUI-menu-button[open] .toolbarbutton-badge-stack {
-        margin-inline-start: calc(var(--margin-left-icons-personal) - 2px) !important;
-    }
-       
-/* Posición margin-top */
-        
-    :root:not([chromehidden~="toolbar"],[sizemode="fullscreen"],[invisibleBMS]) #PanelUI-menu-button>.toolbarbutton-badge-stack {
-        margin-block-start: 8px !important;
+        margin-inline-start: calc(var(--margin-left-icons-personal) - 3px) !important;
     }
     
-    :root:not([chromehidden~="toolbar"],[invisibleBMS])[sizemode="fullscreen"] #PanelUI-menu-button>.toolbarbutton-badge-stack {
-        margin-block-start: 0px !important;
-    }
     
-/* menu :hover y open */
+/* menu [open ] -sobreescribo-  Sirve para alinear al cambiar the height de pestañas 
+   Mismo número que la variable de abajo: --button-height-personal */
     
     :root:not([chromehidden~="toolbar"],[sizemode="normal"],[sizemode="fullscreen"],[invisibleBMS]) 
         #PanelUI-menu-button[open]>.toolbarbutton-badge-stack {
-            min-height: 30px !important; /* Sirve para alinear al cambiar the height de pestañas */
+            min-height: 30px !important; 
             max-height: 30px !important;
     }
     
@@ -476,23 +524,42 @@ Window controls will be all wrong without it
     :root:not([chromehidden~="toolbar"],[invisibleBMS])[sizemode="maximized"] #appMenu-popup {
         --menu-plus-label-width: 88px !important;
         --button-height-personal: 32px !important;
-        margin-top: calc(-4px - var(--button-height-personal)) !important;
+        margin-top: calc(-5px - var(--button-height-personal)) !important;
         clip-path: polygon(0% 0%, 0% 100%, 1% 53%, 0 10px, var(--menu-plus-label-width) 10px,
                    var(--menu-plus-label-width) var(--button-height-personal), 0 var(--button-height-personal), 0 100%, 100% 100%, 100% 0%);
     }
-  }
-    /* Margen back-button */
+}
+       
+/* Posición margin-top */
+        
+    :root:not([chromehidden~="toolbar"],[sizemode="fullscreen"],[invisibleBMS]) #PanelUI-menu-button>.toolbarbutton-badge-stack {
+        margin-block-start: 8px !important;
+    }
+    
+    :root:not([chromehidden~="toolbar"],[invisibleBMS])[sizemode="fullscreen"] #PanelUI-menu-button>.toolbarbutton-badge-stack {
+        margin-block-start: 0px !important;
+    }
+        
+@media (-moz-platform: linux){
+
+/* Alinear botón en ventana maximizada, ventana normal y fullscreen */
+        
+    :root:not([chromehidden~="toolbar"],[invisibleBMS]) #PanelUI-menu-button{
+        width: calc(var(--padding-left-tab) + 4px) !important;
+    }
+}
+    /* Margen back-button de la toolbar */
 
     :root:not([chromehidden~="toolbar"]) #nav-bar-customization-target > :is(toolbarbutton, toolbaritem):first-child,
     :root:not([chromehidden~="toolbar"])[inFullscreen] #nav-bar-customization-target > :is(toolbarbutton, toolbaritem):first-child,
     :root:not([chromehidden~="toolbar"]) toolbar[customizing] .customization-target,
     :root:not([chromehidden~="toolbar"])[inFullscreen] toolbar[customizing] .customization-target{
-        margin-inline-start: calc(var(--padding-left-tab) + 4px) !important; }
+        margin-inline-start: var(--padding-left-tab) !important; }
     
     /* margen izquierda menu-bar*/
     
     :root:not([chromehidden~="toolbar"]) #toolbar-menubar {
-        padding-inline-start: calc(var(--padding-left-tab) + 14px) !important;
+        padding-inline-start: var(--padding-left-tab) !important;
     }
     
     /* sin borde redondeado la menu-bar*/
@@ -500,4 +567,5 @@ Window controls will be all wrong without it
         border-radius: 0px !important;
     }
   }
+}
 }
