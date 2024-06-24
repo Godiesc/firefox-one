@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+
+<svg
+   width="800px"
+   height="800px"
+   viewBox="0 0 24 24"
+   fill="none"
+   version="1.1"
+   id="svg191"
+   sodipodi:docname="logo_tablero40.svg"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview193"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     showgrid="false"
+     inkscape:zoom="0.49939416"
+     inkscape:cx="251.3045"
+     inkscape:cy="382.46342"
+     inkscape:window-width="1304"
+     inkscape:window-height="745"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg191" />
+  <g
+     id="style=stroke"
+     clip-path="url(#clip0_1_197)"
+     transform="translate(0,-0.90109183)">
+    <g
+       id="home-smile">
+      <path
+         id="vector (Stroke)"
+         fill-rule="evenodd"
+         clip-rule="evenodd"
+         d="m 9.53099,2.16334 c 1.41371,-1.23667 3.52431,-1.236667 4.93801,1e-5 l 6.6584,5.82451 C 22.1585,8.88984 22.75,10.1931 22.75,11.563 V 20 c 0,2.0711 -1.6789,3.75 -3.75,3.75 H 5 C 2.92893,23.75 1.25,22.0711 1.25,20 v -8.437 c 0,-1.3699 0.59148,-2.67316 1.62259,-3.57514 z m 3.95041,1.129 c -0.8482,-0.742 -2.1146,-0.742 -2.9628,0 L 3.86019,9.11686 C 3.15469,9.734 2.75,10.6257 2.75,11.563 V 20 c 0,1.2426 1.00736,2.25 2.25,2.25 h 14 c 1.2426,0 2.25,-1.0074 2.25,-2.25 v -8.437 c 0,-0.9373 -0.4047,-1.829 -1.1102,-2.44614 z"
+         fill="context-fill" />
+      <path
+         id="vector (Stroke)_2"
+         fill-rule="evenodd"
+         clip-rule="evenodd"
+         d="m 7.16229,14.4695 c 0.37409,-0.1779 0.82152,-0.0188 0.99937,0.3553 0.34516,0.726 0.88917,1.3393 1.56886,1.7685 0.67968,0.4293 1.46718,0.657 2.27108,0.6567 0.8039,-3e-4 1.5913,-0.2286 2.2706,-0.6584 0.6794,-0.4298 1.2229,-1.0435 1.5675,-1.7698 0.1776,-0.3742 0.6249,-0.5337 0.9991,-0.3561 0.3742,0.1775 0.5337,0.6248 0.3561,0.9991 -0.4662,0.9826 -1.2016,1.8129 -2.1207,2.3944 -0.9191,0.5815 -1.9843,0.8904 -3.072,0.8908 -1.0876,4e-4 -2.15307,-0.3076 -3.07266,-0.8884 C 8.00995,17.2808 7.27394,16.4511 6.80696,15.4688 6.62911,15.0947 6.7882,14.6473 7.16229,14.4695 Z"
+         fill="context-fill" />
+    </g>
+  </g>
+  <defs
+     id="defs189">
+    <clipPath
+       id="clip0_1_197">
+      <rect
+         width="24"
+         height="24"
+         fill="white"
+         transform="translate(0 24) rotate(-90)"
+         id="rect186" />
+    </clipPath>
+  </defs>
+</svg>
