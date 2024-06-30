@@ -245,7 +245,7 @@ treechildren::-moz-tree-separator {
     border-radius: 8px !important;
     outline: 1px solid var(--content-border-color) !important;
     outline-offset: -1px !important;
-    clip-path: polygon(5px 0, calc(100% - 5px) 0, 100% 5px, 100% calc(100% - 5px), calc(100% - 5px) 100%, 5px 100%, 0 calc(100% - 5px), 0 5px);
+    clip-path: xywh(0 0 100% 100% round 9px);
 }
 
 :root:not([sizemode="fullscreen"]) findbar{ 
@@ -281,7 +281,7 @@ treechildren::-moz-tree-separator {
         margin-inline: 4px 0px !important;
         outline: 1px solid var(--content-border-color) !important;
         outline-offset: -1px !important;
-        clip-path: polygon(4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px), 0 4px); 
+        clip-path: xywh(0 0 100% 100% round 9px);
     }
     
     /* Border redondeado */
