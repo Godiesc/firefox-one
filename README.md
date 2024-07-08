@@ -115,12 +115,18 @@
 
 <b>Fondo Nueva Pestaña - NewTab Wallpaper</b>
 <ul>
-   <li><p>(Option 1) In the directory: <code>chrome/images/newtab</code> there is a set of wallpapers, the images that the theme will select by default are: <b><i>wallpaper-light.png</i></b> and <b><i>wallpaper-dark.png</i></b>, you could rename the images you want with that names and the theme will select them, you can add your own images. If you don't want a wallpaper just delete the files with the specified names. You can find more images in: <a href="https://imgur.com/a/j78IhJN"><b>This Gallery</b></a>. <b>Restarting the browser after changing the wallpaper is required. </b></p></li>
-<li><p>(Option 2) Editing the code <code>chrome/components/one_root-personal.css</code> lines: <code>19</code> and <code>24</code>.<p></li></ul></br>
+   <li><p>(Option 1) In the directory: <code>chrome/newtab</code> there are 12 wallpapers (6 for dark theme and 6 for light theme), those images will display in the NewTab options for you to choose, you could rename the images you want with those names and the theme will display them, you can add your own images. You can find more images in: <a href="https://imgur.com/a/j78IhJN"><b>This Gallery</b></a>.</p></li>
+<li><p>(Option 2) Editing the code <code>chrome/components/one_root-personal.css</code> lines from <code>19</code> to <code>32</code>. With this method you can change too the accent color for each wallpaper.<p></li></ul></br>
+
+<b>Other 'about' pages Wallpaper</b>
+<ul>
+   <li><p> For default the wallpaper selected is <code>wallpaper-dark1.png</code> and <code>wallpaper-light1.png</code> In the directory: <code>chrome/newtab</code>, you could rename the image you want with those names and the theme will display them in those pages, you can change the names in the <code>chrome/components/one_root-personal.css</code> file in the line <code>36</code> and the line <code>41</code> to the image you want.</p>
+   </li>
+</ul>
 
 <b>Color Principal - Accent Color</b>
 <ul>
-<li><p>It has manual customization of the accent color for userContent.css (new-tab, preferences and add-ons page). The file in <code>chrome/components/one_root-personal.css</code> has the variable: <code>--general-color</code> to set the color, you could choose whatever you like. <b>Restarting the browser is required. </b></p></li></ul>
+<li><p>It has manual customization of the accent color for userContent.css (preferences and add-ons page). The file in <code>chrome/components/one_root-personal.css</code> has the variable: <code>--general-color</code> to set the color, you could choose whatever you like. <b>Restarting the browser is required. </b></p></li></ul>
 
 ![Captura de pantalla 2022-06-05 155840](https://user-images.githubusercontent.com/22057609/172070426-0de79289-eaa3-4826-ac62-af6230cdf877.png)
 
