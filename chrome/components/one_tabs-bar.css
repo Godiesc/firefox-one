@@ -5,7 +5,7 @@
 
 @media not (-moz-bool-pref:"firefoxone.without-default-colors") {
     #tabbrowser-tabs {
-        --lwt-tab-line-color: transparent !important;
+        --tab-selected-outline-color: transparent !important;
     }}
 
 /* Color bolita de -cargando página- */
