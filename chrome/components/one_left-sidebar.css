@@ -509,6 +509,12 @@
         height: calc(var(--tab-height-personal) - 7px) !important;
         width:  calc(var(--tab-height-personal) - 7px) !important;
     }
+    
+/* Alinear lista de pestañas sincronizadas */
+    
+    #appMenu-popup .subviewbutton[image] > .toolbarbutton-text, .subviewbutton[targetURI] > .toolbarbutton-text {
+      padding-inline-start: calc(24px - var(--margin-right-icons-personal)) !important;
+    }
 }
     
 @media (-moz-platform: windows){

@@ -172,12 +172,6 @@
         margin-inline-start: var(--margin-left-icons-personal) !important;
     }
 
-/* Alinear lista de pestañas sincronizadas */
-    
-    #appMenu-popup .PanelUI-remotetabs-clientcontainer>.subviewbutton>label {
-        margin-inline-start: calc(4px - var(--margin-right-icons-personal)) !important;
-    }
-
 /* Margin top en Cuenta no iniciada */
     
     :root:not([chromehidden~="toolbar"]) #appMenu-fxa-status2:not([fxastatus="signedin"]) {
