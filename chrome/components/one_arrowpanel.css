@@ -36,11 +36,6 @@ panelview {
     margin-inline: -6px !important;
 }
 
-:is(#nav-bar, #TabsToolbar) #BMB_bookmarksPopup {
-    margin-top: -3px !important;
-    margin-inline: -6px !important;
-}
-
 addon-install-confirmation-notification {
     margin-inline: 1px !important;
 }
@@ -174,6 +169,13 @@ treechildren::-moz-tree-separator {
 #PlacesToolbar menupopup[placespopup="true"] menuseparator {
     margin-left: -4px !important;
     margin-right: 0px !important;
+}
+
+/* 'Monitor' and 'Relay' items from account dropdown menu */
+
+#PanelUI-fxa-cta-menu .fxa-cta-button {
+    margin: var(--space-xsmall) 0px var(--space-xsmall) 0px !important;
+    padding-inline-start: 4px !important;
 }
 
 /* Botón flecha atrás */

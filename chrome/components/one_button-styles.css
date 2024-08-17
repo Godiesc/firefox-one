@@ -216,7 +216,11 @@ panel :is(menulist, button, toolbarbutton:not(#firefox-view-button,[.subviewbutt
 .titlebar-button .toolbarbutton-icon,                                                                /* Window controls */
 .toolbarbutton-1 .toolbarbutton-icon,                                                                /* Botones default */
 .toolbarbutton-1 .toolbarbutton-badge-stack,                                                         /* Extensiones */
-#PersonalToolbar #PlacesToolbarItems>.bookmark-item {                                                /* Bookmark items */
+.toolbarbutton-1 .toolbarbutton-badge-stack image,                                                   /* Account icon, download icon 'Used in left-sidebar'  | */
+#PlacesToolbarItems>.bookmark-item,                                                                  /* Bookmark items                                      | */
+.toolbarbutton-1>image,                                                                              /* íconos default                                      | */
+#PlacesToolbarItems>.bookmark-item>.toolbarbutton-icon,                                              /* Bookmark icon                                       | */
+#OtherBookmarks:not(bookmark-item)>.toolbarbutton-icon{                                              /* 'Other bookmarks' icon ---------------------------- v */
     transition: all 0.2s ease !important;
 }
 

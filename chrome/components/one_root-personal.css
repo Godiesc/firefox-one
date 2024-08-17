@@ -16,20 +16,20 @@
 /* ------------------------------------------------------ <-Personalizaciones Varias-> ------------------------------------------------------ */
 :root{
                   /* Dark wallpapers */                                               /* Accentcolor for each wallpaper */
+  
   --wallpaper-dark1: url("../newtab/wallpaper-dark1.png") !important;           --general-color-dark1: var(--lightblue) !important;
   --wallpaper-dark2: url("../newtab/wallpaper-dark2.png") !important;           --general-color-dark2: var(--blue) !important;
   --wallpaper-dark3: url("../newtab/wallpaper-dark3.png") !important;           --general-color-dark3: var(--aqua) !important;
   --wallpaper-dark4: url("../newtab/wallpaper-dark4.png") !important;           --general-color-dark4: var(--gray) !important;
   --wallpaper-dark5: url("../newtab/wallpaper-dark5.png") !important;           --general-color-dark5: var(--gray) !important;
-  --wallpaper-dark6: url("../newtab/wallpaper-dark6.png") !important;           --general-color-dark6: var(--gray) !important;
   
                   /* Light wallpapers */                                             /* Accentcolor for each wallpaper */
+  
   --wallpaper-light1: url("../newtab/wallpaper-light1.png") !important;         --general-color-light1: var(--purple) !important;
   --wallpaper-light2: url("../newtab/wallpaper-light2.png") !important;         --general-color-light2: var(--lightblue) !important;
   --wallpaper-light3: url("../newtab/wallpaper-light3.png") !important;         --general-color-light3: var(--aqua) !important;
   --wallpaper-light4: url("../newtab/wallpaper-light4.png") !important;         --general-color-light4: var(--lightblue ) !important;
   --wallpaper-light5: url("../newtab/wallpaper-light5.png") !important;         --general-color-light5: var(--lightgreen) !important;
-  --wallpaper-light6: url("../newtab/wallpaper-light6.png") !important;         --general-color-light6: var(--purple) !important;
     }
 
 @media (prefers-color-scheme: dark){ :root{
@@ -50,8 +50,6 @@
   
   --tab-height-personal: 28px ;                                                                   /* Tamaño altura de pestañas */
   --toolbar-height-personal: 38px ;                                                               /* Toolbar height */
-
-  --my-vertical-toolbar-width: 52px ;                                                             /* Tamaño horizontal left-sidebar */
   
   --left-color: #19abf4;                                                                          /* Color left wordmark */
   --right-color: #8b61c3 ;                                                                        /* Color right wordmark */
@@ -72,6 +70,13 @@
   --gradient-colors: #d02f85 0%, #b336fc 8%, #3567fd 40%, #4e7afd 60%,#4e89fd 70%, #d02f85 100%;  /* For - selected_tab_gradient_border - config */
 }
 
+@media not (-moz-bool-pref:"firefoxone.style_without_leftsidebar") {
+  :root{
+  --my-vertical-toolbar-width: 52px ;                                                             /* 'left-sidebar' width */
+  }}
+
+/* ------------------------------------------------------------ Main Image config ------------------------------------------------------------ */
+
 @media (-moz-bool-pref:"firefoxone.main-image") {
   
   @media (prefers-color-scheme: dark){ :root{
@@ -90,6 +95,16 @@
                                                                                                     -112px con Barra de Marcadores; */
   }
 }
+
+/* ------------------------------------------------------ Main Image + tree-tabs config ------------------------------------------------------- */
+
+@media (-moz-bool-pref:"firefoxone.main-image") and (-moz-bool-pref:"firefoxone.tree_tabs_style"){  
+    :root{
+      --extension-width: 52px ;
+      --background-align-y: -46px ;                                                               /* Aligning the new tab wallpaper with the 'main-image' config
+                                                                                                     -46px normal window
+                                                                                                     -76px with bookmarks-bar  */
+    }}
 
 @media (prefers-color-scheme: dark){
 :root{
