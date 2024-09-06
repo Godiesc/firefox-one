@@ -3,7 +3,7 @@
 
 /* Borde menús desplegables */
 
-:not(scrollbox[part="scrollbox"]) slot {
+slot {
     --panel-shadow-margin: 2px !important;
     margin-inline: 3px !important;
     margin-block-end: 4px !important;
@@ -11,6 +11,15 @@
     /* Borde para anuncios emergentes, por ejemplo al instalar un complemento */
     box-shadow: inset 0px 0 0 1px var(--arrowpanel-border-color) !important;
     margin-top: 1px !important;
+}
+
+/* Remove unwanted styles applied to the tab bar and contextual menu */
+
+:is(scrollbox[part="scrollbox"]) slot{
+    margin-inline: initial !important;
+    margin-block-end: initial !important;
+    box-shadow: none !important;
+    margin-top: initial !important;
 }
 
 panelview {    
