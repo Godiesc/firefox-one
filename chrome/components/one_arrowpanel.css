@@ -3,7 +3,7 @@
 
 /* Borde menús desplegables */
 
-slot {
+:not(scrollbox[part="scrollbox"]) slot {
     --panel-shadow-margin: 2px !important;
     margin-inline: 3px !important;
     margin-block-end: 4px !important;
