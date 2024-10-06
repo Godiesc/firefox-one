@@ -430,16 +430,16 @@ Window controls will be all wrong without it
     height: 100%;
 }
 
-#main-window:not([inFullscreen]) #sidebar-box[sidebarcommand*="tabcenter"]:not([hidden]) ~ #appcontent {
-    margin-left: calc(var(--positionX1) + 8px);
+#main-window:not([inFullscreen]) #sidebar-box[sidebarcommand*="tabcenter"]:not([hidden]) ~ #tabbrowser-tabbox {
+    margin-left: calc(var(--positionX1) + 4px) !important;
 }
     
-#main-window:not([inFullscreen]) #sidebar-box[sidebarcommand*="tabcenter"][positionend="true"]:not([hidden]) ~ #appcontent {
-    margin-left: 0px;
-    margin-right: 56px;
+#main-window:not([inFullscreen]) #sidebar-box[sidebarcommand*="tabcenter"][positionend="true"]:not([hidden]) ~ #tabbrowser-tabbox {
+    margin-left: 0px !important;
+    margin-right: calc(var(--positionX1) + 4px) !important;
 }
 
-#main-window[inFullscreen]:not([inDOMFullscreen]) #sidebar-box[sidebarcommand*="tabcenter"]:not([hidden]) ~ #appcontent {
+#main-window[inFullscreen]:not([inDOMFullscreen]) #sidebar-box[sidebarcommand*="tabcenter"]:not([hidden]) ~ #tabbrowser-tabbox {
     margin-left: var(--fullscreen-sidebar-width);
 }
 
