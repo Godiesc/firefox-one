@@ -5,41 +5,31 @@
 
 @media (-moz-platform: windows) {
 
-    .titlebar-button{
-        background-color: transparent !important;
-        padding-inline: 4px !important;
-        /*padding-block-start: calc(var(--tab-block-margin-personal) + 4px) !important;/**/
+    /* Size of button */
+    .titlebar-button::before{
+        content: ""; display: flex;
+        position: absolute;
+        border-radius: 4px !important;
+        padding: 14px 17px !important;
+        z-index: -1 !important;
     }
-    
-    .titlebar-button:hover{
-        background-color: transparent !important;
+
+    /* Background color when 'hover' */
+    .titlebar-button:hover::before{
+        background-color: var(--toolbarbutton-hover-personal) !important;
     }
-    
-    .titlebar-button .toolbarbutton-icon{
-        min-width: 30px !important;
-        min-height: 30px !important;
-        padding: 9px !important;
-        border-radius: var(--tab-border-radius) !important;
+
+    /* Background color when 'hover' on 'close' button */
+    .titlebar-button:is(.titlebar-close):hover::before {        
+        background-color: hsl(355,86%,49%) !important;
     }
-    
-    .titlebar-button:hover .toolbarbutton-icon{
-        background-color:  var(--toolbarbutton-hover-background) !important;
-    }
-    
-    .titlebar-button.titlebar-close:hover .toolbarbutton-icon{        
-        background-color:  #e81123 !important;
-    }
-    
-    /* Keep the same windows control icons in all the themes, includint the themes with images */
-    
+
+    /* Keep the same windows control icons in all the themes, including the themes with images */
+
     .titlebar-button {
         background-color: transparent !important;
         -moz-context-properties: stroke !important;
         stroke: currentColor !important;
-    }
-    .titlebar-close:hover {
-        background-color: transparent !important;
-        color: white !important;
     }
     .titlebar-close {
         list-style-image: url(chrome://browser/skin/window-controls/close.svg) !important;
@@ -58,7 +48,7 @@
 /* Linux default window control icons */
 
 @media (-moz-platform: linux) {
-    
+
     .titlebar-button{
         list-style-image: none !important;
         appearance: none !important;

@@ -121,8 +121,12 @@
     
     /* margen izquierda pestañas*/
     
-    :root:not([chromehidden~="toolbar"]) #toolbar-menubar, :root:not([chromehidden~="toolbar"]) #toolbar-menubar[autohide="true"]+#TabsToolbar {
-        padding-inline-start: calc(var(--padding-left-tab) + 4px) !important;
+    :root:not([chromehidden~="toolbar"]) {
+        & #toolbar-menubar, 
+        & #toolbar-menubar[autohide="true"]+#TabsToolbar,
+        & #toolbar-menubar[autohide="false"]+#TabsToolbar {
+            padding-inline-start: calc(var(--padding-left-tab) + 4px) !important;
+        }
     }
     
     /* Alinea Imagen en pestaña activa en temas con imágenes */
@@ -134,7 +138,7 @@
     /* Borde izquierda-derecha de la toolbar */
 
     :root:not([chromehidden~="toolbar"],[sizemode="fullscreen"]) #nav-bar {
-        margin-inline: calc(var(--padding-left-tab) + 4px) 4px !important;
+        margin-inline-start: calc(var(--padding-left-tab) + 4px) !important;
         margin-block-end: 1px !important;
     }
     

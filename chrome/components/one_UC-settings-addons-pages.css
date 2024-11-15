@@ -46,20 +46,21 @@
     --in-content-page-color: var(--contrast-color) !important;                                  /* Color de texto general*/
     
     
-    --in-content-box-background-odd: color-mix(in srgb,                                         /* Color destinción entre filas de una tabla-atajos de busqueda */
-      var(--in-content-box-border-color), transparent) !important;     
+    --in-content-box-background-odd: color-mix(in srgb,                                         /* Color distinction between rows in a 'table' and 'search shortcuts' */
+      var(--in-content-box-border-color)40%, transparent) !important;
     --in-content-box-info-background: var(--in-content-box-background-odd) !important;          /* Color de la caja de elementos que se sincronizan */
     --section-highlight-background-color: var(--in-content-box-info-background) !important;
     
     --in-content-border-color: var(--in-content-box-border-color) !important;                   /* Linea separadora en la configuración*/
     --in-content-table-border-color: var(--in-content-box-border-color) !important;             /* Borde de tablas*/
     
-    --in-content-table-background: var(--in-content-page-background) !important;                /* Color de fondo de tablas de "about:support" */
+    --background-color-box: var(--in-content-page-background) !important;                       /* Background color of tables */
+    --in-content-table-background: var(--in-content-page-background) !important;                /* Background color of 'about:support' tables */
     
     --card-outline-color: var(--general-color) !important;                                      /* outline color temas-extensiones */
     --card-shadow-hover: var(--card-shadow), 0 0 0 5px var(--card-outline-color) !important;    /* outline color :hover temas-extensiones */
     
-    --in-content-item-hover: var(--button-active-bgcolor) !important;                           /* Color de fondo al pasar por los items de un combobox */
+    --in-content-item-hover: var(--button-hover-bgcolor) !important;                           /* Color de fondo al pasar por los items de un combobox */
     --in-content-item-hover-text: var(--in-content-text-color) !important;                      /* Color de label del item hover del combobox */
     --in-content-item-selected: var(--general-color) !important;                                /* Color de fondo al pasar por los items de un combobox (teclas de direccion)" */
     --in-content-item-selected-text:  var(--in-content-text-color) !important;                  /* Color de label al pasar por los items de un combobox (teclas de direccion)" */
@@ -68,9 +69,9 @@
     --in-content-button-background-hover: var(--button-active-bgcolor) !important;              /* color de botones :hover */
     --in-content-button-background-active: var(--general-color) !important;                     /* color de botones al darle clic */
     
-    --in-content-primary-button-background: var(--general-color) !important;                    /* Color botones principales */
-    --in-content-primary-button-background-hover: var(--button-hover-bgcolor) !important;       /* Color botones principales :hover */
-    --in-content-primary-button-background-active: var(--button-active-bgcolor) !important;     /* Color botones principales :active */
+    --in-content-primary-button-background: var(--general-color) !important;                    /* Primary button color */
+    --in-content-primary-button-background-hover: var(--button-hover-bgcolor) !important;       /* Primary button color on 'hover' */
+    --in-content-primary-button-background-active: var(--button-active-bgcolor) !important;     /* Primary button color on 'active' */
     
     --link-color: var(--general-color) !important;                                              /* Color de links */
     --link-color-hover: var(--aqua) !important;                                                 /* Color de links :hover */

@@ -322,11 +322,11 @@ treechildren::-moz-tree-separator {
 
 /* Espacios de la sidebar[open] y más espacio para el splitter - <left> <right> side */
 
-:root:not([sizemode="fullscreen"]) #sidebar-box[checked="true"] + #sidebar-splitter + #appcontent .browserContainer {
+:root:not([sizemode="fullscreen"]) #sidebar-box[checked="true"] + #sidebar-splitter + #tabbrowser-tabbox .browserContainer {
     padding: 1px 4px 4px 0px !important;
 }
 
-:root:not([sizemode="fullscreen"]) #sidebar-box[checked="true"][positionend="true"] + #sidebar-splitter + #appcontent .browserContainer {
+:root:not([sizemode="fullscreen"]) #sidebar-box[checked="true"][positionend="true"] + #sidebar-splitter + #tabbrowser-tabbox .browserContainer {
     padding: 1px 0px 4px 4px !important;
 }
 

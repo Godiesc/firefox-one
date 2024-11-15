@@ -173,7 +173,8 @@ findbar{
 }
 
 #nav-bar {
-    min-height: var(--toolbar-height-personal) !important;
+    height: var(--toolbar-height-personal) !important;
+    border-top: 0px var(--tabs-navbar-separator-style) var(--tabs-navbar-separator-color) !important;
 }
 
 /* Urlbar */
@@ -216,7 +217,7 @@ findbar{
 }
 
 #urlbar-input, #urlbar-scheme {
-    padding-left: 6px !important;
+    padding-inline-start: 6px !important;
 }
 
 #urlbar[open] {
@@ -225,13 +226,17 @@ findbar{
 
 @media (-moz-platform: windows) {
     #urlbar-input, #urlbar-scheme {
-        padding-bottom: 2px !important;
+        padding-block-end: 2px !important;
     }
 }
 
 /* Brighness when urlbar [open]*/
 
-#nav-bar::before {
+#navigator-toolbox{
+    z-index: unset !important;
+}
+
+#nav-bar::after {
     position: fixed;
     content: "";
     top: 0;
@@ -241,10 +246,10 @@ findbar{
     background-color: transparent;
     z-index: 4;
     pointer-events: none;
-    transition: background-color 0.3s ease !important; 
+    transition: background-color 0.3s ease; 
 }
 
-#nav-bar[urlbar-exceeds-toolbar-bounds="true"]::before {
+:root:has(#urlbar[open]) #nav-bar::after {
     background-color: rgba(0, 0, 0, 0.5);
 }
 

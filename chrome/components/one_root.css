@@ -162,6 +162,8 @@
   --color-accent-primary: var(--button-active-bgcolor) !important;                      /* Radiobutton */
   --color-accent-primary-hover: var(--button-hover-bgcolor) !important;                 /* Radiobutton :hover */
   --color-accent-primary-active: var(--general-color) !important;                       /* Radiobutton :active */
+    
+  --inactive-titlebar-opacity: 1 !important;                                            /* Opacity unfocused window */
 }
 }
 
@@ -282,6 +284,8 @@
   --color-accent-primary: var(--button-active-bgcolor) !important;                      /* Radiobutton */
   --color-accent-primary-hover: var(--button-hover-bgcolor) !important;                 /* Radiobutton :hover */
   --color-accent-primary-active: var(--general-color) !important;                       /* Radiobutton :active */
+    
+  --inactive-titlebar-opacity: 1 !important;                                            /* Opacity unfocused window */
 }}
 
 /* Private Browsing Mode - Dark */
@@ -374,6 +378,25 @@
     }
   }
 }
+
+/* _____________________ Set height of menu-bar, Bookmarks-bar */
+
+/* Set menu-bar height */
+
+:root {
+  --menubar-height-personal: 37px !important;
+}
+
+/* Set bookmarks-bar height */
+
+:root:has(#PersonalToolbar[collapsed="false"]) {
+  --bookmarksbar-height-personal: 28px !important;
+}
+
+#PersonalToolbar {
+  max-height: var(--bookmarksbar-height-personal) !important;
+}
+
 
 /* Other height for tabs in compact density */
 
