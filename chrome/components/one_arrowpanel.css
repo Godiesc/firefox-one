@@ -326,11 +326,11 @@ treechildren::-moz-tree-separator {
     padding: 1px 4px 4px 0px !important;
 }
 
-:root:not([sizemode="fullscreen"]) #sidebar-box[checked="true"][positionend="true"] + #sidebar-splitter + #tabbrowser-tabbox .browserContainer {
+:root:not([sizemode="fullscreen"]) #sidebar-box[checked="true"][positionend] + #sidebar-splitter + #tabbrowser-tabbox .browserContainer {
     padding: 1px 0px 4px 4px !important;
 }
 
-:root:not([sizemode="fullscreen"]) #sidebar-box[positionend="true"]{
+:root:not([sizemode="fullscreen"]) #sidebar-box[positionend]{
     margin-inline: 0px 4px !important;
 }
 
