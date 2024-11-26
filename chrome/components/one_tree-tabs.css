@@ -48,7 +48,7 @@
                             display: none !important;
                         }
                         > .titlebar-spacer[type="pre-tabs"]{
-                            display: flex !important;
+                            display: none !important;
                         }
                 }
             }
@@ -56,8 +56,6 @@
     }
     
 /* _____________________________________________ Window controls _____________________________________________ */
-
-    /* Code to tabs-bar reach lower height that 30px */
 
     :root:has(#toolbar-menubar[autohide="true"]) {
         & .titlebar-buttonbox-container {
@@ -203,7 +201,7 @@
 
     /* Separador ultimo icono de la nav-bar + window controls */
 
-    :root:has(#toolbar-menubar[autohide="true"]):not([sizemode="normal"]) .titlebar-buttonbox:before{
+    :root:has(#toolbar-menubar[autohide="true"]):not([sizemode="normal"]) .titlebar-buttonbox-container:before{
         background: url("../icons/urlbar-separator.svg") no-repeat center !important;
         content: ""; display: block !important;
         background-size: 16px 16px !important;
@@ -234,43 +232,29 @@
   
 @media (-moz-gtk-csd-reversed-placement){
     
-    :root:is([tabsintitlebar],[sizemode="fullscreen"]) {
-        --uc-window-control-width: 0px !important;
-        --uc-window-control-width-left: 108px !important;
+    :root:has(#toolbar-menubar[autohide="true"]) {
+        
+        & .titlebar-close{
+            padding-inline-end: 0px !important;
+        }
     }
     
-    :root:not([sizemode="fullscreen"]) #nav-bar{
-        border-width: 0px !important;
-        padding-inline-end: 0px !important;
-        padding-inline-start: var(--uc-window-control-width-left) !important;
-    }
+    /* Separador ultimo icono de la nav-bar + window controls */
     
-    :root:not([inFullscreen])[sizemode="normal"] #nav-bar{
-        padding-inline: calc(var(--uc-window-control-width-left) + 24px) calc(var(--uc-window-control-width-left) - 24px) !important;
+    :root:has(#toolbar-menubar[autohide="true"]):not([sizemode="normal"]) .titlebar-buttonbox-container:before{
+        display: none !important;
     }
-    
-    /* Separador */
-    :root:not([sizemode="normal"],[sizemode="fullscreen"]) .titlebar-buttonbox:before{
-        background: url("../icons/urlbar-separator.svg") no-repeat center !important; 
+
+    :root:has(#toolbar-menubar[autohide="true"]):not([sizemode="normal"]) .titlebar-buttonbox-container:after{
+        background: url("../icons/urlbar-separator.svg") no-repeat center !important;
         content: ""; display: block !important;
         background-size: 16px 16px !important;
-        width: 16px !important;
-        height: calc(var(--toolbar-height-personal) + 8px) !important;
-        margin-inline-end: -108px !important;
-        margin-left: calc(var(--uc-window-control-width-left) - 16px) !important;
+        width: 22px !important;
+        margin-inline-start: 12px !important;
+        height: calc(var(--toolbar-height-personal) + 8px);
         -moz-context-properties: fill !important;
         fill: var(--toolbarbutton-icon-fill) !important;
         opacity: 0.2;
-    }
-    
-    /* Elimino los window controls en fullscreen */
-    :root:is([sizemode="fullscreen"]) .titlebar-buttonbox-container{
-        display: none !important;
-    }
-    
-    /* Elimino espacio indeseado a la derecha de la nav-bar en fullscreen */
-    :root:is([sizemode="fullscreen"]) #nav-bar{
-        padding-inline-end: calc(var(--uc-window-control-width) + 0px ) !important;
     }
 }
   
@@ -293,7 +277,7 @@
     
     /* overwrite: Style sidebar in fullscreen */
     
-    :root:not([sizemode="fullscreen"]) #sidebar-box[sidebarcommand*="tabcenter"] {
+    :root:not([sizemode="fullscreen"]) #sidebar-box[sidebarcommand*="tabcenter"]:not([positionend="true"]) {
         outline: none !important;
         margin-inline: 0px !important;
         border-radius: 9px !important;
@@ -383,7 +367,7 @@
 
     #sidebar-box:not([positionend]) > :-moz-locale-dir(rtl),
     #sidebar-box[positionend] > *{
-        border-inline-width: 1px 0px;
+        border-inline-width: 0px 0px;
     }
 
     /* Move statuspanel to the other side when sidebar is hovered so it doesn't get covered by sidebar */
