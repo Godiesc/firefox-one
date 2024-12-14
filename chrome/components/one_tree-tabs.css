@@ -291,9 +291,7 @@
     /* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/autohide_sidebar.css */
 
     #sidebar-box:is(
-    [sidebarcommand*="tabcenter"],
-    [sidebarcommand*="treestyletab"],
-    [sidebarcommand*="_3c078156-979c-498b-8990-85f7987dd929"]){
+    [sidebarcommand*="tabcenter"]){
         --uc-sidebar-width: 58px;
         --uc-sidebar-hover-width: 250px;
         --uc-autohide-sidebar-delay: 0ms; /* Wait 0.6s before hiding sidebar */
@@ -315,9 +313,7 @@
     #main-window[sizemode="fullscreen"] #sidebar-box{ --uc-sidebar-width: 1px; }
 
     :root:has(#sidebar-box:is(
-    [sidebarcommand*="tabcenter"],
-    [sidebarcommand*="treestyletab"],
-    [sidebarcommand*="_3c078156-979c-498b-8990-85f7987dd929"])) #sidebar-splitter{ display: none }
+    [sidebarcommand*="tabcenter"])) #sidebar-splitter{ display: none }
 
     #sidebar-header{
         overflow: hidden;
