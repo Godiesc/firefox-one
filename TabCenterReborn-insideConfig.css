@@ -4,8 +4,8 @@
     --tablist-separator: #cccccc;
     --overflow-indicator-border: #333333; }
 
-@media (prefers-color-scheme: dark) { :root {
-        --background: #ff0000 !important;
+@media (prefers-color-scheme: dark) { :root, body {
+        background-color:var(--tab-active-background);
         --toolbar-bgcolor: #252836;
         --icons: rgb(251,251,254);
         --tab-separator: transparent;
@@ -28,9 +28,7 @@
 
 /* fix autoscrolling bug when middle clicking */
 :root,
-body { overflow: hidden; border-radius:8px; 
-background-color: var(--toolbar-bgcolor); 
-/*background-color:var(--tab-active-background);*/
+body { overflow: hidden; border-radius:8px;
 box-shadow:1px 0 var(--background), inset -1px 0 var(--background),1px 0 var(--background), inset -1px 0 var(--background),1px 0 var(--background), inset -1px 0 var(--background),inset 4px 0 var(--background),inset 5px 0 #50505040,inset 1px 0 var(--background),inset 1px 0 var(--background),inset 1px 0 var(--background),inset -4px 0 var(--background),inset -5px 0 #50505040,inset 0 1px #50505040,inset 0 -1px #50505040; outline: 1px solid black; outline-offset: 0px;}
 
 /* Move topmenu (newtab section) to bottom */
@@ -109,18 +107,14 @@ box-shadow:1px 0 var(--background), inset -1px 0 var(--background),1px 0 var(--b
    #pinnedtablist:is(.compact) .tab.active { 
      box-shadow: inset 0 3px 0 0px color-mix(in srgb, var(--identity-color,var(--tab-loading-fill)) 100%, transparent); }
 
-   #pinnedtablist.compact:not(:empty) { 
-     border-color: #70707070; margin-bottom: 2px; margin-inline: 5px 11px; }
+   #pinnedtablist.compact:not(:empty) {
+     border-color: #70707070; margin-bottom: 2px; margin-inline: 3px 9px; }
 
-   #pinnedtablist.compact .tab{ margin-bottom: 2px; margin-inline-end: -2px; }
+   #pinnedtablist.compact .tab{margin-bottom: 2px; margin-inline-end: -2px; }
 
    .tab:not(.active):hover, #newtab:hover {
      background-color: color-mix(in srgb,  var(--background) 90%, var(--input-text));
      border-radius: 4px; }
-
-/* center favicons within the tab */
-   #tablist-wrapper.shrinked>:not(#pinnedtablist.compact) .tab-meta-image {
-     margin-left: 8px !important; }
 
 /* Container line */
    #tablist .tab[data-identity-color] .tab-context,
@@ -177,14 +171,14 @@ box-shadow:1px 0 var(--background), inset -1px 0 var(--background),1px 0 var(--b
     flex-wrap: nowrap;
     overflow-x: auto;
     gap: 2px;
-    margin-inline-start: 6px;
+    margin-inline-start: 0px;
 }
 
 /* Prevent scrollbar from showing when transitioning */
    #pinnedtablist.compact:not(:hover):not(:focus-within) {
      scrollbar-width: none; }
 
-#pinnedtablist.compact .tab { min-width: 36px; }
+#pinnedtablist.compact .tab { min-width: 34px; }
 
 @media (max-width: 58px) {
     #pinnedtablist.compact {
