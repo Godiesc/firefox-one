@@ -45,7 +45,7 @@ box-shadow:1px 0 var(--background), inset -1px 0 var(--background),1px 0 var(--b
 /* Newtab button*/
    #tablist-wrapper::after { content: ""; margin-block: 2px; margin-inline: 4px 10px; border: 1px solid #70707070; border-bottom-width: 0px; }
 
-   #newtab { flex-grow: 1; margin-inline: 6px 6px; padding-left: 12px; min-width: 66px;
+   #newtab { flex-grow: 1; margin-inline: 6px 6px; padding-left: 8px; min-width: 66px;
    width: 100%; margin-top: -4px; }
 
 
