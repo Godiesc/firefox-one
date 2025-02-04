@@ -1,0 +1,259 @@
+#root.root {
+    --tabs-border-radius: 6px;   /* Tabs raundness */
+    --tabs-indent: 22px;
+    padding-block: 4px;
+}
+
+/* Remove unwanted background color in some elements */
+
+.TabsPanel .bottom-space,
+.TabsPanel .new-tab-btns::after {
+        background: transparent;
+}
+
+/* Trick to clic on border */
+
+body::before {
+    content: ''; display: flex; position: fixed;
+    width: 100%; 
+    height: 100%;
+    border-radius: 8px !important;
+    background-size: auto 100% !important;
+    background-color: var(--s-toolbar-bg);/**/
+    box-shadow:1px 0 var(--s-frame-bg), inset -1px 0 var(--s-frame-bg),1px 0 var(--s-frame-bg), inset -1px 0 var(--s-frame-bg),1px 0 var(--s-frame-bg), inset -1px 0 var(--s-frame-bg),inset 4px 0 var(--s-frame-bg),inset 5px 0 #50505040,inset 1px 0 var(--s-frame-bg),inset 1px 0 var(--s-frame-bg),inset 1px 0 var(--s-frame-bg),inset -4px 0 var(--s-frame-bg),inset -5px 0 #50505040,inset 0 1px #50505040,inset 0 -1px #50505040;
+    z-index: 10;
+    pointer-events: none;
+}
+
+body:not(:hover) .Tab .title { 
+    opacity: 0;
+}
+
+/* __________________ Top horizontal box */
+
+.top-horizontal-box {
+    padding-inline: 9px 0px;
+}
+
+.NavigationBar.-top {
+    background-color: transparent;
+    width: calc(var(--uc-sidebar-hover-width) - 18px);
+    box-shadow: none; 
+}
+
+.NavigationBar .nav-item[data-active="true"]:not(:hover) {
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.112);
+}
+
+/* Sound indicator */
+
+.NavigationBar .nav-item .audio {
+    bottom: 1px;
+    right: 1px;
+    border-radius: 4px;
+    background-color: var(--s-toolbar-bg);
+}
+
+/* __________________ Bottom horizontal box */
+
+.BottomBar {
+    padding-inline: 12px;
+}
+
+.BottomBar .tool-btn {
+    height: 24px;
+}
+
+/* __________________  Tabs style __________________ */
+
+/* Tab selected background */
+
+.Tab {
+    --tabs-activated-bg: color-mix(in srgb,var(--s-popup-bg), var(--s-popup-fg) 20%);
+}
+
+/* Selected Tab border */
+
+.Tab[data-active="true"] .body {
+    --tabs-activated-shadow: var(--nav-btn-active-shadow);
+}
+
+/* Hide tab title when sidebar is not expaded */
+
+body:not(:hover) .Tab .title { 
+    opacity: 0;
+}
+
+/* Remove close button to solve glitch when first 'hover' on tab */
+
+@media (max-width: 100px) {
+    .Tab .close {
+        display: none;
+    }
+}
+
+/* shadow top when tabs-scroll appears */
+
+.ScrollBox > .top-shadow {
+    top: -11px;
+    left: 8px;
+    width: calc(100% - 16px);
+}
+
+.ScrollBox > .bottom-shadow {
+        left: 12px;
+    width: calc(100% - 24px);
+}
+
+/* ________________________ Pinned tabs */
+
+.Tab[data-pin="true"] {
+    --tabs-pinned-width: 36px;
+}
+
+.PinnedTabsBar {
+    --my-tabs-pinned-width: calc(var(--uc-sidebar-width) - 16px);
+    min-width: var(--uc-sidebar-hover-width);
+    max-width: var(--uc-sidebar-hover-width);
+    padding-inline-start: 8px !important;
+    margin-block: 4px 2px;
+        background: transparent;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--my-tabs-pinned-width), var(--my-tabs-pinned-width))) !important;
+}
+
+/* Pinned selected tab always showed */
+
+body:not(:hover) .PinnedTabsBar .tab-wrapper:has(.Tab[data-active="true"]) {
+    &:nth-child(-n+15) {
+        grid-row-start: 3;
+        grid-column-start: 1;
+    }
+    &:nth-child(-n+10) {
+        grid-row-start: 2;
+        grid-column-start: 1;
+    }
+    &:nth-child(-n+5) {
+        grid-row-start: 1;
+        grid-column-start: 1;
+    }
+}
+
+/* ________________________ Normal tabs */
+
+.TabsPanel.panel>.ScrollBox .Tab {
+    margin-inline: 0 ;
+    padding-inline: 8px 4px !important;
+}
+
+/* Remove indent tab [0] */
+
+body:not(:hover) #root[data-tabs-tree-lvl-marks="true"] .Tab[data-pin="false"]:not([data-lvl="0"]) .body::after {
+    display: none;
+}
+
+body:hover .ScrollBox .Tab[data-lvl]:not([data-lvl="0"]) {
+    padding-inline: var(--tabs-indent) 4px !important;
+}
+
+/* Margins to center favicon */
+
+.Tab[data-pin="false"] .fav {
+    margin-inline-start: calc(var(--tabs-inner-gap) + 5px);
+    margin-inline-end: calc(var(--tabs-inner-gap) + 2px);
+}
+
+/* Separator line above normal tabs */
+
+.TabsPanel.panel>.ScrollBox::before {
+    content:''; display: inline-flex;
+    width: calc(100% - 16px);
+    height: 1px;
+    margin-block-end: 4px;
+    margin-inline: 8px;
+    opacity: 0.1;
+    background: var(--frame-fg);
+}
+
+/* __________________ Newtab button __________________ */
+
+.TabsPanel .new-tab-btns {
+    background-color: transparent;
+    padding: 0px ;
+    margin-inline: 0px;
+    grid-gap: 0;
+
+    &::before {
+        content: ''; display: flex; position: absolute; 
+        top: 0;
+        left: 8px;
+        width: calc(100% - 16px); 
+        height: 100%;
+        border-radius: 4px !important;
+        background-size: auto 100% !important;
+        background-color: var(--s-toolbar-bg);
+    }
+
+    &:hover::before {
+        background-color: color-mix(in srgb, var(--s-toolbar-bg)90%, var(--s-popup-fg));
+    }
+
+    & .new-tab-btn:hover::before {
+        background-color: transparent;
+    }
+}
+
+/* __________________ Sound icon __________________ */
+
+/* Remove unwanted title margin in tabs with sound */
+
+.Tab .t-box {
+    --audio-btn-offset: 0px;
+}
+
+/* button */
+
+.body:has(.audio) {
+    & .audio {
+        width: 14px;
+        height: 14px;
+        background-color: var(--s-popup-fg);
+        inset-inline-start: 20px;
+        inset-block-start: 2px;
+        border-radius: 50%;
+    }
+}
+
+/* icon */
+
+.Tab .audio-icon,
+.Tab[data-pin="false"][data-active="true"] .audio-icon {
+    fill: var(--toolbar-bg);
+}
+
+/* __________________ Scrollbar a few more to the right __________________ */
+
+.ScrollBox {
+    width: calc(100% + 1px);
+}
+
+/* _______________________ Image in sidebar _______________________  */
+
+/*
+
+body::before {
+    background-image: url("https://i.imgur.com/bcEfb0j.png"); !important;
+}
+
+.Tab {
+    --tabs-activated-bg: color-mix(in srgb, var(--s-popup-bg) 60%, transparent);
+}
+
+.TabsPanel .new-tab-btns {
+
+    &::before {
+        background-color: color-mix(in srgb, var(--s-toolbar-bg)80%, transparent);
+    }
+}
+
+/**/
