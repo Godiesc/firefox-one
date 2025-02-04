@@ -8,7 +8,7 @@
 
 .TabsPanel .bottom-space,
 .TabsPanel .new-tab-btns::after {
-        background: transparent;
+		background: transparent;
 }
 
 /* Trick to clic on border */
@@ -25,8 +25,18 @@ body::before {
     pointer-events: none;
 }
 
-body:not(:hover) .Tab .title { 
+/* Remove some elements when sidebar isn't expanded */
+
+body:not(:hover) {
+	.Tab .title { 
     opacity: 0;
+	}
+	.NavigationBar .nav-item[data-active="false"] {
+		display: none;
+	}
+	.NavigationBar[data-layout="inline"] .main-items .nav-item {
+		transform: none;
+	}
 }
 
 /* __________________ Top horizontal box */
@@ -101,7 +111,7 @@ body:not(:hover) .Tab .title {
 }
 
 .ScrollBox > .bottom-shadow {
-        left: 12px;
+		left: 12px;
     width: calc(100% - 24px);
 }
 
@@ -117,7 +127,7 @@ body:not(:hover) .Tab .title {
     max-width: var(--uc-sidebar-hover-width);
     padding-inline-start: 8px !important;
     margin-block: 4px 2px;
-        background: transparent;
+		background: transparent;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(var(--my-tabs-pinned-width), var(--my-tabs-pinned-width))) !important;
 }
