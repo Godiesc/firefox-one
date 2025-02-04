@@ -3,37 +3,40 @@
 
 /*"Botón de cerrar pestaña" en windows y linux */
 
-:is(#TabsToolbar) .close-icon {
-    width: 15px !important;
-    height: 15px !important;
-}
+@media not (-moz-bool-pref:"sidebar.verticalTabs") {
 
-.tabbrowser-tab .tab-close-button{
-    display: none !important;
-}
+    :is(#TabsToolbar) .close-icon {
+        width: 15px !important;
+        height: 15px !important;
+    }
 
-.tabbrowser-tab:not([pinned]):hover .tab-close-button{
-    display: block !important;
-    border-radius: 3px !important;
-}
+    .tabbrowser-tab .tab-close-button{
+        display: none !important;
+    }
 
-:is(#TabsToolbar) .tab-close-button {
-    padding: 2px !important;
-}
+    .tabbrowser-tab:not([pinned]):hover .tab-close-button{
+        display: block !important;
+        border-radius: 3px !important;
+    }
 
-:is(#TabsToolbar) .tab-close-button:hover {
-    background-color: color-mix(in srgb, var(--toolbarbutton-hover-background) 40%, var(--border-contrast-color)) !important;
-    fill: var(--lwt-tab-text) !important;
-}
-    
-:is(#TabsToolbar) tab:not([selected]) .tab-close-button:hover,
-:root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) :is(#TabsToolbar) tab:not([selected]) .tab-close-button:hover{
-    background-color: color-mix(in srgb, var(--lwt-frame) 70%, transparent) !important;
-}
-    
-/* Nuevos colores :hover para temas que usan imágenes */
-    
-:root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) :is(#TabsToolbar) .tab-close-button:hover {
-    background-color: var(--toolbarbutton-hover-background) !important;
-    fill: var(--lwt-tab-text) !important;
+    :is(#TabsToolbar) .tab-close-button {
+        padding: 2px !important;
+    }
+
+    :is(#TabsToolbar) .tab-close-button:hover {
+        background-color: color-mix(in srgb, var(--toolbarbutton-hover-background) 40%, var(--border-contrast-color)) !important;
+        fill: var(--lwt-tab-text) !important;
+    }
+
+    :is(#TabsToolbar) tab:not([selected]) .tab-close-button:hover,
+    :root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) :is(#TabsToolbar) tab:not([selected]) .tab-close-button:hover{
+        background-color: color-mix(in srgb, var(--lwt-frame) 70%, transparent) !important;
+    }
+
+    /* Nuevos colores :hover para temas que usan imágenes */
+
+    :root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) :is(#TabsToolbar) .tab-close-button:hover {
+        background-color: var(--toolbarbutton-hover-background) !important;
+        fill: var(--lwt-tab-text) !important;
+    }
 }

@@ -578,7 +578,8 @@
     :root:not([chromehidden~="toolbar"],[invisibleBMS])[sizemode="maximized"] #appMenu-popup {
         --menu-plus-label-width: 94px !important;
         --button-height-personal: 35px !important;
-        margin-top: calc(-8px - var(--button-height-personal)) !important;
+        --arrowpanel-border-radius: 9px !important;
+        margin-top: calc(-7px - var(--button-height-personal)) !important;
         clip-path: polygon(0% 0%, 0% 100%, 1% 53%, 0 13px, var(--menu-plus-label-width) 13px,
                    var(--menu-plus-label-width) var(--button-height-personal), 0 var(--button-height-personal), 0 100%, 100% 100%, 100% 0%);
     }
@@ -653,4 +654,194 @@
         margin-right: calc(var(--padding-left-tab) - 8px) !important;
         margin-top: -39px  !important;
     }*/
+}
+
+/* ___________________________________________________________ Firefox Revamp __________________________________________________________ 
+   _____________________________________________________________________________________________________________________________________ */
+
+@media (-moz-bool-pref:"sidebar.revamp")  and (not ( -moz-bool-pref:"firefoxgx.oneline")) {
+    
+    /* Remove unwanted border */
+    
+    #navigator-toolbox {
+        border-color: transparent !important;
+    }
+    
+    #sidebar-main {
+        padding-block-start: 2px !important;
+        background: none !important;
+        
+        &::before {
+            content: ''; display: flex; position: fixed; top: 1px !important;
+            width: calc(100% - 8px);
+            height: calc(100% - 5px);
+            margin-inline-start: 4px !important;
+            border-radius: 8px !important;
+            background-image: linear-gradient(var(--toolbar-bgcolor, transparent), var(--toolbar-bgcolor, transparent)),
+                                              var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
+            background-size: auto 100% !important; 
+            box-shadow: inset 0 0 0 1px var(--general-border-color) !important;
+        }
+    }
+    
+    /* __________________________ Styles around web content  */
+    
+    #tabbrowser-tabbox {
+        box-shadow: none !important;
+    }
+
+    /* Nuevo espacio alrededor del contenido web */
+
+    :root:not([sizemode="fullscreen"]) {
+        
+        #sidebar-box ~ #tabbrowser-tabbox {
+            padding-inline: 0 4px !important;
+        }
+        
+        #sidebar-box[positionend]  ~ #tabbrowser-tabbox {
+            padding-inline: 4px 4px !important;
+        }
+
+        #sidebar-box[checked="true"][positionend]  ~ #tabbrowser-tabbox {
+            padding-inline: 4px 4px !important;
+        }
+    }
+    
+    /* Splitter */
+    
+    splitter {                            
+        --splitter-width: 4px !important;
+        --sidebar-border-color: transparent;
+    }
+    
+    #sidebar-launcher-splitter {
+        @media (not (-moz-platform: linux)) {
+            #sidebar-main[positionend] + & {
+                    margin-inline-end: -4px !important;
+            }
+        }
+    }
+    
+    /* _________________________ Tools and extensions _________________________ */
+    
+    /* margin bottom last icon */
+
+    .actions-list {
+        --toolbarbutton-active-background: var(--button-hover-bgcolor);
+        & > moz-button:not(.tools-overflow) {
+            &:last-of-type {
+                --button-outer-padding-block-end: var(--space-medium) !important;
+            }
+        }
+    }
+    
+    /* background color when 'hover' on tool open */
+    
+    .button-background {
+        --button-border-radius: var(--toolbarbutton-border-radius) !important; /* Roundness */
+        
+        &[type="icon"] {
+            button:hover > & {
+                background-color: var(--button-bgcolor) !important;
+            }
+        }
+    }
+    
+    /* Transition zoom on 'hover' */
+
+    .button-background[type="icon ghost"]:not(.labelled) {
+        & img {
+            transform: scale(1) !important;
+            transition: transform 0.2s ease-in-out !important;
+        }
+        button:hover > & {
+            & img {
+                transform: scale(1.2) !important;
+                transition: transform 0.2s ease-in-out !important;
+            }
+        }
+    }
+}
+
+/* _______________________________________________________ Firefox Vertical Tabs _______________________________________________________ 
+   _____________________________________________________________________________________________________________________________________ */
+
+@media (-moz-bool-pref:"sidebar.verticalTabs")  and (not ( -moz-bool-pref:"firefoxgx.oneline")) {
+    
+     #sidebar-main {
+        --tab-block-margin: 1px !important;                 /* Smaller margin in tabs */
+    }
+    
+    /* Margin top of the block of tabs */
+    
+    #vertical-tabs {
+        padding-block-start: 8px !important;
+    }
+    
+    #vertical-pinned-tabs-container {
+        & .tab-background {
+            .tabbrowser-tab:not(:hover) > .tab-stack > &:not([selected], [multiselected]) {
+                background-color: transparent !important;
+            }
+        }
+    }
+    
+    /* Margen back-button de la toolbar */
+
+    :root:not([chromehidden~="toolbar"]):has(#toolbar-menubar[autohide="true"]) #nav-bar {
+        padding-inline-start: var(--padding-left-tab) !important; }
+    
+    /* overwrite 'one_tabs-bar.css' - 'hover' de las pestañas no seleccionadas */
+
+    .tabbrowser-tab:not([selected], [multiselected]):hover > .tab-stack:not([selected], [multiselected]) {
+        background-color: unset !important;
+    }
+    
+    /* _________________________ Tools and extensions _________________________ */
+    
+    /* Hide scrollbar */    
+    
+    .actions-list {
+        overflow-y: hidden !important;
+        transition: opacity 0.2s ease-in-out, visibility 0.4s ease, transform 0.4s ease;
+    }
+    
+    /* Hide tools except for the last one 'configuration' */
+    .actions-list[orientation="vertical"]:not(:hover) moz-button[type="icon ghost"]:not(:last-child) {
+        opacity: 0 !important;
+        transform: translateY(10px) !important;
+        visibility: collapse !important;
+        transition: opacity 0.2s ease-in-out, visibility 0.2s ease, transform 0.4s ease;
+    }
+    
+    /* Hide tools except for the last one 'configuration' */
+    .actions-list[orientation="vertical"]:is(:hover) moz-button[type="icon ghost"]:not(:last-child) {
+        opacity: 1 !important;
+        /*height: 0px !important;/**/
+        transform: translateY(0px) !important;
+        visibility: visible !important;
+        transition: opacity 0.2s ease-in-out, visibility 0.2s ease, transform 0.4s ease;
+    }
+    
+    /* Transition for 'configuration' button when other tool is open */
+         
+    .wrapper:has(.actions-list[orientation="vertical"] moz-button[type="icon"]) .actions-list:not(:hover) moz-button[type="icon ghost"]:is(:last-child) {
+        --button-outer-padding-block-end: var(--space-small) !important;
+        opacity: 0 !important;
+        transform: translateY(10px) !important;
+        transition: opacity 0.2s ease-in-out, visibility 0.2s ease, transform 0.4s ease;
+    }
+    
+    .wrapper:has(.actions-list[orientation="vertical"] moz-button[type="icon"]) .actions-list:is(:hover) moz-button[type="icon ghost"]:is(:last-child) {
+        --button-outer-padding-block-end: var(--space-small) !important;
+        opacity: 1 !important;
+        transform: translateY(0px) !important;
+        transition: opacity 0.2s ease-in-out, visibility 0.2s ease, transform 0.4s ease;
+    }
+
+    /* Keep active tool in latest position */
+    .actions-list[orientation="vertical"] moz-button[type="icon"] {
+        order: 1 !important;
+        --button-outer-padding-block-end: var(--space-medium) !important;
+    }
 }

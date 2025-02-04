@@ -3,7 +3,7 @@
 
 @media (-moz-platform: windows), (-moz-platform: linux) {
     :root {
-        --label-color: color-mix(in srgb, var(--arrowpanel-color, var(--lwt-tab-text))80%, var(--Button-background-personal));
+        --label-color: color-mix(in srgb, var(--arrowpanel-color, var(--lwt-tab-text))90%, var(--Button-background-personal));
         --margin-left-icons-personal: 2px !important;
         --margin-right-icons-personal: 6px !important;
         --margin-left-separators: calc(var(--margin-left-icons-personal) + var(--margin-right-icons-personal) + 22px) !important;
@@ -121,12 +121,13 @@
 /* Margin top para subir el menú [open] */
     
     :root:not([chromehidden~="toolbar"])[sizemode="maximized"] #appMenu-popup {
+        --removed-panel-shadow-margin: 0px !important;
         --menu-plus-label-width: 72px !important;
         appearance: none !important;
-        margin-top: calc(-5px - var(--tab-height-personal)) !important;
+        margin-top: calc(-4px - var(--tab-height-personal)) !important;
         padding-inline-start: 4px !important;
         clip-path: polygon(0% 0%, 0% 100%, 1% 53%, 0 7px, calc(var(--menu-plus-label-width) + 4px) 7px,
-               calc(var(--menu-plus-label-width) + 4px) calc(var(--tab-height-personal) + 1px), 0 calc(var(--tab-height-personal) + 1px), 0 100%, 100% 100%, 100% 0%);
+               calc(var(--menu-plus-label-width) + 4px) calc(var(--tab-height-personal) + 0px), 0 calc(var(--tab-height-personal) + 0px), 0 100%, 100% 100%, 100% 0%);
         transition: none !important;
         --arrowpanel-menuitem-padding: 6px !important;
         --arrowpanel-border-radius: 8px !important;

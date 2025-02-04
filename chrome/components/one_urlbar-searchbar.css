@@ -46,143 +46,205 @@ findbar{
 /* "popup_highlight" ---> 1.- keyboard highlight ;  2.-mouse highlight */
 
 .urlbarView-row[selected], .urlbarView-row[row-selectable]:not([selected]):hover {
-    --urlbar-popup-url-color: #ffffff !important;
-    color: #ffffff !important;
+    --urlbar-popup-url-color: var(--toolbar-field-focus-color) !important; 
     background-color: var(--autocomplete-popup-hover-background) !important;
-    --link-color: #ffffff !important;
+    --link-color: var(--lwt-tab-text) !important;
     border-radius: 0px !important;
 }
 
-.urlbarView-row .urlbarView-row-inner {
-    border-radius: 0px !important;
-}
-
-.urlbarView-row .urlbarView-url {
-    font-weight: 501 !important
-}
+/* Font size */
 
 .urlbarView-title {
     font-size: 1.06em !important;
 }
 
 .urlbarView-tags, .urlbarView-url, .urlbarView-title:not(:empty)~.urlbarView-action {
-    font-size: 1.0em !important;
+    font-size: 1.05em !important;
+    font-weight: 501 !important;
 }
 
-/* Sugerencias de búsqueda */
+/* Width of search container */
 
+.urlbarView-body-inner,
 .urlbarView {
-    margin-inline: -11px !important;
-    width: -moz-available !important;
-}
-
-.urlbarView-row {
-    margin-top: -7px !important;
-    margin-bottom: 5px !important;
+  margin-inline: 0px !important;
+  width: 100% !important;
+  border-inline: 0px solid red !important;
 }
 
 .urlbarView-results {
-    margin-bottom: -14px !important;
+    padding-block: 0px !important;
 }
 
-.urlbarView-row-inner {
-    padding-left: 8px !important;
+.urlbarView-row {
+  border: 0px solid transparent !important;
 }
 
-#urlbar .search-panel-header {
-    padding-left: 14px !important;
+/* Url margin inline */
+
+.urlbar-input-container {
+    padding-inline: 11px !important;
 }
 
-#urlbar .search-one-offs {
-    padding-right: 14px !important;
+#urlbar[breakout][breakout-extend] {
+  & > .urlbar-input-container {
+      padding-inline: 16px !important;
+    }
 }
 
-/* Botones de los diferentes buscadores url-bar open */
+/* 'Go' button */
 
-#urlbar .searchbar-engine-one-off-item {
-    border-radius: var(--toolbarbutton-border-radius) !important;
-}
-.searchbar-engine-one-off-item:not([selected]):hover {
-    background-color: var(--button-hover-bgcolor) !important;
-    color: #ffffff !important;
+.urlbar-go-button, .search-go-button, .urlbar-revert-button {
+    width: calc(var(--toolbar-height-personal) - 14px) !important;
+    height: calc(var(--toolbar-height-personal) - 14px) !important;
 }
 
-.urlbarView-row:hover .urlbarView-favicon {
-    background: var(--toolbar-field-focus-background-color) !important;
+/* favicons */
+
+.urlbarView-row {
+  @media (-moz-bool-pref: "browser.urlbar.richSuggestions.featureGate") {
+    &:not([rich-suggestion]), &[rich-suggestion][icon-size="16"] {
+      --urlbarView-icon-margin-start: 16px !important;
+      --urlbarView-icon-margin-end: 12px !important;/**/
+      }
+  }
 }
 
 .urlbarView-favicon {
-    padding: 6px !important;
-    border-radius: 8px !important;
-    margin-block: -3px !important;
-    margin-inline-end: 6px !important;
-    clip-path: circle(50%);
+    min-width: 16px !important;
+    max-width: 16px !important;
 }
 
-/* Sugerencias enriquecidas */
+.urlbarView-row:hover .urlbarView-favicon {
+    background-color: var(--toolbar-field-focus-background-color) !important;
+    outline: 8px solid var(--toolbar-field-focus-background-color) !important;
+    clip-path: circle(90%) !important;
+}
+
+/* Rich Suggestions */
 
 .urlbarView-row[rich-suggestion] > .urlbarView-row-inner > .urlbarView-favicon {
     max-height: 16px !important;
     max-width: 16px !important;
-    margin-inline: 6px !important;
+    margin-inline: 16px 12px !important;
 }
 
-/* No hacer doble fila url results en cuadro pequeño */
+/* 'Switch to tab' button */
 
-@media screen and (min-height: 600px) {
-  .urlbarView-results[wrap] > .urlbarView-row {
-    &:where(:not([rich-suggestion])) > .urlbarView-row-inner {
-      & > .urlbarView-no-wrap {
-        flex-basis: 0% !important;
-      }
+.urlbarView-row:is([type="switchtab"], [type="remotetab"], [type="clipboard"]) {
+    & > .urlbarView-row-inner > .urlbarView-no-wrap > .urlbarView-action {
+        padding-block: 0px 2px !important;
+        margin-block: 0px -2px !important;
+    }
+}
+
+/* Height if each row of suggestion */
+
+.urlbarView-row {
+  &:not([type="tip"], [type="dynamic"]) {
+    :root:not([uidensity="compact"]) & {
+      min-height: 36px !important;
     }
   }
 }
 
-/* Botón 'cambiar a pestaña' */
+/* 'Switch to tab' button with container line */
 
-.urlbarView-row:is([type="switchtab"], [type="remotetab"], [type="clipboard"]) {
-  & > .urlbarView-row-inner > .urlbarView-no-wrap > .urlbarView-action
-{
-    color: white !important;
-    padding-block: 3px 5px !important;
-    margin-block: -2px -3px !important;
-  }
+.urlbarView-userContext {
+  border-top: 0px !important;
+  box-shadow: 0 -2px 0 0 var(--identity-tab-color), inset 0 2px 0 0 var(--identity-tab-color) !important;
 }
 
-/* Botones de acciones rápidas urlbar open */
+/* Remove container icon when searchbar is smaller */
+.urlbarView-userContext-icon {
+    display: none !important;
+}
 
-.urlbarView-row[dynamicType="quickactions"] .urlbarView-quickaction-row {
+/* 'Quick Action' Buttons urlbar 'open' */
+
+.urlbarView-quickaction-button {
     box-shadow: 0px 0px 1px rgba(128, 128, 142, 0.9) !important;
 }
 
-.urlbarView-row[dynamicType="quickactions"] .urlbarView-quickaction-row:hover {
-    box-shadow: 0px 0px 0px 1px var(--autocomplete-popup-hover-background) !important;
+.urlbarView-quickaction-button:hover {
+    background-color: var(--button-hover-bgcolor) !important;
+    box-shadow: 0px 0px 0px 1px var(--button-hover-bgcolor) !important;
 }
 
-/* Label "Sugerencias de firefox - Sugerencias de google" */
+/* Label 'Firefox Suggestions - Google Suggestions' */
 
 .urlbarView-row[label] {
-    margin-top: 16px !important;
+    margin-block-start: 26px !important;
 }
 
 .urlbarView-row[label]::before {
-    margin-inline-start: 12px !important;
+    margin-inline-start: 20px !important;
     font-weight: bold !important;
-    letter-spacing: 0.04em !important;
 }
+
+/* Margin left for 'This time Search with' */
+
+#urlbar .search-panel-header{
+    padding-inline-start: 14px !important;
+}
+
+/* Latest button 'Search configuration' */
+
+#urlbar .search-setting-button {
+  margin-inline: 10px !important;
+}
+
+/* Does not display search suggestions in double row - smaller firefox window */
+
+@media screen and (min-height: 600px) {
+    .urlbarView-results[wrap] > .urlbarView-row {
+        &:where(:not([rich-suggestion])) > .urlbarView-row-inner {
+            & > .urlbarView-no-wrap {
+                flex-basis: 0% !important;
+            }
+        }
+    }
+
+    /* Separator title - url */
+    .urlbarView-results[wrap] > .urlbarView-row {
+        .urlbarView[action-override] &[has-url]:not([restyled-search]), &[has-url]:not([type$="tab"], [sponsored], [restyled-search]), &[has-url]:is([type="remotetab"], [sponsored]):is(:hover, [selected]), &[type="tabtosearch"] {
+            & .urlbarView-title-separator {
+                display: flex !important;
+            }
+        }
+    }
+    
+    /* Unnecessary margin after the separator */
+    .urlbarView-results[wrap] > .urlbarView-row {
+        &[has-url] > .urlbarView-row-inner > .urlbarView-url {
+            &:-moz-locale-dir(ltr) {
+                margin-inline-start: 0px !important;
+            }
+        }
+
+    }
+}
+
+/* ____________________________________ Nav-bar height ____________________________________ */
 
 #nav-bar {
     height: var(--toolbar-height-personal) !important;
-    border-top: 0px var(--tabs-navbar-separator-style) var(--tabs-navbar-separator-color) !important;
+    border-top: none !important;
+}
+
+#urlbar-container {
+    --urlbar-container-height: var(--toolbar-height-personal) !important;
+}
+
+#urlbar, #searchbar {
+    --urlbar-height: calc(var(--toolbar-height-personal) - 10px) !important;
+    --urlbar-min-height: calc(var(--toolbar-height-personal) - 10px) !important;
 }
 
 /* Urlbar */
 
 #urlbar {
     min-height: calc(var(--toolbar-height-personal) - 8px) !important;
-    padding-left: 10px !important;
-    padding-right: 10px !important;
     border-radius: 7px !important;
 }
 
@@ -221,6 +283,7 @@ findbar{
 }
 
 #urlbar[open] {
+    overflow: hidden !important;
     z-index: 4 !important;
 }
 
@@ -230,27 +293,24 @@ findbar{
     }
 }
 
-/* Brighness when urlbar [open]*/
+/* Necessary for many -Hamburger Menu- and -Left Sidebar- scenarios */
 
-#navigator-toolbox{
+#navigator-toolbox {
     z-index: unset !important;
 }
 
-#nav-bar::after {
-    position: fixed;
-    content: "";
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: transparent;
-    z-index: 4;
-    pointer-events: none;
-    transition: background-color 0.3s ease; 
+/* Brighness when urlbar [open]*/
+
+#urlbar {
+    box-shadow: 0 0 0 100vw transparent;
+    transition: box-shadow 250ms ease-out !important;
 }
 
-:root:has(#urlbar[open]) #nav-bar::after {
-    background-color: rgba(0, 0, 0, 0.5);
+#urlbar[open] {
+    box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.5);
+    transition: box-shadow 250ms ease-out !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
 }
 
 /* Margen de las toolbar cuando left-sidebar no es usada */
@@ -269,6 +329,69 @@ findbar{
 :root:is([sizemode="fullscreen"]) #nav-bar{
     margin-bottom: 1px !important;
 }
+
+
+/* Search Engine button */
+
+@media not (-moz-bool-pref: "browser.urlbar.searchModeSwitcher.featureGate") {
+    #urlbar-searchmode-switcher:not(:hover,[open]) {
+        background-color: transparent !important;
+    }
+}
+
+#urlbar-searchmode-switcher {
+    appearance: none;
+    margin-block: 2px !important;
+    border-radius: var(--urlbar-icon-border-radius);
+    margin-inline-end: var(--urlbar-icon-padding);
+    padding-inline: var(--urlbar-searchmodeswitcher-spacing);
+    
+    &:hover {
+        background-color: var(--urlbar-box-hover-bgcolor) !important;
+    }
+    &[open] {
+        background-color: var(--urlbar-box-active-bgcolor) !important;
+    }   
+}
+
+#searchmode-switcher-chicklet {
+    height: calc(var(--urlbar-min-height) - 6px - 2 * var(--urlbar-container-padding)) !important;
+    align-self: center !important;
+}
+
+#searchmode-switcher-icon {
+    width: 14px !important;
+    height: 14px !important;
+    padding: 0px !important;
+    margin: -3px !important;
+}
+
+#searchmode-switcher-dropmarker {
+    display: none !important;
+}
+
+#urlbar-searchmode-switcher,
+#searchmode-switcher-chicklet {
+  @media (-moz-bool-pref: "browser.urlbar.searchModeSwitcher.featureGate") or (-moz-bool-pref: "browser.urlbar.scotchBonnet.enableOverride") {
+    #urlbar[searchmode] & {
+        display: inline-flex;
+        background-color: var(--urlbar-box-bgcolor) !important;
+    }
+  }
+}
+
+#urlbar-searchmode-switcher:is(:hover,[open]) {
+  @media (-moz-bool-pref: "browser.urlbar.searchModeSwitcher.featureGate") or (-moz-bool-pref: "browser.urlbar.scotchBonnet.enableOverride") {
+    #urlbar[searchmode] & {
+        display: inline-flex;
+        background-color: var(--urlbar-box-hover-bgcolor) !important;
+        border-radius: 2px !important;
+        padding-inline-end: 5px !important;
+        margin-inline-end: 1px !important;
+    }
+  }
+}
+
 
 /* Search-bar */
 

@@ -8,8 +8,8 @@
 
     /* This requires Firefox 133+ to work */
 
-    @media (-moz-bool-pref: "sidebar.verticalTabs"){
-        #sidebar-main{
+    @media (-moz-bool-pref: "sidebar.verticalTabs") {
+        #sidebar-main {
             visibility: collapse;
         }
     }
@@ -28,7 +28,7 @@
         :root[sizemode="fullscreen"] #nav-bar > .titlebar-buttonbox-container{
             display: flex !important;
         }
-        :root[tabsintitlebar] #toolbar-menubar:not([autohide="false"]) ~ #nav-bar{
+        :root[customtitlebar] #toolbar-menubar:not([autohide="false"]) ~ #nav-bar{
             > .titlebar-buttonbox-container{
                 display: flex !important;
             }
@@ -55,9 +55,69 @@
         }
     }
     
-/* _____________________________________________ Window controls _____________________________________________ */
+    /* Posición y Espacio para el botón menú en Fullscreen */
+
+    :root:not([chromehidden~="toolbar"])[sizemode="fullscreen"] #nav-bar {
+        padding-inline-start: calc(var(--my-vertical-toolbar-width) - var(--tab-block-margin)) !important;
+    }
+
+    /*:root:not([chromehidden~="toolbar"])[sizemode="fullscreen"] #PanelUI-button { left: 0px !important; }/**/
+    :root:not([chromehidden~="toolbar"])[sizemode="fullscreen"] #PanelUI-menu-button { min-height: calc(var(--toolbar-height-personal) + var(--tab-block-margin) + 2px) !important; }
+
+/* ________________________________ Compatibilidad para - window controls on linux ________________________________ */
+    
+    /* Espacio y Separador Window controls on right*/
+
+    @media (-moz-gtk-csd-available) {
+
+        :root:is([customtitlebar],[sizemode="fullscreen"]) {
+            --uc-window-control-width: 100px !important;
+        }
+
+        :root:not([sizemode="normal"]) .titlebar-buttonbox:before{
+            width: 44px !important;
+        }
+    }
+
+    /* Compatibilidad para - window controls on left - en linux */
+
+    @media (-moz-gtk-csd-reversed-placement){
+
+        :root:has(#toolbar-menubar[autohide="true"]) {
+
+            & .titlebar-close{
+                padding-inline-end: 0px !important;
+            }
+        }
+
+        /* Separador ultimo icono de la nav-bar + window controls */
+
+        :root:has(#toolbar-menubar[autohide="true"]):not([sizemode="normal"]) .titlebar-buttonbox-container:before{
+            display: none !important;
+        }
+
+        :root:has(#toolbar-menubar[autohide="true"]):not([sizemode="normal"]) .titlebar-buttonbox-container:after{
+            background: url("../icons/urlbar-separator.svg") no-repeat center !important;
+            content: ""; display: block !important;
+            background-size: 16px 16px !important;
+            width: 22px !important;
+            margin-inline-start: 12px !important;
+            height: calc(var(--toolbar-height-personal) + 8px);
+            -moz-context-properties: fill !important;
+            fill: var(--toolbarbutton-icon-fill) !important;
+            opacity: 0.2;
+        }
+    }
+}
+
+/* _____________________________________________ 'Tree-tabs style' or 'Firefox-Vertical-Tabs' _____________________________________________*/
+
+@media (-moz-bool-pref:"firefoxone.tree_tabs_style") or ( -moz-bool-pref:"sidebar.verticalTabs") {
 
     :root:has(#toolbar-menubar[autohide="true"]) {
+        
+        /*  Window controls */
+        
         & .titlebar-buttonbox-container {
             max-height: calc(var(--toolbar-height-personal) + 8px) !important;
             min-height: calc(var(--toolbar-height-personal) + 8px) !important;
@@ -67,6 +127,8 @@
             padding-inline-end: 20px !important;
         }
         
+        /* Menubar */
+        
         & #main-menubar{
             min-height: calc(var(--toolbar-height-personal) + 4px) !important;
             color: var(--arrowpanel-color);
@@ -74,31 +136,41 @@
             box-shadow: inset 0 4px var(--lwt-frame), inset 0 4px var(--lwt-frame), inset 0 4px var(--lwt-frame)!important;
             outline: none !important;
         }
+        
+        /* Navbar */
 
         & #nav-bar {
             height: calc(var(--toolbar-height-personal) + 4px) !important;
         }
         
         & #nav-bar {
+            background: transparent !important;
             margin-inline-end: 0px !important;
-            border-radius: 8px 12px 8px 8px !important;/**/
-            box-shadow: 
-                inset 0 4px var(--lwt-frame), inset 0 4px var(--lwt-frame), inset 0 4px var(--lwt-frame),
-                inset -1px 0 0 0 var(--lwt-frame), inset -1px 0 0 0 var(--lwt-frame),inset -1px 0 0 0 var(--lwt-frame),
-                inset -4px 0 var(--lwt-frame) !important;
+            outline: none !important;
+            
+            &::before {
+                content: ''; display: flex; position: absolute; top: 4px !important; left: 0;
+                width: calc(100% - 4px);
+                height: calc(100% - 4px);
+                border-radius: 8px !important;
+                background-image: linear-gradient(var(--toolbar-bgcolor, transparent), var(--toolbar-bgcolor, transparent)),
+                                  linear-gradient(transparent, transparent), 
+                                  var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
+                background-position: right top, right top, right calc(-4px - var(--toolbar-height-personal)), left calc(-4px - var(--toolbar-height-personal)) !important;
+                background-repeat: repeat, repeat, var(--lwt-background-tiling) !important;
+                background-size: auto !important;
+            }
+            
+            & .toolbarbutton-1 {
+                z-index: 1 !important;
+            }
         }
         
         &:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) #nav-bar {
             outline: none !important;
-            box-shadow: inset 0 1px 0 0 var(--lwt-frame), inset 0 1px 0 0 var(--lwt-frame),inset 0 1px 0 0 var(--lwt-frame),
-                inset 0px -1px 0 0  var(--general-border-color),  /* abajo */
-                inset 0 4px 0 0 var(--lwt-frame),
-                inset 0px 5px 0 0  var(--general-border-color),   /* top */
-                inset -1px 0 0 0 var(--lwt-frame), inset -1px 0 0 0 var(--lwt-frame),inset -1px 0 0 0 var(--lwt-frame),
-                inset -4px 0 0 0 var(--lwt-frame),                /* right */ 
-                inset -5px 0 0 0  var(--general-border-color),    
-                inset 1px 0 0 0  var(--general-border-color)      /* Left */
-                !important;
+            &::before {
+                box-shadow: inset 0 0 0 1px var(--general-border-color) !important;
+            }
         }
 
         /* Alinear items de la nav-bar + trick para clic desde el borde superior */
@@ -108,8 +180,23 @@
             margin-top: -6px !important;
             padding-top: 10px !important;
         }
+    
+        /* Separador ultimo icono de la nav-bar + window controls */
+
+        & .titlebar-buttonbox-container:before{
+            background: url("../icons/urlbar-separator.svg") no-repeat center !important;
+            content: ""; display: block !important;
+            background-size: 16px 16px !important;
+            width: 22px !important;
+            margin-left: -2px !important;
+            height: calc(var(--toolbar-height-personal) + 8px);
+            -moz-context-properties: fill !important;
+            fill: var(--toolbarbutton-icon-fill) !important;
+            opacity: 0.2;
+        }
     }
-/* ___________________________________________ Menubar ___________________________________________ */
+    
+    /* ___________________________________________ Menubar ___________________________________________ */
     
     /* Añado borde a la barra de menú en temas con imágenes */
     
@@ -122,15 +209,17 @@
             !important;
     }
     
-    /* Bug fix: Trick to hide urlbar when menu appears */
-    
-    #urlbar{
-        display: none !important;
+    /* Bug fix: Trick to hide urlbar when menu appears (Alt key) */
+
+    :root:has(#toolbar-menubar[autohide="true"]) #urlbar {
+        opacity: 0 !important;
+        pointer-events: none !important;
     }
 
-    :root:has(#toolbar-menubar[autohide="true"][inactive="true"]){
-        & #urlbar{
-            display: initial !important;
+    :root:has(#toolbar-menubar[autohide="true"][inactive="true"]) {
+        & #urlbar {
+            opacity: 1 !important;
+            pointer-events: all !important;
         }
     }
     
@@ -156,16 +245,10 @@
         /* Navbar */
         &:root:has(#toolbar-menubar[autohide="true"]) {
             & #nav-bar {
-                outline: none !important;
-                box-shadow: inset 0 1px 0 0 var(--lwt-frame), inset 0 1px 0 0 var(--lwt-frame),inset 0 1px 0 0 var(--lwt-frame),
-                    inset 0px -1px 0 0  var(--general-border-color),  /* abajo */
-                    inset 0 4px 0 0 var(--lwt-frame),
-                    inset 0 5px 0 0  var(--general-border-color),   /* top */
-                    inset -1px 0 0 0 var(--lwt-frame), inset -1px 0 0 0 var(--lwt-frame), inset -1px 0 0 0 var(--lwt-frame),
-                    inset -4px 0 0 0 var(--lwt-frame),                /* right */ 
-                    inset -5px 0 0 0  var(--general-border-color),    
-                    inset 1px 0 0 0  var(--general-border-color)      /* Left */
-                    !important;
+                box-shadow: none !important;
+                &::before {
+                    box-shadow: inset 0 0 0 1px var(--general-border-color) !important;
+                }
             }
             /* Remove unwanted border on navbar right side 
             & #nav-bar:has(#urlbar:not([open])){
@@ -174,13 +257,20 @@
         }
     }
     
-/* ____________________ various styles ____________________ */
+    /* Remove unwanted top margin when using 'Firefox-Vertical-tabs' */
+        #toolbar-menubar {
+        &[autohide="true"] {
+            :root[customtitlebar] #navigator-toolbox[tabs-hidden] > & {
+                margin-block-start: -2px !important;
+            }
+        }
+    }
 
     /* Urlbar  vertical centered */
 
     #urlbar { margin-top: 4px !important; }
 
-    /* _______ Make border top of url dragable */
+    /*  Make border top of url dragable */
 
     #urlbar-container {
         margin-block: 1px 1px !important;
@@ -190,195 +280,31 @@
         --urlbar-container-height: calc(var(--toolbar-height-personal) - 2px) !important;
     }
     
-    /* Posición y Espacio para el botón menú en Fullscreen */
-
-    :root:not([chromehidden~="toolbar"])[sizemode="fullscreen"] #nav-bar {
-        padding-inline-start: calc(var(--my-vertical-toolbar-width) - var(--tab-block-margin)) !important;
-    }
-
-    /*:root:not([chromehidden~="toolbar"])[sizemode="fullscreen"] #PanelUI-button { left: 0px !important; }/**/
-    :root:not([chromehidden~="toolbar"])[sizemode="fullscreen"] #PanelUI-menu-button { min-height: calc(var(--toolbar-height-personal) + var(--tab-block-margin) + 2px) !important; }
-
-    /* Separador ultimo icono de la nav-bar + window controls */
-
-    :root:has(#toolbar-menubar[autohide="true"]):not([sizemode="normal"]) .titlebar-buttonbox-container:before{
-        background: url("../icons/urlbar-separator.svg") no-repeat center !important;
-        content: ""; display: block !important;
-        background-size: 16px 16px !important;
-        width: 22px !important;
-        margin-left: -2px !important;
-        height: calc(var(--toolbar-height-personal) + 8px);
-        -moz-context-properties: fill !important;
-        fill: var(--toolbarbutton-icon-fill) !important;
-        opacity: 0.2;
-    }
-
-/* ________________________________ Compatibilidad para - window controls on linux ________________________________ */
+    /* border bottom in navigator-toolbox for  bigger space between itself and content */
     
-/* Espacio y Separador Window controls on right*/
-    
-@media (-moz-gtk-csd-available) {
-    
-    :root:is([tabsintitlebar],[sizemode="fullscreen"]) {
-        --uc-window-control-width: 100px !important;
-    }
-    
-    :root:not([sizemode="normal"]) .titlebar-buttonbox:before{
-        width: 44px !important;
+    #navigator-toolbox {
+        border-block-end: 1px solid transparent !important;
     }
 }
-    
-/* Compatibilidad para - window controls on left - en linux */
-  
-@media (-moz-gtk-csd-reversed-placement){
-    
-    :root:has(#toolbar-menubar[autohide="true"]) {
+
+/* ___________________________________________________________________________________________________________________________________________ 
+   ___________________________________________________________________________________________________________________________________________ */
+
+/* ¡Necessary for the hamburger button to be above the sidebar */
+
+@media (-moz-bool-pref:"sidebar.verticalTabs") and (not ( -moz-bool-pref:"firefoxgx.oneline")) {
         
-        & .titlebar-close{
-            padding-inline-end: 0px !important;
+    .browser-titlebar {
+        :root & {
+            will-change: unset !important;
+            transition: none !important;
         }
     }
-    
-    /* Separador ultimo icono de la nav-bar + window controls */
-    
-    :root:has(#toolbar-menubar[autohide="true"]):not([sizemode="normal"]) .titlebar-buttonbox-container:before{
-        display: none !important;
-    }
-
-    :root:has(#toolbar-menubar[autohide="true"]):not([sizemode="normal"]) .titlebar-buttonbox-container:after{
-        background: url("../icons/urlbar-separator.svg") no-repeat center !important;
-        content: ""; display: block !important;
-        background-size: 16px 16px !important;
-        width: 22px !important;
-        margin-inline-start: 12px !important;
-        height: calc(var(--toolbar-height-personal) + 8px);
-        -moz-context-properties: fill !important;
-        fill: var(--toolbarbutton-icon-fill) !important;
-        opacity: 0.2;
-    }
 }
-  
-/* ################################## Código para la extensión "Tab-Center-Reborn" ################################ 
-   #####################################________________________________________################################### */
-    
-    /* Hide the sidebar header when using vertical tab extensions */
 
-    #sidebar-box:is(
-    [sidebarcommand*="tabcenter"],
-    [sidebarcommand*="treestyletab"],
-    [sidebarcommand*="_3c078156-979c-498b-8990-85f7987dd929"]) #sidebar-header {
-        visibility: collapse;
-        display: none;
-    }
-    
-    #sidebar {
-        clip-path: xywh(0 0 100% 100% round 9px);
-    }
-    
-    /* overwrite: Style sidebar in fullscreen */
-    
-    :root:not([sizemode="fullscreen"]) #sidebar-box[sidebarcommand*="tabcenter"]:not([positionend="true"]) {
-        outline: none !important;
-        margin-inline: 0px !important;
-        border-radius: 9px !important;
-        clip-path: none !important;
-    }
-    
-    :root:is([sizemode="fullscreen"]) #sidebar-box[sidebarcommand*="tabcenter"] {
-        outline: none !important;
-    }
-    
-    /* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/autohide_sidebar.css */
+/* _______________________________________ 'Tree-tabs' or 'Firefox-Vertical-Tabs' without left-sidebar _______________________________________ */
 
-    #sidebar-box:is(
-    [sidebarcommand*="tabcenter"]){
-        --uc-sidebar-width: 58px;
-        --uc-sidebar-hover-width: 250px;
-        --uc-autohide-sidebar-delay: 0ms; /* Wait 0.6s before hiding sidebar */
-        --uc-autohide-transition-duration: 115ms;
-        --uc-autohide-transition-type: linear;
-        --browser-area-z-index-sidebar: 3;
-        position: relative;
-        min-width: var(--uc-sidebar-width) !important;
-        width: var(--uc-sidebar-width) !important;
-        max-width: var(--uc-sidebar-width) !important;
-        z-index: var(--browser-area-z-index-sidebar,3);
-    }
-    #sidebar-box[positionend]{ direction: rtl }
-    #sidebar-box[positionend] > *{ direction: ltr }
-
-    #sidebar-box[positionend]:-moz-locale-dir(rtl){ direction: ltr }
-    #sidebar-box[positionend]:-moz-locale-dir(rtl) > *{ direction: rtl }
-
-    #main-window[sizemode="fullscreen"] #sidebar-box{ --uc-sidebar-width: 1px; }
-
-    :root:has(#sidebar-box:is(
-    [sidebarcommand*="tabcenter"])) #sidebar-splitter{ display: none }
-
-    #sidebar-header{
-        overflow: hidden;
-        color: var(--chrome-color, inherit) !important;
-        padding-inline: 0 !important;
-    }
-
-    #sidebar-header::before,
-    #sidebar-header::after{
-        content: "";
-        display: flex;
-        padding-left: 8px;
-    }
-
-    #sidebar-header,
-    #sidebar{
-        transition: min-width var(--uc-autohide-transition-duration) var(--uc-autohide-transition-type) var(--uc-autohide-sidebar-delay) !important;
-        min-width: var(--uc-sidebar-width) !important;
-        will-change: min-width;
-    }
-    #sidebar-box:hover > #sidebar-header,
-    #sidebar-box:hover > #sidebar{
-        z-index: 10000 !important;
-        min-width: var(--uc-sidebar-hover-width) !important;
-        transition-delay: 0ms !important;
-    }
-
-    .sidebar-panel{
-        background-color: transparent !important;
-        color: var(--newtab-text-primary-color) !important;
-    }
-
-    .sidebar-panel #search-box{
-        -moz-appearance: none !important;
-        background-color: rgba(249,249,250,0.1) !important; 
-        color: inherit !important;
-    }
-
-    /* Add sidebar divider and give it background */
-
-    #sidebar,
-    #sidebar-header{
-        background-color: inherit !important;
-        border-inline: 0px solid rgb(80,80,80);
-        border-inline-width: 0px 0px;
-    }
-
-    #sidebar-box:not([positionend]) > :-moz-locale-dir(rtl),
-    #sidebar-box[positionend] > *{
-        border-inline-width: 0px 0px;
-    }
-
-    /* Move statuspanel to the other side when sidebar is hovered so it doesn't get covered by sidebar */
-
-    #sidebar-box:not([positionend]):hover ~ #tabbrowser-tabbox #statuspanel{
-        inset-inline: auto 0px !important;
-    }
-    #sidebar-box:not([positionend]):hover ~ #tabbrowser-tabbox #statuspanel-label{
-        margin-inline: 0px !important;
-        border-left-style: solid !important; 
-    }
-
-/* _________________________________________________ Tree-tabs without left-sidebar _________________________________________________ */
-
-    @media (-moz-bool-pref:"firefoxone.style_without_leftsidebar") {
+@media (((-moz-bool-pref:"firefoxone.tree_tabs_style") and (-moz-bool-pref:"firefoxone.style_without_leftsidebar")) or ((-moz-bool-pref:"sidebar.verticalTabs") and (-moz-bool-pref:"firefoxone.style_without_leftsidebar"))) {
 
         @media (-moz-platform: windows), (-moz-platform: linux) {
 
@@ -441,7 +367,7 @@
                 :root:not([chromehidden~="toolbar"],[invisibleBMS])[sizemode="maximized"] #appMenu-popup {
                     --menu-plus-label-width: 88px !important;
                     --button-height-personal: 32px !important;
-                    margin-top: calc(-5px - var(--button-height-personal)) !important;
+                    margin-top: calc(-3px - var(--button-height-personal)) !important;
                     clip-path: polygon(0% 0%, 0% 100%, 1% 53%, 0 10px, var(--menu-plus-label-width) 10px,
                         var(--menu-plus-label-width) var(--button-height-personal), 0 var(--button-height-personal), 0 100%, 100% 100%, 100% 0%);
                 }
@@ -482,4 +408,3 @@
             }
         }
     }
-}

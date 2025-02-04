@@ -29,7 +29,6 @@
     .titlebar-button {
         background-color: transparent !important;
         -moz-context-properties: stroke !important;
-        stroke: currentColor !important;
     }
     .titlebar-close {
         list-style-image: url(chrome://browser/skin/window-controls/close.svg) !important;

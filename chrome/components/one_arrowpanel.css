@@ -4,49 +4,30 @@
 /* Borde menús desplegables */
 
 slot {
-    --panel-shadow-margin: 2px !important;
-    margin-inline: 3px !important;
-    margin-block-end: 4px !important;
+    --panel-shadow-margin: var(--removed-panel-shadow-margin, inherit) !important;
     border-color: var(--border-contrast-color) !important;
+    border-radius: var(--arrowpanel-border-radius) !important;
     /* Borde para anuncios emergentes, por ejemplo al instalar un complemento */
     box-shadow: inset 0px 0 0 1px var(--arrowpanel-border-color) !important;
-    margin-top: 1px !important;
 }
 
-/* Remove unwanted styles applied to the tab bar and contextual menu */
+/* Remove unwanted styles applied to the tab bar _^ */
 
 :is(scrollbox[part="scrollbox"]) slot{
-    margin-inline: initial !important;
-    margin-block-end: initial !important;
     box-shadow: none !important;
-    margin-top: initial !important;
 }
 
-panelview {    
+
+panelmultiview {    
     background-image: var(--noise-urlbar-personal) !important;
     border: 1px solid var(--arrowpanel-border-color) !important;
     border-radius: var(--arrowpanel-border-radius) !important;
 }
 
-/* Margen de varios arrowpanels [Open] */
+/* Remove unwanted shadow of some dropdown menus [Open] */
 
-#downloadsPanel, #widget-overflow, #customizationui-widget-panel, #unified-extensions-panel, #notification-popup {
-    margin-top: -1px !important;
-    margin-inline: -6px !important;
-}
-
-#identity-popup, #permission-popup, #appMenu-popup {
-    margin-top: -1px !important;
-    margin-inline: -4px !important;
-}
-
-#protections-popup, #editBookmarkPanel, #translations-panel {
-    margin-top: -1px !important;
-    margin-inline: -6px !important;
-}
-
-addon-install-confirmation-notification {
-    margin-inline: 1px !important;
+.panel-no-padding[type="arrow"] {
+    margin-inline: -5px !important;
 }
 
 /* Color fondo :hover por los diferentes items de menús principales */
@@ -62,9 +43,9 @@ menuitem.subviewbutton:not([disabled])[_moz-menuhover],
 .widget-overflow-list .toolbarbutton-1:not([disabled], [open]):is(:hover), 
 .toolbaritem-combined-buttons:is(:not([cui-areatype="toolbar"]), 
 [overflowedItem="true"]) > toolbarbutton:not([disabled], [open]):is(:hover) {
-    background: var(--button-active-bgcolor) !important;
-    color: white !important;
-    fill: white !important;
+    background: var(--button-hover-bgcolor) !important;
+    color: var(--arrowpanel-color) !important;
+    fill: var(--arrowpanel-color) !important;
 }
 
 /* Color fondo clic por los diferentes items de menús principales */
@@ -78,9 +59,9 @@ menuitem.subviewbutton:not([disabled])[_moz-menuactive],
 .widget-overflow-list .toolbarbutton-1:not([disabled]):is(:active, [open]), 
 .toolbaritem-combined-buttons:is(:not([cui-areatype="toolbar"]), 
 [overflowedItem="true"]) > toolbarbutton:not([disabled]):is(:active, [open]) {
-    background: var(--button-hover-bgcolor) !important;
-    color: white !important;
-    fill: white !important;
+    background: var(--button-bgcolor) !important;
+    color: var(--arrowpanel-color) !important;
+    fill: var(--arrowpanel-color) !important;
 }
 
 /* Colores en items deshabilitados*/
@@ -241,15 +222,25 @@ treechildren::-moz-tree-separator {
 
 /* Nuevo espacio alrededor del contenido web */
 
-:root:not([sizemode="fullscreen"]) .browserContainer {
-    padding: 1px 4px 4px 4px !important;
+:root:not([sizemode=fullscreen]) #tabbrowser-tabbox {   
+    /* Used 'padding' instead of 'margin' to avoid 
+    breaking animations when '#sidebar-main' expands */
+    padding-block: 1px 4px !important;
+    padding-inline: 4px !important;
 }
 
 /* Color tras toda la página web */
 
-.browserContainer, .browserStack, #browser{
+.browserContainer, .browserStack, #browser {
     background-color: var(--lwt-frame) !important;
-}   
+}
+
+#browser:not(.browser-toolbox-background) {
+  :root[lwtheme] & {
+    background-color: var(--lwt-accent-color);
+    background-image: none !important;
+  }
+}
 
 :root:not([sizemode="fullscreen"]) .browserStack>browser{
     background-color: var(--lwt-frame) !important;
@@ -282,56 +273,97 @@ treechildren::-moz-tree-separator {
 
 /* ________________________________________________ Firefox Sidebar and (Rounded corners) ________________________________________________ */
 
-:root:not([sizemode="fullscreen"]) {
-    
-    /* Tamaño, margen y color de borde */
-    #sidebar-box {
-        max-width: none !important;
-        min-width: 0px !important;
-        margin-block: 1px 4px !important;
-        margin-inline: 4px 0px !important;
-        outline: 1px solid var(--content-border-color) !important;
-        outline-offset: -1px !important;
-        clip-path: xywh(0 0 100% 100% round 9px);
+@media not (-moz-bool-pref:"sidebar.revamp") {
+
+    :root:not([sizemode="fullscreen"]) {
+
+        /* Tamaño, margen y color de borde */
+        #sidebar-box {
+            max-width: none !important;
+            min-width: 0px !important;
+            margin-block: 1px 4px !important;
+            margin-inline: 4px 0px !important;
+            outline: 1px solid var(--content-border-color) !important;
+            outline-offset: -1px !important;
+            clip-path: xywh(0 0 100% 100% round 9px);
+            background-color: var(--lwt-sidebar-background-color) !important;
+        }
+
+        /* Border redondeado */
+        #sidebar-box box { border-radius: 10px 10px 0 0 !important; }
+        #sidebar-box browser { border-radius: 0 0 8px 8px !important; }
+        #sidebar-box { border-radius: 8px !important; }
     }
-    
-    /* Border redondeado */
-    #sidebar-box box { border-radius: 10px 10px 0 0 !important; }
-    #sidebar-box browser { border-radius: 0 0 8px 8px !important; }
-    #sidebar-box { border-radius: 8px !important; }
+
+    /* Header sidebar */
+
+    #sidebar-header {
+        background-color: var(--lwt-sidebar-background-color) !important;
+        padding-block: 3px !important;
+        font-size: small !important;
+    }
+
+    /* splitter - Borde para redimensionar la sidebar */
+
+    :root:not([sizemode="fullscreen"]) .sidebar-splitter {
+        border-color: transparent !important;
+        border-width: 4px !important;
+    }
 }
 
-/* Header sidebar */
+@media (-moz-bool-pref:"sidebar.revamp") {
 
-#sidebar-header, #bookmarksPanel{
-    background-color: var(--lwt-sidebar-background-color) !important;
-    padding-block: 3px !important;
-    font-size: small !important;
+    :root:not([sizemode="fullscreen"]) {
+
+        /* Tamaño, margen y color de borde */
+        #sidebar-box {
+            padding: 0px !important;
+            margin-block: 1px 4px !important;
+            margin-inline-end: 4px !important;
+            
+            #sidebar {
+                outline: 1px solid var(--general-border-color) !important;
+                outline-offset: -1px !important;
+                border-radius: 8px !important;
+                background-color: var(--lwt-sidebar-background-color) !important;
+            }
+        }
+
+        /* Border redondeado */
+        #sidebar-box box { border-radius: 10px 10px 0 0 !important; }
+        #sidebar-box browser { border-radius: 0 0 8px 8px !important; }
+        #sidebar-box { border-radius: 8px !important; }
+    }
 }
+
+/* Fix background color of sidebar in some system pages like bookmarks-history... */
+
+.sidebar-panel[lwt-sidebar] {
+    background-color: transparent !important;
+}
+
+/* Fix unwanted border color in sidebar-box */
 
 #browser {
-  --sidebar-border-color: var(--content-border-color) !important;
-}
-
-/* splitter - Borde para redimensionar la sidebar */
-
-:root:not([sizemode="fullscreen"]) .sidebar-splitter {
-    border-color: transparent !important;
-    border-width: 4px !important;
+    --sidebar-border-color: var(--content-border-color) !important;
 }
 
 /* Espacios de la sidebar[open] y más espacio para el splitter - <left> <right> side */
 
-:root:not([sizemode="fullscreen"]) #sidebar-box[checked="true"] + #sidebar-splitter + #tabbrowser-tabbox .browserContainer {
-    padding: 1px 4px 4px 0px !important;
-}
+:root:not([sizemode="fullscreen"]) {
+    #sidebar-box[checked="true"] ~ #tabbrowser-tabbox {
+        padding-block: 1px 4px !important;
+        padding-inline: 0 4px !important;
+    }
 
-:root:not([sizemode="fullscreen"]) #sidebar-box[checked="true"][positionend] + #sidebar-splitter + #tabbrowser-tabbox .browserContainer {
-    padding: 1px 0px 4px 4px !important;
-}
+    #sidebar-box[checked="true"][positionend]  ~ #tabbrowser-tabbox {
+        padding-block: 1px 4px !important;
+        padding-inline: 4px 0 !important;
+    }
 
-:root:not([sizemode="fullscreen"]) #sidebar-box[positionend]{
-    margin-inline: 0px 4px !important;
+    #sidebar-box[positionend]{
+        margin-inline: 0px 4px !important;
+    }
 }
 
 @media (-moz-platform: linux) {

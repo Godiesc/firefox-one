@@ -47,6 +47,12 @@
         var(--gradient-colors)) !important;
         z-index: 1 !important;
     }
+    
+    @media (-moz-bool-pref:"sidebar.verticalTabs") {
+        .tabbrowser-tab[selected] > .tab-stack::before{
+            margin-inline: calc(var(--tab-inline-padding) - 6px) !important;
+        }
+    }
 }
 
 /* ___________________________________________ Image in menus ___________________________________________ */
@@ -70,13 +76,32 @@
         :root:not([style*="--lwt-additional-images"],[lwtheme-image]){
             --arrowpanel-background: #f9f9f9d0 !important;
     }}
-
-    .menupopup-arrowscrollbox, slot, panelview {
+    
+    /* Tab preview */
+    .tab-preview-text-container {
+        backdrop-filter: blur(14px) !important;
+    }
+    
+    /* Fix for arrowpanels like save 'Bookmark' */
+    panel:not(.in-menulist, #appMenu-popup) {
+        --panel-shadow-margin: 0px !important;
+        --panel-background: transparent !important;
+        border-radius: 10px !important;
+        background-size: auto 100vh !important; 
         background-image: linear-gradient(var(--arrowpanel-background, transparent), var(--arrowpanel-background, transparent)), 
                           linear-gradient(transparent, transparent), 
                           var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
-        background-size: auto 100vh !important;
+        
+    }
+
+    menupopup:not(.in-menulist), panelview {
+        --panel-background: transparent !important;
+        background-image: linear-gradient(var(--arrowpanel-background, transparent), var(--arrowpanel-background, transparent)), 
+                          linear-gradient(transparent, transparent), 
+                          var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
+        background-size: auto 100vh !important; 
         background-position: -1px -1px !important;
+        border-radius: 8px !important; /* when using with main-image */
     }
 
     @media (-moz-platform: windows), (-moz-platform: linux) {

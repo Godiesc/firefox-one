@@ -8,7 +8,7 @@
     :root[brighttext],
     :root[lwt-toolbar-field-focus-brighttext],
     :root[lwtheme],
-    :root:not([lwtheme]){
+    :root:not([lwtheme]) {
       --lwt-accent-color: #030615 !important;                                               /* frame */
       --toolbar-bgcolor: #252836 !important;                                                /* toolbar */
       --tab-selected-bgcolor: #484d65 !important;                                           /* tab_selected */
@@ -22,7 +22,7 @@
     }
   }
   
-  @media (prefers-color-scheme: light){
+  @media (prefers-color-scheme: light) {
     :root:not([lwtheme-brighttext="true"]),
     :root:not([lwt-toolbar-field-focus-brighttext]),
     :root[lwtheme],
@@ -43,11 +43,11 @@
 
 /* Dark theme */
 
-@media (prefers-color-scheme: dark){
+@media (prefers-color-scheme: dark) {
   :root[brighttext],
   :root[lwt-toolbar-field-focus-brighttext],
   :root[lwtheme],
-  :root:not([lwtheme]){
+  :root:not([lwtheme]) {
     
   --contrast-color: #000000 ;
   --border-contrast-color: color-mix(in srgb, var(--arrowpanel-background) 40%, var(--contrast-color)) ;
@@ -169,7 +169,7 @@
 
 /* White Theme */
 
-@media (prefers-color-scheme: light){
+@media (prefers-color-scheme: light) {
   :root:not([lwtheme-brighttext="true"]),
   :root:not([lwt-toolbar-field-focus-brighttext]),
   :root[lwtheme],
@@ -290,11 +290,11 @@
 
 /* Private Browsing Mode - Dark */
 
-@media (prefers-color-scheme: dark){
+@media (prefers-color-scheme: dark) {
   
 :root:is([privatebrowsingmode="temporary"], 
          [privatebrowsingmode="temporary"][style*="--lwt-additional-images"],
-         [privatebrowsingmode="temporary"][lwtheme-image]){
+         [privatebrowsingmode="temporary"][lwtheme-image]) {
   
   --lwt-header-image: url("../icons/newtab/private-dark.png") !important; 
   --lwt-additional-images: url("../icons/newtab/private-dark.png") !important;
@@ -312,11 +312,11 @@
 
 /* Private Browsing Mode - light */
 
-@media (prefers-color-scheme: light){
+@media (prefers-color-scheme: light) {
   
 :root:is([privatebrowsingmode="temporary"], 
          [privatebrowsingmode="temporary"][style*="--lwt-additional-images"],
-         [privatebrowsingmode="temporary"][lwtheme-image]){
+         [privatebrowsingmode="temporary"][lwtheme-image]) {
   
   --lwt-header-image: url("../icons/newtab/private-light.png") !important; 
   --lwt-additional-images: url("../icons/newtab/private-light.png") !important;
@@ -334,8 +334,8 @@
 
 /* Compatibilidad Parcial para temas que usan "Imagenes" */
 
-@media (prefers-color-scheme: dark){
-  :root:is([style*="--lwt-additional-images"],[lwtheme-image]){
+@media (prefers-color-scheme: dark) {
+  :root:is([style*="--lwt-additional-images"],[lwtheme-image]) {
     
 /*  --toolbar-bgcolor: #101019cf !important;                                                                     /* toolbar */
   --toolbar-field-background-color: transparent !important;                                                      /* toolbar_field */
@@ -351,14 +351,14 @@
   --general-border-color: color-mix(in srgb,                                                                     /* Color de bordes */
         var(--toolbar-bgcolor) 40%, transparent) !important;
 
-  tab[selected] .tab-background, #nav-bar, findbar, #PersonalToolbar, #main-menubar {
+  tab[selected] .tab-background, #nav-bar, findbar, #PersonalToolbar, #main-menubar, #sidebar-main {
         --toolbar-bgcolor: #10101990 !important;                                                                 /* toolbar */
     }
   }
 }
 
-@media (prefers-color-scheme: light){
-  :root:is([style*="--lwt-additional-images"],[lwtheme-image]){
+@media (prefers-color-scheme: light) {
+  :root:is([style*="--lwt-additional-images"],[lwtheme-image]) {
     
   /*--toolbar-bgcolor: #f9f9f9cf !important;                                                                     /* toolbar */
   --toolbar-field-background-color: transparent !important;                                                      /* toolbar_field */
@@ -373,7 +373,7 @@
   --lwt-background-alignment: right top, left top, left top !important;                                          /* posición imágenes */
   --general-border-color: var(--content-border-color) !important;
 
-  tab[selected] .tab-background, #nav-bar, findbar, #PersonalToolbar, #main-menubar {
+  tab[selected] .tab-background, #nav-bar, findbar, #PersonalToolbar, #main-menubar, #sidebar-main {
         --toolbar-bgcolor: #ffffff90 !important;                                                                 /* toolbar */
     }
   }
