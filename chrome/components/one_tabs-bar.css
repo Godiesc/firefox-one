@@ -415,12 +415,17 @@ tab-group:not([collapsed]) .tab-group-label::before {
     box-shadow: none !important;
 }
 
-/* Color y posición "dot" de pestaña que necesita atención */
+/* Size and color of the 'dot' when a tab needs attention */
 
-.tabbrowser-tab > .tab-stack > .tab-content[pinned][titlechanged]:not([selected]) {
+.tabbrowser-tab > .tab-stack > .tab-content[pinned][titlechanged]:not([selected="true"]) {
     background-image: radial-gradient(circle, var(--attention-dot-color), var(--attention-dot-color) 1px, transparent 3px) !important;
     background-position: center bottom !important;
-    background-size: 4px 4px !important;
+    background-size: 8px 8px !important;
+}
+
+.tabbrowser-tab > .tab-stack > .tab-content[titlechanged]:not([selected="true"]) {
+    background-position: center bottom !important;
+    background-size: 6px 6px !important;
 }
 
 /* Tab Preview */

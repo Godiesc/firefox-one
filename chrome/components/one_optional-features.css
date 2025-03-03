@@ -152,14 +152,14 @@
             width: 22px !important;
             height: 16px !important;
             margin-inline-start: 5px !important;
-            margin-block-start: calc(var(--tab-height-personal)/2 - 1px)  !important;
+            margin-block-start: calc(var(--tab-height-personal)/2 - 2px)  !important;
     }}
 
     @media (prefers-color-scheme: light){
         tab[soundplaying]:not([pinned]) .tab-background::before{
-            background: url("../icons/Beats.gif") repeat left center !important;
+            background: url("../icons/Beats.gif") no-repeat left center !important;
             background-size: 16px 16px !important;
-            margin-inline-start: 6px !important;
+            margin-inline-start: 8px !important;
             margin-block-start: calc(var(--tab-height-personal)/2 + 3px)  !important;
             width: 20px !important;
             height: 10px !important;
@@ -188,7 +188,7 @@
             box-shadow: none !important; }
     
 /* Borde en la pestaña activa - temas solidos y con imágenes */
-    @media not (-moz-bool-pref:"firefoxone.selected_tab_gradient_border"){
+    @media not (-moz-bool-pref:"firefoxone.selected_tab_gradient_border") {
     tab[selected] .tab-background{
         outline: 1px solid var(--identity-tab-color, var(--button-active-bgcolor)) !important;
         outline-offset: -1px !important;
@@ -213,18 +213,25 @@
         background-attachment: fixed !important;
         background-color: transparent !important;
     }
-
-/* Alineamos la imagen correctamente cuando se usa left-sidebar */
-@media not (-moz-bool-pref:"firefoxone.style_without_leftsidebar") {
-    #PersonalToolbar,
-    :root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) #PersonalToolbar{
-        background-repeat: repeat-x, var(--lwt-background-tiling), no-repeat !important;
-        background-size: calc(100% + /*var(--my-vertical-toolbar-width, 0px)*/ 0px) auto !important;
-        background-attachment: fixed !important;
-        background-position-x: right !important;
-        background-position-y: top !important;
+    
+    #sidebar-main::before {
+        background-size: auto calc(100% + 11px + var(--tab-height-personal) + var(--toolbar-height-personal)) !important;
+        background-position-y: calc(-11px - var(--tab-height-personal) - var(--toolbar-height-personal)) !important;
         backdrop-filter: var(--brightness-wallpaper) !important;
-    }}
+    }
+
+    /* Alineamos la imagen correctamente cuando se usa left-sidebar */
+    @media not (-moz-bool-pref:"firefoxone.style_without_leftsidebar") {
+        #PersonalToolbar,
+        :root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) #PersonalToolbar {
+            background-repeat: repeat-x, var(--lwt-background-tiling), no-repeat !important;
+            background-size: calc(100% + /*var(--my-vertical-toolbar-width, 0px)*/ 0px) auto !important;
+            background-attachment: fixed !important;
+            background-position-x: right !important;
+            background-position-y: top !important;
+            backdrop-filter: var(--brightness-wallpaper) !important;
+        }
+    }
 
 @media (prefers-color-scheme: dark){ 
     :root[brighttext],
@@ -247,7 +254,7 @@
   --lwt-header-image: var(--lwt-main-image) !important; 
   --lwt-additional-images: var(--lwt-main-image) !important;
 
-  tab[selected] .tab-background, #nav-bar, findbar, #PersonalToolbar{
+  tab[selected] .tab-background, #nav-bar, findbar, #PersonalToolbar, #sidebar-main {
         --toolbar-bgcolor: #10101940 !important;                                                                 /* toolbar */
         }
     }}
@@ -273,7 +280,7 @@
   --lwt-header-image: var(--lwt-main-image) !important; 
   --lwt-additional-images: var(--lwt-main-image) !important;
 
-  tab[selected] .tab-background, #nav-bar, findbar, #PersonalToolbar{
+  tab[selected] .tab-background, #nav-bar, findbar, #PersonalToolbar, #sidebar-main {
         --toolbar-bgcolor: #ffffff40 !important;                                                                 /* toolbar */
     }
   }}

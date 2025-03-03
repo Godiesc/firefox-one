@@ -632,84 +632,84 @@ browser[primary="true"][tabDialogShowing="true"],
 
 /* _____________________________________________________ Pinned sites ______________________________________________________ */
     
-    /* Pin icon removed */
-    .top-site-outer .title span .icon.icon-pin-small { display: none !important; }
+    /* Margin when 'News' are actived */
+    
+    .has-weather.has-search.layout-variant-b.has-recommended-stories.has-sections-grid {
+        .top-sites-list {
+            margin-block-start: 40px !important;
+        }
+    }
+    
+    .top-sites-list {
+        
+        /* Pinned Site Colors (Small Background) */
+        .top-site-outer .tile {
+            border-radius: 12px !important;
+            width: 100px !important;
+            height: 100px !important;
+            align-items: start !important;
+            margin-inline: 0px !important;
+            padding-top: 18px !important;
+            box-shadow: 0 0 0 1px #50505030 !important;
+            outline: 1px solid #50505030 !important;
+            outline-offset: -1px !important;
+            background: var(--newtab-pinnedsites-background) !important;
+            backdrop-filter: var(--personal-blur) !important;
+            transition: background-color 0.1s ease;
+        }
 
-    /* Label - pinned site */
-    :not(.fields-and-preview) .top-site-outer>.top-site-inner>.top-site-button>.title  {
-        width: 80px !important;
-        font-weight: 500 !important;
-        font-size: 14px !important;
-        margin-top: -40px !important;
-        margin-inline: 20px 10px !important;
-    }
-    
-    /* Fix site label alignment when editing a pinned site */
-    .fields-and-preview .top-site-outer>.top-site-inner>.top-site-button>.title  {
-        overflow: hidden !important;
-        text-wrap-mode: nowrap !important;
-        text-overflow: ellipsis ".." !important;
-    }
-    
-    /* Title label just in one line */
-    
-    .top-sites-list .top-site-outer span[dir="auto"] {
-        overflow: hidden !important;
-        text-overflow: ellipsis ".." !important;
-    }
-    
-    .top-sites-list .top-site-outer:hover span[dir="auto"], 
-    .top-sites-list .top-site-outer:focus-within span[dir="auto"] {
-        text-wrap-mode: nowrap !important;
-    }
-    
-    /* Colores sitios anclados (fondo pequeño) */
-    
-    .top-site-outer .tile {
-        border-radius: 12px !important;
-        width: 100px !important;
-        height: 100px !important;
-        align-items: start !important;
-        padding-top: 12px !important;
-        outline: 1px solid #50505030 !important;
-        outline-offset: -1px !important;
-        background: var(--newtab-pinnedsites-background) !important;
-        backdrop-filter: var(--personal-blur) !important;
-        transition: background-color 0.2s ease;
-    }
+        /* Pin icon removed */
+        .title.has-icon.pinned .icon.icon-pin-small { 
+            display: none !important; 
+        }
 
-    /* Colores :hover sitios anclados (fondo más grande) */
+        /* Label - pinned site */
+        .title {
+            padding-block: 0px !important;
+        }
 
-    .top-site-outer, .top-site-outer.active{
-        background-color: transparent !important;
-    }
-    
-    /* Remove style when on 'hover' over pinned sites (larger background) */
-    
-    .collapsible-section {
-        padding-block-start: 30px !important;
-    }
-    
-    /* remove unwanted padding of elements */
-    .top-site-outer .top-site-inner > a {
-        padding: 6px 0 0 0 !important;
-    }
-    
-    /* size and background color */
-    .top-site-outer {
-        border-radius: 0px !important;
-        background-color: transparent !important;/**/
-    }
-    
-    /* Styes when on 'hover' over 'Pinned sites' and 'Recent Activity' */
-    .top-site-outer:hover .tile, .card-outer:hover .card,
-    .top-site-outer.active .tile, .card-outer:hover .card {
-        background-color: color-mix(in srgb, var(--newtab-pinnedsites-background) 90%, var(--newtab-wordmark-color)) !important;
-        transition: background-color 0.2s ease;
+        .title-label  {
+            padding: 0px !important;
+            padding-inline: 4px !important;
+            font-size: 14px !important;
+            margin-top: -30px !important;
+        }
+
+        /* Title label just in one line */
+
+        .top-site-outer:hover .title:not(.sponsored) .title-label {
+            -webkit-line-clamp: unset !important;
+        }
+
+        .top-site-outer:is(:hover,:focus-within) span[dir="auto"] {
+            text-wrap-mode: nowrap !important;
+        }
+
+        /* Remove style when on 'hover' over pinned sites (larger background) */
+
+        /* remove unwanted padding of elements */
+        .top-site-outer .top-site-inner > a {
+            padding: 0 !important;
+        }
+
+        /* size and background color */
+        .top-site-outer {
+            margin-inline: 8px !important;
+            margin-block: 0px !important;
+            border-radius: 0px !important;
+            background-color: transparent !important;
+        }
+
+        /* Styes when on 'hover' over 'Pinned sites' and 'Recent Activity' */
+        .top-site-outer:hover .tile, .card-outer:hover .card{
+            background-color: color-mix(in srgb, var(--newtab-pinnedsites-background) 90%, var(--newtab-wordmark-color)) !important;
+            transition: background-color 0.1s ease;
+        }
     }
     
     /* Styles when clicking on a pinned site and moving the mouse away */
-    .top-site-outer:is(:focus-within) .tile, .card-outer:is(.active,:focus-within) .card {
+    .top-site-outer:is(:focus-within) .tile, 
+    .card-outer:is(.active,:focus-within) .card{
         outline: 1px solid var(--button-active-bgcolor) !important;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important;
     }
@@ -738,7 +738,7 @@ browser[primary="true"][tabDialogShowing="true"],
     
     .card-outer:is(:hover, :focus, :active, :focus-within, .active):not(.placeholder) .card-title, 
     .card-outer:is(:hover, :focus, .active):not(.placeholder) .card-title {
-        --newtab-primary-action-background: blue !important;
+        --newtab-primary-action-background: initial !important;
         text-decoration: underline !important;
     }
     
@@ -847,8 +847,8 @@ browser[primary="true"][tabDialogShowing="true"],
         background-image: url("../icons/more.svg") !important;
         background-color: transparent !important;
         border-radius: 0px 12px !important;
-        margin-inline-end: 7px !important;
-        margin-block-start: 26px !important;
+        margin-inline-end: -5px !important;
+        margin-block-start: 20px !important;
         margin-inline-start: -10px !important;
         transition: opacity 200ms;
     }

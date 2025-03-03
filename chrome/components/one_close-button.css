@@ -6,6 +6,7 @@
 @media not (-moz-bool-pref:"sidebar.verticalTabs") {
 
     :is(#TabsToolbar) .close-icon {
+        list-style-image: url("../icons/close.svg") !important;
         width: 15px !important;
         height: 15px !important;
     }
@@ -20,7 +21,7 @@
     }
 
     :is(#TabsToolbar) .tab-close-button {
-        padding: 2px !important;
+        padding: 4px !important;
     }
 
     :is(#TabsToolbar) .tab-close-button:hover {
@@ -38,5 +39,34 @@
     :root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) :is(#TabsToolbar) .tab-close-button:hover {
         background-color: var(--toolbarbutton-hover-background) !important;
         fill: var(--lwt-tab-text) !important;
+    }
+}
+
+#tabbrowser-tabs[orient="vertical"] {
+    
+    &:is([selected]):not(:hover) {
+        opacity: 0 !important;
+    }
+    
+    &:not([expanded]) {
+        & .tab-close-button {
+            width: 14px !important;
+            height: 14px !important;
+            padding: 2px !important;
+            
+            &:hover {
+                background: var(--lwt-tab-text) !important;
+                fill: var(--contrast-color) !important;
+            }
+        }
+    }
+    &[expanded] {
+        & .tab-close-button {
+            height: 20px !important;
+            width:  20px !important;
+            padding: 4px !important;
+            margin-inline-end: -4px !important;
+            border-radius: 2px !important;
+        }
     }
 }
