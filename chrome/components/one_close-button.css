@@ -3,7 +3,7 @@
 
 /*"Botón de cerrar pestaña" en windows y linux */
 
-@media not (-moz-bool-pref:"sidebar.verticalTabs") {
+@media not -moz-pref("sidebar.verticalTabs") {
 
     :is(#TabsToolbar) .close-icon {
         list-style-image: url("../icons/close.svg") !important;
@@ -53,10 +53,14 @@
             width: 14px !important;
             height: 14px !important;
             padding: 2px !important;
+            fill: var(--general-color) !important;
+            background: var(--toolbar-bgcolor) !important;
+            outline-color: var(--tab-selected-outline-color) !important;
             
             &:hover {
                 background: var(--lwt-tab-text) !important;
                 fill: var(--contrast-color) !important;
+                outline-color: var(--lwt-tab-text) !important;
             }
         }
     }
@@ -67,6 +71,11 @@
             padding: 4px !important;
             margin-inline-end: -4px !important;
             border-radius: 2px !important;
+
+            &:hover {
+                background-color: color-mix(in srgb, var(--toolbarbutton-hover-background) 40%, var(--border-contrast-color)) !important;
+                fill: var(--lwt-tab-text) !important;
+            }
         }
     }
 }

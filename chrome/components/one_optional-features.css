@@ -3,7 +3,7 @@
 
 /* ____________________________ Selected tab gradient border on solid themes ____________________________ */
 
-@media (-moz-bool-pref:"firefoxone.selected_tab_gradient_border") {
+@media -moz-pref("firefoxone.selected_tab_gradient_border") {
 
     /* Sobreescribir lines from one_tabs-bar.css */
     #tabbrowser-tabs:is([movingtab]) .tabbrowser-tab[selected="true"] .tab-content{
@@ -48,7 +48,7 @@
         z-index: 1 !important;
     }
     
-    @media (-moz-bool-pref:"sidebar.verticalTabs") {
+    @media -moz-pref("sidebar.verticalTabs") {
         .tabbrowser-tab[selected] > .tab-stack::before{
             margin-inline: calc(var(--tab-inline-padding) - 6px) !important;
         }
@@ -57,7 +57,7 @@
 
 /* ___________________________________________ Image in menus ___________________________________________ */
 
-@media (-moz-bool-pref:"firefoxone.image_in_menus") {
+@media -moz-pref("firefoxone.image_in_menus") {
     
     /* Image for solid themes */    
     :root:not([style*="--lwt-additional-images"],[lwtheme-image]) :is(slot, panelview, menupopup),
@@ -122,7 +122,7 @@
     }}
     
     /* Alinear imagen con left-sidebar deshabilitada */
-    @media (-moz-bool-pref:"firefoxone.style_without_leftsidebar") {
+    @media -moz-pref("firefoxone.style_without_leftsidebar") {
     @media (-moz-platform: windows), (-moz-platform: linux) {
         :root:not([chromehidden~="toolbar"]):is([sizemode="maximized"]) #PanelUI-menu-button[open]>.toolbarbutton-badge-stack,
         :root:not([chromehidden~="toolbar"]):is([sizemode="maximized"]) #PanelUI-menu-button[open]>stack::after{
@@ -137,7 +137,7 @@
 
 /* ______________________________________ Rhythm image for tab with sound _______________________________________ */
 
-@media (-moz-bool-pref:"firefoxone.rhythm_sound_tab") {
+@media -moz-pref("firefoxone.rhythm_sound_tab") {
     
     tab[soundplaying]:not([pinned]) .tab-background::before{
         content: "" !important; 
@@ -166,7 +166,7 @@
     }}
     
     /* Fix for tab_gradient_border config */
-    @media (-moz-bool-pref:"firefoxone.selected_tab_gradient_border") {
+    @media -moz-pref("firefoxone.selected_tab_gradient_border") {
         @media (prefers-color-scheme: dark){
            tab[soundplaying][selected]:not([pinned]) .tab-background::before{
                 margin-inline-start: 4px !important;
@@ -181,14 +181,14 @@
 
 /* ____________________________________________ Main-Image config ____________________________________________ */
 
-@media (-moz-bool-pref:"firefoxone.main-image") {
+@media -moz-pref("firefoxone.main-image") {
 
 /* Sombra en la pestaña activa  eliminada */
     :root:not([lwtheme-image],[style*="--lwt-additional-images"]) .tabbrowser-tab[selected="true"]:not([multiselected]) .tab-stack {
             box-shadow: none !important; }
     
 /* Borde en la pestaña activa - temas solidos y con imágenes */
-    @media not (-moz-bool-pref:"firefoxone.selected_tab_gradient_border") {
+    @media not -moz-pref("firefoxone.selected_tab_gradient_border") {
     tab[selected] .tab-background{
         outline: 1px solid var(--identity-tab-color, var(--button-active-bgcolor)) !important;
         outline-offset: -1px !important;
@@ -221,7 +221,7 @@
     }
 
     /* Alineamos la imagen correctamente cuando se usa left-sidebar */
-    @media not (-moz-bool-pref:"firefoxone.style_without_leftsidebar") {
+    @media not -moz-pref("firefoxone.style_without_leftsidebar") {
         #PersonalToolbar,
         :root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) #PersonalToolbar {
             background-repeat: repeat-x, var(--lwt-background-tiling), no-repeat !important;

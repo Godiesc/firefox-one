@@ -1,19 +1,19 @@
 /* Source file made available under Mozilla Public License v. 2.0 See the main repository for updates as well as full license text. 
    https://github.com/Godiesc/firefox-one */
 
-@media (-moz-bool-pref:"firefoxone.tree_tabs_style") {
+@media -moz-pref("firefoxone.tree_tabs_style") {
     
 /* _________________________________________________________________ OCULTAR TABS-BAR _________________________________________________________________
    ____________________________ https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/hide_tabs_toolbar_v2.css ____________________________  */
 
     /* This requires Firefox 133+ to work */
 
-    @media (-moz-bool-pref: "sidebar.verticalTabs") {
+    @media -moz-pref("sidebar.verticalTabs") {
         #sidebar-main {
             visibility: collapse;
         }
     }
-    @media (-moz-bool-pref: "userchrome.force-window-controls-on-left.enabled"){
+    @media -moz-pref("userchrome.force-window-controls-on-left.enabled"){
         #nav-bar > .titlebar-buttonbox-container{
             order: -1 !important;
             > .titlebar-buttonbox{
@@ -21,7 +21,7 @@
             }
         }
     }
-    @media not (-moz-bool-pref: "sidebar.verticalTabs"){
+    @media not -moz-pref("sidebar.verticalTabs"){
         #TabsToolbar{
             visibility: collapse;
         }
@@ -41,7 +41,7 @@
                 /*> .titlebar-spacer[type="post-tabs"]{
                     display: flex !important;
                 }/**/
-                @media (-moz-bool-pref: "userchrome.force-window-controls-on-left.enabled"),
+                @media -moz-pref("userchrome.force-window-controls-on-left.enabled"),
                     (-moz-gtk-csd-reversed-placement),
                     (-moz-platform: macos){
                         > .titlebar-spacer[type="post-tabs"]{
@@ -112,7 +112,7 @@
 
 /* _____________________________________________ 'Tree-tabs style' or 'Firefox-Vertical-Tabs' _____________________________________________*/
 
-@media (-moz-bool-pref:"firefoxone.tree_tabs_style") or ( -moz-bool-pref:"sidebar.verticalTabs") {
+@media -moz-pref("firefoxone.tree_tabs_style") or -moz-pref("sidebar.verticalTabs") {
 
     :root:has(#toolbar-menubar[autohide="true"]) {
         
@@ -229,7 +229,7 @@
 
     /* ____________________ Border styles when not using default colors */
 
-    @media (-moz-bool-pref:"firefoxone.without-default-colors") {
+    @media -moz-pref("firefoxone.without-default-colors") {
         
         /* Menubar */
         &:root:has(#toolbar-menubar[autohide="true"]) #main-menubar {
@@ -285,6 +285,12 @@
     #navigator-toolbox {
         border-block-end: 1px solid transparent !important;
     }
+    
+    /* Remove unwanted space in navbar */
+
+    #vertical-spacer {
+        display: none !important;
+    }
 }
 
 /* ___________________________________________________________________________________________________________________________________________ 
@@ -292,7 +298,7 @@
 
 /* ¡Necessary for the hamburger button to be above the sidebar */
 
-@media (-moz-bool-pref:"sidebar.verticalTabs") and (not ( -moz-bool-pref:"firefoxgx.oneline")) {
+@media -moz-pref("sidebar.verticalTabs") and (not -moz-pref("firefoxgx.oneline")) {
         
     .browser-titlebar {
         :root & {
@@ -304,7 +310,7 @@
 
 /* _______________________________________ 'Tree-tabs' or 'Firefox-Vertical-Tabs' without left-sidebar _______________________________________ */
 
-@media (((-moz-bool-pref:"firefoxone.tree_tabs_style") and (-moz-bool-pref:"firefoxone.style_without_leftsidebar")) or ((-moz-bool-pref:"sidebar.verticalTabs") and (-moz-bool-pref:"firefoxone.style_without_leftsidebar"))) {
+@media (-moz-pref("firefoxone.tree_tabs_style") and -moz-pref("firefoxone.style_without_leftsidebar")) or (-moz-pref("sidebar.verticalTabs") and -moz-pref("firefoxone.style_without_leftsidebar")) {
 
         @media (-moz-platform: windows), (-moz-platform: linux) {
 

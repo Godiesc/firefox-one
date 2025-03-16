@@ -1,7 +1,7 @@
 /* Source file made available under Mozilla Public License v. 2.0 See the main repository for updates as well as full license text. 
    https://github.com/Godiesc/firefox-one */
 
-@media not (-moz-bool-pref:"firefoxone.style_without_leftsidebar") {
+@media not -moz-pref("firefoxone.style_without_leftsidebar") {
 
 /*----------------------------------------------This first code block is from MrOtherGuy-----------------------------------------------------
 -----------------> https://github.com/MrOtherGuy/firefox-csshacks/blob/master/chrome/vertical_bookmarks_toolbar.css -------------------*/
@@ -187,7 +187,7 @@
     
 /* outline en todos los temas "without-default-colors" and 'main-image' config */
 
-    @media (-moz-bool-pref:"firefoxone.without-default-colors") or (-moz-bool-pref:"firefoxone.main-image") {
+    @media -moz-pref("firefoxone.without-default-colors") or -moz-pref("firefoxone.main-image") {
         :root:not([chromehidden~="toolbar"]) #PersonalToolbar{
                 outline: none !important;
                 box-shadow: inset 1px 0 0 0 var(--lwt-frame), inset 1px 0 0 0 var(--lwt-frame), inset 1px 0 0 0 var(--lwt-frame),
@@ -659,7 +659,7 @@
 /* ___________________________________________________________ Firefox Revamp __________________________________________________________ 
    _____________________________________________________________________________________________________________________________________ */
 
-@media (-moz-bool-pref:"sidebar.revamp")  and (not ( -moz-bool-pref:"firefoxgx.oneline")) {
+@media -moz-pref("sidebar.revamp")  and (not -moz-pref("firefoxgx.oneline")) {
     
     :root {
         --vertical-elements-width: var(--my-vertical-toolbar-width) !important;
@@ -727,9 +727,9 @@
         background: none !important;
         
         &::before {
-            content: ''; display: flex; position: fixed; top: 1px !important;
+            content: ''; display: flex; position: fixed; top: 2px !important;
             width: calc(100% - 8px);
-            height: calc(100% - 5px);
+            height: calc(100% - 6px);
             margin-inline-start: 4px !important;
             border-radius: 8px !important;
             background-image: linear-gradient(var(--toolbar-bgcolor, transparent), var(--toolbar-bgcolor, transparent)),
@@ -749,15 +749,23 @@
 
     :root:not([sizemode="fullscreen"]) {
         
-        #sidebar-box ~ #tabbrowser-tabbox {
+        #tabbrowser-tabbox {
             padding-inline: 0 4px !important;
         }
         
-        #sidebar-box[positionend]  ~ #tabbrowser-tabbox {
-            padding-inline: 4px 4px !important;
+        & #sidebar-box[positionend]{
+            margin-inline: 0px 0px !important;
+        }
+        
+        &:has(#sidebar-box[positionend]) #tabbrowser-tabbox {
+            padding-inline: 4px 0px !important;
         }
 
-        #sidebar-box[checked="true"][positionend]  ~ #tabbrowser-tabbox {
+        &:has(#sidebar-box[checked="true"][positionend]) #tabbrowser-tabbox {
+            padding-inline: 4px 4px !important;
+        }
+        
+        &:has(#sidebar-main[hidden="true"]) #tabbrowser-tabbox {
             padding-inline: 4px 4px !important;
         }
     }
@@ -769,13 +777,13 @@
         --sidebar-border-color: transparent;
     }
     
-    #sidebar-launcher-splitter {
+    /*#sidebar-launcher-splitter {
         @media (not (-moz-platform: linux)) {
             #sidebar-main[positionend] + & {
                     margin-inline-end: -4px !important;
             }
         }
-    }
+    }/**/
     
     /* _________________________ Tools and extensions _________________________ */
     
@@ -852,12 +860,14 @@
 /* _______________________________________________________ Firefox Vertical Tabs _______________________________________________________ 
    _____________________________________________________________________________________________________________________________________ */
 
-@media (-moz-bool-pref:"sidebar.verticalTabs")  and (not ( -moz-bool-pref:"firefoxgx.oneline")) {
+@media -moz-pref("sidebar.verticalTabs")  and (not -moz-pref("firefoxgx.oneline")) {
     
     :root {
         --my-margin-inline-inner-tab: 10px !important;
         --vertical-elements-width: var(--my-vertical-toolbar-width) !important;
         --tab-collapsed-background-width: calc(var(--my-vertical-toolbar-width) - var(--tab-inline-padding)*2) !important;
+        --my-separator-border-style1: linear-gradient(to right, transparent 10px, var(--general-border-color) 10px,
+                                     var(--general-border-color) calc(100% - 10px), transparent calc(100% - 10px)) 1;
     }
     
     /* Tabs container width */
@@ -894,7 +904,7 @@
     /* Margin top of the block of tabs */
     
     #vertical-tabs {
-        padding-block-start: 8px !important;
+        padding-block-start: 4px !important;
     }
     
     #vertical-pinned-tabs-container {
@@ -905,11 +915,19 @@
         }
     }
     
-    /* Margen back-button de la toolbar */
+    #vertical-pinned-tabs-container-separator {
+        #tabbrowser-tabs:not([expanded]) #vertical-pinned-tabs-container:not(:empty) > &, #vertical-pinned-tabs-container:not(:empty) + & {
+            margin-inline: 0px !important;
+            display: flex !important;
+            border-image: var(--my-separator-border-style1) 1 !important;
+        }
+    }
+    
+    /* Margen back-button de la toolbar 
 
     :root:not([chromehidden~="toolbar"]):has(#toolbar-menubar[autohide="true"]) #nav-bar {
         padding-inline-start: var(--padding-left-tab) !important; 
-    }
+    }*/
     
     /* overwrite 'one_tabs-bar.css' - 'hover' de las pestañas no seleccionadas */
 

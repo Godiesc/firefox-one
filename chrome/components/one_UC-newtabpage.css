@@ -51,7 +51,7 @@
     
     /* Newtab background with default colors*/
 
-    @media not (-moz-bool-pref:"firefoxone.without-default-colors") {
+    @media not -moz-pref("firefoxone.without-default-colors") {
         @media (prefers-color-scheme: dark){
             body{
                 --newtab-background-color: #030615 !important;                                      /* Newtab default background */
@@ -64,7 +64,7 @@
     
 /* _______________________________________________________ Wallpapers _______________________________________________________ */
     
-    @media not (-moz-bool-pref:"firefoxone.main-image"){
+    @media not -moz-pref("firefoxone.main-image"){
 
         /* Dark 1 - Fuchsia */
         #dark-sky,
@@ -555,7 +555,7 @@
     
 /* Estilo en la nueva version de la search-bar */
     
-@media (-moz-bool-pref:"browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar"){
+@media -moz-pref("browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar"){
     .search-inner-wrapper:not(:focus){
         background: var(--newtab-pinnedsites-background) !important;
         backdrop-filter: var(--personal-blur) !important;
@@ -885,7 +885,7 @@ browser[primary="true"][tabDialogShowing="true"],
     
     body{ backdrop-filter: var(--brightness-wallpaper) !important; }
 
-    @media (-moz-bool-pref:"firefoxone.main-image") {
+    @media -moz-pref("firefoxone.main-image") {
         
         body{
             background-image: var(--lwt-main-image, initial) !important;
@@ -1049,7 +1049,7 @@ browser[primary="true"][tabDialogShowing="true"],
     
 /* Compatibility for aligning wallpaper when used with 'Main-image' config */
     
-    @media (-moz-bool-pref:"firefoxone.main-image") {
+    @media -moz-pref("firefoxone.main-image") {
 
         .sticky-container {
             background-image: none !important;

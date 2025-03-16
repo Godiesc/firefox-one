@@ -5,9 +5,9 @@
    ___________________________________________________ 'Tree-tabs' sidebar, expand on 'hover' ___________________________________________________
    ___________________________________________________                                        ___________________________________________________ */
 
-@media (-moz-bool-pref:"firefoxone.verticalTabs-expandOnHover") {
+@media -moz-pref("firefoxone.verticalTabs-expandOnHover") {
 
-    @media (-moz-bool-pref:"firefoxone.tree_tabs_style") and ((-moz-bool-pref:"firefoxone.style_without_leftsidebar") or (not (-moz-bool-pref:"sidebar.verticalTabs"))) {
+    @media -moz-pref("firefoxone.tree_tabs_style") and (-moz-pref("firefoxone.style_without_leftsidebar") or (not -moz-pref("sidebar.verticalTabs"))) {
 
         /* ################################## Código para la extensión "Tab-Center-Reborn" ################################ 
         #####################################________________________________________################################### */
@@ -159,10 +159,15 @@
 /* ________________________________________________ Firefox Vertical tabs, expand on hover _________________________________________________ 
    _________________________________________________________________________________________________________________________________________ */
 
-    @media (-moz-bool-pref:"sidebar.verticalTabs") {
+    @media -moz-pref("sidebar.verticalTabs") {
 
         :root {
             --first-last-button-width: 30px !important;
+            --my-expand-sidebar-width: var(--uc-sidebar-hover-width);
+            --my-vertical-elements-width: calc(var(--my-vertical-toolbar-width) - 1px) !important;
+        }
+
+        :root {
             --my-expand-sidebar-width: var(--uc-sidebar-hover-width);
             --my-vertical-elements-width: calc(var(--my-vertical-toolbar-width) - 1px) !important;
         }
@@ -172,26 +177,58 @@
         #main-window:has(
         #tabContextMenu[hasbeenopened]:hover,
         #new-tab-button-popup[hasbeenopened]:hover,
-        /*#toolbar-context-menu[hasbeenopened]:hover,/**/
-        .tab-group-editor-panel[hasbeenopened]:hover) #sidebar-main:has([expanded]):not(:hover) { 
-            width: var(--my-expand-sidebar-width) !important;
+        .tab-group-editor-panel[hasbeenopened]:hover) sidebar-main { 
+            min-width: var(--my-expand-sidebar-width) !important;
         }
 
-        /* _______________ Sidebar properties _______________ */
+        /* Requires Firefox 133 */
+
+        :root{
+            --uc-tabs-hide-animation-duration: 48ms;
+            --uc-tabs-hide-animation-delay: 200ms;
+        }
 
         :root:has(sidebar-main:is([expanded])) {
-            & #sidebar-main {
-                position: absolute !important;
-                width: var(--my-vertical-toolbar-width) !important;
-                z-index: 3 !important;
-                height: 100% !important;
-                transition: width 0.1s ease-in-out !important;
-                overflow-x: hidden !important;
+            #sidebar-main{
+                overflow: visible !important;
+                max-width: var(--my-vertical-toolbar-width) !important;
+                z-index: var(--browser-area-z-index-toolbox-while-animating);
+                transition: z-index 0s linear var(--uc-tabs-hide-duration);
+                background: inherit;
+                box-shadow: none !important;
             }
+            sidebar-main{
+                background: inherit;
+                overflow: hidden;
+                min-width: var(--vertical-elements-width);
+                transition: min-width var(--uc-tabs-hide-animation-duration) ease-out var(--uc-tabs-hide-animation-delay);
+                border-inline: 0.01px solid var(--my-content-border-color);
+                border-inline-width: 0 0.01px;
 
-            & #sidebar-main:is(:hover){
-                width: var(--my-expand-sidebar-width) !important;
-                transition: width 0.2s ease-in-out !important;
+                &[positionend]{
+                    transition-property: min-width, transform;
+                    border-inline-width: 0.01px 0;
+                }
+                
+                &::before {
+                    content: ''; display: flex; position: fixed;
+                    width: calc(100% - 8px);
+                    height: calc(100% - 4px);
+                    margin-inline-start: 4px !important;
+                    border-radius: 8px !important;
+                    background-image: linear-gradient(var(--toolbar-bgcolor, transparent), var(--toolbar-bgcolor, transparent)),
+                        var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
+                    background-size: auto 100% !important; 
+                    box-shadow: inset 0 0 0 1px var(--general-border-color) !important;
+                    z-index: -1;
+                }
+            }
+            sidebar-main:hover{
+                min-width: var(--uc-sidebar-hover-width);
+                transition-delay: 0ms !important;
+                &[positionend]{
+                    transform: translateX(calc(var(--vertical-elements-width) - 100%));
+                }
             }
         }
         
@@ -274,60 +311,6 @@
             visibility: visible !important;
             transition: visibility 0.2s ease, opacity 0.2s ease !important;
             transition-delay: 200ms !important;
-        }
-    }
-
-    @media (-moz-bool-pref:"sidebar.verticalTabs") and (-moz-bool-pref:"sidebar.position_start") {
-
-        /* _________________________________ Expand on hover - sidebar on left */
-
-        :root:not([chromehidden~="toolbar"],[inDOMFullscreen]):has(sidebar-main:is([expanded])) {
-
-            /* Web content */
-            & #tabbrowser-tabbox{
-                margin-inline-start: var(--my-vertical-toolbar-width) !important;
-            }
-
-            /* Sidebar + sidebar content */
-            & #sidebar-box[checked="true"] {
-                margin-inline-start: var(--my-vertical-toolbar-width) !important;
-            }
-
-            /* Sidebar + sidebar content + web content */
-            & #sidebar-box[checked="true"] ~ #tabbrowser-tabbox {
-                margin-inline-start: 0px !important;
-            }
-        }
-    }
-
-    @media (-moz-bool-pref:"sidebar.verticalTabs") and ( not (-moz-bool-pref:"sidebar.position_start")) {
-
-        /* _________________________________ Expand on hover - sidebar on right */
-
-        :root:not([chromehidden~="toolbar"],[inDOMFullscreen]):has(sidebar-main:is([expanded])) {
-
-            /* Web content */
-            & #tabbrowser-tabbox{
-                margin-inline-end: var(--my-vertical-toolbar-width) !important;
-            }
-
-            /* Sidebar + sidebar content */
-            & #sidebar-box[checked="true"] {
-                margin-inline-end: var(--my-vertical-toolbar-width) !important;
-            }
-
-            /* Sidebar + sidebar content + web content */
-            & #sidebar-box[checked="true"] ~ #tabbrowser-tabbox {
-                margin-inline-end: 0px !important;
-            }
-        }
-
-        /* Move sidebar to right position */
-
-        :root:has(sidebar-main:is([expanded])) {
-            & #sidebar-main {
-                right: 0 !important;
-            }
         }
     }
 }

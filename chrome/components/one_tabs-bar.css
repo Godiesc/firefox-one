@@ -3,12 +3,12 @@
 
 /* "tab_line": "#126e82" */
 
-@media not (-moz-bool-pref:"firefoxone.without-default-colors") {
+@media not -moz-pref("firefoxone.without-default-colors") {
     #tabbrowser-tabs {
         --tab-selected-outline-color: transparent !important;
     }}
 
-@media (-moz-bool-pref:"firefoxone.without-default-colors") {    
+@media -moz-pref("firefoxone.without-default-colors") {    
     .tab-background {
         &:is([selected], [multiselected]) {
             --tab-selected-outline-color: light-dark(var(--tab-group-color, var(--general-color)), var(--tab-group-color-invert, var(--general-color))) !important;
@@ -98,7 +98,7 @@ toolbar #firefox-view-button[aria-pressed="true"]:hover .toolbarbutton-icon {
 
 /* Sombra en la pestaña activa al usar colores default */
 
-@media (not (-moz-bool-pref:"firefoxone.without-default-colors")) and (not (-moz-bool-pref:"sidebar.verticalTabs")) {
+@media (not -moz-pref("firefoxone.without-default-colors")) and (not -moz-pref("sidebar.verticalTabs")) {
 :root:not([lwtheme-image],[style*="--lwt-additional-images"]) .tabbrowser-tab[selected="true"]:not([multiselected]) .tab-stack {
     box-shadow: 0px 4px 7px 0px color-mix(in srgb, var(--lwt-frame) 84%, var(--lwt-tab-text)) !important;
     z-index: 1 !important;
@@ -134,7 +134,7 @@ tab[selected] .tab-background{
 
 /* no Outline color in this config */
 
-@media (-moz-bool-pref:"firefoxone.without-default-colors") {
+@media -moz-pref("firefoxone.without-default-colors") {
 :root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) tab[selected] .tab-stack{
     outline: none !important;
     }}
@@ -145,7 +145,7 @@ tab[selected] .tab-background{
     background-color: var(--lwt-selected-tab-background-color) !important;
 }
 
-@media (-moz-bool-pref:"firefoxone.without-default-colors") {
+@media -moz-pref("firefoxone.without-default-colors") {
     #tabbrowser-tabs:is([movingtab]) .tabbrowser-tab[selected="true"] .tab-content{
     background-color: initial !important;
     }
@@ -182,7 +182,7 @@ tab[selected] .tab-background{
 
 /* separadores entre pestañas */
 
-@media not (-moz-bool-pref:"sidebar.verticalTabs") {
+@media not -moz-pref("sidebar.verticalTabs") {
 
     .tabbrowser-tab:not(.tabbrowser-tab>stack[selected] + .tabbrowser-tab>stack>.tab-background) .tab-background:after{
         border-left: 1px solid color-mix(in srgb, currentColor 30%, transparent);
@@ -338,7 +338,7 @@ tab-group:not([collapsed]) .tab-group-label::before {
     background-color: light-dark(var(--tab-group-color), var(--tab-group-color-invert)) !important;
 }
 
-@media not (-moz-bool-pref: "sidebar.verticalTabs") {
+@media not -moz-pref("sidebar.verticalTabs") {
 
     #tabbrowser-arrowscrollbox[orient="horizontal"] {
 
@@ -473,7 +473,7 @@ tab-group:not([collapsed]) .tab-group-label::before {
 
 /* Borde para temas que usas imágenes: navbar - findbar - y cuando no se use 'left-sidebar' config */
 
-:root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]){
+:root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) {
     #nav-bar, #PersonalToolbar, findbar{
         outline: 1px solid var(--general-border-color) !important;
         outline-offset: -1px !important;
@@ -482,7 +482,7 @@ tab-group:not([collapsed]) .tab-group-label::before {
 
 /* Border when 'without-default-colors' , 'main-image' , 'temas con imágenes'  - y cuando no se use 'left-sidebar' config */
 
-@media (-moz-bool-pref:"firefoxone.without-default-colors") or (-moz-bool-pref:"firefoxone.main-image"){
+@media -moz-pref("firefoxone.without-default-colors"), -moz-pref("firefoxone.main-image") {
     #nav-bar, #PersonalToolbar, findbar{
     outline: 1px solid var(--general-border-color) !important;
     outline-offset: -1px !important;
@@ -533,7 +533,7 @@ tab-group:not([collapsed]) .tab-group-label::before {
     outline: 2px solid var(--lwt-frame) !important;
 }
 
-@media not (-moz-bool-pref:"firefoxone.tree_tabs_style") {
+@media not -moz-pref("firefoxone.tree_tabs_style") {
 
     /* Used for shadow on menubar right side */
 
@@ -551,7 +551,7 @@ tab-group:not([collapsed]) .tab-group-label::before {
 }
 
 /* Border in -non default colors- config - solid themes */
-@media (-moz-bool-pref:"firefoxone.without-default-colors") {
+@media -moz-pref("firefoxone.without-default-colors") {
     #main-menubar{
         box-shadow: inset 0 1px 0 0 var(--lwt-frame), inset 0 1px 0 0 var(--lwt-frame),inset 0 1px 0 0 var(--lwt-frame),
             inset 0 -4px var(--lwt-frame),

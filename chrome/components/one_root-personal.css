@@ -75,14 +75,14 @@
   
 }
 
-@media (not (-moz-bool-pref:"firefoxone.style_without_leftsidebar")) or (-moz-bool-pref:"sidebar.revamp") or (-moz-bool-pref:"firefoxone.tree_tabs_style") {
+@media (not -moz-pref("firefoxone.style_without_leftsidebar")) or -moz-pref("sidebar.revamp") or -moz-pref("firefoxone.tree_tabs_style") {
   :root{
   --my-vertical-toolbar-width: 52px ;                                                             /* 'left-sidebar' width and used for Firefox-Vertical-tabs */
   }}
 
 /* ------------------------------------------------------------ Main Image config ------------------------------------------------------------ */
 
-@media (-moz-bool-pref:"firefoxone.main-image") {
+@media -moz-pref("firefoxone.main-image") {
   
   @media (prefers-color-scheme: dark){ :root{
     --lwt-main-image:  url("../newtab/main-image-dark.png") !important;                           /* main-image wallpaper - dark theme */ 
@@ -103,7 +103,7 @@
 
 /* ------------------------------------------------------ Main Image + tree-tabs config ------------------------------------------------------- */
 
-@media (-moz-bool-pref:"firefoxone.main-image") and (-moz-bool-pref:"firefoxone.tree_tabs_style"){  
+@media -moz-pref("firefoxone.main-image") and -moz-pref("firefoxone.tree_tabs_style") {  
     :root{
       --extension-width: 52px ;
       --background-align-y: -46px ;                                                               /* Aligning the new tab wallpaper with the 'main-image' config

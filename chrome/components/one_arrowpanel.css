@@ -17,7 +17,6 @@ slot {
     box-shadow: none !important;
 }
 
-
 panelmultiview {    
     background-image: var(--noise-urlbar-personal) !important;
     border: 1px solid var(--arrowpanel-border-color) !important;
@@ -27,7 +26,7 @@ panelmultiview {
 /* Remove unwanted shadow of some dropdown menus [Open] */
 
 .panel-no-padding[type="arrow"] {
-    margin-inline: -5px !important;
+    margin-inline: -3px !important;
 }
 
 /* Color fondo :hover por los diferentes items de menús principales */
@@ -225,7 +224,7 @@ treechildren::-moz-tree-separator {
 :root:not([sizemode=fullscreen]) #tabbrowser-tabbox {   
     /* Used 'padding' instead of 'margin' to avoid 
     breaking animations when '#sidebar-main' expands */
-    padding-block: 1px 4px !important;
+    padding-block: 2px 4px !important;
     padding-inline: 4px !important;
 }
 
@@ -273,7 +272,7 @@ treechildren::-moz-tree-separator {
 
 /* ________________________________________________ Firefox Sidebar and (Rounded corners) ________________________________________________ */
 
-@media not (-moz-bool-pref:"sidebar.revamp") {
+@media not -moz-pref("sidebar.revamp") {
 
     :root:not([sizemode="fullscreen"]) {
 
@@ -281,7 +280,7 @@ treechildren::-moz-tree-separator {
         #sidebar-box {
             max-width: none !important;
             min-width: 0px !important;
-            margin-block: 1px 4px !important;
+            margin-block: 2px 4px !important;
             margin-inline: 4px 0px !important;
             outline: 1px solid var(--content-border-color) !important;
             outline-offset: -1px !important;
@@ -311,14 +310,30 @@ treechildren::-moz-tree-separator {
     }
 }
 
-@media (-moz-bool-pref:"sidebar.revamp") {
+/* Splitter in linux */
+
+@media (-moz-platform: linux) {
+    #sidebar-splitter{
+        background-color: transparent !important;
+    }
+    
+    @media not -moz-pref("sidebar.revamp") {
+        :root:not([sizemode="fullscreen"]) .sidebar-splitter {
+            border-color: transparent !important;
+            border-width: 0px !important;
+            width: 4px !important;
+        }
+    }
+}
+
+@media -moz-pref("sidebar.revamp") {
 
     :root:not([sizemode="fullscreen"]) {
 
         /* Tamaño, margen y color de borde */
         #sidebar-box {
             padding: 0px !important;
-            margin-block: 1px 4px !important;
+            margin-block: 2px 4px !important;
             margin-inline-end: 4px !important;
             
             #sidebar {
@@ -351,23 +366,36 @@ treechildren::-moz-tree-separator {
 /* Espacios de la sidebar[open] y más espacio para el splitter - <left> <right> side */
 
 :root:not([sizemode="fullscreen"]) {
-    #sidebar-box[checked="true"] ~ #tabbrowser-tabbox {
-        padding-block: 1px 4px !important;
+    &:has(#sidebar-box[checked="true"]) #tabbrowser-tabbox {
+        padding-block: 2px 4px !important;
         padding-inline: 0 4px !important;
     }
 
-    #sidebar-box[checked="true"][positionend]  ~ #tabbrowser-tabbox {
-        padding-block: 1px 4px !important;
+    &:has(#sidebar-box[checked="true"][positionend]) #tabbrowser-tabbox {
+        padding-block: 2px 4px !important;
         padding-inline: 4px 0 !important;
     }
 
-    #sidebar-box[positionend]{
+    & #sidebar-box[positionend]{
         margin-inline: 0px 4px !important;
     }
 }
 
-@media (-moz-platform: linux) {
-#sidebar-splitter{
-    background-color: transparent !important;
-    margin-right: -4px !important;
-    }}
+/* Infobar below bookmarks-bar */
+
+#notifications-toolbar {
+    margin-inline: 4px !important;
+    border-radius: 8px !important;
+    margin-block-start: 1px !important;
+    
+    & .infobar.animated {
+        background-color: transparent !important;
+        border-color: transparent !important;
+    }
+}
+
+@media not -moz-pref("firefoxone.style_without_leftsidebar") {
+    #notifications-toolbar {
+        margin-inline-start: calc(var(--my-vertical-toolbar-width, 0px) + 4px) !important;
+    }
+}

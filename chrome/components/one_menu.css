@@ -75,6 +75,12 @@
         width: 20px !important;
         margin-bottom: -1px !important; /* Sirve para centrar el logo */
     }
+    
+    /* Menupopup left align in normal window */
+    
+    :root:not([chromehidden~="toolbar"])[sizemode="normal"] #appMenu-popup {
+        margin-inline: -23.2em !important;
+    }
 }
 
 /* ____________________________________________ Style only for Windows OS ____________________________________________ */
