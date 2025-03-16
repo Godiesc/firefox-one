@@ -37,46 +37,49 @@
     --in-content-button-text-color: black !important;
     }}
 
-:root { 
+:root {
+    --toolbarbutton-icon-fill-attention: unset !important;                                      /* Remove unwanted accent color */
     --color-accent-primary: var(--general-color) !important;                                    /* Main Accent color */
     --color-accent-primary-hover: var(--button-hover-personal) !important;
     --color-accent-primary-active: var(--button-active-bgcolor) !important;
+
+    --in-content-text-color: var(--contrast-color) !important;                                  /* General 'text' color */
+    --in-content-page-color: var(--contrast-color) !important;                                  /* Other general 'text' color */
+    --in-content-primary-button-text-color: var(--contrast-color) !important;                   /* Another general 'text' color */
+
+    --in-content-box-background-odd: color-mix(in srgb,                                         
+        var(--in-content-box-border-color), transparent) !important;
+    --table-row-background-color-alternate: var(--in-content-page-background) !important;       /* Color distinction between rows in a 'table' and 'search shortcuts' */
     
-    --in-content-text-color: var(--contrast-color) !important;                                  /* Color general de label*/
-    --in-content-page-color: var(--contrast-color) !important;                                  /* Color de texto general*/
-    
-    
-    --in-content-box-background-odd: color-mix(in srgb,                                         /* Color distinction between rows in a 'table' and 'search shortcuts' */
-      var(--in-content-box-border-color)40%, transparent) !important;
-    --in-content-box-info-background: var(--in-content-box-background-odd) !important;          /* Color de la caja de elementos que se sincronizan */
+    --in-content-box-info-background: var(--in-content-box-background-odd) !important;          /* Background color of the box of items that sync */
     --section-highlight-background-color: var(--in-content-box-info-background) !important;
-    
-    --in-content-border-color: var(--in-content-box-border-color) !important;                   /* Linea separadora en la configuración*/
-    --in-content-table-border-color: var(--in-content-box-border-color) !important;             /* Borde de tablas*/
-    
-    --background-color-box: var(--in-content-page-background) !important;                       /* Background color of tables */
+
+    --in-content-border-color: var(--in-content-box-border-color) !important;                   /* Separator line in configuration */
+    --in-content-table-border-color: var(--in-content-box-border-color) !important;             /* table border color */
+
+    --background-color-box: var(--in-content-box-background) !important;                        /* Background color of tables */
     --in-content-table-background: var(--in-content-page-background) !important;                /* Background color of 'about:support' tables */
-    
-    --card-outline-color: var(--general-color) !important;                                      /* outline color temas-extensiones */
-    --card-shadow-hover: var(--card-shadow), 0 0 0 5px var(--card-outline-color) !important;    /* outline color :hover temas-extensiones */
-    
-    --in-content-item-hover: var(--button-hover-bgcolor) !important;                           /* Color de fondo al pasar por los items de un combobox */
-    --in-content-item-hover-text: var(--in-content-text-color) !important;                      /* Color de label del item hover del combobox */
-    --in-content-item-selected: var(--general-color) !important;                                /* Color de fondo al pasar por los items de un combobox (teclas de direccion)" */
-    --in-content-item-selected-text:  var(--in-content-text-color) !important;                  /* Color de label al pasar por los items de un combobox (teclas de direccion)" */
-    
-    --in-content-button-background: var(--in-content-border-color) !important;                  /* color de botones */
-    --in-content-button-background-hover: var(--button-active-bgcolor) !important;              /* color de botones :hover */
-    --in-content-button-background-active: var(--general-color) !important;                     /* color de botones al darle clic */
-    
+
+    --card-outline-color: var(--general-color) !important;                                      /* outline color in 'themes' and 'extensions' */
+    --card-shadow-hover: var(--card-shadow), 0 0 0 5px var(--card-outline-color) !important;    /* outline color in 'themes' and 'extensions' on 'hover' */
+
+    --in-content-item-hover: var(--button-hover-bgcolor) !important;                            /* Combobox background color on 'hover' */
+    --in-content-item-hover-text: var(--in-content-text-color) !important;                      /* Combobox text color on 'hover' */
+    --in-content-item-selected: var(--general-color) !important;                                /* Combobox background color on 'hover' (arrow keys) */
+    --in-content-item-selected-text:  var(--in-content-text-color) !important;                  /* Combobox text color on 'hover' (arrow keys) */
+
+    --in-content-button-background: var(--in-content-border-color) !important;                  /* Button color */
+    --in-content-button-background-hover: var(--button-active-bgcolor) !important;              /* Button color on 'hover' */
+    --in-content-button-background-active: var(--general-color) !important;                     /* Button color on 'click' */
+
     --in-content-primary-button-background: var(--general-color) !important;                    /* Primary button color */
     --in-content-primary-button-background-hover: var(--button-hover-bgcolor) !important;       /* Primary button color on 'hover' */
     --in-content-primary-button-background-active: var(--button-active-bgcolor) !important;     /* Primary button color on 'active' */
-    
-    --link-color: var(--general-color) !important;                                              /* Color de links */
-    --link-color-hover: var(--aqua) !important;                                                 /* Color de links :hover */
-    --link-color-active: var(--purple) !important;                                              /* Color de links :active */
-    --link-color-visited: var(--purple) !important;                                             /* Color de links :visited */
+
+    --link-color: var(--general-color) !important;                                              /* Links color */
+    --link-color-hover: var(--blue) !important;                                                 /* Links color on 'hover' */
+    --link-color-active: var(--purple) !important;                                              /* Links color on 'active' */
+    --link-color-visited: var(--general-color) !important;                                      /* Links color on 'visited' */
     
     --gradiente-casual: linear-gradient(to right,                                               /* Gradiente personal about:preferences */
       var(--in-content-box-border-color) 90%, transparent ) !important;
