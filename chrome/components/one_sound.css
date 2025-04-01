@@ -45,8 +45,9 @@
 
 /* Hide sound button when tab is pending or loading */
 
-.tabbrowser-tab:is([pending],[busy]):hover .tab-audio-button {
+.tabbrowser-tab:is([pending],[busy]):hover :is(.tab-audio-button, .tab-icon-overlay) {
     opacity: 0 !important;
+    pointer-events: none !important;
 }
 
 /* General style for sound button */

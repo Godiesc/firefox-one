@@ -878,6 +878,14 @@
         /* used for normal tabs */
         min-width: var(--vertical-elements-width) !important;
     }
+    
+    /* Space between tabs */
+    
+    #tabbrowser-tabs[orient="vertical"] {
+        & .tabbrowser-tab {
+            padding-block-end: 0px !important;
+        }
+    }
 
     /* Width of tabs when sidebar isn't expanded */
     

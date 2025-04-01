@@ -50,17 +50,17 @@
     
     &:not([expanded]) {
         & .tab-close-button {
-            width: 14px !important;
-            height: 14px !important;
-            padding: 2px !important;
-            fill: var(--general-color) !important;
-            background: var(--toolbar-bgcolor) !important;
-            outline-color: var(--tab-selected-outline-color) !important;
+            width: 12px !important;
+            height: 12px !important;
+            padding: 1px !important;
+            background: var(--lwt-tab-text) !important;
+            fill: var(--contrast-color) !important;
+            outline-color: transparent !important;
+            inset-inline-start: 4px !important;
             
             &:hover {
-                background: var(--lwt-tab-text) !important;
                 fill: var(--contrast-color) !important;
-                outline-color: var(--lwt-tab-text) !important;
+                background: var(--general-color) !important;
             }
         }
     }
