@@ -71,7 +71,7 @@
   --gradient-colors: #d02f85 0%, #b336fc 8%, #3567fd 40%, #4e7afd 60%,#4e89fd 70%, #d02f85 100%;  /* For - selected_tab_gradient_border - config */
   
   --uc-sidebar-width: 52px;                                                                       /* Used for tree-tabs config, width sidebar not 'hover' */
-  --uc-sidebar-hover-width: 204px;                                                                /* Used for tree-tabs config, width sidebar on 'hover' */
+  --uc-sidebar-hover-width: 208px;                                                                /* Used for tree-tabs config, width sidebar on 'hover' */
   
 }
 

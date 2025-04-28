@@ -228,29 +228,87 @@ tab[selected] .tab-background{
     z-index: 1 !important;
 }
 
-/* Botón "Open Newtab" */
-
-#tabs-newtab-button, #TabsToolbar #new-tab-button {
-    padding-block: var(--tab-block-margin-personal) !important;
-    padding-inline-start: 6px !important;
-    fill: var(--lwt-tab-text) !important;
+/* _______________________ New Tab button _______________________
+   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+#tabbrowser-tabs {
+    #tabs-newtab-button, 
+    #new-tab-button,
+    #vertical-tabs-newtab-button {
+        --toolbarbutton-hover-background: transparent !important;
+        --toolbarbutton-active-background: transparent !important;
+        
+        & .toolbarbutton-icon {
+            width: calc(2 * var(--toolbarbutton-inner-padding) + 14px) !important;
+            height: calc(2 * var(--toolbarbutton-inner-padding) + 14px) !important;
+            z-index: 1 !important;
+        }
+        
+        &::before {
+            content: ''; position: absolute; 
+            background-color: color-mix(in srgb, var(--lwt-tab-text) 12%, var(--lwt-frame));
+            min-height: calc(var(--tab-height-personal) - 8px);
+            width: calc(var(--tab-height-personal) - 8px);
+            border-radius: 50%;
+        }
+        
+        &:hover::before {
+            background-color: var(--toolbarbutton-hover-personal) !important;
+            transform: scale(1.1,1.1) !important;
+        }
+    }
 }
 
-#TabsToolbar #tabs-newtab-button image:not(.menu-iconic-icon), #TabsToolbar #new-tab-button image:not(.menu-iconic-icon) {
-    background-color: color-mix(in srgb, var(--lwt-tab-text) 12%, var(--lwt-frame)) !important;
-    padding-block: var(--tab-block-margin-personal) !important;
-    padding: 4px !important;
-    max-height: 20px !important;
-    min-height: 20px !important;
-    max-width: 20px !important;
-    min-width: 20px !important;
-    border-radius: 50% !important;
-    transition: none !important;
+/* Width when sidebar isn't expanded */    
+#tabbrowser-tabs[orient="vertical"]:not([expanded]) {
+    & #tabs-newtab-button,
+    & #vertical-tabs-newtab-button {
+        &:not([expanded]) {
+            width: var(--my-vertical-elements-width) !important;
+        }
+    }
 }
 
-#TabsToolbar #tabs-newtab-button:hover image:not(.menu-iconic-icon), #TabsToolbar #new-tab-button:hover image:not(.menu-iconic-icon) {
-    background: var(--toolbarbutton-active-background) !important;
-    transform: scale(1.1,1.1) !important;
+#tabbrowser-tabs[orient="vertical"] {
+    #tabs-newtab-button,
+    #vertical-tabs-newtab-button {
+        
+        & .toolbarbutton-icon {
+            width: initial !important;
+            height: initial !important;
+            z-index: 1 !important;
+        }
+        
+        --tab-hover-background-color: transparent !important;
+        margin-inline: 0px !important;
+
+        &::before {
+            background-color: transparent;
+            min-height: calc(var(--tab-collapsed-background-width) - 12px);
+            width: calc(var(--tab-collapsed-background-width) - 3px);
+            border-radius: 3px !important;
+        }
+    }
+}
+
+/* When Sidebar is expanded */
+sidebar-main:is([expanded]) {
+    #tabbrowser-tabs[orient="vertical"] {
+        & #tabs-newtab-button,
+        & #vertical-tabs-newtab-button {
+            --tab-icon-end-margin: 5.5px !important;
+            padding-inline-start: calc(var(--my-vertical-elements-width)/2 - 8px) !important;
+            border-radius: 0px !important;
+
+            &::before {
+                inset-inline-start: 16px !important;
+                width: calc(100% - 32px) !important;
+            }
+
+            & .toolbarbutton-text {
+                mask: linear-gradient(to right, #e66465 calc(100% -  26px), #00000000 calc(100% - var(--my-vertical-elements-width)/2 + 8px)) !important;
+            }
+        }
+    }
 }
 
 /* Favicon de pagina newtab */
@@ -415,17 +473,17 @@ tab-group:not([collapsed]) .tab-group-label::before {
     box-shadow: none !important;
 }
 
-/* Size and color of the 'dot' when a tab needs attention */
+/* ___________ Size and color of the 'dot' when a tab needs attention */
 
 .tabbrowser-tab > .tab-stack > .tab-content[pinned][titlechanged]:not([selected="true"]) {
-    background-image: radial-gradient(circle, var(--attention-dot-color), var(--attention-dot-color) 1px, transparent 3px) !important;
+    background-image: radial-gradient(circle, var(--attention-dot-color), var(--attention-dot-color) 2px, transparent 2px) !important;
     background-position: center bottom !important;
     background-size: 8px 8px !important;
 }
 
-.tabbrowser-tab > .tab-stack > .tab-content[titlechanged]:not([selected="true"]) {
-    background-position: center bottom !important;
-    background-size: 6px 6px !important;
+#tabbrowser-tabs[orient="vertical"] .tabbrowser-tab:not([pinned]) > .tab-stack > .tab-content[titlechanged]:not([selected]) {
+    background-position-y: bottom 1px !important;
+    background-position-x: calc(var(--my-vertical-elements-width)/2 - 2px) !important;
 }
 
 /* Tab Preview */

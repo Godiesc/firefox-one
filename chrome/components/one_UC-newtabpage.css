@@ -257,7 +257,8 @@
     
     .logo{
         background: url("../icons/foxlogo.svg") no-repeat center !important;
-        background-size: 64px !important;
+        background-size: 100% !important;
+        display: var(--logo-wordmark-display) !important;
         -moz-context-properties: fill !important;
         fill: var(--general-color) !important;
         transform: scale(0.8) !important;
@@ -269,11 +270,13 @@
         display: var(--logo-wordmark-display) !important;
     }
 
-    .logo-and-wordmark {
-        Opacity: var(--logo-wordmark-visibility) !important;
-        display: var(--logo-wordmark-display) !important;
-        margin-bottom: 10px !important;
+    @media (height < 700px) {
+        body:not(.inline-onboarding) .fixed-search .search-wrapper .logo-and-wordmark {
+            Opacity: var(--logo-wordmark-visibility) !important;
+            display: var(--logo-wordmark-display) !important;
+            margin-bottom: 10px !important;
         }
+    }
 
     .promo-cta .button {
         color: #cacaca !important; 
@@ -527,7 +530,6 @@
         background: transparent !important;
         opacity: var(--searchbar-on-off, 1) !important;
         display: var(--searchbar-display, flex) !important;
-        margin-top: 40px !important;
         outline: none !important;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important;
     }
@@ -640,6 +642,25 @@ browser[primary="true"][tabDialogShowing="true"],
         }
     }
     
+    .layout-variant-a, .layout-variant-b {
+        & .top-site-outer {
+            margin-block: 0px !important;
+            margin-inline: 8px !important;
+
+            /* Size favicon */
+            & .tile .icon-wrapper {
+                --size-item-large: 48px !important;
+            }
+            
+            /* Size favicon when their size is smaller */
+            & .default-icon {
+                background-size: var(--size-item-large) !important;
+                height:var(--size-item-large) !important;
+                width: var(--size-item-large) !important;
+            }
+        }
+    }
+    
     .top-sites-list {
         
         /* Pinned Site Colors (Small Background) */
@@ -670,18 +691,18 @@ browser[primary="true"][tabDialogShowing="true"],
 
         .title-label  {
             padding: 0px !important;
-            padding-inline: 4px !important;
+            padding-inline: 8px !important;
             font-size: 14px !important;
             margin-top: -30px !important;
         }
 
         /* Title label just in one line */
-
-        .top-site-outer:hover .title:not(.sponsored) .title-label {
+        
+        .top-site-outer .title:not(.sponsored) .title-label {
             -webkit-line-clamp: unset !important;
         }
-
-        .top-site-outer:is(:hover,:focus-within) span[dir="auto"] {
+        
+        .top-site-outer span[dir="auto"] {
             text-wrap-mode: nowrap !important;
         }
 

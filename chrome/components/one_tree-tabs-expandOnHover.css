@@ -164,12 +164,7 @@
         :root {
             --first-last-button-width: 30px !important;
             --my-expand-sidebar-width: var(--uc-sidebar-hover-width);
-            --my-vertical-elements-width: calc(var(--my-vertical-toolbar-width) - 1px) !important;
-        }
-
-        :root {
-            --my-expand-sidebar-width: var(--uc-sidebar-hover-width);
-            --my-vertical-elements-width: calc(var(--my-vertical-toolbar-width) - 1px) !important;
+            /*--my-vertical-elements-width: calc(var(--my-vertical-toolbar-width) - 1px) !important;/**/
         }
 
         /* Keep sidebar expanded when some contextual menus are open */
@@ -200,7 +195,7 @@
             sidebar-main{
                 background: inherit;
                 overflow: hidden;
-                min-width: var(--vertical-elements-width);
+                min-width: var(--my-vertical-elements-width);
                 transition: min-width var(--uc-tabs-hide-animation-duration) ease-out var(--uc-tabs-hide-animation-delay);
                 border-inline: 0.01px solid var(--my-content-border-color);
                 border-inline-width: 0 0.01px;
@@ -227,45 +222,18 @@
                 min-width: var(--uc-sidebar-hover-width);
                 transition-delay: 0ms !important;
                 &[positionend]{
-                    transform: translateX(calc(var(--vertical-elements-width) - 100%));
+                    transform: translateX(calc(var(--my-vertical-elements-width) - 100%));
                 }
-            }
-        }
-        
-        /* Tabs container width */
-
-        :root:has(sidebar-main:is([expanded])) #tabbrowser-tabs[orient="vertical"] {
-            /* Used for pinned tabs */
-            --tab-collapsed-width: var(--my-vertical-toolbar-width) !important;
-            /* used for normal tabs */
-            min-width: var(--my-vertical-toolbar-width) !important;
-        }
-
-        /* Remove unwanted margin of pinned tabs when Sidebar is expanded */
-
-        :root:has(sidebar-main:is([expanded])) #tabbrowser-tabs[orient="vertical"] {
-            & #vertical-pinned-tabs-container {
-                padding-inline: 0px 0px !important;
             }
         }
 
         /* _______________ Pinned tabs _______________ */
-        
-        #vertical-pinned-tabs-container {
-            #tabbrowser-tabs[expanded] > & {
-                & .tab-background {
-                    --tab-pinned-margin-inline-expanded: 11px;
-                    padding-inline: 12px !important;
-                }
-            }
-        }
 
         /* Size and margins */
         :root:has(sidebar-main:is([expanded])) #tabbrowser-tabs[orient="vertical"] #vertical-pinned-tabs-container {
             --my-expanded-pinned-tabs: calc(var(--my-vertical-toolbar-width) - 8px) !important;
             min-width: var(--my-expand-sidebar-width) !important;
             grid-template-columns: repeat(auto-fit, minmax(var(--my-expanded-pinned-tabs), var(--my-expanded-pinned-tabs))) !important;
-            column-gap: 0px !important;
         }
 
         /* The selected pinned tab is visible when the sidebar is collapsed - limited to 3 rows */
@@ -287,30 +255,6 @@
             }
 
             & .close-icon { opacity:  0 !important; } /* Hide close button in selected tab - for touch density */
-            
-            /* Hide newtab label */
-            
-            #tabbrowser-arrowscrollbox[orient="vertical"] > #tabbrowser-arrowscrollbox-periphery > #tabs-newtab-button, #vertical-tabs-newtab-button {
-                & > .toolbarbutton-text {
-                    opacity: 0 !important;
-                }
-            }
-        }
-
-        /* _____________ New style for 'tools and extensions' buttons */
-
-        /* Buttons collapsed when not 'hover'  */
-        .actions-list[orientation="horizontal"]:not(:hover) .expanded-button:not(:first-child){
-            opacity: 0 !important;
-            height: 0px !important;
-            visibility: collapse !important;
-            transition-duration: 0ms !important;
-        }
-        .actions-list[orientation="horizontal"]:hover .expanded-button:not(:first-child){
-            opacity: 1 !important;
-            visibility: visible !important;
-            transition: visibility 0.2s ease, opacity 0.2s ease !important;
-            transition-delay: 200ms !important;
         }
     }
 }
