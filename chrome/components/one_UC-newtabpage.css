@@ -645,11 +645,10 @@ browser[primary="true"][tabDialogShowing="true"],
     .layout-variant-a, .layout-variant-b {
         & .top-site-outer {
             margin-block: 0px !important;
-            margin-inline: 8px !important;
 
             /* Size favicon */
             & .tile .icon-wrapper {
-                --size-item-large: 48px !important;
+                --size-item-large: 40px !important;
             }
             
             /* Size favicon when their size is smaller */
@@ -680,7 +679,7 @@ browser[primary="true"][tabDialogShowing="true"],
         }
 
         /* Pin icon removed */
-        .title.has-icon.pinned .icon.icon-pin-small { 
+        .tile .icon.icon-pin-small { 
             display: none !important; 
         }
 
@@ -715,7 +714,6 @@ browser[primary="true"][tabDialogShowing="true"],
 
         /* size and background color */
         .top-site-outer {
-            margin-inline: 8px !important;
             margin-block: 0px !important;
             border-radius: 0px !important;
             background-color: transparent !important;
@@ -868,9 +866,8 @@ browser[primary="true"][tabDialogShowing="true"],
         background-image: url("../icons/more.svg") !important;
         background-color: transparent !important;
         border-radius: 0px 12px !important;
-        margin-inline-end: -5px !important;
-        margin-block-start: 20px !important;
-        margin-inline-start: -10px !important;
+        margin-inline-end: 10px !important;
+        margin-block-start: -12px !important;
         transition: opacity 200ms;
     }
     
