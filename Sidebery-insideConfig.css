@@ -130,6 +130,14 @@ body:not(:hover) .Tab .title {
 		background: transparent;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(var(--my-tabs-pinned-width), var(--my-tabs-pinned-width))) !important;
+
+		.close {
+			display: none;
+		}
+}
+
+.PinnedTabsBar::after {
+background: transparent;
 }
 
 /* Pinned selected tab always showed */
@@ -153,7 +161,7 @@ body:not(:hover) .PinnedTabsBar .tab-wrapper:has(.Tab[data-active="true"]) {
 
 .TabsPanel.panel>.ScrollBox .Tab {
     margin-inline: 0 ;
-    padding-inline: 8px 4px !important;
+    padding-inline: 8px 8px !important;
 }
 
 /* Remove indent tab [0] */
