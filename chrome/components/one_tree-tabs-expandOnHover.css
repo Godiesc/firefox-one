@@ -108,13 +108,15 @@
         }
 
         #sidebar-header,
-        #sidebar{
+        #sidebar,
+        #sidebar-box> .sidebar-browser-stack > #sidebar {
             transition: min-width var(--uc-autohide-transition-duration) var(--uc-autohide-transition-type) var(--uc-autohide-sidebar-delay) !important;
             min-width: var(--uc-sidebar-width) !important;
             will-change: min-width;
         }
         #sidebar-box:hover > #sidebar-header,
-        #sidebar-box:hover > #sidebar{
+        #sidebar-box:hover > #sidebar,
+        #sidebar-box:hover > .sidebar-browser-stack > #sidebar{
             z-index: 10000 !important;
             min-width: var(--uc-sidebar-hover-width) !important;
             transition-delay: 0ms !important;

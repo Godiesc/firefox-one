@@ -121,7 +121,7 @@
 /* Padding top para hacer espacio para la fila del Label menú */
     
     :root:not([chromehidden~="toolbar"])[sizemode="maximized"] #appMenu-popup>panelmultiview>box>box>panelview {
-        padding-top: calc(var(--tab-height-personal) - 4px) !important;
+        padding-top: calc(var(--tab-height-personal) - 0px) !important;
     }
     
 /* Margin top para subir el menú [open] */
@@ -130,10 +130,10 @@
         --removed-panel-shadow-margin: 0px !important;
         --menu-plus-label-width: 72px !important;
         appearance: none !important;
-        margin-top: calc(-4px - var(--tab-height-personal)) !important;
+        margin-top: calc(-7px - var(--tab-height-personal)) !important;
         padding-inline-start: 4px !important;
         clip-path: polygon(0% 0%, 0% 100%, 1% 53%, 0 7px, calc(var(--menu-plus-label-width) + 4px) 7px,
-               calc(var(--menu-plus-label-width) + 4px) calc(var(--tab-height-personal) + 0px), 0 calc(var(--tab-height-personal) + 0px), 0 100%, 100% 100%, 100% 0%);
+               calc(var(--menu-plus-label-width) + 4px) calc(var(--tab-height-personal) + 4px), 0 calc(var(--tab-height-personal) + 4px), 0 100%, 100% 100%, 100% 0%);
         transition: none !important;
         --arrowpanel-menuitem-padding: 6px !important;
         --arrowpanel-border-radius: 8px !important;

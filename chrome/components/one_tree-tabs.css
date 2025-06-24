@@ -372,7 +372,7 @@
 
                 :root:not([chromehidden~="toolbar"],[invisibleBMS])[sizemode="maximized"] #appMenu-popup {
                     --menu-plus-label-width: 88px !important;
-                    --button-height-personal: 32px !important;
+                    --button-height-personal: 34px !important;
                     margin-top: calc(-3px - var(--button-height-personal)) !important;
                     clip-path: polygon(0% 0%, 0% 100%, 1% 53%, 0 10px, var(--menu-plus-label-width) 10px,
                         var(--menu-plus-label-width) var(--button-height-personal), 0 var(--button-height-personal), 0 100%, 100% 100%, 100% 0%);

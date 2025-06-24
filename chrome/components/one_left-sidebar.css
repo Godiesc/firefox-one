@@ -577,7 +577,7 @@
     
     :root:not([chromehidden~="toolbar"],[invisibleBMS])[sizemode="maximized"] #appMenu-popup {
         --menu-plus-label-width: 94px !important;
-        --button-height-personal: 35px !important;
+        --button-height-personal: 37px !important;
         --arrowpanel-border-radius: 9px !important;
         margin-top: calc(-7px - var(--button-height-personal)) !important;
         clip-path: polygon(0% 0%, 0% 100%, 1% 53%, 0 13px, var(--menu-plus-label-width) 13px,
@@ -1030,11 +1030,16 @@
         min-width: var(--my-vertical-elements-width) !important;
     }
     
-    /* Space between tabs */
-    
+    /* Remove unwanted space between tabs tabs */
+
     #tabbrowser-tabs[orient="vertical"] {
-        & .tabbrowser-tab {
-            padding-block-end: 0px !important;
+        --tab-height-with-margin-padding: var(--tab-min-height) !important;                     /* Remove unwanted tab extra height for pinned tabs */
+        & :is(#vertical-pinned-tabs-container, #pinned-tabs-container) .tabbrowser-tab {        /* Pinned tabs - added nightly change */
+            padding-block: 0px !important;
+        }
+
+        & .tabbrowser-tab/*:not(:nth-child(1 of :not([hidden], [pinned])))/**/ {      /* Normal tabs */
+            padding-block: 1px !important;
         }
     }
 

@@ -1,32 +1,36 @@
 /* Source file made available under Mozilla Public License v. 2.0 See the main repository for updates as well as full license text. 
    https://github.com/Godiesc/firefox-one */
 
-/* Borde menús desplegables */
+/* Arrowpanel, popup menus & panels styles */
 
-slot {
-    --panel-shadow-margin: var(--removed-panel-shadow-margin, inherit) !important;
-    border-color: var(--border-contrast-color) !important;
-    border-radius: var(--arrowpanel-border-radius) !important;
-    /* Borde para anuncios emergentes, por ejemplo al instalar un complemento */
-    box-shadow: inset 0px 0 0 1px var(--arrowpanel-border-color) !important;
+:is(menupopup, panel):where([type="arrow"]) {
+    --my-background-image-popup: radial-gradient( 100% 91.38% at 50% 99.62%,
+                           color-mix(in srgb, var(--general-color) 10%, transparent) 0%,
+                           var(--arrowpanel-background));
+    --panel-background: var(--my-background-image-popup), var(--noise-urlbar-personal),
+                        var(--noise-urlbar-personal) , var(--arrowpanel-background) !important;
+    --panel-border-color: var(--arrowpanel-border-color) !important;
 }
 
-/* Remove unwanted styles applied to the tab bar _^ */
-
-:is(scrollbox[part="scrollbox"]) slot{
-    box-shadow: none !important;
+panel {
+    --panel-shadow: 0 0 0 1px var(--contrast-color) !important;
+    
+    @media (prefers-color-scheme: light) {
+        --contrast-color: var(--border-contrast-color) !important;
+    }
 }
 
-panelmultiview {    
-    background-image: var(--noise-urlbar-personal) !important;
-    border: 1px solid var(--arrowpanel-border-color) !important;
-    border-radius: var(--arrowpanel-border-radius) !important;
+/* Remove unwanted style for radiobutton */
+
+.toggle-button {
+    --toggle-dot-background-color-on-pressed: var(--arrowpanel-background) !important;
 }
 
 /* Remove unwanted shadow of some dropdown menus [Open] */
 
 .panel-no-padding[type="arrow"] {
-    margin-inline: -3px !important;
+    margin-block: calc(-1 * var(--panel-shadow-margin) + 1px) !important;
+    margin-inline: -4px !important;
 }
 
 /* Color fondo :hover por los diferentes items de menús principales */
@@ -75,6 +79,7 @@ menuitem.subviewbutton:not([disabled])[_moz-menuactive],
 
 toolbarseparator {
     border-color: var(--panel-separator-color) !important;
+    margin-inline-end: 0px !important;
 }
 
 #PlacesToolbarItems toolbarseparator {

@@ -1,7 +1,7 @@
 /* Source file made available under Mozilla Public License v. 2.0 See the main repository for updates as well as full license text. 
    https://github.com/Godiesc/firefox-one */
 
-/* Menú contextual */
+/* Menu padding */
 
 menupopup {
     --panel-padding: 4px 0px !important;
@@ -9,7 +9,7 @@ menupopup {
 
 menupopup > menuitem, menupopup > menu {
     appearance: none !important;
-    padding-block: 0.4em !important;
+    padding-block: 4px !important;
     border-radius: 0px !important;
 }
 
@@ -19,7 +19,8 @@ menupopup > menuitem, menupopup > menu {
     padding: 0 6px !important;
 }
 
-/* separador de items */
+/* Separator */
+
 
 menuseparator {
     padding-inline-end: 0 !important;
@@ -39,46 +40,50 @@ menuseparator {
     display: flex !important;
 }
 
-/* Márgenes menú y menú desplegable del menú */
+/* 'Menu inside menu' margin */
 
-menupopup:not(#PlacesToolbar) menupopup {
+menupopup menupopup {
     appearance: none !important;
     margin-block-start: -6px !important;
-    margin-inline-start: -10px !important;
-}
-
-#permission-popup menupopup {
-    appearance: none !important;
-    margin-block-start: -3px !important;
-}
-
-#PlacesToolbar menupopup menupopup {
-    appearance: none !important;
-    margin-block-start: -9px !important;
     margin-inline-start: -8px !important;
 }
 
 /* General Styles */
 
-menupopup:not(.in-menulist), panel:not(.in-menulist) {
+menupopup:not(.in-menulist), 
+panel:not(.in-menulist,.panel-no-padding) {
     --panel-shadow-margin: 1px !important;  /* 1px to draw the external border */
-    --panel-border-radius: 8px !important;  /* Roundness */
+    --panel-border-radius: var(--arrowpanel-border-radius) !important;  /* Roundness */
+    --panel-border-color: var(--arrowpanel-border-color) !important;
 }
 
-menupopup:not(.in-menulist) {    
-    --panel-background: var(--noise-urlbar-personal, transparent), /* Ruido don't apply for rare reason */
-        linear-gradient(var(--arrowpanel-background), var(--arrowpanel-background)) !important;
-    --panel-border-color: var(--arrowpanel-border-color) !important;
-    
-    box-shadow: inset 0px 0px 0 1px var(--border-contrast-color, #09080d) !important;
-    border-radius: 8px !important;
+.menupopup-arrowscrollbox {
+    border-image: var(--my-border-image, none) !important;
+    background-image: var(--my-background-scroll, var(--my-background-image1, Field)) !important;
+    background-repeat: var(--my-background-repeat) !important;
+    background-size: var(--my-background-size) !important;
+    background-position: var(--my-background-position) !important;
+    background-color: var(--my-background-color, Field) !important;
+}
+
+menupopup:not(.in-menulist) {
+    --panel-background: var(--arrowpanel-background) !important;
+    --panel-shadow: 0 0 0 1px var(--border-contrast-color) !important;
+    --my-background-image1:                                                         /* Soft gradient background - needs to be 1 */
+        radial-gradient( 100% 91.38% at 50% 99.62%,
+        color-mix(in srgb, var(--general-color) 10%, transparent) 0%,
+        var(--arrowpanel-background)) !important;
+    --my-background-repeat: no-repeat !important;
+    --my-background-size: auto auto !important;
+    --my-background-position: center center;
+    --my-background-color: var(--arrowpanel-background) !important;
 
     /* Font color in Contextual menus */
 
     &> menuitem:not([disabled="true"]),
         &> menu {
             appearance: none !important;
-            color: var(--arrowpanel-color, var(--lwt-tab-text)) !important;
+            color: var(--arrowpanel-color, var(--tab-selected-textcolor)) !important;
     }
 
     /* Color to 'hover' items */
@@ -99,7 +104,6 @@ menupopup:not(.in-menulist) {
 
     &> menuitem:is([disabled="true"]),
         &> menu:is([disabled="true"]) {
-            /*display: none !important;*/
             appearance: none !important;
             background-color: transparent !important;
     }
@@ -127,41 +131,73 @@ menupopup:not(.in-menulist) {
     }
 }
 
-/* Necesario para quitar glitch indeseado al mover el mouse sobre items inhabilitados 
+/* __________________________ Makes context navigation buttons appears as normal textual menuitems __________________________ */
 
-#context-navigation > menuitem:not([selected="true"]){
-    appearance: none !important;
-    background-color: transparent !important;
-}*/
+#context-navigation { flex-direction: column !important; }
 
-/* Makes context navigation buttons appears as normal textual menuitems */
+@media -moz-pref("firefoxone.icon.disabled") {
 
-#context-navigation {
-    -moz-box-orient: vertical;
-    flex-direction: column !important;
-    color: var(--arrowpanel-color) !important;
+    #context-navigation > .menuitem-iconic > .menu-icon { display: none !important; }
+
+    #context-navigation > menuitem {
+        appearance: none !important;
+        padding-block: 0.4em !important;
+        padding-inline-start: 1em !important;
+        justify-content: flex-start !important;
+        -moz-box-pack: start !important;
+        width: auto !important;
+        border-radius: 0px !important;
+    }
 }
 
-#context-navigation > menuitem > .menu-iconic-left {
-    display: none
+#context-navigation > menuitem[_moz-menuactive="true"] {
+    &:not([disabled]) {
+        background-color: var(--button-hover-bgcolor) !important;
+        color: var(--arrowpanel-color, var(--tab-selected-textcolor)) !important;
+    }
+    &:is([disabled]) {
+        background: transparent !important;
+    }
 }
 
-#context-navigation > menuitem {
-    padding-block: 0.4em !important;
-    padding-inline-start: 1em;
-    justify-content: flex-start !important;
-    -moz-box-pack: start !important;
-    width: auto !important;
-    border-radius: 0px !important;
-}
-
-#context-navigation > menuitem[_moz-menuactive="true"]:not([disabled]) {
-    background: var(--button-bgcolor) !important;
-    color: var(--arrowpanel-color) !important;
-}
-
-#context-navigation > menuitem::before {
+#context-navigation > menuitem::after {
     content: attr(aria-label);
+}
+
+/* 'back-forward-reload-addBookmark' buttons size */
+
+@media not -moz-pref("firefoxone.icon.disabled") {
+
+    #context-navigation > .menuitem-iconic {
+        & .menu-icon {
+        appearance: none !important;
+        width: 30px !important;
+        height: 26px !important;
+        padding-block: 0px !important;
+        margin-block: 0px !important;
+        }
+        
+        &:not([disabled]) {
+            color: var(--arrowpanel-color, var(--tab-selected-textcolor)) !important; /* used when font color isn't white/black */
+        }
+    }
+    
+    /* For RTL languages */    
+    #context-back:-moz-locale-dir(rtl), 
+    #context-forward:-moz-locale-dir(rtl), 
+    #context-reload:-moz-locale-dir(rtl) {
+        transform: none !important;
+    }
+
+    #context-navigation > menuitem {
+        appearance: none !important;
+        padding-block: 0.0em !important;
+        padding-inline-start: 6px !important;
+        justify-content: flex-start !important;
+        -moz-box-pack: start !important;
+        width: auto !important;
+        border-radius: 0px !important;
+    }
 }
 
 /* #################################### LINUX ####################################### */
