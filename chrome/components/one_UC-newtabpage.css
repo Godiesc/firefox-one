@@ -240,34 +240,22 @@
 
     .wallpaper-attribution { display: none !important; }
     
-    /* Wallpaper default brightness */
-
-    body::before {
-        position: fixed;
-        content: "";
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background-color: color-mix(in srgb, var(--newtab-background-color), transparent var(--brightness-wallpaper));
-        pointer-events: none;
-    }
-    
 /* _____________________________________________________ Logo & Wordmark ____________________________________________________ */
     
-    .logo{
+    .logo {
         background: url("../icons/foxlogo.svg") no-repeat center !important;
-        background-size: 100% !important;
-        display: var(--logo-wordmark-display) !important;
+        background-size: 100% 100% !important;
         -moz-context-properties: fill !important;
         fill: var(--general-color) !important;
-        transform: scale(0.8) !important;
-        }
+    }
 
     .wordmark {
         background-image: url("../icons/firefox-wordmark.svg") !important;
-        Opacity: var(--logo-wordmark-visibility) !important;
+    }
+    
+    .logo-and-wordmark {
         display: var(--logo-wordmark-display) !important;
+        Opacity: var(--logo-wordmark-visibility) !important;
     }
 
     @media (height < 700px) {
@@ -294,6 +282,10 @@
             margin-inline: 30px !important;  
         }
         
+        .has-recommended-stories .logo-and-wordmark {
+            inset-block-start: unset !important;
+        }
+        
         .search-wrapper {
             display: var(--orientation-display) !important;
         }
@@ -307,9 +299,9 @@
     
 /* __________________________________________________________________________________________________________________________ */
     
-    /* Remove scrollbar */
+    /* Remove scrollbar 
 
-    *{scrollbar-width: none !important }
+    *{scrollbar-width: none !important }*/
 
     /* Colors when editing a pinned site */
 
@@ -364,16 +356,16 @@
     }
 
     /* 'Customize' button */
-
-    .icon.icon-settings {
-        background-image: url("../icons/edit.svg") !important; 
-        opacity: 0.5 !important;
-        transition: none !important;
-    }
     
-    .personalize-button:is(:hover, :active) {
-        background-color: transparent !important;
-        opacity: 1 !important;
+    .personalize-button {
+        img {content: url("../icons/edit.svg") !important; }
+        
+        &:hover {
+            background-color: var(--newtab-element-secondary-hover-color) !important;
+        }
+        &:active {
+            background-color: var(--newtab-element-secondary-active-color) !important;
+        }
     }
 
     /* Colors of the 'Close' button */
@@ -400,8 +392,15 @@
         backdrop-filter: var(--personal-blur) !important;
     }
     
-    .weatherCard:hover {
-        background-color: light-dark(var(--newtab-pinnedsites-background), var(--newtab-pinnedsites-background)) !important;
+    .weather {
+        inset-block-start: calc(var(--space-xxlarge) + 6px) !important;
+    }
+    
+    .weatherCard {
+        margin-block-end: var(--space-xxlarge) !important;
+        &:hover {
+            background-color: light-dark(var(--newtab-pinnedsites-background), var(--newtab-pinnedsites-background)) !important;
+        }
     }
     
     .weatherCard :is(.weatherInfoLink, .weatherButtonContextMenuWrapper):hover {
@@ -428,6 +427,10 @@
         background-color: var(--button-hover-bgcolor) !important;
         top: 0px !important;
         height: 100% !important;
+    }
+    
+    .weatherSponsorText {
+        display: none !important;
     }
     
 /* _______________________________ Colors of the sliding sidebar used to customize the NewTab _______________________________ */
@@ -580,87 +583,64 @@
         transition-delay: 0.1s, 0ms !important;
         }
     }
-    
-.search-inner-wrapper:is(:hover){
-    border-radius: 34px !important;
+
+    .search-inner-wrapper:is(:hover){
+        border-radius: 34px !important;
     }
-    
-.search-inner-wrapper:not(:focus) input, .search-wrapper:not(:active) input:focus{
-    background-color: var(--newtab-pinnedsites-background) !important;
-    backdrop-filter: var(--personal-blur) !important;
-    /*filter: saturate(140%) !important;/*/
-    border-radius: 34px !important;
+
+    .search-inner-wrapper:not(:focus) input, .search-wrapper:not(:active) input:focus{
+        background-color: var(--newtab-pinnedsites-background) !important;
+        backdrop-filter: var(--personal-blur) !important;
+        /*filter: saturate(140%) !important;/*/
+        border-radius: 34px !important;
     }
-    
-.search-handoff-button{
-    border-color: transparent !important;
-    border-radius: 34px !important;
-    box-shadow: none !important; 
+
+    .search-handoff-button{
+        border-color: transparent !important;
+        border-radius: 34px !important;
+        box-shadow: none !important; 
     }
-    
-/* Animación clic search-bar */    
-.search-wrapper .search-inner-wrapper input, .search-wrapper input{
-    outline: 2px solid transparent !important;
-    outline-offset: -2px !important;
-    border: transparent !important;
-    margin-left: 1px !important;
-    transition: background-color 0.2s ease-out, outline 0.2s ease-out;
+
+    /* Animación clic search-bar */    
+    .search-wrapper .search-inner-wrapper input, .search-wrapper input{
+        outline: 2px solid transparent !important;
+        outline-offset: -2px !important;
+        border: transparent !important;
+        margin-left: 1px !important;
+        transition: background-color 0.2s ease-out, outline 0.2s ease-out;
     }
-    
-.search-wrapper .search-inner-wrapper:is(:active,:focus-within) input, .search-wrapper input:focus {
-    outline: 2px solid var(--button-active-bgcolor) !important;
+
+    .search-wrapper .search-inner-wrapper:is(:active,:focus-within) input, .search-wrapper input:focus {
+        outline: 2px solid var(--button-active-bgcolor) !important;
     }
-    
-.search-wrapper .search-inner-wrapper:is(:hover,:focus-within) input, .search-wrapper input:hover {
-    background-color: color-mix(in srgb, var(--newtab-pinnedsites-background) 90%, var(--newtab-wordmark-color)) !important;
-    transition: background-color 0.2s ease-out, outline 0.2s ease-out;
-    transition-delay: 0.1s, 0ms !important;
+
+    .search-wrapper .search-inner-wrapper:is(:hover,:focus-within) input, .search-wrapper input:hover {
+        background-color: color-mix(in srgb, var(--newtab-pinnedsites-background) 90%, var(--newtab-wordmark-color)) !important;
+        transition: background-color 0.2s ease-out, outline 0.2s ease-out;
+        transition-delay: 0.1s, 0ms !important;
     }
-/* ------------------------------- */
-    
-.search-wrapper .search-button:focus, .search-wrapper .search-button:hover {
-    fill: white !important;
+    /* ------------------------------- */
+
+    .search-wrapper .search-button:focus, .search-wrapper .search-button:hover {
+        fill: white !important;
     }
-    
-.search-wrapper .search-inner-wrapper:active input,
-.search-wrapper input:focus {
-    box-shadow: none !important;
+
+    .search-wrapper .search-inner-wrapper:active input,
+    .search-wrapper input:focus {
+        box-shadow: none !important;
     }
-    
-browser[primary="true"][tabDialogShowing="true"],
-#main-window[window-modal-open="true"] > body > #browser{
-    filter: blur(10px)
+
+    browser[primary="true"][tabDialogShowing="true"],
+    #main-window[window-modal-open="true"] > body > #browser{
+        filter: blur(10px)
     }
 
 /* _____________________________________________________ Pinned sites ______________________________________________________ */
     
     /* Margin when 'News' are actived */
     
-    .has-weather.has-search.layout-variant-b.has-recommended-stories.has-sections-grid {
-        .top-sites-list {
-            margin-block-start: 40px !important;
-        }
-    }
-    
-    .layout-variant-a, .layout-variant-b {
-        & .top-site-outer {
-            margin-block: 0px !important;
-
-            /* Size favicon */
-            & .tile .icon-wrapper {
-                --size-item-large: 40px !important;
-            }
-            
-            /* Size favicon when their size is smaller */
-            & .default-icon {
-                background-size: var(--size-item-large) !important;
-                height:var(--size-item-large) !important;
-                width: var(--size-item-large) !important;
-            }
-        }
-    }
-    
     .top-sites-list {
+        margin-block-start: 20px !important;
         
         /* Pinned Site Colors (Small Background) */
         .top-site-outer .tile {
@@ -669,18 +649,31 @@ browser[primary="true"][tabDialogShowing="true"],
             height: 100px !important;
             align-items: start !important;
             margin-inline: 0px !important;
-            padding-top: 18px !important;
+            padding-block-start: 12px !important;
             box-shadow: 0 0 0 1px #50505030 !important;
             outline: 1px solid #50505030 !important;
             outline-offset: -1px !important;
             background: var(--newtab-pinnedsites-background) !important;
             backdrop-filter: var(--personal-blur) !important;
             transition: background-color 0.1s ease;
+            
+            & .icon-wrapper {
+                --size-item-large: 48px !important;
+                width: var(--size-item-large) !important;
+                height: var(--size-item-large) !important;
+            }
+        }
+        
+        /* Favicon size when their size is smaller */
+        & .default-icon {
+            background-size: var(--size-item-large) !important;
+            width: var(--size-item-large) !important;
+            height: var(--size-item-large) !important;
         }
 
-        /* Pin icon removed */
-        .tile .icon.icon-pin-small { 
-            display: none !important; 
+       /* Pin icon removed */
+        .top-site-outer .icon.icon-pin-small { 
+            display: none !important;
         }
 
         /* Label - pinned site */
@@ -900,19 +893,37 @@ browser[primary="true"][tabDialogShowing="true"],
     /* ________________________________________________ For Main-image configuration ___________________________________________ */
     
     /* Wallpaper default brightness and wallpaper para Main-image config */
-    
-    body{ backdrop-filter: var(--brightness-wallpaper) !important; }
 
-    @media -moz-pref("firefoxone.main-image") {
+    /* Theme image go below in newtab page */
+
+    @media -moz-pref("firefoxone.main-image"), -moz-pref("browser.tabs.allow_transparent_browser") {
         
-        body{
-            background-image: var(--lwt-main-image, initial) !important;
-            background-repeat: repeat-x, var(--lwt-background-tiling), no-repeat !important;
-            background-size: calc(100% + var(--my-vertical-toolbar-width, 0px) + var(--extension-width, 0px) + 10px) auto !important;
-            background-attachment: fixed !important;    
-            background-position-x: right -4px !important;
-            background-position-y: var(--background-align-y) !important;/**/
-            backdrop-filter: var(--brightness-wallpaper) !important;
+        body {
+            background-color: transparent !important;
+        }
+
+        .customize-menu {
+            background-image: url("../icons/urlbar-noise-light.png") !important;
+            background-color: var(--newtab-background-color) !important;
+        }
+
+        /* When editing a pinned site */
+
+        .modalOverlayOuter {
+            --newtab-button-static-hover-background: light-dark(#E0E0E6, #101019e0) !important;
+            background-image: url("../icons/urlbar-noise-dark.png") !important;
+            background-color: var(--newtab-button-static-hover-background) !important;
+        }
+
+        /* General -Recent activity- */
+
+        .card .card-details {
+            position: relative !important;
+            z-index: 1 !important;
+        }
+
+        .card .card-context {
+            position: fixed !important;
         }
     }
 }
@@ -1036,21 +1047,9 @@ browser[primary="true"][tabDialogShowing="true"],
         }
     }
     
-    body, .sticky-container{
-        --bg: var(--lwt-main-image);
-        background-image: linear-gradient(var(--opaque), var(--opaque)),
-                          linear-gradient(var(--opaque), var(--opaque)), 
-                          var(--bg) !important;
-        background-repeat: repeat !important;
-        background-size: cover !important;
-        background-attachment: fixed !important;
-        background-position-y: var(--background-align-y) !important;
-        backdrop-filter: var(--brightness-wallpaper) !important;
-    }
-    
     .sticky-container{
         margin-block-end: 10px !important;
-        box-shadow: 0 4px 10px var(--in-content-page-background) !important;
+        box-shadow: 6px 4px 6px var(--in-content-page-background) !important;
         clip-path: polygon(0 0, 100% 0, 100% calc(100% + 10px), 0 calc(100% + 10px));
     }
     
@@ -1063,50 +1062,44 @@ browser[primary="true"][tabDialogShowing="true"],
             border-color: transparent !important;
             box-shadow: 0 0 0 2px var(--general-color) !important;
             outline: none !important;
-        }}
+        }
+    }
     
-/* Compatibility for aligning wallpaper when used with 'Main-image' config */
+    /* New style of elements */
     
-    @media -moz-pref("firefoxone.main-image") {
+    body {
+        background: transparent !important;
+        overflow-y: hidden !important;
+    }
 
-        .sticky-container {
-            background-image: none !important;
-        }
-        
-        body {
-            background: transparent !important;
-            overflow-y: hidden !important;
-        }
-        
-        .main-container {
-            width: 100% !important;
-        }
-        
-        #pages {
-            padding: 0px !important;
-        }
-        
-        named-deck>view-recentbrowsing>div {
-            
-            min-width: 100% !important;
-            display: grid;
-        }
-        
-        named-deck {
-            width: 100% !important;
-            display: grid;
-        }
-        
-        .cards-container {
-            height: 66vh !important;
-            overflow: auto;
-            scrollbar-gutter: stable !important;
-            padding-inline: 42px 52px !important;
-        }
-        
-        .sticky-container {
-            margin-inline: 0px !important;
-            padding-inline: 42px 52px !important;
-        }
+    .main-container {
+        width: 100% !important;
+    }
+
+    #pages {
+        padding: 0px !important;
+    }
+
+    named-deck>view-recentbrowsing>div {
+
+        min-width: 100% !important;
+        display: grid;
+    }
+
+    named-deck {
+        width: 100% !important;
+        display: grid;
+    }
+
+    .cards-container {
+        height: 66vh !important;
+        overflow: auto;
+        scrollbar-gutter: stable !important;
+        padding-inline: 42px 52px !important;
+    }
+
+    .sticky-container {
+        margin-inline: 0px !important;
+        padding-inline: 42px 52px !important;
     }
 }

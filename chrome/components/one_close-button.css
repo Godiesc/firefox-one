@@ -26,19 +26,12 @@
 
     :is(#TabsToolbar) .tab-close-button:hover {
         background-color: color-mix(in srgb, var(--toolbarbutton-hover-background) 40%, var(--border-contrast-color)) !important;
-        fill: var(--lwt-tab-text) !important;
+        fill: var(--general-color) !important;
     }
 
-    :is(#TabsToolbar) tab:not([selected]) .tab-close-button:hover,
+    :is(#TabsToolbar) .tab-close-button:hover,
     :root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) :is(#TabsToolbar) tab:not([selected]) .tab-close-button:hover{
-        background-color: color-mix(in srgb, var(--lwt-frame) 70%, transparent) !important;
-    }
-
-    /* Nuevos colores :hover para temas que usan imágenes */
-
-    :root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) :is(#TabsToolbar) .tab-close-button:hover {
-        background-color: var(--toolbarbutton-hover-background) !important;
-        fill: var(--lwt-tab-text) !important;
+        background-color: color-mix(in srgb, var(--contrast-color) 50%, transparent) !important;
     }
 }
 
@@ -53,10 +46,11 @@
             width: 12px !important;
             height: 12px !important;
             padding: 1px !important;
-            background: var(--lwt-tab-text) !important;
+            background: var(--tab-selected-textcolor) !important;
             fill: var(--contrast-color) !important;
             outline-color: transparent !important;
-            inset-inline-start: 4px !important;
+            top: -1px !important;
+            inset-inline-start: 6px !important;
             
             &:hover {
                 fill: var(--contrast-color) !important;
@@ -73,8 +67,8 @@
             border-radius: 2px !important;
 
             &:hover {
-                background-color: color-mix(in srgb, var(--toolbarbutton-hover-background) 40%, var(--border-contrast-color)) !important;
-                fill: var(--lwt-tab-text) !important;
+                background-color: var(--contrast-color) !important;
+                fill: var(--general-color) !important;
             }
         }
     }

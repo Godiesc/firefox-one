@@ -1,21 +1,20 @@
 /* Source file made available under Mozilla Public License v. 2.0 See the main repository for updates as well as full license text. 
    https://github.com/Godiesc/firefox-one */
 
-:root{  
-/* --------------------- Variables de colores, puedes poner tu color personalizado y utilizarlo -----------------------------*/  
+:root {  
+/* --------------------- Variables de colores, puedes poner tu color personalizado y utilizarlo ----------------------------- */  
   --fuchsia: #fa1e4e;     --blue: #5021ff;     --aqua: #00bfff;         --cyan: #00ffff;          --lightblue: #45a1ff;     --pink: #FF0F7E;
   --purple: #8d35e2;      --green: #05b694;    --aquamarine: #00ffa2;   --lightgreen: #36ff4e;    --yellowbrown: #febd60;   --swampautumn: #fdf008;
   --gray: #bfb6d2;        --orange: #ff6c22;   --yellow: #ffe20f;       --red: #ff3230;           --navyblue: #0050cE;      --poison: #cb17cf; 
   
                                                                                                                                  
-/*  Accent color -----> UI del navegador.  -----|                  |---- userContent <------------ Accent color
-                                                |                  |     (Add-ons, preferences and about: pages.)
-                                                v                  v                                                          */
+  /*  Accent color -----> UI del navegador.  ----|                |---- userContent <------------ Accent color
+                                                 v                v     (Add-ons, preferences and about: pages.)              */
   --general-color: var(--toolbarbutton-icon-fill-attention, var(--blue));
-}
-/* ------------------------------------------------------ <-Personalizaciones Varias-> ------------------------------------------------------ */
-:root{
-                  /* Dark wallpapers */                                               /* Accentcolor for each wallpaper */
+  
+  /* __________________________________________________________ Various customizations _________________________________________________________ */
+                  /* Dark wallpapers ¯¯¯|                                          Accentcolor for each wallpaper ¯¯¯|
+                                        v                                                                            v                           */
   --wallpaper-dark1: url("../newtab/wallpaper-dark1.png") !important;           --general-color-dark1: var(--lightblue) !important;
   --wallpaper-dark2: url("../newtab/wallpaper-dark2.png") !important;           --general-color-dark2: var(--blue) !important;
   --wallpaper-dark3: url("../newtab/wallpaper-dark3.png") !important;           --general-color-dark3: var(--aqua) !important;
@@ -23,42 +22,46 @@
   --wallpaper-dark5: url("../newtab/wallpaper-dark5.png") !important;           --general-color-dark5: var(--gray) !important;
   --wallpaper-dark6: url("../newtab/wallpaper-dark6.png") !important;           --general-color-dark6: var(--gray) !important;
   
-                  /* Light wallpapers */                                             /* Accentcolor for each wallpaper */
+                 /* light wallpapers ¯¯¯|                                          Accentcolor for each wallpaper ¯¯¯|
+                                        v                                                                            v                          */  
   --wallpaper-light1: url("../newtab/wallpaper-light1.png") !important;         --general-color-light1: var(--purple) !important;
   --wallpaper-light2: url("../newtab/wallpaper-light2.png") !important;         --general-color-light2: var(--lightblue) !important;
   --wallpaper-light3: url("../newtab/wallpaper-light3.png") !important;         --general-color-light3: var(--aqua) !important;
   --wallpaper-light4: url("../newtab/wallpaper-light4.png") !important;         --general-color-light4: var(--lightblue ) !important;
   --wallpaper-light5: url("../newtab/wallpaper-light5.png") !important;         --general-color-light5: var(--lightgreen) !important;
   --wallpaper-light6: url("../newtab/wallpaper-light6.png") !important;         --general-color-light6: var(--lightgreen) !important;
-  
     }
 
-@media (prefers-color-scheme: dark){ :root{
-  --lwt-main-image:  url("../newtab/wallpaper-dark1.png") !important;                             /* 'about:' pages image - dark theme */ 
+@media (prefers-color-scheme: dark) { :root{
+  --lwt-main-image:  url("../newtab/about-page-dark.png") !important;                             /* 'about:' pages image - dark theme */ 
   --lwt-private-image:  url("../newtab/private-dark.png") !important;                             /* new-tab private-page image - dark theme */
+  --brightness-toolbar: 30%;                                                                      /* Themes with images - dark filter to navbar - bookmarksbar */
   --brightness-wallpaper: 100%;                                                                   /* darker wallpaper */                           }}
   
-@media (prefers-color-scheme: light){ :root{
-  --lwt-main-image:  url("../newtab/wallpaper-light1.png") !important;                            /* 'about:' pages image - white theme*/
-  --lwt-private-image:  url("../newtab/private-light.png") !important;                            /* new-tab private-page image - white theme*/ 
+@media (prefers-color-scheme: light) { :root{
+  --lwt-main-image:  url("../newtab/about-page-light.png") !important;                            /* 'about:' pages image - white theme*/
+  --lwt-private-image:  url("../newtab/private-light.png") !important;                            /* new-tab private-page image - white theme*/
+  --brightness-toolbar: 30%;                                                                      /* Themes with images - dark filter to navbar - bookmarksbar */
   --brightness-wallpaper: 100%;                                                                   /* darker wallpaper */                           }}
 
-:root[privatebrowsingmode="temporary"]{ --general-color: var(--purple) !important; }              /* Accent color private mode */
+:root[privatebrowsingmode="temporary"] { --general-color: var(--purple) !important; }             /* Accent color private mode */
   
-:root{  
-  --wallpaper-size: cover;                                                                        /* cover-> default ; auto auto -> to not adapted image */
-  --display-theme-with-images: auto;                                                              /* auto-> defautl ; 50vw -> themes with 2 or more images*/
+:root {
+  
+  --my-toolbar-border-radius: 8px;
   
   --tab-height-personal: 28px ;                                                                   /* Tamaño altura de pestañas */
+  --tab-min-width-personal: 22px ;                                                                /* Tab min width | default -> :76px */
   --toolbar-height-personal: 38px ;                                                               /* Toolbar height */
+  
+  --my-group-line-thickness: 2px !important;                                                      /* Tab-group line thickness */
+  --tab-group-line-toolbar-border-distance: 3px !important;                                       /* Distance of the 'group line' from the toolbar */
   
   --left-color: #19abf4;                                                                          /* Color left wordmark */
   --right-color: #8b61c3 ;                                                                        /* Color right wordmark */
   
   --logo-wordmark-visibility: 1 ;                                                                 /* :1 visible, :0 invisible ; Logo-wordmark*/
   --logo-wordmark-display: flex ;                                                                 /* :none ->eliminar , :flex ->Mostrar;  Logo-wordmark*/
-  --searchbar-on-off: 1 ;                                                                         /* :1 visible, :0 invisible ; searchbar*/
-  --searchbar-display: flex ;                                                                     /* :none ->eliminar , :flex ->Mostrar; searchbar*/
   --orientation-display: block ;                                                                  /* :block -> vertical , :flex -> horizontal ; Logo-wordmark y searchbar*/
   
   --newtab-pinnedsites-background: color-mix(in srgb, white 12%, transparent) ;                   /* color - fondo de sitios fijados y barra de búsqueda*/
@@ -70,59 +73,47 @@
   
   --gradient-colors: #d02f85 0%, #b336fc 8%, #3567fd 40%, #4e7afd 60%,#4e89fd 70%, #d02f85 100%;  /* For - selected_tab_gradient_border - config */
   
-  --uc-sidebar-width: 52px;                                                                       /* Used for tree-tabs config, width sidebar not 'hover' */
-  --uc-sidebar-hover-width: 208px;                                                                /* Used for tree-tabs config, width sidebar on 'hover' */
+  --uc-sidebar-width: 48px;                                                                       /* Used for tree-tabs config, width sidebar 'not hover' */
+  --uc-sidebar-hover-width: 208px;                                                                /* Used for tree-tabs config, width sidebar when 'hover' */
   
 }
 
-@media (not -moz-pref("firefoxone.style_without_leftsidebar")) or -moz-pref("sidebar.revamp") or -moz-pref("firefoxone.tree_tabs_style") {
-  :root{
-  --my-vertical-toolbar-width: 52px ;                                                             /* 'left-sidebar' width and used for Firefox-Vertical-tabs */
-  }}
+@media (not -moz-pref("firefoxone.style_without_leftsidebar")) and -moz-pref("browser.toolbars.bookmarks.visibility", 'always'),
+  -moz-pref("sidebar.revamp"), -moz-pref("firefoxone.tree_tabs_style") {
+    :root{
+      --my-vertical-toolbar-width: 52px ;                                                         /* 'left-sidebar' width */
+    }}
 
-/* ------------------------------------------------------------ Main Image config ------------------------------------------------------------ */
+/* -----------------------------------------------------------------------------------------------------------------------------------------------
+   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ Main Image config ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
 
 @media -moz-pref("firefoxone.main-image") {
   
-  @media (prefers-color-scheme: dark){ :root{
-    --lwt-main-image:  url("../newtab/main-image-dark.png") !important;                           /* main-image wallpaper - dark theme */ 
-    --brightness-wallpaper: 89%;                                                                  /* brightness */                       }}
+  @media (prefers-color-scheme: dark) { :root {
+    --lwt-main-image:  url("../newtab/main-image-dark.png") !important;                               /* main-image wallpaper - dark theme */ 
+    --brightness-wallpaper: 50%;                                                                      /* brightness */                       }}
   
-  @media (prefers-color-scheme: light){ :root{
-    --lwt-main-image:  url("../newtab/main-image-light.png") !important;                          /* main-image wallpaper - white theme*/
-    --brightness-wallpaper: 99%;                                                                  /* brightness */                       }}
-  
-  :root{  
-  --wallpaper-size: auto auto;                                                                    /* cover-> default ; auto auto -> to <<main-image>> config */    
-  --background-align-x: calc(100% + 4px);
-  --background-align-y: -84px ;                                                                   /* Alinear new-tab wallpaper to <<main-image>> config 
-                                                                                                    -84px ventana normal con left-sidebar ; 
-                                                                                                    -112px con Barra de Marcadores; */
-  }
+  @media (prefers-color-scheme: light) { :root {
+    --lwt-main-image:  url("../newtab/main-image-light.png") !important;                              /* main-image wallpaper - white theme*/
+    --brightness-wallpaper: 50%;                                                                      /* brightness */                       }}
 }
 
-/* ------------------------------------------------------ Main Image + tree-tabs config ------------------------------------------------------- */
-
-@media -moz-pref("firefoxone.main-image") and -moz-pref("firefoxone.tree_tabs_style") {  
-    :root{
-      --extension-width: 52px ;
-      --background-align-y: -46px ;                                                               /* Aligning the new tab wallpaper with the 'main-image' config
-                                                                                                     -46px normal window
-                                                                                                     -76px with bookmarks-bar  */
-    }}
+/* -----------------------------------------------------------------------------------------------------------------------------------------------
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ The following variables were not included for user editing, but are required in this file ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
 
 @media (prefers-color-scheme: dark){
-:root{
-  /* ------------------------------ Botones hover, clic -------------------------------- */
-  --button-bgcolor: color-mix(in srgb, var(--general-color) 40%, transparent) !important;             /* Color de buttons */
-  --button-hover-bgcolor: color-mix(in srgb, var(--general-color) 55%, transparent) !important;       /* Color hover en menuitems */
-  --button-active-bgcolor: color-mix(in srgb, var(--general-color) 75%, transparent) !important;      /* color clic en menuitems*/
+  :root{
+    /* ------------------------------ Botones hover, clic -------------------------------- */
+    --button-bgcolor: color-mix(in srgb, var(--general-color) 50%, transparent) !important;             /* Color de buttons */
+    --button-hover-bgcolor: color-mix(in srgb, var(--general-color) 60%, transparent) !important;       /* Color hover en menuitems */
+    --button-active-bgcolor: color-mix(in srgb, var(--general-color) 80%, transparent) !important;      /* color clic en menuitems*/
   }}
 
 @media (prefers-color-scheme: light){
-:root{
-  /* ------------------------------ Botones hover, clic -------------------------------- */
-  --button-bgcolor: color-mix(in srgb, var(--general-color) 65%, transparent) !important;             /* Color de buttons */
-  --button-hover-bgcolor: color-mix(in srgb, var(--general-color) 80%, transparent) !important;       /* Color hover en menuitems */
-  --button-active-bgcolor: color-mix(in srgb, var(--general-color) 95%, transparent) !important;      /* color clic en menuitems*/
+  :root{
+    /* ------------------------------ Botones hover, clic -------------------------------- */
+    --button-bgcolor: color-mix(in srgb, var(--general-color) 40%, transparent) !important;             /* Color de buttons */
+    --button-hover-bgcolor: color-mix(in srgb, var(--general-color) 55%, transparent) !important;       /* Color hover en menuitems */
+    --button-active-bgcolor: color-mix(in srgb, var(--general-color) 75%, transparent) !important;      /* color clic en menuitems*/
   }}

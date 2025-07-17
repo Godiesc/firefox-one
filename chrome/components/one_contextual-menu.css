@@ -3,14 +3,14 @@
 
 /* Menu padding */
 
-menupopup {
-    --panel-padding: 4px 0px !important;
+menupopup, panel {
+    --menuitem-padding: 0.5em 0.5em !important;
+    --menuitem-border-radius: 4px !important;
 }
 
 menupopup > menuitem, menupopup > menu {
     appearance: none !important;
     padding-block: 4px !important;
-    border-radius: 0px !important;
 }
 
 /* Combo-box - Select Box more compact */
@@ -19,12 +19,10 @@ menupopup > menuitem, menupopup > menu {
     padding: 0 6px !important;
 }
 
-/* Separator */
-
-
 menuseparator {
-    padding-inline-end: 0 !important;
-    padding-inline-start: 12px !important;
+    @media (-moz-platform: windows) {
+            padding-inline: 0.5em !important;
+    }
 }
 
 @media (-moz-platform: linux) {
@@ -36,16 +34,15 @@ menuseparator {
 
 /* Bug fix: Separator after 'AI menu' causes unwanted scrolling */
 
-:root:not(:has(#context-ask-chat[hidden="true"])) #frame-sep {
+#context-ask-chat:not([hidden="true"]) ~ #frame-sep {
     display: flex !important;
 }
 
-/* 'Menu inside menu' margin */
+/* 'Menu inside menu' margin - bookmarksbar */
 
-menupopup menupopup {
-    appearance: none !important;
+menupopup:not(#PlacesToolbar) menupopup {
     margin-block-start: -6px !important;
-    margin-inline-start: -8px !important;
+    margin-inline: -4px !important;
 }
 
 /* General Styles */
@@ -91,7 +88,7 @@ menupopup:not(.in-menulist) {
     &> menuitem:not([disabled="true"]):is(:hover,[_moz-menuactive]),
         &> menu:is(:hover,[_moz-menuactive]) {
             appearance: none !important;
-            background-color: var(--button-hover-bgcolor) !important;
+            background-color: var(--button-bgcolor) !important;
             color: var(--arrowpanel-color, #ffffff) !important;
     }
 
@@ -192,90 +189,10 @@ menupopup:not(.in-menulist) {
     #context-navigation > menuitem {
         appearance: none !important;
         padding-block: 0.0em !important;
-        padding-inline-start: 6px !important;
+        padding-inline-start: 0px !important;
         justify-content: flex-start !important;
         -moz-box-pack: start !important;
         width: auto !important;
-        border-radius: 0px !important;
-    }
-}
-
-/* #################################### LINUX ####################################### */
-
-@media (-moz-platform: linux) {
-    
-menupopup > menuitem, menupopup > menu {
-    appearance: none !important;
-    padding-block: 4px !important;
-}
-
-/* Borde items */
-    
-menupopup {
-    --panel-padding: 4px 0px !important;
-}
-    
-menu, menuitem, menucaption {
-    border-radius: 0px !important;
-}
-    
-/* Flecha derecha */
-    
-.menu-right {
-        appearance: none !important;
-        list-style-image: url(chrome://global/skin/icons/arrow-right.svg )!important;
-        height: 16px !important;
-        width: 16px !important;
-        -moz-context-properties: fill !important;
-        fill: currentColor !important;
-        opacity: 0.7 !important;
-}
-    
-/* Margen menú del menú */
-    
-menupopup:not(#PlacesToolbar) menupopup {
-    appearance: none !important;
-    margin-inline-start: -10px !important;
-}
-    
-/* Necesario para quitar glitch indeseado al mover el mouse rapidamente sobre items del menú */
-    
-menugroup > menuitem:not([selected="true"]), menugroup > menu {
-    appearance: none !important;
-    background-color: transparent !important;
-}
-
-/* Makes context navigation buttons appears as normal textual menuitems */
-    
-#context-navigation {
-    appearance: none !important;
-    -moz-box-orient: vertical;
-    flex-direction: column !important;
-}
-    
-#context-navigation > menuitem > .menu-iconic-left {
-    appearance: none !important;
-    display: none
-}
-    
-#context-navigation > menuitem {
-    appearance: none !important;
-    padding-block: 4px !important;
-    padding-inline-start: 2em !important;
-    justify-content: flex-start !important;
-    -moz-box-pack: start !important;
-    width: auto !important;
-    border-radius: 0px !important;
-}
-    
-#context-navigation > menuitem[_moz-menuactive="true"]:not([disabled]) {
-    appearance: none !important;
-    background: var(--button-active-bgcolor) !important;
-    color: #ffffff !important;
-}
-    
-#context-navigation > menuitem::before {
-    appearance: none !important;
-    content: attr(aria-label)
+        border-radius: var(--menuitem-border-radius) !important;
     }
 }

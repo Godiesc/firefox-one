@@ -1,205 +1,246 @@
 /* Source file made available under Mozilla Public License v. 2.0 See the main repository for updates as well as full license text. 
    https://github.com/Godiesc/firefox-one */
 
-@media not -moz-pref("firefoxone.style_without_leftsidebar") {
+@media (not -moz-pref("firefoxone.style_without_leftsidebar")) and -moz-pref("browser.toolbars.bookmarks.visibility", 'always') {
 
 /*----------------------------------------------This first code block is from MrOtherGuy-----------------------------------------------------
 -----------------> https://github.com/MrOtherGuy/firefox-csshacks/blob/master/chrome/vertical_bookmarks_toolbar.css -------------------*/
 
 /* Makes bookmarks toolbar appear vertically at the left side of the window */
 
-@-moz-document url(chrome://browser/content/browser.xhtml){
+    #navigator-toolbox{ position: relative }
+    #PersonalToolbar{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        top: 100%;
+        inset-inline-start: 0;
+        width: var(--my-vertical-toolbar-width,0);
+        min-width: unset !important;
+        /* These create a empty area to the bottom of the toolbar, which is to mask a fact that we don't know exactly how high the toolbar should be */
+        height: calc(100vh - var(--tab-height-personal) - var(--toolbar-height-personal) - var(--menubar-height-personal, 0px));
+        max-height: calc(100vh - var(--tab-height-personal) - var(--toolbar-height-personal) - var(--menubar-height-personal, 0px)) !important; 
+        /*padding-bottom: 74px !important;/**/
+        padding-inline: 0px !important;                                                           /* Mi edit */
+        background-position-x: left !important;
+    }
+    #PersonalToolbar:dir(rtl) {                                                                   /* Mi add for RTL languages */
+        background-position-x: right !important;
+    }
+    #PersonalToolbar .toolbarbutton-1 {
+        max-width: calc(var(--my-vertical-toolbar-width) - 1px) !important;                       /* Mi edit - Tamaño horizontal ionos default */
+        margin: 0px !important;
+    }
 
-  :root:not([inDOMFullscreen]){
-    --uc-vertical-toolbar-width: var(--my-vertical-toolbar-width) !important;                   /* Mi Edit */
-  }
-    
-  #navigator-toolbox{ position: relative }
-  #PersonalToolbar{
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    top: 100%;
-    left: 0;
-    width: var(--uc-vertical-toolbar-width,0);
-    min-width: unset !important;
-    /* These create a empty area to the bottom of the toolbar, which is to mask a fact that we don't know exactly how high the toolbar should be */
-    height: 100vh;
-    max-height: 100vh !important; 
-    padding-bottom: 120px !important;
-    padding-inline: 0px !important;                                                             /* Mi edit */
-  }
-    
-  #PersonalToolbar .toolbarbutton-1{
-        min-width: var(--uc-vertical-toolbar-width) !important;                                 /* Mi edit */
-        --toolbarbutton-inner-padding: 8px !important;                                          /* Mi edit */
-        --toolbarbutton-border-radius: 7px !important;                                          /* Mi code */
-  }    
-    
-  #PersonalToolbar #PlacesChevron{
-    display: none;
-  }
-    
-  #PersonalToolbar > #personal-bookmarks{
-    overflow-y: auto;
-    scrollbar-width: none;
-    height: 100vh;
-  }
-  
-  #PlacesToolbar,
-  #PlacesToolbarDropIndicatorHolder{
-    -moz-box-orient: vertical !important; /* Can be removed with Firefox 112 */
-    flex-direction: column;
-  }
-  
-  #PersonalToolbar #PlacesToolbarItems{                             /* Permite recorrer los marcadores con la rueda del mouse */
-    display: flex !important;
-    flex-direction: column;
-    overflow-y: auto;
-    scrollbar-width: none;
-  }
-    
-  #PersonalToolbar > toolbaritem{
-    justify-content: center !important;
-  }
-    
-  #PersonalToolbar #PlacesToolbarItems > toolbarseparator{
-    height: 7px;
-    width: calc(var(--my-vertical-toolbar-width) - 22px) !important;                                    /* My code */
-    margin-inline: 13px !important;                                                                     /* My code */
-    background-color: color-mix(in srgb, var(--toolbar-bgcolor) 80%, var(--lwt-tab-text)) !important;   /* My edit */
-    background-clip: padding-box;
-    border-block: 3px solid transparent !important;
-  }
+    #PersonalToolbar toolbaritem{                                                               /* My new code Tamaño horizontal ionos extensiones y  marcadores */
+        max-width: calc(var(--my-vertical-toolbar-width) - 1px) !important;                       
+        margin: 0px !important;
+    }
 
-  #PersonalToolbar #PlacesToolbarItems > .bookmark-item{                                            /* carpetas de marcadores */
-    padding-block: 4px !important;
-    margin-inline: 0 !important;
-  }
-  
-  #browser,
-  #browser-bottombox,
-  #main-window > body::after, /* This selector is for compatibility with tabs_below_content.css */
-  #customization-container{
-    padding-left: calc(var(--uc-vertical-toolbar-width,0) + 0px);                                        /* My edit*/
-  }
+    #OtherBookmarks{                                                                            /* My new code - boton OtherBookmarks */
+        margin-inline: 0px !important;  
+    }
 
-  :root:is([chromehidden~="toolbar"],[sizemode="fullscreen"]) > body > #browser,
-  :root:is([chromehidden~="toolbar"],[sizemode="fullscreen"]) > body > #browser-bottombox,
-  #main-window:is([chromehidden~="toolbar"],[sizemode="fullscreen"]) > body::after,
-  :root:is([chromehidden~="toolbar"],[sizemode="fullscreen"]) > body > #customization-container{
-    padding-left: 0;                                                                                    /* My edit*/
-  }
-    
-  /* You should probably disable this if you have Firefox < 113 */
-  #PersonalToolbar #PlacesToolbarItems{
-    display: -webkit-box !important;
-    -webkit-box-orient: vertical !important;
-  }
-}
+    #PersonalToolbar #PlacesChevron{
+        display: none;
+    }
+    #PersonalToolbar > #personal-bookmarks{
+        overflow-y: auto;
+        scrollbar-width: none;
+        height: 100vh;
+    }
+
+    #PlacesToolbar,
+    #PlacesToolbarDropIndicatorHolder{
+        flex-direction: column;
+    }
+
+    #PersonalToolbar #PlacesToolbarItems{
+        display: flex !important;
+        flex-direction: column;
+        overflow-y: auto;
+        scrollbar-width: none;
+    }
+    #PersonalToolbar > toolbaritem{
+        justify-content: center;
+    }
+    #PersonalToolbar #PlacesToolbarItems > toolbarseparator{
+        height: 7px;
+        max-width: var(--my-vertical-toolbar-width) !important;                                             /* My code */
+        margin-inline: 14px !important;                                                                     /* My code */
+        background-color: var(--general-color) !important;                                                  /* My edit */
+        background-clip: padding-box;
+        border-block: 3px solid transparent !important;
+    }
+
+    #PersonalToolbar #PlacesToolbarItems > .bookmark-item{
+        padding-block: 4px !important;
+        margin-inline: 0 !important;
+    }
+
+    :root:not([chromehidden~="toolbar"],[inDOMFullscreen],[sizemode="fullscreen"]) {
+        &>body>#browser,
+        &>body>#browser-bottombox {
+            margin-inline-start: var(--my-vertical-toolbar-width, 0px);
+        }
+        
+        &>body>#customization-container {
+            margin-inline-start: calc(var(--my-vertical-toolbar-width, 0px) + 4px);
+        }
+    }
+
+    /* You should probably disable this if you have Firefox < 113 */
+    #PersonalToolbar #PlacesToolbarItems{
+        display: -webkit-box !important;
+        -webkit-box-orient: vertical !important;
+    }
+
+    /* ______________________________________________________ Keep left-sidebar in 'Fullscreen' ______________________________________________________ */
+
+    /* Bookmarks-bar visible */
+
+    :root[inFullscreen]:not([macOSNativeFullscreen],[inDOMFullscreen]) toolbar:is(#PersonalToolbar):not([fullscreentoolbar="true"]) {
+        visibility: visible !important;
+    }
+
+    /* Shows #navigator-toolbox when 'hover' on left-sidebar */
+
+    :root[inFullscreen]:not([macOSNativeFullscreen])  #navigator-toolbox:hover {
+        margin-top: unset !important;
+    }
+
+    /* Keep left-sidebar visible when some contextual menu appears
+    - Keep navigator-toolbox visible when bookmarks-folder are 'open' */
+
+    #main-window[inFullscreen]:not([sidebar-expand-on-hover]):has(
+    #appMenu-popup:is([panelopen="true"]),                      /* Hamburger menu open */
+    panel[type="arrow"]:is([panelopen="true"]),                 /* Arrowpanels open */
+    .bookmark-item[open],                                       /* BOokmarks-folder 'open' */
+    #customizationui-widget-panel[panelopen="true"],            /* Extensions panels 'open' */
+    #tabContextMenu[hasbeenopened]:hover,                       /* Some contextual menus ¯v*/
+    #toolbar-context-menu[panelopen="true"]:hover,
+    #new-tab-button-popup[hasbeenopened]:hover,
+    #toolbar-context-menu[hasbeenopened]:hover,
+    #placesContext[hasbeenopened]:hover,
+    .tab-group-editor-panel[hasbeenopened]:hover) {
+        & #PersonalToolbar {
+            width: var(--my-vertical-toolbar-width) !important;
+            max-width: var(--my-vertical-toolbar-width) !important;
+            opacity: 1 !important;
+            --space-before-gradient-line: calc(var(--tab-height-personal) - var(--toolbar-height-personal) - var(--menubar-height-personal, 0px)) !important;
+            border-image: linear-gradient(to bottom, transparent var(--space-before-gradient-line), 
+                var(--general-color) var(--space-before-gradient-line), 
+                var(--button-hover-bgcolor) 52%, transparent 94%) 1 !important;/**/
+        }
+        & #navigator-toolbox {
+            margin-top: 0px !important;
+        }
+    }
+
+    /* ____________ Web content moved right when toolbars are in 'autohide' */
+
+    @media -moz-pref("browser.fullscreen.autohide") {
+
+        /* Width of left-sidebar when #navigator-toolbox 'hidden' */
+
+        :root[inFullscreen]:not([macOSNativeFullscreen]):has(#navigator-toolbox:not(:hover)) toolbar:is(#PersonalToolbar):not([fullscreentoolbar="true"]) {
+            width: 1px !important;
+            opacity: 0 !important;
+            border-image: linear-gradient(to bottom, transparent, transparent) !important;
+            background-image: none !important;
+            transition: width 0.2s ease, opacity 0.2s ease !important;
+            transition-delay: 100ms !important;
+        }
+
+        /* Web content mover right when left-sidebar in visible */
+
+        :root[inFullscreen]:not([macOSNativeFullscreen],[inDOMFullscreen]):has(        
+        #navigator-toolbox[style=""],                                 /* tabs-bar and nav-bar hover */
+        #PersonalToolbar:hover,                                       /* Bookmarks-bar 'hover' */
+        .bookmark-item[open],                                         /* BOokmarks-folder 'open' */
+        #customizationui-widget-panel[panelopen="true"],              /* Some contextual menus open */
+        #toolbar-context-menu[hasbeenopened="true"]:hover,
+        #placesContext[hasbeenopened]:hover,                          /* Bookmarks-folder contextual menu */
+        #appMenu-popup[panelopen="true"]                              /* Extensions panels 'open' */
+        ){
+            #browser,
+            #browser-bottombox,
+            #customization-container {
+                margin-inline-start: calc(var(--my-vertical-toolbar-width,41px) + 0px) !important;
+            }
+        }
+
+        /* Allow show Left-sidebar when 'hover' on left of screen */
+
+        :root[inFullscreen]:not([macOSNativeFullscreen],[inDOMFullscreen]) toolbar:is(#PersonalToolbar):not([fullscreentoolbar="true"]):not(:hover) {
+            z-index: 3 !important;
+        }
+    }
+
+    /*____________ Web content moved right when toolbars are 'not in autohide' */
+
+    @media not -moz-pref("browser.fullscreen.autohide") {
+
+        :root:not([chromehidden~="toolbar"],[inDOMFullscreen]) {
+            #browser,
+            #browser-bottombox,
+            #main-window > body::after, /* This selector is for compatibility with tabs_below_content.css */
+                #customization-container {
+                    margin-inline-start: var(--my-vertical-toolbar-width, 0px) !important;
+            }
+        }
+    }
     
 /* ______________________________________________________ My Code to Adapt to -ONE- Style ______________________________________________________ */
-    
-    :root {
-    --uc-vertical-toolbar-width: var(--my-vertical-toolbar-width) !important;       /* Nuevo tamaño sidebar */
-    --padding-left-tab: var(--uc-vertical-toolbar-width) !important;                /* Nuevo tamaño botón -Menu- */
-    }
     
     /* ---------------- Quitar label de items de la left-sidebar ---------------- */
     
     #personal-bookmarks .bookmark-item>.toolbarbutton-text, #import-button>.toolbarbutton-text {
         display: none !important;
-    }    
-        /* Without bookmarks labels - quitamos margenes que desalinean los íconos */    
-        #personal-bookmarks .bookmark-item>.toolbarbutton-icon, #import-button>.toolbarbutton-icon{
-            margin: 0px !important;
-        }
-    
-        #personal-bookmarks .bookmark-item{
-            margin: 0px !important;
-        }
-    
-    /* margen izquierda pestañas*/
-    
-    :root:not([chromehidden~="toolbar"]) {
-        & #toolbar-menubar, 
-        & #toolbar-menubar[autohide="true"]+#TabsToolbar,
-        & #toolbar-menubar[autohide="false"]+#TabsToolbar {
-            padding-inline-start: calc(var(--padding-left-tab) + 4px) !important;
-        }
     }
     
-    /* Alinea Imagen en pestaña activa en temas con imágenes */
-
-    :root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) tab[selected] .tab-background{
-        background-position: 0 0, calc(100% - 4px) top, calc(var(--padding-left-tab) + 4px) top, left top, 0 0 !important;
+    /* Without bookmarks labels - quitamos margenes que desalinean los íconos */    
+    #personal-bookmarks .bookmark-item>.toolbarbutton-icon, #import-button>.toolbarbutton-icon{
+        margin: 0px !important;
     }
-    
-    /* Borde izquierda-derecha de la toolbar */
 
-    :root:not([chromehidden~="toolbar"],[sizemode="fullscreen"]) #nav-bar {
-        margin-inline-start: calc(var(--padding-left-tab) + 4px) !important;
-        margin-block-end: 1px !important;
+    #personal-bookmarks .bookmark-item{
+        margin-block: 0px !important;
     }
     
     /* Posición y estilo de la barra lateral izquierda de marcadores */
 
-    :root:not([chromehidden~="toolbar"]) #PersonalToolbar {
+    #PersonalToolbar {
+        --toolbarbutton-border-radius: 7px !important;
         --toolbarbutton-active-background: var(--button-active-bgcolor) !important;
-        --padding-top-left-sidebar: 46px !important;
-        --padding-bottom-left-sidebar: 8px !important;
+        --padding-top-left-sidebar: 56px !important;
+        --padding-bottom-left-sidebar: 6px !important;
         --height-left-sidebar: calc(100vh - 8px) !important;
         height: var(--height-left-sidebar) !important;
         max-height: var(--height-left-sidebar) !important;
-        background-color: var(--toolbar-bgcolor) !important;
+        background-color: transparent !important;
         top: 4px !important;
         margin-block: 0px !important;
+        margin-inline: 0px !important;
         padding-top: var(--padding-top-left-sidebar) !important;
         padding-bottom: var(--padding-bottom-left-sidebar) !important;
+        outline-color: transparent !important;
         z-index: 1 !important;
         
-        outline: none !important;
-        margin-inline: 0px 4px !important;
-        box-shadow: inset 1px 0 0 0 var(--lwt-frame), inset 1px 0 0 0 var(--lwt-frame), inset 1px 0 0 0 var(--lwt-frame),
-                    inset 4px 0 var(--lwt-frame) !important;
-    }
-    
-    /* Image in the left-sidebar in themes that use images */
-
-    :root:not([chromehidden~="toolbar"]):is([lwtheme-image],[style*="--lwt-additional-images"]) #PersonalToolbar {
-        background-position: left top !important;
-        background-size: cover !important;
-    }
-    
-/* Outline en tema que tienen imágenes */
-
-:root:not([chromehidden~="toolbar"],[sizemode="fullscreen"]):is([lwtheme-image],[style*="--lwt-additional-images"])
-    #PersonalToolbar{
-        outline: none !important;
-        box-shadow: inset 1px 0 0 0 var(--lwt-frame), inset 1px 0 0 0 var(--lwt-frame), inset 1px 0 0 0 var(--lwt-frame),
-                    inset 4px 0 var(--lwt-frame),
-                    inset 0px -1px 0 0  var(--general-border-color),  /* abajo */
-                    inset 5px 0 0 0  var(--general-border-color),     /* left */
-                    inset -1px 0 0 0 var(--general-border-color),     /* right */ 
-                    inset 0 1px 0 0  var(--general-border-color)      /* Left */
-                    !important;
+        &::before {
+            content: ''; display: flex; position: fixed; top: 4px !important;
+            width: calc(var(--my-vertical-toolbar-width) - 4px);
+            height: calc(100% - 8px);
+            inset-inline-start: 4px !important;
+            border-radius: 8px !important;
+            background-color: var(--toolbar-bgcolor) !important;
+            outline: 1px solid var(--my-content-border-color) !important;
+            outline-offset: -1px !important;
+            pointer-events: none !important;
         }
+    }
     
-/* outline en todos los temas "without-default-colors" and 'main-image' config */
-
-    @media -moz-pref("firefoxone.without-default-colors") or -moz-pref("firefoxone.main-image") {
-        :root:not([chromehidden~="toolbar"]) #PersonalToolbar{
-                outline: none !important;
-                box-shadow: inset 1px 0 0 0 var(--lwt-frame), inset 1px 0 0 0 var(--lwt-frame), inset 1px 0 0 0 var(--lwt-frame),
-                            inset 4px 0 var(--lwt-frame),
-                            inset 0px -1px 0 0  var(--general-border-color),  /* abajo */
-                            inset 5px 0 0 0  var(--general-border-color),     /* left */
-                            inset -1px 0 0 0 var(--general-border-color),     /* right */ 
-                            inset 0 1px 0 0  var(--general-border-color)      /* Left */
-                            !important;
-                }}
-    
-/* --------------------------------- Zoom on :hover items ------------------------------------ */
+    /* --------------------------------- Zoom on :hover items ------------------------------------ */
     
     /* animación */
     @keyframes scalezoom{
@@ -257,7 +298,7 @@
     
     /* Color, tamaño y alineación de Items de la barra lateral */
 
-    #PersonalToolbar .toolbarbutton-1{
+    #PersonalToolbar .toolbarbutton-1 {
         --toolbarbutton-inner-padding: 6px !important;
         --toolbarbutton-outer-padding: 0 4px !important;
         padding-inline-start: 4px !important;
@@ -278,7 +319,7 @@
     /* Separador usando "espacio flexible" */
 
     #PersonalToolbar toolbarpaletteitem[place="toolbar"][id^="wrapper-customizableui-special-spring"], #PersonalToolbar toolbarspring {
-        max-width: var(--uc-vertical-toolbar-width) !important;
+        max-width: var(--my-vertical-toolbar-width) !important;
         min-height: 60px !important;
         max-height: 110px !important;
     }
@@ -289,16 +330,17 @@
     #PersonalToolbar #PlacesToolbarItems>.bookmark-item:not(.subviewbutton, [disabled="true"]):hover,
     #PersonalToolbar #PlacesToolbarItems>.bookmark-item>.toolbarbutton-icon,
     #PersonalToolbar #PlacesToolbarItems>.bookmark-item:not(.subviewbutton, [disabled="true"]){
+        --toolbarbutton-border-radius: 0px !important;
         background-color: transparent !important;
     }
 
-    #PersonalToolbar #PlacesToolbarItems > .bookmark-item>.toolbarbutton-icon{
+    #PersonalToolbar #PlacesToolbarItems > .bookmark-item>.toolbarbutton-icon {
         margin-block-start: 0px !important;
         height: 28px !important;
         width: 28px !important;
         padding: 6px !important;
         background-color: var(--toolbarbutton-hover-background) !important;
-        border-radius: var(--toolbarbutton-border-radius) !important;
+        border-radius: 6px !important;
     }
     
     /* -Otros marcadores- button */
@@ -504,144 +546,11 @@
         display: none !important;
     }   
     
-
-/* _______________________________________________ Nuevos márgenes Botón menú _______________________________________________ */
-    
-@media (-moz-platform: windows), (-moz-platform: linux) {
-    
-    :root:not([invisibleBMS]) {
-        --margin-left-icons-personal: calc(var(--my-vertical-toolbar-width) / 2 - 16px) !important;     /* Nuevo margen-left del ícono -menu- */
-        --margin-right-icons-personal: 12px !important;                                                 /* Nuevo margen-left del ícono -menu- */
-        --padding-left-tab: var(--uc-vertical-toolbar-width) !important;                                /* Nuevo tamaño botón -Menu- */
-    }
-
-/* Tamaño */
-    
-    :root:not([chromehidden~="toolbar"],[invisibleBMS],[sizemode="fullscreen"]) #PanelUI-button {
-        height: 50px !important;
-    }
-   
-    :root:not([chromehidden~="toolbar"],[invisibleBMS]) #PanelUI-menu-button:not([open]) {
-        width: calc(var(--padding-left-tab) + 4px) !important;
-        padding-inline: calc(var(--padding-left-tab)/2 - 14px) !important;
-    }
-    
-/* Posición margin-top 'normal-maximized' */
-        
-    :root:not([chromehidden~="toolbar"],[invisibleBMS],[sizemode="fullscreen"]) #PanelUI-menu-button>.toolbarbutton-badge-stack {
-        margin-block-start: 4px !important;
-    }
-    
-    :root:not([chromehidden~="toolbar"],[invisibleBMS])[sizemode="fullscreen"] #PanelUI-menu-button image {
-        height: calc(var(--tab-height-personal) - 7px) !important;
-        width:  calc(var(--tab-height-personal) - 7px) !important;
-    }
-    
-/* Alinear lista de pestañas sincronizadas */
-    
-    #appMenu-popup .subviewbutton[image] > .toolbarbutton-text, .subviewbutton[targetURI] > .toolbarbutton-text {
-      padding-inline-start: calc(24px - var(--margin-right-icons-personal)) !important;
-    }
-}
-    
-@media (-moz-platform: windows){
-    
-/* Alinear botón [open] en ventana maximizada */
-        
-    :root:not([chromehidden~="toolbar"],[invisibleBMS],[sizemode="normal"],[sizemode="fullscreen"]) #PanelUI-menu-button[open] .toolbarbutton-badge-stack {
-        padding-inline-start: calc(var(--margin-left-icons-personal) + 4px) !important;
-    }
-    
-/* Alinear botón [open] en ventana normal y fullscreen */
-    
-    :root:not([chromehidden~="toolbar"],[invisibleBMS]):is([sizemode="normal"],[sizemode="fullscreen"]) #PanelUI-menu-button[open] .toolbarbutton-badge-stack {
-        margin-inline-start: calc(var(--margin-left-icons-personal) - 2px) !important;
-    }
-    
-/* menu [open ] -sobreescribo-  Sirve para alinear al cambiar the height de pestañas 
-   Mismo número que la variable de abajo: --button-height-personal */
-    
-    :root:not([chromehidden~="toolbar"],[sizemode="normal"],[sizemode="fullscreen"],[invisibleBMS]) 
-        #PanelUI-menu-button[open]>.toolbarbutton-badge-stack {
-            min-height: 35px !important; 
-            max-height: 35px !important;
-    }
-    
-/* Padding top para hacer espacio para la fila del Label menú */
-    
-    :root:not([chromehidden~="toolbar"],[invisibleBMS])[sizemode="maximized"] #appMenu-popup>panelmultiview>box>box>panelview {
-        padding-top: 38px !important;
-    }
-    
-/* Margin top para subir el menú [open] */
-    
-    :root:not([chromehidden~="toolbar"],[invisibleBMS])[sizemode="maximized"] #appMenu-popup {
-        --menu-plus-label-width: 94px !important;
-        --button-height-personal: 37px !important;
-        --arrowpanel-border-radius: 9px !important;
-        margin-top: calc(-7px - var(--button-height-personal)) !important;
-        clip-path: polygon(0% 0%, 0% 100%, 1% 53%, 0 13px, var(--menu-plus-label-width) 13px,
-                   var(--menu-plus-label-width) var(--button-height-personal), 0 var(--button-height-personal), 0 100%, 100% 100%, 100% 0%);
-    }
-}
-
-/* _______________________ Configuration Menu for Linux _______________________ */
-    
-@media (-moz-platform: linux){
-    
-:root:not([invisibleBMS]) {
-        --margin-left-icons-personal: calc(var(--my-vertical-toolbar-width) / 3 - 14px) !important;     /* Nuevo margen-left del ícono -menu- */
-        --margin-right-icons-personal: 8px !important;                                                  /* Nuevo margen-left del ícono -menu- */
-        --padding-left-tab: var(--uc-vertical-toolbar-width) !important;                                /* Nuevo tamaño botón -Menu- */
-    }
-    
-/* Alinear botón en ventana maximizada, ventana normal y fullscreen */
-        
-    :root:not([chromehidden~="toolbar"],[invisibleBMS]) #PanelUI-menu-button{
-        width: calc(var(--padding-left-tab) + 4px) !important;
-    }
-}
-
-/* _______________________________ Baner de -actualización disponible- _______________________________ */
-
-    @keyframes slide1 {
-        from {
-            transform: rotate(0deg)
-        }
-        to {
-            transform: rotate(360deg);
-        }
-    }
-
-    #PanelUI-menu-button[badge-status="update-available"]>.toolbarbutton-badge-stack>.toolbarbutton-badge, 
-    #PanelUI-menu-button[badge-status="update-downloading"]>.toolbarbutton-badge-stack>.toolbarbutton-badge, 
-    #PanelUI-menu-button[badge-status="update-manual"]>.toolbarbutton-badge-stack>.toolbarbutton-badge, 
-    #PanelUI-menu-button[badge-status="update-other-instance"]>.toolbarbutton-badge-stack>.toolbarbutton-badge, 
-    #PanelUI-menu-button[badge-status="update-restart"]>.toolbarbutton-badge-stack>.toolbarbutton-badge, 
-    #PanelUI-menu-button[badge-status="update-unsupported"]>.toolbarbutton-badge-stack>.toolbarbutton-badge {
-        display: none !important;
-    }
-
-    :root:not([chromehidden~="toolbar"]) #PanelUI-menu-button[badge-status="update-available"]:not([open]) .toolbarbutton-badge-stack, 
-    :root:not([chromehidden~="toolbar"]) #PanelUI-menu-button[badge-status="update-downloading"]:not([open]) .toolbarbutton-badge-stack, 
-    :root:not([chromehidden~="toolbar"]) #PanelUI-menu-button[badge-status="update-manual"]:not([open]) .toolbarbutton-badge-stack, 
-    :root:not([chromehidden~="toolbar"]) #PanelUI-menu-button[badge-status="update-other-instance"]:not([open]) .toolbarbutton-badge-stack, 
-    :root:not([chromehidden~="toolbar"]) #PanelUI-menu-button[badge-status="update-restart"]:not([open]) .toolbarbutton-badge-stack, 
-    :root:not([chromehidden~="toolbar"]) #PanelUI-menu-button[badge-status="update-unsupported"]:not([open]) .toolbarbutton-badge-stack, 
-    :root:not([chromehidden~="toolbar"]) #PanelUI-menu-button[badge-status="addon-alert"]:not([open]) .toolbarbutton-badge-stack, 
-    :root:not([chromehidden~="toolbar"]) #PanelUI-menu-button[badge-status="fxa-needs-authentication"]:not([open]) .toolbarbutton-badge-stack {
-        list-style-image: url("../icons/foxFill.svg") !important;
-        fill: var(--general-color) !important;
-        animation: 2000ms infinite ease;
-        animation-name: slide1;
-        border-radius: 50% !important;
-    }
-    
     /* Nueva posición de Paneles [open] de left-sidebar */
     
     #PlacesToolbarItems > .bookmark-item >  menupopup, #OtherBookmarks #OtherBookmarksPopup {
-        margin-inline-start: calc(var(--padding-left-tab) - 0px) !important;
-        margin-top: -56px  !important;
+        margin-inline-start: calc(var(--padding-left-tab) + 2px) !important;
+        margin-top: -36px  !important;
     }
     
     /* Nueva posición de Paneles [open] de left-sidebar 
@@ -659,62 +568,39 @@
 /* ___________________________________________________________ Firefox Revamp __________________________________________________________ 
    _____________________________________________________________________________________________________________________________________ */
 
-@media -moz-pref("sidebar.revamp")  and (not -moz-pref("firefoxgx.oneline")) {
+@media -moz-pref("sidebar.revamp") {
     
-    /* Delete style when 'sidebar' button change to 'active' */
+    :root { --my-vertical-elements-width: var(--my-vertical-toolbar-width) !important; }
     
-    #sidebar-button {
-        --toolbarbutton-active-background: transparent !important;
+    /* Sidebar style */
         
-        &[checked] {
-            list-style-image: url("chrome://browser/skin/sidebar-collapsed.svg") !important;
-        }
-        
-        &:hover .toolbarbutton-icon {
-            background-color: var(--toolbarbutton-hover-personal) !important;
-        }
-    }
-    
-    :root {
-        --my-vertical-elements-width: var(--my-vertical-toolbar-width) !important;
-    }
-    
-     /* Remove unwanted border */
-    
-    #navigator-toolbox {
-        border-color: transparent !important;
-    }
-    
     #sidebar-main {
-        padding-block-start: 2px !important;
-        background: none !important;
-        
         &::before {
-            content: ''; display: flex; position: fixed; top: 2px !important;
+            content: '';
+            position: absolute;
+            top: 4px;
             width: calc(100% - 8px);
-            height: calc(100% - 6px);
-            inset-inline-end: 4px !important;
-            border-radius: 8px !important;
-            background-image: linear-gradient(var(--toolbar-bgcolor, transparent), var(--toolbar-bgcolor, transparent)),
-                                              var(--lwt-header-image, var(--lwt-additional-images, none)) !important;
-            background-size: auto 100% !important; 
-            box-shadow: inset 0 0 0 1px var(--general-border-color) !important;
+            height: calc(100% - 12px);
+            border-radius: 8px;
+            padding-block-start: 4px;
+            inset-inline-start: 4px;
+            background-color: var(--toolbar-bgcolor);
+            outline: 1px solid var(--my-content-border-color);
+            outline-offset: -1px;
         }
     }
     
-    /*@media -moz-pref("firefoxgx.verticalTabs-expandOnHover"), -moz-pref("sidebar.visibility", "expand-on-hover") {
-        
-        :root {
-            --my-vertical-elements-width: calc(var(--my-vertical-toolbar-width) - 4px) !important;
+    /* Sidebar style when using fullscreen mode */
+    
+    @media -moz-pref("browser.fullscreen.autohide") {
+        :root[inFullscreen]:not([macOSNativeFullscreen]) #navigator-toolbox[style*="margin-top"] + #browser  #sidebar-main::before { /* Not use ':has' for better performance */
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            inset-inline-start: 0px;
+            border-radius: 0px;
         }
-        
-        #sidebar-main {
-            &::before {
-                width: calc(100% - 4px);
-                border-radius: 0 8px 8px 0 !important;
-            }
-        }
-    }/**/
+    }
     
     /* __________________________ Styles around web content  */
     
@@ -722,9 +608,9 @@
         box-shadow: none !important;
     }
 
-    /* Nuevo espacio alrededor del contenido web */
+    /* Web content margins */
 
-    :root:not([sizemode="fullscreen"]) {
+    :root:not([inDOMFullscreen]) {
         
         #tabbrowser-tabbox {
             padding-inline: 0 4px !important;
@@ -734,54 +620,16 @@
             margin-inline: 0px 0px !important;
         }
         
-        &:has(#sidebar-box[sidebar-positionend]) #tabbrowser-tabbox {
+        & #sidebar-box[sidebar-positionend] ~ #tabbrowser-tabbox {
             padding-inline: 4px 0px !important;
         }
 
-        &:has(#sidebar-box[checked="true"][sidebar-positionend]) #tabbrowser-tabbox {
+        & #sidebar-box[checked="true"][sidebar-positionend] ~ #tabbrowser-tabbox {
             padding-inline: 4px 4px !important;
         }
         
-        &:has(#sidebar-main[hidden="true"]) #tabbrowser-tabbox {
+        & #sidebar-main[hidden="true"] ~ #tabbrowser-tabbox {
             padding-inline: 4px 4px !important;
-        }
-    }
-    
-    /* Splitter */
-    
-    splitter {                            
-        --splitter-width: 4px !important;
-        --sidebar-border-color: transparent;
-    }
-    
-    /*#sidebar-launcher-splitter {
-        @media (not (-moz-platform: linux)) {
-            #sidebar-main[sidebar-positionend] + & {
-                    margin-inline-end: -4px !important;
-            }
-        }
-    }/**/
-    
-    /* _______________ Style of the Sidebar when isn't expanded _______________ */
-    
-    :root:has(sidebar-main:not([expanded])) {
-
-        /* Width of the Sidebar elements when isn't expanded */
-
-        /* External container */
-        & #sidebar-main {
-            width: var(--my-vertical-toolbar-width) !important;
-        }
-
-        /* Internal container */
-        & .wrapper, 
-        & sidebar-main  {
-            min-width: var(--my-vertical-elements-width) !important;
-        }
-
-        /* Tools-and-extensions */
-        & .actions-list {
-            max-width: var(--my-vertical-elements-width) !important;
         }
     }
     
@@ -796,22 +644,25 @@
             --button-outer-padding-block-start: 0px !important;
             --button-outer-padding-block-end: 0px !important;
             /*--button-outer-padding-inline-start: 0px !important;
-            --button-outer-padding-inline-end: 0px !important;
-            --button-outer-padding-inline: calc(var(--my-vertical-elements-width)/2 - 18px) !important;/**/
+            --button-outer-padding-inline-end: 0px !important;/**/
             --button-outer-padding-inline: 0px !important;
         }
     }
     
+    /* Margin top and bottom */
+    
     .actions-list {
         & > moz-button:not(.tools-overflow) {
             &:first-of-type {
-                --button-outer-padding-block-start: 4px !important;
+                --button-outer-padding-block-start: 8px !important;
             }
             &:last-of-type {
                 --button-outer-padding-block-end: 8px !important;
             }
         }
     }
+    
+    /* Sidebar width */
         
     .button-background {
         min-width: var(--my-min-width) !important;
@@ -871,16 +722,32 @@
         }
     }
     
-    /* _______________________________ Autohide tools-and-extensions when Vertical tabs are enable _______________________________ 
-       ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+    /* _____________________________ Autohide 'tools-and-extensions' when Vertical tabs are enable ______________________________ 
+       ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
     
-    @media -moz-pref("sidebar.verticalTabs")  /*and (not -moz-pref("firefoxgx.oneline"))/**/ {
+     @media -moz-pref("sidebar.verticalTabs") {
         
-        .actions-list {
-            padding-inline: 0 !important;
+        /* Code to hide 'overflow of tools' button */
+
+        .tools-and-extensions.actions-list {
+            height: auto !important;
         }
 
+        .tools-and-extensions.actions-list.overflow-button {
+            display: none !important;
+        }
+        
+        /* Remove unwanted padding when 'expanded' */
+        
+        .actions-list[orientation="horizontal"] {
+            gap: 0px !important;
+            padding-inline: 0px !important;
+            padding-block-end: 8px !important;
+            margin-block-start: 0px !important;
+        }
+        
         /* Hide tools except for the last one 'configuration' */
+        
         .actions-list[orientation="vertical"]:not(:hover) moz-button[type="icon ghost"]:not(:last-child),
         .actions-list[orientation="horizontal"]:not(:hover) moz-button[type="icon ghost"]:not(:first-child) {
             opacity: 0 !important;
@@ -890,6 +757,7 @@
         }
 
         /* Hide tools except for the last one 'configuration' */
+        
         .actions-list[orientation="vertical"]:is(:hover) moz-button[type="icon ghost"]:not(:last-child),
         .actions-list[orientation="horizontal"]:is(:hover) moz-button[type="icon ghost"]:not(:first-child) {
             opacity: 1 !important;
@@ -897,105 +765,37 @@
             visibility: visible !important;
             transition: opacity 0.2s ease-in-out, visibility 0.2s ease, transform 0.4s ease;
         }
-
-        /* Transition for 'configuration' button when other tool is open */
-
-        .wrapper:has(.actions-list[orientation="vertical"] moz-button[type="icon"]) .actions-list:not(:hover) moz-button[type="icon ghost"]:is(:last-child),
-        .wrapper:has(.actions-list[orientation="horizontal"] moz-button[type="icon"]) .actions-list:not(:hover) moz-button[type="icon ghost"]:is(:first-child){
-            opacity: 0 !important;
-            visibility: collapse !important;
-            transform: translateY(10px) !important;
-            transition: opacity 0.2s ease-in-out, visibility 0.2s ease, transform 0.4s ease;
-        }
-
-        .wrapper:has(.actions-list[orientation="vertical"] moz-button[type="icon"]) .actions-list:is(:hover) moz-button[type="icon ghost"]:is(:last-child),
-        .wrapper:has(.actions-list[orientation="horizontal"] moz-button[type="icon"]) .actions-list:is(:hover) moz-button[type="icon ghost"]:is(:first-child) {
-            opacity: 1 !important;
-            visibility: visible !important;
-            transform: translateY(0px) !important;
-            transition: opacity 0.2s ease-in-out, visibility 0.2s ease, transform 0.4s ease;
-        }
-
-        /* Active tool always in the last position */
-
-        moz-button[type="icon"] {
-            .actions-list[orientation="vertical"] & {
-                order: 1 !important;
-            }
-
-            .actions-list[orientation="horizontal"] & {
-                order: -1 !important;
-            }
-        }
-
-        /*__________________ 'Tools and extensions' when sidebar is expanded */
-
-        .actions-list[orientation="horizontal"] {
-            /*padding-block-end: 0px !important;/**/
-            gap: 0px !important; /* important - Remove unwanted margin, 5+ icons*/
+        
+        /* 'Customize sidebar' button in the latest position */
+        
+        .wrapper:has(.actions-list[orientation="vertical"] moz-button[type="icon"]) .actions-list moz-button[type="icon ghost"]:is(:last-child) {
+            order: 2 !important;
         }
         
-        sidebar-main {
-            --my-flex-direction: column;
-            --my-button-outer-padding-block-end: 10px !important;
-        }
-        sidebar-main[expanded] {
-            --my-flex-direction: row-reverse;
-            --my-button-outer-padding-block-end: 12px !important;
-        }
-
-        .button-background.labelled > label {
-            display: none !important;
-        }
-
-        /* Makes the vertical tools display horizontal when sidebar is 'expanded' */
-
-        .actions-list[orientation="vertical"] {
-            /* Makes icons show horizonal */
-            flex-direction: var(--my-flex-direction) !important;
-            flex-wrap: wrap;
-            justify-content: flex-end !important;
-
-            & > moz-button:not(.tools-overflow) {
-                /* Makes icons show horizonal */
-                width: unset !important;
-                --my-padding-inline: calc((var(--button-size-icon) - var(--icon-size-default)) / 2 - var(--border-width) + 9px);
-                --button-outer-padding-block-start: 0px !important;
-                --button-outer-padding-block-end: var(--my-button-outer-padding-block-end) !important;
-                
-                 &:last-of-type {
-                     --button-outer-padding-block-end: 8px !important;
-                }
-            }
+        /* Active tool always in the penultimate position when 'collapsed' */
+        
+        .actions-list moz-button[type="icon"] {
+            order: 1 !important;
         }
         
-        .actions-list[orientation="horizontal"] {
-            & > moz-button:not(.tools-overflow) {
-                /* Makes icons show horizonal */
-                --button-outer-padding-block-end: 122px !important;
-                
-                 &:last-of-type {
-                     --button-outer-padding-block-end: 128px !important;
-                }
-            }
-        }
-
-        .expanded-button.tools-overflow {
-            --my-padding-inline: calc(var(--my-vertical-elements-width)/2 - 8px);
-            --button-outer-padding-block-end: 2px !important;
+        /* Active tool always in the same position when 'expanded' */
+        
+        .actions-list[orientation="horizontal"] moz-button[type="icon"] {
+            order: -1 !important;
         }
         
-        button > .button-background {
-            padding-inline: var(--my-padding-inline, 0px) !important;
-            border-inline-width: 0px !important; /* important - Remove unwanted margin, 5- icons */
-        }
+        /* When using default 'expand-on-hover' */
 
-        /* Transition delay when sidebar has 'Expand-on-hover' feature */
-
-        @media -moz-pref("firefoxgx.verticalTabs-expandOnHover") {
-
-            .actions-list moz-button[type="icon ghost"] {
-                transition-delay: var(--uc-tabs-hide-animation-duration) !important;
+        @media -moz-pref("sidebar.visibility", 'expand-on-hover') {
+            
+            /* Transition delayed to hide tools when expanding */
+            .actions-list[orientation="vertical"]:is(:hover) moz-button[type="icon ghost"]:not(:last-child) {
+                transition-delay: 0.3s, 0.2s, 0.3s !important;
+            }
+            
+            /* Transition duration removed to hide tools  instantly on collapse */
+            .actions-list[orientation="vertical"]:not(:hover) moz-button[type="icon ghost"]:not(:last-child) {
+                transition-duration: 0ms !important;
             }
         }
     }
@@ -1004,37 +804,37 @@
 /* _______________________________________________________ Firefox Vertical Tabs _______________________________________________________ 
    _____________________________________________________________________________________________________________________________________ */
 
-@media -moz-pref("sidebar.verticalTabs")  and (not -moz-pref("firefoxgx.oneline")) {
+@media -moz-pref("sidebar.verticalTabs") {
     
     :root {
         --my-margin-inline-inner-tab: 10px !important;
-        /*--my-vertical-elements-width: var(--my-vertical-toolbar-width) !important;/**/
         --tab-collapsed-background-width: calc(var(--my-vertical-toolbar-width) - var(--tab-inline-padding)*2) !important;
-        --my-separator-border-style1: linear-gradient(to right, transparent 10px, var(--general-border-color) 10px,
-                                     var(--general-border-color) calc(100% - 10px), transparent calc(100% - 10px)) 1;
+        --my-separator-border-style1: linear-gradient(to right, transparent 10px, var(--my-content-border-color) 10px,
+                                     var(--my-content-border-color) calc(100% - 10px), transparent calc(100% - 10px)) 1;
     }
     
+    /* Remove margins in tabs */
     
-    /* overwrite 'one_tabs-bar.css' - 'hover' de las pestañas no seleccionadas */
-
-    .tabbrowser-tab:not([selected], [multiselected]):hover > .tab-stack:not([selected], [multiselected]) {
-        background-color: unset !important;
+    #sidebar-main {
+        --tab-block-margin: 0px !important;
+        --tab-block-margin-personal: 0px !important;
     }
     
-    /* Tabs container width */
+    /* Remove unwanted pinned tabs background */
 
-    #tabbrowser-tabs[orient="vertical"] {
-        /* Used for pinned tabs */
-        --tab-collapsed-width: var(--my-vertical-elements-width) !important;
-        /* used for normal tabs */
-        min-width: var(--my-vertical-elements-width) !important;
+    #pinned-tabs-container {
+        & .tab-background {
+            .tabbrowser-tab:not(:hover) > .tab-stack > &:not([selected], [multiselected]) {
+                background-color: transparent !important;
+            }
+        }
     }
     
     /* Remove unwanted space between tabs tabs */
 
     #tabbrowser-tabs[orient="vertical"] {
         --tab-height-with-margin-padding: var(--tab-min-height) !important;                     /* Remove unwanted tab extra height for pinned tabs */
-        & :is(#vertical-pinned-tabs-container, #pinned-tabs-container) .tabbrowser-tab {        /* Pinned tabs - added nightly change */
+        & #pinned-tabs-container .tabbrowser-tab {                                              /* Pinned tabs */
             padding-block: 0px !important;
         }
 
@@ -1059,10 +859,6 @@
         & .tab-content {
             --tab-inline-padding: calc(var(--my-vertical-elements-width)/2 - 8px) !important;
         }
-    }
-    
-     #sidebar-main {
-        --tab-block-margin: 0px !important;                 /* Smaller margin in tabs */
     }
     
     /* Margin top of the block of tabs */
@@ -1110,5 +906,75 @@
                 padding-block: 0px !important;
             }
         }
+    }
+    
+    /* ______________________________ fix glich when using default 'expand-on-hover' ______________________________
+       ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+    /* Keep default margin right when sidebar on right */
+    :root[sidebar-expand-on-hover] #sidebar-box[sidebar-positionend] {
+        &[sidebar-panel-open][sidebar-launcher-hovered][sidebar-launcher-expanded], 
+        &[sidebar-ongoing-animations][sidebar-panel-open] {
+            margin-inline-end: var(--sidebar-launcher-collapsed-width) !important;
+        }
+    }
+
+    :root[sidebar-expand-on-hover] {
+
+        /* New image cause isn't posible to put an align image */
+
+        & #sidebar-main {
+            background-color: transparent !important;
+            border-inline-color: transparent !important;
+            &::before {
+                background-image: linear-gradient(var(--my-toolbar-bgcolor, transparent), var(--my-toolbar-bgcolor, transparent)),
+                    var(--lwt-header-image, var(--lwt-additional-images, none)),
+                    linear-gradient(var(--toolbar-bgcolor, Field), var(--toolbar-bgcolor, Field)) !important;
+                background-size: auto 100% !important;
+            }
+        }
+    }
+    
+    /* _____________________ Various separators _____________________
+    ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+
+    /* Margin top of all tabs */
+
+    #vertical-tabs>#tabbrowser-tabs {
+        margin-block-start: 6px !important;
+    }
+
+    /* Spliter for pinned tabs */
+
+    #vertical-pinned-tabs-splitter {
+        --tab-inner-inline-margin: 0px !important;
+        border-image: var(--my-separator-border-style1) !important;
+
+        &:hover {
+            --tabstrip-inner-border: var(--general-color) !important;
+        }
+    }
+
+    /* Separator bottom when tabs scroll appears */
+    
+    #tabbrowser-tabs[orient="vertical"] {
+        &[overflow]::after {
+            /*opacity: 0 !important;/**/
+            margin-inline: 0px !important;
+            border-image: var(--my-separator-border-style1) !important;
+        }
+    }
+    
+    /* Separator top of tools */
+    
+    #sidebar-tools-and-extensions-splitter {
+        border-block-width: 0px !important;
+        background-color: transparent !important;
+        pointer-events: none !important;
+    }
+    
+    /* Overflow indicator when tabs scroll appears */
+    
+    spacer:is([part="overflow-start-indicator"],[part="overflow-end-indicator"]) {
+        margin-inline: 5px !important;
     }
 }

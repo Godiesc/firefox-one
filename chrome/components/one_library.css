@@ -3,7 +3,13 @@
 
 /*---------------------------------library ----------------------------------*/
 
-@-moz-document url(chrome://browser/content/places/places.xhtml) , url(chrome://browser/content/webext-panels.xhtml){
+@-moz-document regexp("^chrome://browser/content/places.*"), url(chrome://browser/content/webext-panels.xhtml),
+    url(chrome://browser/content/syncedtabs/sidebar.xhtml), regexp("^chrome://browser/content/sidebar.*") {
+    
+    :root {
+        --toolbarbutton-icon-fill-attention: unset !important;
+    }
+    
     @media (prefers-color-scheme: dark){
         :root{
         --arrowpanel-background: #1c1726 !important;
@@ -207,7 +213,7 @@
     
     tree {
         appearance: none !important;
-        background: var(--organizer-pane-background) !important;
+        /*background: var(--organizer-pane-background) !important;/**/
     }
     
     /* Margen lineal de la lista de marcadores */
