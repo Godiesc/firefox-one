@@ -46,7 +46,7 @@
        height="14.210326"
        x="3.4917669"
        y="9.4146738"
-       ry="5.6568537" />
+       ry="0" />
     <rect
        style="fill-opacity:1;fill-rule:nonzero;stroke-width:5.16346;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers fill stroke"
        id="rect1049-07"
@@ -54,7 +54,7 @@
        height="15.513865"
        x="3.4917669"
        y="26.486135"
-       ry="5.6568527" />
+       ry="0" />
     <rect
        style="fill-opacity:1;fill-rule:nonzero;stroke-width:5.11867;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers fill stroke"
        id="rect1049-07-9"
@@ -62,7 +62,7 @@
        height="15.372779"
        x="24.53125"
        y="26.62722"
-       ry="5.5684643" />
+       ry="0" />
     <rect
        style="fill-opacity:1;fill-rule:nonzero;stroke-width:4.92614;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke"
        id="rect1049-0"
@@ -70,6 +70,6 @@
        height="14.241576"
        x="24.530331"
        y="9.4146738"
-       ry="5.6568537" />
+       ry="0" />
   </g>
 </svg>
