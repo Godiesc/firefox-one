@@ -53,7 +53,7 @@
     <td>true</td></tr>
 </table>
 
-<p>For solid themes the image is taken from: <code>chrome/images/newtab/menu-image.png</code></p>
+<p>For solid themes the image is taken from: <code>chrome/newtab/menu-image.png</code></p>
 
 ![ImageInMenus](https://github.com/Godiesc/firefox-one/assets/22057609/216af894-f35f-418a-b309-81a9e703929e)
 
@@ -63,7 +63,7 @@
     <td>true</td></tr>
 </table>
 
-<p>You need to use an image with the same width and at least 150px higher of the resolution of your monitor for a perfect align. The image taken for this config is: <code>chrome/images/newtab/wallpaper-dark.png</code> and <code>chrome/images/newtab/wallpaper-light.png</code></p>
+<p>You need to use an image with the same width and at least 150px higher of the resolution of your monitor for a perfect align. The image taken for this config is: <code>chrome/newtab/wallpaper-dark.png</code> and <code>chrome/newtab/wallpaper-light.png</code></p>
 
 ![imagen](https://github.com/Godiesc/firefox-one/assets/22057609/aa08987f-cf41-4ec7-9f9e-a838a145a997)
 
