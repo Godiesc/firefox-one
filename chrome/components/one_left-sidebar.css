@@ -67,10 +67,11 @@
     #PersonalToolbar #PlacesToolbarItems > toolbarseparator{
         height: 7px;
         max-width: var(--my-vertical-toolbar-width) !important;                                             /* My code */
-        margin-inline: 14px !important;                                                                     /* My code */
-        background-color: var(--general-color) !important;                                                  /* My edit */
+        margin-inline: 14px 9px !important;                                                                /* My code */
+        background-color: var(--toolbarbutton-icon-fill) !important;                                        /* My edit */
         background-clip: padding-box;
         border-block: 3px solid transparent !important;
+        opacity: 0.5 !important;
     }
 
     #PersonalToolbar #PlacesToolbarItems > .bookmark-item{
@@ -237,6 +238,7 @@
             outline: 1px solid var(--my-content-border-color) !important;
             outline-offset: -1px !important;
             pointer-events: none !important;
+            z-index: -1;
         }
     }
     
