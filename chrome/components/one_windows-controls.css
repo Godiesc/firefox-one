@@ -91,8 +91,8 @@
 @media -moz-pref("firefoxone.tree_tabs_style") or -moz-pref("sidebar.verticalTabs") {
 
     /* New height */
-    #toolbar-menubar[autohide="true"] .titlebar-buttonbox-container,
-    #toolbar-menubar[autohide="true"] ~ #nav-bar .titlebar-buttonbox-container {
+    #toolbar-menubar[autohide] .titlebar-buttonbox-container,
+    #toolbar-menubar[autohide] ~ #nav-bar .titlebar-buttonbox-container {
         max-height: calc(var(--toolbar-height-personal) + 8px) !important;
         min-height: calc(var(--toolbar-height-personal) + 8px) !important;
         
@@ -116,8 +116,8 @@
 
     @media -moz-pref("firefoxone.style_without_leftsidebar"),
     (not -moz-pref("firefoxone.style_without_leftsidebar")) and -moz-pref("browser.toolbars.bookmarks.visibility", 'never') {
-        #toolbar-menubar[autohide="true"],
-        #toolbar-menubar[autohide="true"] ~ #nav-bar {
+        #toolbar-menubar[autohide],
+        #toolbar-menubar[autohide] ~ #nav-bar {
             .titlebar-buttonbox-container:before {
                 background: url("../icons/urlbar-separator.svg") no-repeat center !important;
                 content: ""; display: block !important;
@@ -136,7 +136,7 @@
     
     @media (-moz-gtk-csd-reversed-placement) {
         
-        :root:has(#toolbar-menubar[autohide="true"]) .titlebar-buttonbox-container:after {
+        :root:has(#toolbar-menubar[autohide]) .titlebar-buttonbox-container:after {
             background: url("../icons/urlbar-separator.svg") no-repeat center !important;
             content: ""; display: block !important;
             background-size: 6px 16px !important;

@@ -34,7 +34,8 @@ menuseparator {
 
 /* Bug fix: Separator after 'AI menu' causes unwanted scrolling */
 
-#context-ask-chat:not([hidden="true"]) ~ #frame-sep {
+#context-ask-chat,
+#context-ask-chat + #frame-sep {
     display: flex !important;
 }
 

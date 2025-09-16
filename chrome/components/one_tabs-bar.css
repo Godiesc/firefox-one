@@ -105,16 +105,6 @@
     }
 }
 
-/* Max horizontal tab size */
-
-#tabbrowser-arrowscrollbox[orient="horizontal"] {
-
-    &>.tabbrowser-tab[fadein]:not([style^="max-width"]),
-    &>tab-group:not([collapsed]) .tabbrowser-tab[fadein]:not([style^="max-width"]) {
-        max-width: 168px !important;
-    }
-}
-
 /* ___________________________________________________________ Various Styles ___________________________________________________________
    ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
 
@@ -464,7 +454,7 @@ menubar > menu {
 
 /* __ Menubar Flotante __ */
 
-#toolbar-menubar[autohide="true"]{
+#toolbar-menubar[autohide]{
     position: fixed;
     display: flex;
     top: 0px !important;
@@ -473,7 +463,7 @@ menubar > menu {
     z-index: 10;
 }
 
-#toolbar-menubar[autohide="false"] #main-menubar{
+#toolbar-menubar:not([autohide]) #main-menubar{
     background-color: transparent !important;
     box-shadow: none !important;
 
@@ -483,7 +473,7 @@ menubar > menu {
     }
 }
 
-#toolbar-menubar[autohide="true"] #main-menubar {
+#toolbar-menubar[autohide] #main-menubar {
     height: calc(var(--tab-min-height) + var(--tab-block-margin,0px)) !important;
     background: linear-gradient(var(--my-toolbar-bgcolor, var(--toolbar-bgcolor)), var(--my-toolbar-bgcolor, var(--toolbar-bgcolor))),
                       var(--lwt-header-image, none), var(--lwt-additional-images,none),
@@ -502,7 +492,7 @@ menubar > menu {
     box-shadow: 5px 0 5px 1px var(--contrast-color) !important;
 }
 
-#toolbar-menubar[autohide="true"]:not([inactive="true"]) #main-menubar>menu {
+#toolbar-menubar[autohide]:not([inactive]) #main-menubar>menu {
     margin-block: 4px !important;
     border-radius: 4px !important;
     
@@ -519,13 +509,13 @@ menubar > menu {
     }
 }
 
-#toolbar-menubar[autohide="true"][inactive="true"]{ height: 0px !important; }
+#toolbar-menubar[autohide][inactive]{ height: 0px !important; }
 
 #toolbar-menubar > spacer{ flex-grow: 1 }
 #toolbar-menubar[inactive] > .titlebar-buttonbox-container{ display: none }
 
 @media (-moz-gtk-csd-reversed-placement){
-    #toolbar-menubar[autohide="true"]:not([inactive]) > .titlebar-buttonbox-container{ display: none }  
+    #toolbar-menubar[autohide]:not([inactive]) > .titlebar-buttonbox-container{ display: none }  
 }
 
 /* _______________________ Configuration for Linux _______________________ */

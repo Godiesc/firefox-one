@@ -67,8 +67,8 @@
 
     /* margin to the left of 'menubar-tabsbar-navbar' when new menu is disabled */
 
-    :root:not([chromehidden~="toolbar"]):has(#PersonalToolbar[collapsed="false"]),
-    :root:not([chromehidden~="toolbar"],[sizemode="fullscreen"]):not(:has(#sidebar-main[hidden="true"],sidebar-main[hidden])) {
+    :root:not([chromehidden~="toolbar"]):has(#PersonalToolbar:not([collapsed])),
+    :root:not([chromehidden~="toolbar"],[sizemode="fullscreen"]):not(:has(#sidebar-main[hidden],sidebar-main[hidden])) {
         & #toolbar-menubar{
             margin-inline-start: calc(var(--padding-left-tab) + 2px) !important;
         }
@@ -104,7 +104,7 @@
 
         @media (-moz-platform: windows), (-moz-platform: linux) {
 
-            :root:not([chromehidden~="toolbar"],[sizemode="fullscreen"]):has(#toolbar-menubar[autohide="false"]) {
+            :root:not([chromehidden~="toolbar"],[sizemode="fullscreen"]):has(#toolbar-menubar:not([autohide])) {
                 
                 /* Smaller menu button size */
                 & #PanelUI-menu-button {
@@ -136,18 +136,18 @@
         
         /* left margin of menubar */
 
-        #toolbar-menubar[autohide="false"] #main-menubar {
+        #toolbar-menubar:not([autohide]) #main-menubar {
             margin-inline-start: calc(var(--padding-left-tab) - 4px) !important;
         }
         
         /* left margin of tabs-bar - without sidebar */
         
-        #toolbar-menubar[autohide="true"]+#TabsToolbar,
-        :root:is([sizemode="fullscreen"]) #toolbar-menubar[autohide="false"]+#TabsToolbar {
+        #toolbar-menubar[autohide]+#TabsToolbar,
+        :root:is([sizemode="fullscreen"]) #toolbar-menubar:not([autohide])+#TabsToolbar {
             margin-inline-start: calc(var(--my-vertical-toolbar-width, var(--padding-left-tab)) + 4px) !important;
         }
         
-        #toolbar-menubar[autohide="false"]+#TabsToolbar {
+        #toolbar-menubar:not([autohide])+#TabsToolbar {
             margin-inline-start: 4px !important;
         }
 
@@ -332,8 +332,8 @@
 
             /* Move tabsbar to the right */
             #toolbar-menubar #main-menubar,
-            & #toolbar-menubar[autohide="true"]+#TabsToolbar,
-            & #toolbar-menubar[autohide="false"]+#TabsToolbar {
+            & #toolbar-menubar[autohide]+#TabsToolbar,
+            & #toolbar-menubar:not([autohide])+#TabsToolbar {
                 margin-inline-start: var(--my-elements-left-margin, 0px) !important;
             }
 
@@ -353,7 +353,7 @@
         @media (-moz-platform: windows), (-moz-platform: linux) {
             
             /* Menubar left-padding */
-            #toolbar-menubar[autohide="true"] #main-menubar {
+            #toolbar-menubar[autohide] #main-menubar {
                 
             }
             
@@ -439,7 +439,7 @@
                 & #PanelUI-menu-button {
                     @media -moz-pref("firefoxone.style_without_leftsidebar"),
                         (not -moz-pref("firefoxone.style_without_leftsidebar")) and -moz-pref("browser.toolbars.bookmarks.visibility", 'never') {
-                            #toolbar-menubar[autohide="true"] ~ #nav-bar & {
+                            #toolbar-menubar[autohide] ~ #nav-bar & {
                                 --toolbar-start-end-padding: inherit !important;
                                 padding-block: unset !important;
                                 padding-block-start: 4px !important;
@@ -454,7 +454,7 @@
                     
                     @media -moz-pref("firefoxone.style_without_leftsidebar"),
                         (not -moz-pref("firefoxone.style_without_leftsidebar")) and -moz-pref("browser.toolbars.bookmarks.visibility", 'never') {
-                            #toolbar-menubar[autohide="true"] ~ #nav-bar & {
+                            #toolbar-menubar[autohide] ~ #nav-bar & {
                                 position: unset !important;
                                 order: -1 !important;
                                 inset-inline-start: unset !important;

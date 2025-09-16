@@ -64,8 +64,8 @@
     #PersonalToolbar > toolbaritem{
         justify-content: center;
     }
-    #PersonalToolbar #PlacesToolbarItems > toolbarseparator{
-        height: 7px;
+    #PersonalToolbar #PlacesToolbarItems > toolbarseparator::before {
+        height: 1px;
         max-width: var(--my-vertical-toolbar-width) !important;                                             /* My code */
         margin-inline: 14px 9px !important;                                                                /* My code */
         background-color: var(--toolbarbutton-icon-fill) !important;                                        /* My edit */

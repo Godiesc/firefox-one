@@ -201,24 +201,24 @@
 
 /* Roundness */
 
-#urlbar, #urlbar-background {
+#urlbar, .urlbar-background {
     --toolbarbutton-border-radius: calc(var(--border-radius-urlbar-personal) + 0px) !important;
     border-radius: var(--toolbarbutton-border-radius) !important;
 }
 
 /* Roundness */
 
-#urlbar[open], #urlbar[open] #urlbar-background {
+#urlbar[open], #urlbar[open] .urlbar-background {
     --toolbarbutton-border-radius: calc(var(--border-radius-urlbar-personal) + 6px) !important;
     border-radius: var(--toolbarbutton-border-radius) !important;
 }
 
-#urlbar:not([open], [focused]) #urlbar-background {
+#urlbar:not([open], [focused]) .urlbar-background {
     transition: ease-in 150ms !important;
     transition-delay: 80ms !important;
 }
 
-#urlbar:not([open], [focused]):hover #urlbar-background {
+#urlbar:not([open], [focused]):hover .urlbar-background {
     background-color: var(--toolbarbutton-hover-background) !important;
     border-color: transparent !important;
     transition: linear 150ms !important;
@@ -226,16 +226,16 @@
 }
 
 :root:is([lwtheme-image],[style*="--lwt-additional-images"]) 
-    #urlbar:not([open]):is([focused]) #urlbar-background {
+    #urlbar:not([open]):is([focused]) .urlbar-background {
         background-color: color-mix(in srgb, var(--toolbar-bgcolor) 90%, var(--tab-selected-textcolor)) !important;
 }
 
-#urlbar[focused] #urlbar-background {
+#urlbar[focused] .urlbar-background {
     box-shadow: none !important;
     transition: background-color 0.4s ease, border-radius 0.2s ease !important;
 }
 
-#urlbar[open] #urlbar-background {
+#urlbar[open] .urlbar-background {
     --toolbar-field-border-color: var(--my-content-border-color) !important;                /* Border color */
     --arrowpanel-border-color: transparent !important;                                      /* Border color - not without default colors */
     --toolbar-field-focus-background-color: var(--toolbar-field-open-background-color, inherit)  !important;
@@ -275,20 +275,20 @@
     }
 }
 
-#searchmode-switcher-icon {
+.searchmode-switcher-icon {
     list-style-image: url("chrome://global/skin/icons/search-glass.svg") !important;
 }
 
 #urlbar-searchmode-switcher {
     margin-block: 1px !important;
-    --urlbar-searchmodeswitcher-inline-padding: 5px !important;
+    --urlbar-searchmodeswitcher-inline-padding: 3px !important;
     --urlbar-searchmodeswitcher-margin-inline-end: 8px !important;
     
     &:hover { background-color: var(--urlbar-box-hover-bgcolor) !important; }
     &[open] { background-color: var(--urlbar-box-active-bgcolor) !important; }   
 }
 
-#searchmode-switcher-dropmarker {
+.searchmode-switcher-dropmarker {
     display: none !important;
 }
 

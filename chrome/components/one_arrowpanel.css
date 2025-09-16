@@ -174,6 +174,7 @@ treechildren::-moz-tree-separator {
 .sidebar-splitter {
     @media -moz-pref("sidebar.revamp") or (not (-moz-platform: linux)) {
         --sidebar-border-color: transparent !important;
+        --splitter-width: 4px !important;
     }
     
     /* Spliter style on Linux - not 'revamp' */
@@ -196,7 +197,7 @@ treechildren::-moz-tree-separator {
         max-width: none !important;
         min-width: 0px !important;
         margin-block: 4px 4px !important;
-        margin-inline: 4px 4px !important;
+        margin-inline-start: 4px !important;
         outline: 1px solid var(--my-content-border-color) !important;/**/
         outline-offset: -1px !important;
         
@@ -215,9 +216,21 @@ treechildren::-moz-tree-separator {
     }
     
     /* 'splitter' margins */
+    
+    splitter {
+        background-color: transparent !important;
+        
+        &:hover {
+            background-color: var(--general-color) !important;
+        }
+    }
 
     .sidebar-splitter { margin-inline-end: -4px !important; }
-    #sidebar-box[sidebar-positionend] + .sidebar-splitter { margin-inline-start: -4px !important; }
+    #sidebar-box[sidebar-positionend] {
+        margin-inline-end: 4px !important;
+        
+        & + .sidebar-splitter { margin-inline-start: -4px !important; }
+    }
     
     /* Show the border when 'any web site' is displayed in sidebar - not in tree-tabs extension - bug fix when 'expand-on-hover' */
     
@@ -232,7 +245,14 @@ treechildren::-moz-tree-separator {
 
 @media -moz-pref("sidebar.revamp") {
     
-    splitter { --splitter-width: 4px !important; } /* Splitter width */
+    splitter { 
+        --splitter-width: 4px !important;           /* Splitter width */
+        background-color: transparent !important;   /* Splitter background */
+    } 
+    
+    .sidebar-splitter {
+        width: var(--splitter-width) !important;
+    }
     
     /* Replace unusual border color when using 'expand-on-hover' */
     
@@ -257,7 +277,7 @@ treechildren::-moz-tree-separator {
     #sidebar-box {
         padding: 0px !important;
         margin-block: 4px !important;
-        margin-inline-end: 4px !important;
+        /*margin-inline-end: 4px !important;/**/
 
         #sidebar {
             outline-offset: -1px !important;

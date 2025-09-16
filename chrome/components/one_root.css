@@ -343,13 +343,13 @@
 
 /* Set menu-bar height */
 
-:root:not([sizemode="fullscreen"]):has(#toolbar-menubar[autohide="false"]) {
+:root:not([sizemode="fullscreen"]):has(#toolbar-menubar:not([autohide])) {
   --menubar-height-personal: 26px !important;
 }
 
 /* Set bookmarks-bar height */
 
-:root:not([sizemode="fullscreen"]):has(#PersonalToolbar[collapsed="false"]) {
+:root:not([sizemode="fullscreen"]):has(#PersonalToolbar:not([collapsed])) {
   --bookmarksbar-height-personal: 30px !important;
 }
 
@@ -371,7 +371,7 @@
   --toolbarbutton-outer-padding: 3px !important;                                        /* More spaced buttons */
   --margin-left-icons-personal: -1px !important;
   
-  &:root:has(#PersonalToolbar[collapsed="false"]) {
+  &:root:has(#PersonalToolbar:not([collapsed])) {
   --bookmarksbar-height-personal: 22px !important;
   }
 }
@@ -393,7 +393,7 @@
   --toolbarbutton-inner-padding: 8px !important;                                        /* Smaller toolbar buttons */
   --toolbarbutton-outer-padding: 4px !important;                                        /* More spaced buttons */
   
-  &:root:has(#PersonalToolbar[collapsed="false"]) {
+  &:root:has(#PersonalToolbar:not([collapsed])) {
     --bookmarksbar-height-personal: 34px !important;
   }
 }

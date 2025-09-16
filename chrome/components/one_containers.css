@@ -118,6 +118,16 @@ tab-group[collapsed] > .tab-group-label-container > .tab-group-label {
 
 @media -moz-pref("sidebar.verticalTabs") {
     
+   /* Line before Number of hidden tabs in a collapsed group */
+    
+    .tab-group-overflow-count-container {
+        #tabbrowser-tabs[orient="vertical"] & {
+            #tabbrowser-tabs[expanded] & {
+                margin-inline-start: var(--tab-group-line-toolbar-border-distance) !important;
+            }
+        }
+    }
+    
     /* Group line in label - sidebar collapsed */
     
     .tab-group-label-container {

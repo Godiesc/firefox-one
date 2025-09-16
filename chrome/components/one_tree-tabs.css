@@ -9,7 +9,7 @@
     #TabsToolbar{
         visibility: collapse;
     }
-    :root[customtitlebar] #toolbar-menubar[autohide="true"] ~ #nav-bar {
+    :root[customtitlebar] #toolbar-menubar[autohide] ~ #nav-bar {
         > .titlebar-buttonbox-container {
             display: flex !important;
         }
@@ -32,7 +32,7 @@
 
 @media -moz-pref("firefoxone.tree_tabs_style"), -moz-pref("sidebar.verticalTabs") {
     
-    :root:is([customtitlebar]) #toolbar-menubar[autohide="true"] ~ #nav-bar {
+    :root:is([customtitlebar]) #toolbar-menubar[autohide] ~ #nav-bar {
         
         /* New Style navbar */
         
@@ -92,26 +92,9 @@
         }
     }
     
-    /* Separador nav-bar + window controls - In all wanted scenarios 
-
-    #toolbar-menubar[autohide="true"],
-    #toolbar-menubar[autohide="true"] ~ #nav-bar {
-        .titlebar-buttonbox-container:before {
-            background: url("../icons/urlbar-separator.svg") no-repeat center !important;
-            content: ""; display: block !important;
-            background-size: 16px 16px !important;
-            width: 22px !important;
-            margin-left: -2px !important;
-            height: calc(var(--toolbar-height-personal) + 8px);
-            -moz-context-properties: fill !important;
-            fill: var(--toolbarbutton-icon-fill) !important;
-            opacity: 0.2;
-        }
-    }*/
-    
     /* New 'menubar' style */
 
-    #toolbar-menubar[autohide="true"] #main-menubar {
+    #toolbar-menubar[autohide] #main-menubar {
         /*border-radius: 8px 0 0 8px !important;/**/
         height: calc(var(--toolbar-height-personal)) !important;
         box-shadow: 1px 0px 5px var(--contrast-color) !important;
@@ -120,12 +103,12 @@
     
     /* Bug fix: Trick to hide urlbar when menubar appears (Alt key) */
 
-    #toolbar-menubar[autohide="true"] ~ #nav-bar #urlbar {
+    #toolbar-menubar[autohide] ~ #nav-bar #urlbar {
         opacity: 0 !important;
         pointer-events: none !important;
     }
 
-    #toolbar-menubar[autohide="true"][inactive="true"] ~ #nav-bar #urlbar {
+    #toolbar-menubar[autohide][inactive] ~ #nav-bar #urlbar {
         opacity: 1 !important;
         pointer-events: all !important;
     }
