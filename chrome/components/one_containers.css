@@ -67,6 +67,13 @@
 tab-group[collapsed] > .tab-group-label-container > .tab-group-label {
     outline: 1px solid light-dark(var(--tab-group-color), var(--tab-group-color-invert)) !important;
 }
+
+/* Remove unwanted group 'hover' background */
+
+.tab-group-label-hover-highlight {
+      --tab-hover-background-color: transparent !important;
+    margin-inline: 0px !important;
+}
         
 .tab-group-label {
 
