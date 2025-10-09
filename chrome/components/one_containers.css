@@ -160,6 +160,9 @@ tab-group[collapsed] > .tab-group-label-container > .tab-group-label {
            text-transform: capitalize !important;
         }
         
+        /* Center label in all densities */
+        margin-inline: calc(var(--tab-collapsed-width) /2 - 12px) !important;
+        
         /* When sidebar expanded - Align the group label with the same collapsed position */
         #tabbrowser-tabs[orient="vertical"][expanded] & {
             margin-inline: calc(var(--tab-collapsed-background-width) /2 - 12px) !important;
