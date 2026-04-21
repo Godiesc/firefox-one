@@ -40,6 +40,7 @@
         background: transparent !important;
         margin-inline: 0px !important;
         outline: none !important;
+        box-shadow: none !important;
         
         /* When 'left-sidebar' visible */
         @media (not -moz-pref("firefoxone.style_without_leftsidebar")) and -moz-pref("browser.toolbars.bookmarks.visibility", 'always') {
@@ -50,9 +51,10 @@
             content: ''; display: flex; position: absolute; top: 4px !important; inset-inline-start: 4px;
             width: calc(100% - 8px);
             height: calc(100% - 4px);
-            border-radius: 8px !important;
+            border-radius: var(--my-toolbar-border-radius) !important;
             background-color: var(--toolbar-bgcolor);
             outline: 1px solid var(--my-content-border-color) !important;
+            box-shadow: 0 0 1px var(--contrast-color) !important;
             outline-offset: -1px !important;
             pointer-events: none !important;
             
@@ -79,7 +81,8 @@
         
         /* Urlbar vertical align */
 
-        #urlbar { margin-block-start: 4px !important; }
+        #urlbar,
+        #searchbar-new { margin-block-start: 4px !important; }
         
         /*  Make border top of url 'dragable' */
         
@@ -117,14 +120,6 @@
 
     #vertical-spacer {
         display: none !important;
-    }
-    
-    /* Remove extension header when using sidebar-revamp */
-    
-    @media -moz-pref("sidebar.revamp") and (not -moz-pref("sidebar.verticalTabs")) {
-        #sidebar-panel-header {
-            display: none !important;
-        }
     }
 }
 

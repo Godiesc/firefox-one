@@ -5,8 +5,8 @@
   
   @media (prefers-color-scheme: dark) {
     :root {
-      --tab-selected-bgcolor: #5a6180 !important;                                           /* tab_selected */
-      --toolbar-bgcolor: #2d3249 !important;                                                /* toolbar */
+      --tab-selected-bgcolor: #4d5578 !important;                                           /* tab_selected */
+      --toolbar-bgcolor: #2d3246 !important;                                                /* toolbar */
       --toolbarbutton-hover-background: #4c547b !important;                                 /* button_background_hover */
       --toolbar-field-focus-background-color: #4c547b !important;                           /* toolbar_field_focus */
       --toolbar-field-open-background-color: #363844cc !important;                          /* toolbar_field_open - personal variable */
@@ -22,7 +22,7 @@
       --toolbarbutton-hover-personal: var(--toolbarbutton-hover-background) !important;     /* button_background_hover */
       --tab-selected-box-shadow: 0px 5px 7px color-mix(in srgb, 
         var(--lwt-accent-color, Field) 82%, var(--tab-selected-textcolor)) !important;      /* selected tab shadow */
-      --my-content-border-color: color-mix(in srgb, var(--toolbar-bgcolor), transparent) !important;
+      /*--my-content-border-color: color-mix(in srgb, var(--toolbar-bgcolor), transparent) !important;/**/
     }
   }
   
@@ -45,7 +45,7 @@
       --toolbarbutton-hover-personal: var(--toolbarbutton-hover-background) !important;     /* button_background_hover */
       --tab-selected-box-shadow: 0px 5px 7px color-mix(in srgb, 
         var(--lwt-accent-color, Field) 82%, var(--tab-selected-textcolor)) !important;      /* selected tab shadow */
-      --my-content-border-color: color-mix(in srgb, var(--toolbar-bgcolor), transparent) !important;
+      /*--my-content-border-color: color-mix(in srgb, var(--toolbar-bgcolor), transparent) !important;/**/
     }
   }
 }
@@ -58,12 +58,16 @@
     --tab-selected-outline-color: light-dark(var(--tab-group-color, var(--general-color)),
       var(--tab-group-color-invert, var(--general-color))) !important;                                  /* tab_line in 'group-tab' without default-colors */
     --tab-loading-fill: var(--tab-selected-outline-color) !important;                                   /* Dot color when page loads */
-    --my-tab-group-background: color-mix(in srgb, var(--tab-group-color) 20%, var(--toolbar-bgcolor));  /* Tab background */
+    --my-tab-group-background: color-mix(in srgb, var(--tab-group-color-invert) 15%, var(--toolbar-bgcolor));  /* Tab background */
   }
 }
 
 :root {
   
+  --my-main-gradient-background: linear-gradient(to top, 
+    var(--lwt-accent-color)                                                             /* Gradiente background used in themes with images */
+    calc(100% - 200px), 
+    transparent );  
   /*--lwt-accent-color: #09080d !important;                                             /* frame */
   /*--toolbox-textcolor: var(--tab-selected-textcolor) !important;                      /* tab_background_text */
   --lwt-accent-color-inactive: var(--lwt-accent-color, Field) !important;               /* frame_inactive */
@@ -111,6 +115,7 @@
     var(--button-bgcolor) 82%, white) !important;
   --urlbar-icon-border-radius: 4px !important;                                          /* shape of url bar icons */
   --urlbar-icon-padding: 3px !important;                                                /* Urlbar icon padding */
+  --identity-box-margin-inline: 10px !important;                                        /* margin between 'trust' icon and url */
   --border-radius-urlbar-personal: 5px;                                                 /* Personal variable to change urlbar buttons roundness with 'tab-shapes' config */
 
   /*--toolbarbutton-icon-fill: #b6b6d2 !important;                                      /* icons */
@@ -121,7 +126,7 @@
   --sidebar-text-color: var(--toolbar-color, FieldText) !important;                     /* Sidebar label color */
   --sidebar-border-color: var(--my-content-border-color) !important;                    /* Sidebar border color */
   
-  --toolbar-start-end-padding: 5px !important;                                          /* Margin first/last toolbar icons */
+  --toolbar-start-end-padding: 9px !important;                                          /* Margin first/last toolbar icons */
   --toolbarbutton-inner-padding: 6px !important;                                        /* Smaller toolbar buttons */
   --toolbarbutton-outer-padding: 2px !important;                                        /* More spaced buttons */
   --toolbarbutton-border-radius: 5px !important;                                        /* Buttons roundness */
@@ -136,7 +141,7 @@
   --tab-min-height: var(--tab-height-personal) !important;                              /* Tab size */
   --tabstrip-min-height: var(--tab-height-personal) !important;                         /* Tab min size */
   --tabs-shadow-size: 0px !important;                                                   /* Tab shadow */
-  --tab-border-radius: 4px !important;                                                  /* Tab roundness */
+  --tab-border-radius: calc(var(--my-toolbar-border-radius)/2) !important;              /* Tab roundness */
   
   --arrowpanel-menuitem-padding: 8px !important;                                        /* Smaller dropdown menus */
   --arrowpanel-border-radius: 6px !important;                                           /* Menus roundness */
@@ -197,12 +202,13 @@
 
     --contrast-color: #000000 !important;
     --border-contrast-color: color-mix(in srgb, var(--arrowpanel-background) 40%, var(--contrast-color)) !important;      /* Used in context-menu and arrowpanels*/
-    --my-content-border-color: color-mix(in srgb, var(--toolbar-bgcolor) 94%, var(--tab-selected-textcolor));
+    --my-content-border-color: color-mix(in srgb, var(--toolbar-bgcolor) 92%, var(--tab-selected-textcolor));
 
     --tab-selected-textcolor: #ffffff !important;                                                                         /* tab_text */
+    --my-font-color: white !important;
 
     --toolbarbutton-active-background: color-mix(in srgb, 
-      var(--toolbarbutton-hover-background)95%, var(--tab-selected-textcolor)) !important;                                /* button_background_active */  
+      var(--toolbarbutton-hover-background) 95%, var(--tab-selected-textcolor)) !important;                                /* button_background_active */  
     --toolbarbutton-hover-personal: var(--toolbar-field-open-background-color) !important;                               /* Button personal color when 'hover' */
 
     --toolbar-field-open-background-color: color-mix(in srgb, var(--toolbar-field-focus-background-color) 90%, transparent);
@@ -232,6 +238,7 @@
     --my-content-border-color: color-mix(in srgb, var(--toolbar-bgcolor) 80%, var(--tab-selected-textcolor));
 
     --tab-selected-textcolor: #101019 !important;                                                                         /* tab_text */
+    --my-font-color: black !important;
 
     --toolbarbutton-active-background: color-mix(in srgb, var(--toolbar-bgcolor) 84%, black) !important;                  /* button_background_active */
 
@@ -263,22 +270,22 @@
 @media (prefers-color-scheme: dark) {
   :root:is([lwtheme-image],[style*="--lwt-additional-images"]) {
     --my-toolbar-bgcolor: #1e1e2fbc;                                                                                    /* toolbar */
-    --toolbar-field-focus-background-color: color-mix(in srgb, var(--general-color) 4%, #222222ec) !important;          /* toolbar_field_focus - url 'open' */
+    --toolbar-field-focus-background-color: color-mix(in srgb, var(--general-color) 4%, #222222fc) !important;          /* toolbar_field_focus - url 'open' */
     --toolbarbutton-hover-background: var(--toolbarbutton-hover-personal) !important;                                   /* button_background_hover */
     --toolbarbutton-hover-personal: color-mix(in srgb, 
-      transparent 85%, color-mix(in srgb, var(--tab-selected-textcolor)80%, var(--general-color))) !important;          /* Button :hover color personal */
+      transparent 85%, color-mix(in srgb, var(--tab-selected-textcolor) 80%, var(--general-color))) !important;          /* Button :hover color personal */
   }}
 
 @media (prefers-color-scheme: light) {
   :root:is([lwtheme-image],[style*="--lwt-additional-images"]) {
     --my-toolbar-bgcolor: #f9f9f9bc;
-    --toolbar-field-focus-background-color: color-mix(in srgb, var(--general-color) 14%, #f9f9f9dc) !important;         /* toolbar_field_focus */
+    --toolbar-field-focus-background-color: color-mix(in srgb, var(--general-color) 14%, #f9f9f9ec) !important;         /* toolbar_field_focus */
     --toolbarbutton-hover-background: color-mix(in srgb, 
       var(--toolbar-field-focus-background-color) 100%, transparent) !important;                                        /* button_background_hover */
     --toolbarbutton-active-background: color-mix(in srgb, 
       var(--toolbar-field-focus-background-color) 94%, var(--tab-selected-textcolor)) !important;                       /* button_background_active */
     --toolbarbutton-hover-personal: color-mix(in srgb, 
-      transparent 85%, color-mix(in srgb, var(--tab-selected-textcolor)80%, var(--general-color))) !important;          /* Button :hover color personal */
+      transparent 85%, color-mix(in srgb, var(--tab-selected-textcolor) 80%, var(--general-color))) !important;          /* Button :hover color personal */
     --my-content-border-color: color-mix(in srgb, var(--toolbar-bgcolor) 85%, var(--tab-selected-textcolor));
   }}
 
@@ -332,7 +339,7 @@
   }
   
   ::selection {
-    background: var(--selected-text-background) !important;
+    background: var(--my-selected-text-background) !important;
     color: black !important;
     box-shadow: none !important;
     text-shadow: none !important;

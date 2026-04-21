@@ -1,0 +1,689 @@
+/* Source file made available under Mozilla Public License v. 2.0 See the main repository for updates as well as full license text. 
+   https://github.com/Godiesc/firefox-gx */
+
+/* Remove theme image \
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+body,
+#navigator-toolbox {
+    background-image: none !important;
+    background-color: transparent !important;
+}
+
+/* Set the image in main window \
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+#main-window {
+    --my-background-image: var(--lwt-additional-images), var(--lwt-header-image, none),
+        linear-gradient(var(--lwt-accent-color, Field), var(--lwt-accent-color, Field)) !important;
+    --my-background-position-y: top;
+    background-image: var(--my-background-image);
+    background-repeat: var(--lwt-background-tiling);
+    background-position: var(--lwt-background-alignment);
+    background-position-y: var(--my-background-position-y) !important;
+    background-color: var(--lwt-accent-color, Field) !important;
+    background-size:var(--my-background-size, auto) !important;
+}
+
+/* Gradient effect to the bottom \
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+#main-window {
+    &>body:before {
+        content: "";
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: var(--my-main-gradient-background);
+        z-index: -1;
+        pointer-events: none;
+        
+        @media -moz-pref("firefoxone.main-image") {
+            --my-main-gradient-background: transparent !important;
+            background-color: color-mix(in srgb, var(--contrast-color), transparent var(--brightness-wallpaper));
+        }
+    }
+
+    @media not -moz-pref("firefoxone.main-image") {
+        /* Put here this color only in themes with images because a bug with solid themes (lwt-accent-color) */
+        &:is([lwtheme-image],[style*="--lwt-additional-images"])>body:before {
+            background-color: var(--toolbar-bgcolor);
+        }
+    }
+}
+
+/* Remove unnecessary background to show the theme image \
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+body, #browser, .browserContainer {
+    background-color: transparent !important;
+    box-shadow: none !important; /* Remove unwanted shadow when using 'revamp' */
+}
+
+/* Web content background color */
+.browserStack>browser {
+    background-color: var(--toolbar-bgcolor) !important;
+    border-radius: var(--my-toolbar-border-radius) !important;
+}
+
+/* Change web content 'border radius' when findbar is enable */
+
+.browserContainer:has(findbar:not([hidden])) {
+    :is(.browserStack, .browserStack > browser) {
+        border-radius: var(--my-toolbar-border-radius) var(--my-toolbar-border-radius) 0px 0px !important;
+        
+        /*:root:is([chromehidden~="toolbar"]) & {
+            border-radius: 0px !important;
+        }/**/
+    }
+}
+
+/* Wallpaper for some 'about:' pages \
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+@media -moz-pref("browser.tabs.allow_transparent_browser") {
+
+    :root:not([lwtheme-image],[style*="--lwt-additional-images"],[privatebrowsingmode="temporary"]):has(
+    .tabbrowser-tab[selected] :is(
+    .tab-icon-image[src="chrome://mozapps/skin/extensions/extension.svg"],
+    .tab-icon-image[src="chrome://global/skin/icons/settings.svg"],
+    .tab-icon-image[src="chrome://global/skin/icons/developer.svg"],
+    .tab-icon-image[src="chrome://global/skin/icons/performance.svg"])) {
+        
+        --my-main-gradient-background: transparent !important;
+        --toolbar-bgcolor: color-mix(in srgb, var(--contrast-color), transparent calc(var(--brightness-wallpaper)/* - 20%/**/)) !important;
+        --lwt-header-image: var(--lwt-main-image) !important;
+        --my-background-size: 100vw 100vh !important;
+        
+        @media -moz-pref("firefoxone.main-image") {
+            --toolbar-bgcolor: color-mix(in srgb,var(--my-toolbar-bgcolor),transparent var(--brightness-toolbar)) !important;
+        }
+    }
+}
+
+/* __________________________ Menu-bar __________________________
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+/* Set height of all toolbar */
+#toolbar-menubar {
+    height: var(--menubar-height-personal) !important;
+}
+
+/* Alignt menu items - tested when menu is always active */
+menubar > menu {
+    @media (-moz-platform: windows) {
+        padding: 1px 6px 3px !important;
+    }
+}
+
+/* __ Menubar Flotante __ */
+
+#toolbar-menubar[autohide]{
+    position: fixed;
+    display: flex;
+    top: 0px !important;
+    width: 100vw;
+    height: initial !important;
+    z-index: 10;
+}
+
+#toolbar-menubar:not([autohide]) #main-menubar{
+    background-color: transparent !important;
+    box-shadow: none !important;
+
+    &>menu[_moz-menuactive] {
+        background-color: var(--button-bgcolor) !important;
+        border-radius: 0 0 4px 4px !important;
+    }
+}
+
+#toolbar-menubar[autohide] #main-menubar {
+    height: calc(var(--tab-min-height) + var(--tab-block-margin,0px)) !important;
+    background: linear-gradient(var(--my-toolbar-bgcolor, var(--toolbar-bgcolor)), var(--my-toolbar-bgcolor, var(--toolbar-bgcolor))),
+                      var(--lwt-header-image, none), var(--lwt-additional-images,none),
+                      linear-gradient(var(--lwt-accent-color,Field), var(--lwt-accent-color,Field)) !important;
+    background-position: 0 0, right top , var(--lwt-background-alignment) !important;
+    background-position-y: top !important;
+    background-repeat: repeat-x, no-repeat, var(--lwt-background-tiling) !important;
+    background-size: var(--my-background-size, auto 100%, var(--lwt-background-size)) !important;
+    background-attachment: fixed, fixed, fixed !important;
+    outline: 1px solid var(--my-content-border-color) !important;
+    outline-offset: -1px !important;
+    border-radius: 8px !important;
+    margin-block: 4px !important;
+    margin-inline-start: 4px !important;    
+    padding-inline: 4px !important;
+    box-shadow: 5px 0 5px 1px var(--contrast-color) !important;
+}
+
+#toolbar-menubar[autohide]:not([inactive]) #main-menubar>menu {
+    margin-block: 4px !important;
+    border-radius: 4px !important;
+    
+    &[_moz-menuactive] {
+        background-color: var(--button-bgcolor) !important;
+    }
+    
+    &::before {
+        top: 0;
+        content: "";
+        position: fixed;
+        height: 8px;
+        width: 76px;
+    }
+}
+
+#toolbar-menubar[autohide][inactive]{ height: 0px !important; }
+
+#toolbar-menubar > spacer{ flex-grow: 1 }
+#toolbar-menubar[inactive] > .titlebar-buttonbox-container{ display: none }
+
+@media (-moz-gtk-csd-reversed-placement){
+    #toolbar-menubar[autohide]:not([inactive]) > .titlebar-buttonbox-container{ display: none }  
+}
+
+/* ______________________________ Border in all toolbars ______________________________
+   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+
+#nav-bar, #PersonalToolbar, findbar {
+    outline: 1px solid var(--my-content-border-color) !important;
+    outline-offset: -1px !important;
+    box-shadow: 0 0 1px var(--contrast-color) !important;
+}
+
+/* ______________________________ Margin in all toolbars ______________________________
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+
+#nav-bar, #PersonalToolbar {
+    border-radius: var(--my-toolbar-border-radius) !important;
+    margin-inline: 4px !important;
+}
+
+#PersonalToolbar {
+    margin-block-start: 1px !important;
+    padding-block: 2px !important;
+}
+
+/* _________________________________________________________ Sidebar-box _________________________________________________________
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+
+/* Sidebar background color & Seachbox  \
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯  |
+- 'synced tabs' with a theme with images |
+- 'Paswords'                             |
+- 'Extensions' panel                     |
+- 'ia chat'                              |
+- 'Library'                              |
+- 'other' sidebars                       |
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+@-moz-document url("chrome://browser/content/syncedtabs/sidebar.xhtml"), 
+    url("chrome://global/content/megalist/megalist.html"), 
+    url("chrome://browser/content/webext-panels.xhtml"),
+    url("chrome://browser/content/genai/chat.html"),
+    regexp("^chrome://browser/content/places.*"),   
+    regexp("chrome://browser/content/sidebar.*") {
+        
+        :root { 
+            background-color: transparent !important;
+            --toolbarbutton-icon-fill-attention: unset !important;
+            --newtab-text-primary-color: unset !important;
+            --border-color-interactive: #50505050 !important;
+        }
+
+        /* searchbox \
+        ¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+        .search-container,          /* 'Passwords' sidebar searchbox */
+        #input[type="search"] {     /* Other sidebars searchbox */
+            
+            background-color: color-mix(in srgb, Field, transparent) !important;
+            
+            /* When 'hover' */
+            &:hover:not(:focus-within) {
+                background-color: color-mix(in srgb, var(--button-smaller-bgcolor) 70%, transparent) !important;
+                border-color: var(--button-bgcolor) !important;
+            }
+            
+            /* When 'focus' */
+            &:focus-within {
+                background-color: color-mix(in srgb, var(--contrast-color) 40%, transparent) !important;
+                border-color: var(--general-color) !important;
+                outline: 1px solid var(--general-color) !important;
+            }
+        }
+}
+
+#sidebar-header {
+    padding: 4px 6px 4px 4px !important;
+    border-bottom-color: var(--my-content-border-color) !important;
+}
+
+/* Style for IA chat in sidebar is open \
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+#header {
+    --border-color: color-mix(in srgb, var(--my-content-border-color), transparent) !important;
+    background-color: transparent !important;
+    
+    #provider {
+        --button-background-color-ghost: transparent !important;
+        --button-background-color-ghost-hover: var(--button-hover-bgcolor) !important;
+    }
+}
+
+#message-container {
+    padding: 0px !important;
+}
+
+#summarize-btn-container {
+    --border-color: color-mix(in srgb, var(--my-content-border-color), transparent) !important;
+    --space-large: var(--space-small) !important;
+    
+    #summarize-button {
+        --button-background-color: color-mix(in srgb, currentColor 13%, transparent) !important;
+        --button-background-color-hover: var(--button-hover-bgcolor) !important;
+    }
+}
+
+/* Border roundness \
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+
+@media not -moz-pref("sidebar.revamp") {
+    #sidebar-box { border-radius: var(--my-toolbar-border-radius) !important; }
+    #sidebar { border-radius: 0 0 var(--my-toolbar-border-radius) var(--my-toolbar-border-radius) !important; }
+}
+
+@media -moz-pref("sidebar.revamp") {
+    #sidebar-box,
+    #sidebar {
+    border-radius: 0px var(--my-toolbar-border-radius) var(--my-toolbar-border-radius) 0px !important;
+        
+        &[sidebar-positionend] {
+            border-radius: var(--my-toolbar-border-radius) 0 0 var(--my-toolbar-border-radius) !important;
+            
+            #sidebar {
+                border-radius: var(--my-toolbar-border-radius) 0 0 var(--my-toolbar-border-radius) !important;
+            }
+        }
+    }
+}
+
+#sidebar-box {
+    /* Remove width limit */
+    max-width: none !important;
+    min-width: 1px !important;
+    /* Other styles */
+    background-color: var(--toolbar-bgcolor) !important;
+    /*box-shadow: inset 0 0 0 1px var(--my-content-border-color) !important;/**/
+    outline: 1px solid var(--my-content-border-color) !important;/**/
+    outline-offset: -1px !important;
+    box-shadow: 0 0 1px var(--contrast-color) !important;
+    overflow-x: hidden !important;
+    padding-block-end: 0px !important;  /* Fix defect when using 'revamp' */
+    margin-block: 4px !important;
+    
+    /* Fix border - tested using whatsapp in sidebar - with/without sidebar revamp */
+    #sidebar {
+        margin: 0px 1px 1px !important;
+    }
+    
+    @media not -moz-pref("sidebar.revamp") {
+        margin-inline-start: 4px !important;
+    }
+    
+    @media -moz-pref("sidebar.revamp") {
+        margin-inline-start: -5px !important;
+        
+        &[sidebar-positionend] {
+             margin-inline: 0px -5px !important;
+        }
+    }
+
+    &[sidebar-positionend] {        
+        @media not -moz-pref("sidebar.revamp") {
+            margin-inline-start: 0px !important;
+            margin-inline-end: 4px !important;
+        }
+    }
+
+    @media -moz-pref("browser.fullscreen.autohide") {
+        :root[inFullscreen]:not([macOSNativeFullscreen]) #navigator-toolbox[style*="margin-top"] + #browser & { /* Not use ':has' for better performance */
+            --my-toolbar-border-radius: 0px;
+            margin-block: 0px !important;
+            margin-inline-start: 0px !important;
+
+            &[sidebar-positionend] {
+                /*margin-inline-start: 4px !important;
+                margin-inline-end: 0px !important;/**/
+            }
+        }
+    }
+}
+
+/* 'Sidebar' splitter \
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+.sidebar-splitter {
+    @media -moz-pref("sidebar.revamp") or (not (-moz-platform: linux)) {
+        width: 4px !important;
+        background-color: transparent !important;
+        border-color: transparent !important;   /*Test when sidebar is on right */
+        border-width: 0px !important;
+        margin-block: calc(var(--my-toolbar-border-radius)/2) !important;
+        
+        &:hover {
+            background-color: var(--general-color) !important;
+            background-clip: unset !important;
+        }
+    }
+    
+    /* Spliter style on Linux */
+    @media (not -moz-pref("sidebar.revamp")) and (-moz-platform: linux), not -moz-pref("sidebar.revamp") {
+        background-color: transparent !important;
+        width: 4px !important;
+        border-width: 0px !important;
+    }
+}
+
+/* Fix splitter margin when 'vertical-tabs' */
+@media -moz-pref("sidebar.verticalTabs") {
+    #sidebar-launcher-splitter {
+        margin-inline-start: -4px !important;
+        
+        #sidebar-main[sidebar-positionend] ~ & {
+            margin-inline: 0px -4px !important;
+        }
+    }
+}
+
+@media -moz-pref("sidebar.revamp") {
+    
+    /* Remove unwanted sidebar styles */
+    #sidebar {
+        --sidebar-background-color: transparent !important;
+        --sidebar-border-color: transparent !important;
+        --content-area-shadow: none !important;
+    }
+    
+    /* Style of sidebar header */
+    #webextpanels-window #sidebar-panel-header {
+        margin-block: 0px !important;
+        padding-block: 0px !important;
+        box-shadow: inset 0 -1px color-mix(in srgb, var(--my-content-border-color) 40%, transparent) !important;
+        
+        &:not(:hover) {
+            max-height: 1px !important;
+            background-color: transparent !important;
+            box-shadow: none !important;
+            opacity: 0 !important;
+        }
+    }
+    
+    .sidebar-splitter {
+        @media (-moz-overlay-scrollbars) {
+            --splitter-width: 0px !important;
+            transition: background-color ease-in-out 250ms !important;
+        }
+    }
+    
+    /* Margins for fullscreen mode */
+    
+    @media -moz-pref("browser.fullscreen.autohide") {
+        :root[inFullscreen]:not([macOSNativeFullscreen]) #navigator-toolbox[style*="margin-top"] + #browser { /* Not use ':has' for better performance */
+
+            /* remove margins */
+
+            #sidebar {
+                border-radius: 0px !important;
+                outline-offset: -1px !important;
+            }
+
+            #sidebar-box {
+                padding: 0px !important;
+                margin: 0px !important;
+            }
+        }
+    }
+    
+    /* 'revamp' + 'tree-tabs-tyle' extension - 'expand-on-hover' */
+    @media -moz-pref("firefoxone.tree_tabs_style") and -moz-pref("firefoxone.verticalTabs-expandOnHover") {
+        #sidebar-box:is(
+        [sidebarcommand*="tabcenter"],
+        [sidebarcommand*="treestyletab"],
+        [sidebarcommand*="_3c078156-979c-498b-8990-85f7987dd929"]) {
+            background-color: transparent !important;
+            margin-inline-start: -4px !important;
+
+            #sidebar {
+                background: transparent !important;
+            }
+        }
+    }
+}
+
+/* __________________________________________________'Split view' web content style __________________________________________________
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+:root:not([inDOMFullscreen]) #tabbrowser-tabpanels {
+    &[splitview] {
+        
+    :root:not([inDOMFullscreen]) & > .split-view-panel:not(.deck-selected) {
+        border-radius: var(--my-toolbar-border-radius) !important;
+        box-shadow: 0 0 1px var(--contrast-color) !important;
+        }
+        
+        /* Outline in selected tab */
+        & .browserContainer {
+            border-radius: var(--my-toolbar-border-radius) !important;
+            
+            .deck-selected > & {
+                outline-color: transparent !important;
+                
+                :is(.browserStack, .browserStack > browser) {
+                    outline-width: 2px !important;
+                    outline-offset: -2px !important;
+                    outline-color: var(--general-color) !important;
+                }
+            }
+            
+            .deck-selected > & findbar {
+                outline-color: var(--general-color) !important;
+            }
+        }
+        
+        /* Margins 1st split tab */
+        & .split-view-panel.split-view-panel-active[column="0"] {
+            margin-block: 0px !important;
+            margin-inline: 1px 3px !important;
+        }
+        
+        /* Margins 2nd split tab */
+        & .split-view-panel.split-view-panel-active[column="1"] {
+            margin-block: 0px !important;
+            margin-inline: 3px 1px !important;
+        }
+    }
+}
+
+/* 'Split view' spliter \
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+.split-view-splitter {
+    min-width: 4px !important;
+    border-color: transparent !important;
+    border-width: 1px !important;
+    border-block-width: calc(var(--my-toolbar-border-radius)/2) !important; !important;
+    border-radius: var(--my-toolbar-border-radius) !important;
+    background: transparent !important;
+    margin-inline: -3px !important;
+    margin-block: calc(var(--my-toolbar-border-radius)/2) !important; !important;
+    
+    &:hover {
+        transition: background 0.1s ease-in-out 0.1s, border-color 0.1s ease-in-out 0.1s !important;
+        background: transparent !important;
+        border-color: var(--general-color) !important;
+        border-block-color: transparent !important;
+        z-index: 1 !important;
+    }
+}
+
+/* 'Split view' footer button */
+split-view-footer {
+    background: var(--lwt-accent-color) !important;
+    border-radius: 0px 0px var(--my-toolbar-border-radius) !important;
+    border: 1px solid var(--toolbarbutton-hover-personal) !important;
+    
+    .browserContainer:has(findbar:not([hidden])) & {
+        --my-toolbar-border-radius: 0px !important;
+    }
+}
+
+/* Status panel */
+
+#statuspanel {
+    #statuspanel-label {
+        background-color: var(--lwt-accent-color) !important;
+        color: currentColor !important;
+        border: 1px solid var(--toolbarbutton-hover-personal) !important;
+        border-radius: 0 var(--my-toolbar-border-radius) 0 var(--my-toolbar-border-radius) !important;
+    }
+    
+    &[mirror] #statuspanel-label {
+        border-radius: var(--my-toolbar-border-radius) 0 var(--my-toolbar-border-radius) 0 !important;
+    }
+    
+    .browserContainer:has(findbar:not([hidden])) & {
+        --my-toolbar-border-radius: 0px !important;
+    }
+}
+
+/* _______________________________________________________ Margins & Corners _______________________________________________________ 
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+/* Nuevo espacio alrededor del contenido web \
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+:root:not([inDOMFullscreen]) {
+    #tabbrowser-tabbox {
+        /* Used 'padding' instead of 'margin' to avoid 
+        breaking animations when #sidebar-main 'expand-on-hover' */
+        padding: 4px !important;
+
+        /* When using sidebar 'revamp' */
+        @media -moz-pref("sidebar.revamp") {
+
+            /* not applied in popup windows ¯¯v */
+            :root:not([chromehidden~="toolbar"]) #sidebar-main:not([hidden]) ~ #sidebar-box:not([sidebar-positionend]) ~ & {
+                padding-inline-start: 0px !important;
+            }
+
+            /* not applied in popup windows ¯¯v */
+            :root:not([chromehidden~="toolbar"]) #sidebar-main:not([hidden]) ~ #sidebar-box[sidebar-positionend] ~ & {
+                padding-inline-end: 0px !important;
+            }
+        }
+
+        #sidebar-box[checked="true"]:not([sidebar-positionend]) ~ & {
+            padding-inline-start: 0px !important;
+        }
+
+        #sidebar-box[checked="true"][sidebar-positionend] ~ & {
+            padding-inline-end: 0px !important;
+        }
+    }
+
+    .browserStack,
+    #customization-container {
+        border-radius: var(--my-toolbar-border-radius) !important;
+    }
+
+    #customization-container,
+    .browserStack>browser {
+        border-radius: var(--my-toolbar-border-radius) !important;
+        outline: 1px solid var(--my-content-border-color) !important;
+        outline-offset: -1px !important;
+        box-shadow: 0 0 1px var(--contrast-color) !important;
+    }
+    
+    /* Remove some styles in Fullscreen mode */
+    
+    @media -moz-pref("browser.fullscreen.autohide") {
+        &[inFullscreen]:not([macOSNativeFullscreen]) #navigator-toolbox[style*="margin-top"] + #browser { /* Not use ':has' for better performance */
+            
+            #tabbrowser-tabbox { padding: 0px !important; }
+            
+            #tabbrowser-tabpanels,
+            #customization-container {
+                border-radius: 0px !important;
+            }
+            
+            .browserStack>browser {
+                border-radius: 0px !important;
+                outline-color: transparent !important;
+            }
+        }
+    }
+}
+
+/* Missed Margin of 'Customization' page \
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+#customization-container {
+    margin-block: 4px !important;
+    margin-inline-end: 4px !important;
+    
+    @media (not -moz-pref("firefoxone.style_without_leftsidebar")) and (not -moz-pref("browser.toolbars.bookmarks.visibility", 'always')),
+     -moz-pref("firefoxone.style_without_leftsidebar") {
+        margin-inline-start: 4px !important;
+    }
+}
+
+/* Corners in 'popup windows' \
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+:root:is([chromehidden~="toolbar"]) #nav-bar {
+    margin-block-start: 4px !important;
+}
+
+/* Find-bar \
+¯¯¯¯¯¯¯¯¯¯¯¯ */
+findbar {
+    background: none !important;
+    background-color: var(--toolbar-bgcolor) !important;
+    color: var(--tab-selected-textcolor) !important;
+    border: none !important;
+    border-radius: 0px 0px var(--my-toolbar-border-radius) var(--my-toolbar-border-radius) !important;
+    margin-block-start: 2px !important;
+    
+    :root:is([sizemode="fullscreen"]) {
+        border-radius: 0px !important;
+    }
+}
+
+.findbar-textbox:not([status="notfound"]):focus {
+    background-color: var(--lwt-accent-color) !important;
+    outline-color: var(--general-color) !important;
+}
+
+.findbar-textbox[status="notfound"] { 
+    background: var(--lwt-accent-color) !important;
+    border-color: #fb2030 !important;
+    outline-color: #fb2030 !important;
+}
+
+/* _____________________________________________________ Configuration for Linux ______________________________________________________
+   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+
+@media (-moz-platform: linux) {
+    
+    /* Remove unnecessary padding from menu-bar */
+    toolbar { &[type="menubar"] { padding: 0px !important; }}
+
+    /* less spaced menu items */
+    #main-menubar>menu>.menu-text{
+        margin-inline: -5px !important;
+    }
+}
+
+/* _____________________________________________________ Configuration for MacOS ______________________________________________________
+   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+
+@media (-moz-platform: macos) {
+    
+  /* Add padding top in tabs bar */
+    #TabsToolbar {
+        padding-block-start: 6px !important;
+    }
+  
+  /* Add margin in window controls */
+    :root:not([sizemode="fullscreen"]) .titlebar-buttonbox-container {
+        margin-inline: 6px 10px !important;
+    }
+}

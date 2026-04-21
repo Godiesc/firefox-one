@@ -18,8 +18,8 @@
         [sidebarcommand*="tabcenter"],
         [sidebarcommand*="treestyletab"],
         [sidebarcommand*="_3c078156-979c-498b-8990-85f7987dd929"]) {
-            
-            --lwt-sidebar-background-color: transparent !important; /* Makes transparent the latest background */
+            background-color: transparent !important;               /* Makes transparent the latest background */
+            box-shadow: none !important;
             
             --uc-autohide-sidebar-delay: 0ms;                       /* Wait time before hiding sidebar */
             --uc-autohide-transition-duration: 200ms;               /* Transition duration */
@@ -36,20 +36,48 @@
                 direction: rtl;
             }
             
-            /* Overwrite styles added in 'one_arrowpanel.css' */
+            /* Overwrite styles added in 'one_main-window.css' */
             margin-inline: 0px !important;
             outline-color: transparent !important;
+            overflow-x: initial !important;
             
-            /* Remove unwanted elements: 'header' and 'splitter' */
-            #sidebar-header,
-            ~ #sidebar-splitter {
-                display: none !important; 
+            #sidebar {
+                margin: 0px !important;
             }
+            
+            /* Sidebar background */
+            .sidebar-browser-stack::before {
+                content: '';
+                position: absolute;
+                width: calc(100% - 8px);
+                height: 100%;
+                border-radius: var(--my-toolbar-border-radius);
+                margin-inline: 4px !important;
+                background-color: var(--toolbar-bgcolor);
+                outline: 1px solid var(--my-content-border-color);
+                outline-offset: -1px;
+                box-shadow: 0 0 1px var(--contrast-color) !important;
+                transition: width var(--uc-autohide-transition-duration) ease-in-out !important;
+                
+                @media -moz-pref("sidebar.revamp") {
+                    border-radius: 0 var(--my-toolbar-border-radius) var(--my-toolbar-border-radius) 0;
+                    
+                    @media not -moz-pref("sidebar.position_start") {
+                        border-radius: var(--my-toolbar-border-radius) 0 0 var(--my-toolbar-border-radius);
+                    }
+                }
+            }
+            .sidebar-browser-stack:hover::before {
+                width: calc(var(--uc-sidebar-hover-width) - 8px);
+            }
+            
+            /* Remove unwanted 'header' & 'splitter' */
+            #sidebar-header,
+            ~ #sidebar-splitter { display: none !important; }
             
             /* expand sidebar width */
             &:hover {
-                & > #sidebar-header,
-                & > .sidebar-browser-stack > #sidebar{
+                & > .sidebar-browser-stack > #sidebar {
                     min-width: var(--uc-sidebar-hover-width) !important;
                     transition-delay: 0ms !important;
                 }
@@ -59,7 +87,7 @@
             
             :root:not([inDOMFullscreen]) & {
                 ~ #tabbrowser-tabbox {
-                    clip-path: xywh(0 0 100% 100% round 8px ) !important;
+                    clip-path: xywh(0 0 calc(100% + 1px) 100% round 0px ) !important;
                 }
                 
                 ~ #tabbrowser-tabbox {
@@ -68,7 +96,7 @@
 
                     &:before {
                         content: ""; position: absolute;
-                        left: calc(4px + var(--uc-sidebar-hover-width) - var(--uc-sidebar-width));
+                        left: calc(0px + var(--uc-sidebar-hover-width) - var(--uc-sidebar-width));
                         height: calc(100% - 8px);
                         width: calc(100% - 8px - var(--uc-sidebar-hover-width) + var(--uc-sidebar-width));
                         box-shadow: inset 1px 0 transparent !important;
@@ -77,14 +105,10 @@
                 }
                 
                 &:hover ~ #tabbrowser-tabbox {
-                    clip-path: xywh(calc(4px + var(--uc-sidebar-hover-width) - var(--uc-sidebar-width)) 4px 100% calc(100% - 8px) round 8px ) !important;
-
-                    @media -moz-pref("sidebar.revamp") {
-                        clip-path: xywh(calc(0px + var(--uc-sidebar-hover-width) - var(--uc-sidebar-width)) 4px 100% calc(100% - 8px) round 8px ) !important;
-                    }
+                    clip-path: xywh(calc(0px + var(--uc-sidebar-hover-width) - var(--uc-sidebar-width)) 3px 100% calc(100% - 6px) round 10px ) !important;
 
                     :root:is([sizemode="fullscreen"]) & {
-                        clip-path: xywh(calc(3px + var(--uc-sidebar-hover-width)) 0px 100% 100% round 8px ) !important;
+                        clip-path: xywh(calc(0px + var(--uc-sidebar-hover-width)) 0px 100% 100% round 8px ) !important;
 
                         &:before {
                             height: 100%;
@@ -92,7 +116,8 @@
                     }
 
                     &:before {
-                        box-shadow: inset 1px 0 var(--my-content-border-color) !important;
+                        --smooth-contrast-color: color-mix(in srgb, var(--contrast-color) 45%, transparent);
+                        box-shadow: inset 1px 0 var(--smooth-contrast-color), inset 2px 0 var(--my-content-border-color) !important;
                         transition-delay: var(--uc-autohide-transition-duration) !important;
                         z-index: 1 !important;
                         
@@ -103,18 +128,9 @@
                 }
                 
                 /* Sidebar on right */
-                
-                /* Sidebar margins to correct align */
-                &[sidebar-positionend] { 
-                    margin-inline: 4px -4px !important;
-                    
-                    @media -moz-pref("sidebar.revamp") {
-                        margin-inline: 0px -4px !important;
-                    }
-                }
             
                 &[sidebar-positionend]:hover ~ #tabbrowser-tabbox {
-                    clip-path: xywh(0px 4px calc(100% - 4px - var(--uc-sidebar-hover-width) + var(--uc-sidebar-width)) calc(100% - 8px) round 8px ) !important;
+                    clip-path: xywh(0px 3px calc(100% - var(--uc-sidebar-hover-width) + var(--uc-sidebar-width)) calc(100% - 6px) round 10px ) !important;
 
                     :root:is([sizemode="fullscreen"]) & {
                         clip-path: xywh(0px 0px calc(100% - 4px - var(--uc-sidebar-hover-width) + var(--uc-sidebar-width)) 100% round 8px ) !important;
@@ -125,8 +141,9 @@
                     }
 
                     &:before {
-                        left: unset;
-                        box-shadow: inset -1px 0 var(--my-content-border-color) !important;
+                        --smooth-contrast-color: color-mix(in srgb, var(--contrast-color) 45%, transparent);
+                        left: 8px;
+                        box-shadow: inset -1px 0 var(--smooth-contrast-color), inset -2px 0  var(--my-content-border-color) !important;
                     }
                 }
             }

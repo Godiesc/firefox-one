@@ -226,6 +226,7 @@
         padding-top: var(--padding-top-left-sidebar) !important;
         padding-bottom: var(--padding-bottom-left-sidebar) !important;
         outline-color: transparent !important;
+        box-shadow: none !important;
         z-index: 1 !important;
         
         &::before {
@@ -237,6 +238,7 @@
             background-color: var(--toolbar-bgcolor) !important;
             outline: 1px solid var(--my-content-border-color) !important;
             outline-offset: -1px !important;
+            box-shadow: 0 0 1px var(--contrast-color) !important;
             pointer-events: none !important;
             z-index: -1;
         }
@@ -583,12 +585,23 @@
             top: 4px;
             width: calc(100% - 8px);
             height: calc(100% - 12px);
-            border-radius: 8px;
+            border-radius: var(--my-toolbar-border-radius);
             padding-block-start: 4px;
             inset-inline-start: 4px;
             background-color: var(--toolbar-bgcolor);
             outline: 1px solid var(--my-content-border-color);
             outline-offset: -1px;
+            box-shadow: 0 0 1px var(--contrast-color) !important;
+        }
+
+        &[sidebar-panel-open] {
+            &::before {
+                border-radius: var(--my-toolbar-border-radius) 0 0 var(--my-toolbar-border-radius);
+            }
+            
+            &[sidebar-positionend]::before {
+                border-radius: 0 var(--my-toolbar-border-radius) var(--my-toolbar-border-radius) 0;
+            }
         }
     }
     
@@ -601,37 +614,6 @@
             height: 100%;
             inset-inline-start: 0px;
             border-radius: 0px;
-        }
-    }
-    
-    /* __________________________ Styles around web content  */
-    
-    #tabbrowser-tabbox {
-        box-shadow: none !important;
-    }
-
-    /* Web content margins */
-
-    :root:not([inDOMFullscreen]) {
-        
-        #tabbrowser-tabbox {
-            padding-inline: 0 4px !important;
-        }
-        
-        & #sidebar-box[sidebar-positionend]{
-            margin-inline: 0px 0px !important;
-        }
-        
-        & #sidebar-box[sidebar-positionend] ~ #tabbrowser-tabbox {
-            padding-inline: 4px 0px !important;
-        }
-
-        & #sidebar-box[checked="true"][sidebar-positionend] ~ #tabbrowser-tabbox {
-            padding-inline: 4px 4px !important;
-        }
-        
-        & #sidebar-main[hidden="true"] ~ #tabbrowser-tabbox {
-            padding-inline: 4px 4px !important;
         }
     }
     
@@ -916,6 +898,7 @@
         }
     }
     
+    /* For some reason with this 'tab-content' stay into the sidebar width */
     slot[part="items-wrapper"] {
         padding-inline: 0px !important;
         grid-template-columns: repeat( auto-fit, minmax(var(--my-vertical-elements-width), auto)) !important;
@@ -937,22 +920,67 @@
     :root[sidebar-expand-on-hover] #sidebar-box[sidebar-positionend] {
         &[sidebar-panel-open][sidebar-launcher-hovered][sidebar-launcher-expanded], 
         &[sidebar-ongoing-animations][sidebar-panel-open] {
-            margin-inline-end: var(--sidebar-launcher-collapsed-width) !important;
+            margin-inline-end: calc(var(--sidebar-launcher-collapsed-width) - 5px) !important;
         }
     }
+    
+    /* Keep default margin right when sidebar on right */
+    :root[sidebar-expand-on-hover] #sidebar-box:not([sidebar-positionend]) {
+        &[sidebar-panel-open][sidebar-launcher-hovered][sidebar-launcher-expanded], 
+        &[sidebar-ongoing-animations][sidebar-panel-open] {
+            margin-inline-start: calc(var(--sidebar-launcher-collapsed-width) - 5px) !important;
+        }
+    }
+    
+    /* fix When 'expand-on-hover' + clic to keep expanded */
+    .tab-content {
+        :root:not([uidensity="compact"], [sidebar-expand-on-hover]) &[pinned] {
+            padding: 0 18px !important;
+        }
+    }
+    
+    /* Fix glitch when 'expand-on-hover' in 'touch density' 
+    :root[sidebar-expand-on-hover] {
+        & #tabbrowser-tabbox {
+            &:not([sidebar-positionend]) {
+                &[sidebar-launcher-expanded][sidebar-launcher-hovered]:not([sidebar-panel-open]), &[sidebar-ongoing-animations]:not([sidebar-launcher-expanded], [sidebar-panel-open]) {
+                    margin-inline-start: calc(var(--sidebar-launcher-collapsed-width) + 6px) !important;
+                }
+            }
+        }
+    }/**/
 
     :root[sidebar-expand-on-hover] {
 
         /* New image cause isn't posible to put an align image */
 
         & #sidebar-main {
-            background-color: transparent !important;
+            background-image: none !important;
+            background-color: var(--lwt-accent-color) !important;
             border-inline-color: transparent !important;
-            &::before {
-                background-image: linear-gradient(var(--my-toolbar-bgcolor, transparent), var(--my-toolbar-bgcolor, transparent)),
-                    var(--lwt-header-image, var(--lwt-additional-images, none)),
-                    linear-gradient(var(--toolbar-bgcolor, Field), var(--toolbar-bgcolor, Field)) !important;
-                background-size: auto 100% !important;
+            
+            :root:is([lwtheme-image],[style*="--lwt-additional-images"]) & {
+                &::after {
+                    content: '';
+                    height: 100vh;
+                    width: 100vw;
+                    position: absolute;
+                    bottom: 0 !important;
+                    background-image: linear-gradient(transparent, transparent),
+                        linear-gradient(var(--toolbar-bgcolor), var(--toolbar-bgcolor)),
+                        var(--lwt-header-image, none), var(--lwt-additional-images,none),
+                        linear-gradient(var(--lwt-accent-color,Field), var(--lwt-accent-color,Field)) !important;
+                    background-position: 0 0, right top ,right top, var(--lwt-background-alignment) !important;
+                    background-position-y: 0px !important;
+                    background-repeat: repeat-x, no-repeat, no-repeat, var(--lwt-background-tiling) !important;
+                    background-size: var(--my-background-size, auto 100%, var(--lwt-background-size)) !important;
+                    background-attachment: fixed, fixed, fixed, fixed !important;
+                    box-shadow: none !important;
+                    background-clip: padding-box;
+                    mask-image: linear-gradient(to bottom, black calc(var(--toolbar-height-personal) + var(--bookmarksbar-height-personal, 0px)), transparent 200px);
+                    pointer-events: none !important;
+                    z-index: -1 !important;
+                }
             }
         }
     }

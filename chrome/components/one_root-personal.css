@@ -1,16 +1,17 @@
 /* Source file made available under Mozilla Public License v. 2.0 See the main repository for updates as well as full license text. 
    https://github.com/Godiesc/firefox-one */
 
-:root {  
-/* --------------------- Variables de colores, puedes poner tu color personalizado y utilizarlo ----------------------------- */  
-  --fuchsia: #fa1e4e;     --blue: #5021ff;     --aqua: #00bfff;         --cyan: #00ffff;          --lightblue: #45a1ff;     --pink: #FF0F7E;
-  --purple: #8d35e2;      --green: #05b694;    --aquamarine: #00ffa2;   --lightgreen: #36ff4e;    --yellowbrown: #febd60;   --swampautumn: #fdf008;
-  --gray: #bfb6d2;        --orange: #ff6c22;   --yellow: #ffe20f;       --red: #ff3230;           --navyblue: #0050cE;      --poison: #cb17cf; 
+:root {           /* _______________ Color variables, you can put your custom color and use it _______________ */
+
+  --fuchsia: #fa1e4e;     --blue: #4c4cff;       --aqua: #00bfff;        --cyan: #00ffff;        --lightblue: #45a1ff;   --pink: #FF0F7E;        --poison: #cb17cf;
+  --purple: #8d35e2;      --green: #05b694;      --aquamarine: #00ffa2;  --lightgreen: #36ff4e;  --yellowbrown: #febd60; --swampautumn: #fdf008; --cheaterman: #33ff4e;
+  --gray: #bfb6d2;        --ashgray: #737373;    --orange: #ff6c22;      --yellow: #ffe20f;      --red: #ff3230;         --navyblue: #0050cE;    --fruttidimare: #FF5959;
+  --catppuccino: #f38ba8;
   
                                                                                                                                  
-  /*  Accent color -----> UI del navegador.  ----|                |---- userContent <------------ Accent color
-                                                 v                v     (Add-ons, preferences and about: pages.)              */
-  --general-color: var(--toolbarbutton-icon-fill-attention, var(--blue));
+  /* Accent color ----> UI del navegador.  -----|        Newtab Accent color |                      |--- userContent <------------ Accent color
+                                                v                            v                      v    (Some 'about:' pages)                   */
+  --general-color: var(--toolbarbutton-icon-fill-attention, var(--newtab-text-primary-color, var(--blue)));
   
   /* __________________________________________________________ Various customizations _________________________________________________________ */
                   /* Dark wallpapers ¯¯¯|                                          Accentcolor for each wallpaper ¯¯¯|
@@ -21,6 +22,9 @@
   --wallpaper-dark4: url("../newtab/wallpaper-dark4.png") !important;           --general-color-dark4: var(--gray) !important;
   --wallpaper-dark5: url("../newtab/wallpaper-dark5.png") !important;           --general-color-dark5: var(--gray) !important;
   --wallpaper-dark6: url("../newtab/wallpaper-dark6.png") !important;           --general-color-dark6: var(--gray) !important;
+  --wallpaper-dark7: url("../newtab/wallpaper-dark7.png") !important;           --general-color-dark7: var(--orange) !important;
+  --wallpaper-dark8: url("../newtab/wallpaper-dark8.png") !important;           --general-color-dark8: var(--catppuccino) !important;
+  --wallpaper-dark9: url("../newtab/wallpaper-dark9.png") !important;           --general-color-dark9: var(--gray) !important;
   
                  /* light wallpapers ¯¯¯|                                          Accentcolor for each wallpaper ¯¯¯|
                                         v                                                                            v                          */  
@@ -30,6 +34,9 @@
   --wallpaper-light4: url("../newtab/wallpaper-light4.png") !important;         --general-color-light4: var(--lightblue ) !important;
   --wallpaper-light5: url("../newtab/wallpaper-light5.png") !important;         --general-color-light5: var(--lightgreen) !important;
   --wallpaper-light6: url("../newtab/wallpaper-light6.png") !important;         --general-color-light6: var(--lightgreen) !important;
+  --wallpaper-light7: url("../newtab/wallpaper-light7.png") !important;         --general-color-light7: var(--orange) !important;
+  --wallpaper-light8: url("../newtab/wallpaper-light8.png") !important;         --general-color-light8: var(--fruttidimare) !important;
+  --wallpaper-light9: url("../newtab/wallpaper-light9.png") !important;         --general-color-light9: var(--ashgray) !important;
     }
 
 @media (prefers-color-scheme: dark) { :root{
@@ -64,16 +71,17 @@
   --logo-wordmark-display: flex ;                                                                 /* :none ->eliminar , :flex ->Mostrar;  Logo-wordmark*/
   --orientation-display: block ;                                                                  /* :block -> vertical , :flex -> horizontal ; Logo-wordmark y searchbar*/
   
-  --newtab-pinnedsites-background: color-mix(in srgb, white 12%, transparent) ;                   /* color - fondo de sitios fijados y barra de búsqueda*/
-  --newtab-pinnedsites-position-top: start ;                                                      /* Posición pinnedsites -> : start ; center ; end */
+  --my-newtab-elements-background: color-mix(in srgb, white 5%, transparent) ;                    /* color - fondo de sitios fijados y barra de búsqueda*/
+  --my-border-radius: 12px ;                                                                      /* Roundness of many elements in 'about:' pages */
+  --my-blur: blur(14px) ;                                                                /* Utilizado para personalizar newtab page */
   
-  --selected-text-background: var(--general-color) ;                                              /* Selected text background */
-   
-  --personal-blur: blur(14px) ;                                                                   /* Utilizado para personalizar newtab page */
+  --my-newtab-pinnedsites-position: start ;                                                       /* Posición pinnedsites -> : start ; center ; end */
+  
+  --my-selected-text-background: var(--general-color) ;                                           /* Selected text background */
   
   --gradient-colors: #d02f85 0%, #b336fc 8%, #3567fd 40%, #4e7afd 60%,#4e89fd 70%, #d02f85 100%;  /* For - selected_tab_gradient_border - config */
   
-  --uc-sidebar-width: 48px;                                                                       /* Used for tree-tabs config, width sidebar 'not hover' */
+  --uc-sidebar-width: 52px;                                                                       /* Used for tree-tabs config, width sidebar 'not hover' */
   --uc-sidebar-hover-width: 208px;                                                                /* Used for tree-tabs config, width sidebar when 'hover' */
   
 }
@@ -91,11 +99,13 @@
   
   @media (prefers-color-scheme: dark) { :root {
     --lwt-main-image:  url("../newtab/main-image-dark.png") !important;                               /* main-image wallpaper - dark theme */ 
-    --brightness-wallpaper: 50%;                                                                      /* brightness */                       }}
+    --brightness-toolbar: 50%;                                                                        /* Dark filter to toolbars & web content */
+    --brightness-wallpaper: 80%;                                                                      /* Black filter | no filter -> 100% */ }}
   
   @media (prefers-color-scheme: light) { :root {
     --lwt-main-image:  url("../newtab/main-image-light.png") !important;                              /* main-image wallpaper - white theme*/
-    --brightness-wallpaper: 50%;                                                                      /* brightness */                       }}
+    --brightness-toolbar: 50%;                                                                        /* light filter to toolbars & web content */
+    --brightness-wallpaper: 80%;                                                                      /* White filter | no filter -> 100% */ }}
 }
 
 /* -----------------------------------------------------------------------------------------------------------------------------------------------
@@ -105,6 +115,7 @@
 @media (prefers-color-scheme: dark){
   :root{
     /* ------------------------------ Botones hover, clic -------------------------------- */
+    --button-smaller-bgcolor: color-mix(in srgb, var(--general-color) 25%, transparent);
     --button-bgcolor: color-mix(in srgb, var(--general-color) 50%, transparent) !important;             /* Color de buttons */
     --button-hover-bgcolor: color-mix(in srgb, var(--general-color) 60%, transparent) !important;       /* Color hover en menuitems */
     --button-active-bgcolor: color-mix(in srgb, var(--general-color) 80%, transparent) !important;      /* color clic en menuitems*/
@@ -113,6 +124,7 @@
 @media (prefers-color-scheme: light){
   :root{
     /* ------------------------------ Botones hover, clic -------------------------------- */
+    --button-smaller-bgcolor: color-mix(in srgb, var(--general-color) 25%, transparent);
     --button-bgcolor: color-mix(in srgb, var(--general-color) 40%, transparent) !important;             /* Color de buttons */
     --button-hover-bgcolor: color-mix(in srgb, var(--general-color) 55%, transparent) !important;       /* Color hover en menuitems */
     --button-active-bgcolor: color-mix(in srgb, var(--general-color) 75%, transparent) !important;      /* color clic en menuitems*/

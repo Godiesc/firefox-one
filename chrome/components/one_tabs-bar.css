@@ -1,83 +1,6 @@
 /* Source file made available under Mozilla Public License v. 2.0 See the main repository for updates as well as full license text. 
    https://github.com/Godiesc/firefox-one */
 
-/* Remove navigator-toolbox image */
-
-:root {
-    #navigator-toolbox {
-        background-image: none !important;
-        background-color: transparent !important;
-    }
-}
-
-/* Set the image to all body */
-
-#main-window {
-    --my-background-image: var(--lwt-additional-images), var(--lwt-header-image, none),
-           linear-gradient(var(--lwt-accent-color, Field), var(--lwt-accent-color, Field)) !important;
-    --my-background-position-y: top;
-    background-image: var(--my-background-image);
-    background-repeat: var(--lwt-background-tiling);
-    background-position: var(--lwt-background-alignment);
-    background-position-y: var(--my-background-position-y) !important;
-    background-color: var(--lwt-accent-color, Field) !important;
-    background-size:var(--my-background-size, auto) !important;
-}
-
-:root:is([lwtheme-image],[style*="--lwt-additional-images"]) body::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, var(--lwt-accent-color) calc(100% - 200px), var(--toolbar-bgcolor));
-    z-index: -1 !important;
-}
-
-/* Remove unnecessary background to show the theme image */
-
-#browser {
-    background-color: transparent !important;
-}
-
-/* Sidebar-box background the same as the web content  */
-
-#tabbrowser-tabpanels {
-    background-color: var(--toolbar-bgcolor) !important;
-}
-
-/* Remove unwanted background to all browser background */
-
-#browser:not(.browser-toolbox-background):not(#tabbrowser-tabpanels) {
-    :root[lwtheme] & {
-        background-image: none !important;
-    }
-}
-
-/* Wallpaper for some 'about:' pages */
-
-@media -moz-pref("browser.tabs.allow_transparent_browser") and (not -moz-pref("firefoxone.main-image")) {
-
-    :root:not([lwtheme-image],[style*="--lwt-additional-images"],[privatebrowsingmode="temporary"]):has(
-    .tabbrowser-tab[selected] :is(
-    .tab-icon-image[src="chrome://mozapps/skin/extensions/extension.svg"],
-    .tab-icon-image[src="chrome://global/skin/icons/settings.svg"],
-    .tab-icon-image[src="chrome://global/skin/icons/developer.svg"],
-    .tab-icon-image[src="chrome://global/skin/icons/performance.svg"]),
-    .tabbrowser-tab[selected][label="Firefox View"]) {
-        
-        --my-accent-color: color-mix(in srgb, var(--arrowpanel-background) 70%, var(--contrast-color)) !important;/**/
-        --tab-selected-box-shadow: none !important;
-        --toolbar-bgcolor: color-mix(in srgb, var(--my-accent-color) 50%, transparent) !important;
-        --lwt-header-image: linear-gradient(var(--toolbar-bgcolor), var(--toolbar-bgcolor)), var(--lwt-main-image) !important;
-        --my-background-size: 100vw 100vh !important;                               
-        --lwt-background-tiling: no-repeat !important;
-        --lwt-background-alignment: right top !important;
-        --my-content-border-color: color-mix(in srgb, var(--toolbar-bgcolor) 90%, var(--tab-selected-textcolor)) !important;
-    }
-}
-
 /* ___________________________________________________________ Selected tab ___________________________________________________________
    ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
 /* Tab block margin */
@@ -89,9 +12,10 @@
 }
 
 /* Tab 'selected' shadow */
-
-#tabbrowser-tabs[orient="horizontal"] :not(tab-group)>.tabbrowser-tab[visuallyselected]:not([multiselected]) .tab-content {
-    box-shadow: var(--tab-selected-box-shadow, none);
+@media not -moz-pref("firefoxone.main-image") {
+    #tabbrowser-tabs[orient="horizontal"] :not(tab-group, tab-split-view-wrapper)>.tabbrowser-tab[visuallyselected]:not([multiselected]) .tab-content {
+        box-shadow: var(--tab-selected-box-shadow, none);
+    }
 }
 
 /* Tab background color */
@@ -105,18 +29,191 @@
     }
 }
 
+/* ________________________________________ Split view ________________________________________ 
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+
+#tabbrowser-tabs tab-split-view-wrapper {
+    
+    /* Split container background when has an active tab */
+    &[hasactivetab] {
+        background-color: var(--my-tab-group-background, var(--button-smaller-bgcolor))!important;
+        box-shadow: none !important;
+    }
+}
+
+/* Split styles */
+#tabbrowser-tabs[orient="horizontal"] {
+    
+    /* Split container */
+    tab-split-view-wrapper {
+        align-items: unset !important;
+        padding-block: 0px !important; /* Remove unwanted padding */
+        margin-block: 0px !important;
+        margin-block-start: 5px !important;
+        margin-inline: 1px !important;
+        max-height: calc(var(--tab-min-height) + var(--tab-block-margin) - 5px) !important;
+        
+        /* Add wanted 'lef-right' margin - not when 'Split view' is into a group */
+        tab-group[collapsed] & {
+            margin-inline: 0px !important;
+        }
+        
+        /* Remove unwanted extra tab margin */
+        & .tabbrowser-tab {
+            margin-block-start: -5px !important;
+            padding-inline: 0px !important;
+            
+            /* Align tab group line */
+            & .tab-background {
+                margin-inline: 0px !important;
+                
+                & .tab-group-line {
+                    inset-block-end: calc(((var(--tab-block-margin) / 2) + var(--space-xsmall)) * -1 + 9px) !important;
+                    inset-inline: calc(var(--space-small) * -2) !important;
+                }
+            }
+            
+            /* Style left tab */            
+            &:first-child {
+                .tab-background { border-radius: var(--tab-border-radius) 0 0 var(--tab-border-radius) !important;}
+            }
+
+            /* Style right tab */
+            &:last-child {
+                border-inline-start: 1px solid var(--toolbarbutton-icon-fill) !important;
+                border-image: 0 1 linear-gradient(
+                    transparent 24%,
+                    color-mix(in srgb, var(--tab-group-color-invert, var(--button-active-bgcolor)) 80%, transparent) 24%,
+                    color-mix(in srgb, var(--tab-group-color-invert, var(--button-active-bgcolor)) 80%, transparent) 68%,
+                    transparent 68% );
+
+                .tab-background { border-radius: 0 var(--tab-border-radius) var(--tab-border-radius) 0 !important;}
+            }
+        }
+        
+        /* Transparent sepataror when a tab is active */
+        &[hasactivetab] {
+            & .tabbrowser-tab {
+                &:last-child {
+                    border-image: none !important;
+                    border-color: transparent !important;
+                }
+            }
+        }
+    }
+}
+
+#tabbrowser-tabs[orient="vertical"] {
+    tab-split-view-wrapper {
+        padding: 0px !important;
+        margin-inline: 10px !important;
+        gap: 0px !important;
+        width: calc(100% - 20px) !important;
+        /* Keep same style when sidebar is collapsed/expanded */
+        grid-template-columns: 100% !important;
+
+        &[hasactivetab],
+        &:hover {
+            background-color: var(--my-tab-group-background, var(--button-smaller-bgcolor))!important;
+            box-shadow: none !important;
+        }
+        
+        .tabbrowser-tab {
+            margin-inline: -10px !important;
+            border-inline-start: none !important;
+            
+            /* Fix issue of favicon aligh qhen sidebar 'expand/collapse' in 'expand-on-hover' */
+            .tab-content { 
+                justify-content: start !important;
+                align-items: flex-start !important;
+            }
+            
+            /* Style left tab */            
+            &:first-child {
+                border-block-end: 1px solid var(--toolbarbutton-icon-fill) !important;
+                border-image: 1 linear-gradient( to right,
+                    transparent 11px,
+                    color-mix(in srgb, var(--tab-group-color-invert, var(--button-active-bgcolor)) 80%, transparent) 11px,
+                    color-mix(in srgb, var(--tab-group-color-invert, var(--button-active-bgcolor)) 80%, transparent) calc(100% - 11px),
+                    transparent calc(100% - 11px) );
+                
+                .tab-background { border-radius: var(--tab-border-radius) var(--tab-border-radius) 0 0 !important;}
+            }
+
+            /* Style right tab */
+            &:last-child {
+                border-block: none !important;
+                .tab-background { border-radius: 0 0 var(--tab-border-radius) var(--tab-border-radius) !important;}
+            }
+        }
+    }
+    
+    /* Remove unwanted padding */
+    tab-split-view-wrapper {
+        & .tabbrowser-tab {
+            & .tab-content {
+                padding-inline: var(--tab-inline-padding) !important;
+            }
+        }
+    }
+    
+    :root[sidebar-expand-on-hover] & {
+        tab-split-view-wrapper {
+            
+        }
+    }
+}
+
+
 /* ___________________________________________________________ Various Styles ___________________________________________________________
    ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
 
-/* Remove unwanted extra tab width
-   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+/* Tab width reach a smaller size \
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+#tabbrowser-tabs[orient="horizontal"] .tabbrowser-tab:not([pinned])[fadein] {
+    --tab-min-width-pref: calc(var(--tab-min-width-personal) + 8px ) !important;
+    --tab-min-width-extra-icons: 0px !important;
+    container-name: smaller-tab;  /* used too in ogx_sound.css */
+    container-type: inline-size;
+}
 
-#tabbrowser-arrowscrollbox[orient="horizontal"] {
-    &>.tabbrowser-tab,
-    &>tab-group:not([collapsed]) > .tabbrowser-tab {
-        &:is([muted], [soundplaying], [activemedia-blocked]) {
-            #tabbrowser-tabs[orient="horizontal"] &:not([pinned]) {
-                min-width: max(var(--tab-min-width-pref, var(--tab-min-width))) !important;
+/* Smaller size for 'Split view' tabs */
+#tabbrowser-tabs[orient="horizontal"] tab-split-view-wrapper {
+    --tab-min-width-pref: calc((var(--tab-min-width-personal) + 8px)) !important;
+
+    &:not([aria-hidden="true"]) {
+        &:has(tab:is([muted], [soundplaying], [activemedia-blocked])) {
+            min-width: calc((var(--tab-min-width-personal) + 8px )*2.2) !important;
+        }
+    }
+}
+
+@container smaller-tab (width < 52px) {
+    #tabbrowser-tabs[orient="horizontal"] .tabbrowser-tab:not([pinned])[fadein] {
+
+        /* Remove unwanted elements */
+        .tab-close-button,
+        .tab-label-container {
+            display: none !important;
+        }
+
+        /* Remove unwanted margins */
+        .tab-content {
+            --tab-inline-padding: 0px !important;
+            --tab-icon-end-margin: 0px !important;
+        }
+
+        /* Centered favicon */
+        .tab-icon-stack {
+            margin-inline: auto !important;
+        }
+    }
+    
+    /* Fix - remove extra padding into split */
+    #tabbrowser-tabs tab-split-view-wrapper {
+        & .tabbrowser-tab {
+            & .tab-content {
+                padding-inline: var(--tab-inline-padding) !important;
             }
         }
     }
@@ -124,50 +221,10 @@
 
 /* Bug fix - Overwrite default tab size in 'density:touch' */
 
-#tabbrowser-tabs {
-    &[orient="horizontal"] {
-        :root[uidensity="touch"] & :not(tab-group)>.tabbrowser-tab[fadein]:not([pinned]),
-        :root[uidensity="touch"] & tab-group:not([collapsed]) > .tabbrowser-tab {
-            min-width: max(var(--tab-min-width-pref, var(--tab-min-width))) !important;
-        }
-    }
-}
-
-/* Tab width reach a smaller size
-   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
-
-.tabbrowser-tab {
-    &:not([pinned])[fadein] {
-        #tabbrowser-tabs[orient="horizontal"] & {
-            container-name: smaller-tab;  /* used too in ogx_sound.css */
-            container-type: inline-size;
-            --tab-min-width-pref: calc(var(--tab-min-width-personal) + 8px + var(--uc-tab-corner-size, 0px)/4) !important;
-        }
-    }
-}
-
-@media not -moz-pref("sidebar.verticalTabs") {
-
-    @container smaller-tab (width < 48px) {
-        #tabbrowser-tabs[orient="horizontal"] .tabbrowser-tab:not([pinned])[fadein] {
-            
-            /* Remove unwanted elements */
-            .tab-close-button,
-            .tab-label-container {
-                display: none !important;
-            }
-            
-            /* Remove unwanted margins */
-            .tab-content {
-                --tab-inline-padding: 0px !important;
-                --tab-icon-end-margin: 0px !important;
-            }
-            
-            /* Centered favicon */
-            .tab-icon-stack {
-                margin-inline: auto !important;
-            }
-        }
+#tabbrowser-tabs[orient="horizontal"] {
+    :root[uidensity="touch"] & :not(tab-group)>.tabbrowser-tab[fadein]:not([pinned]),
+    :root[uidensity="touch"] & tab-group:not([collapsed]) > .tabbrowser-tab {
+        min-width: max(var(--tab-min-width-pref, var(--tab-min-width))) !important;
     }
 }
 
@@ -202,7 +259,13 @@
     /* First group tab */
     tab-group>.tabbrowser-tab:first-of-type .tab-background:after,
     /* when 'hover', 'selected' last pinned tab */
-    #pinned-tabs-container:has(.tabbrowser-tab:is([selected],:hover):last-child) ~ #tabbrowser-arrowscrollbox .tabbrowser-tab:nth-child(1 of :not([hidden])) .tab-background:after {
+    #pinned-tabs-container:has(.tabbrowser-tab:is([selected],:hover):last-child) ~ #tabbrowser-arrowscrollbox .tabbrowser-tab:nth-child(1 of :not([hidden])) .tab-background:after,
+    /* Tab in 'split view' */
+    tab-split-view-wrapper:is(:hover, [hasactivetab]) .tab-background:after,
+    /* Next tab after 'split view' */
+    tab-split-view-wrapper:is(:hover, [hasactivetab]) + .tabbrowser-tab .tab-background:after,
+    /* Tab selected before 'split view' */
+    .tabbrowser-tab:is(:hover, [selected], [multiselected]) + tab-split-view-wrapper .tab-background:after {
         content: none;
     }
     
@@ -345,29 +408,39 @@ sidebar-main:is([expanded]) {
     opacity: 0.9 !important;
 }
 
-/* Scroll de pestañas */
-
+/* Tabs scroll \
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
 #tabbrowser-arrowscrollbox {
-    --scrollbuttons-margin-block-end: 3px;
-    --scrollbuttons-border-radius: 7px;
+    /* Variables used below to affect only scroll buttons in tabs bar and not scroll buttons into bookmarks folder */
+    --my-scrollbuttons-margin-block-end: 3px;
+    --my-scrollbuttons-button-bgcolor: var(--toolbarbutton-hover-personal) !important;
+    --my-scrollbuttons-button-hover-bgcolor: var(--button-bgcolor) !important;
 }
 
-#scrollbutton-up, #scrollbutton-down {
-    margin-block-end: var(--scrollbuttons-margin-block-end, 0px) !important;
+#scrollbutton-up, 
+#scrollbutton-down {
+    margin-bottom: var(--my-scrollbuttons-margin-block-end) !important;
+    border-radius: 0px !important;
+    
+    &:not([disabled]) .toolbarbutton-icon {
+        background-color: var(--my-scrollbuttons-button-bgcolor, inherit) !important;
+    }
 
-    &:not([disabled]) {
-        background-color: color-mix(in srgb, var(--tab-selected-textcolor) 10%, transparent) !important;
-        border-radius: var(--scrollbuttons-border-radius, 0px) !important;
-        transition-duration: 0.2s !important;
-
-        &:hover {
-            background-color: color-mix(in srgb, var(--tab-selected-textcolor) 30%, transparent) !important;
-        }
+    &:not([disabled]):hover .toolbarbutton-icon {
+        background-color: var(--my-scrollbuttons-button-hover-bgcolor) !important;
     }
 }
 
 spacer {
     border-color: transparent !important;
+}
+
+/* Show generic favicon when site don't give any \
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+.tab-icon-image {
+  #tabbrowser-tabs[orient="horizontal"] &:not([src], [pinned], [crashed], [sharing], [pictureinpicture], [busy]) {
+      display: flex !important;
+    }
 }
 
 /* Quitar label "Navegación Privada" */
@@ -436,99 +509,4 @@ toolbar:is(#TabsToolbar) #firefox-view-button[aria-pressed="true"] .toolbarbutto
 
 .titlebar-buttonbox-container, .tab-close-button, .tab-label-container {
   max-height: calc(var(--tab-height-personal) + var(--tab-block-margin) + 4px) !important;
-}
-
-/* _______________________________________________________ Menu-bar _______________________________________________________ */
-
-/* Set height of all toolbar */
-#toolbar-menubar {
-    height: var(--menubar-height-personal) !important;
-}
-
-/* Alignt menu items - tested when menu is always active */
-menubar > menu {
-    @media (-moz-platform: windows) {
-        padding: 1px 6px 3px !important;
-    }
-}
-
-/* __ Menubar Flotante __ */
-
-#toolbar-menubar[autohide]{
-    position: fixed;
-    display: flex;
-    top: 0px !important;
-    width: 100vw;
-    height: initial !important;
-    z-index: 10;
-}
-
-#toolbar-menubar:not([autohide]) #main-menubar{
-    background-color: transparent !important;
-    box-shadow: none !important;
-
-    &>menu[_moz-menuactive] {
-        background-color: var(--button-bgcolor) !important;
-        border-radius: 0 0 4px 4px !important;
-    }
-}
-
-#toolbar-menubar[autohide] #main-menubar {
-    height: calc(var(--tab-min-height) + var(--tab-block-margin,0px)) !important;
-    background: linear-gradient(var(--my-toolbar-bgcolor, var(--toolbar-bgcolor)), var(--my-toolbar-bgcolor, var(--toolbar-bgcolor))),
-                      var(--lwt-header-image, none), var(--lwt-additional-images,none),
-                      linear-gradient(var(--lwt-accent-color,Field), var(--lwt-accent-color,Field)) !important;
-    background-position: 0 0, right top , var(--lwt-background-alignment) !important;
-    background-position-y: top !important;
-    background-repeat: repeat-x, no-repeat, var(--lwt-background-tiling) !important;
-    background-size: var(--my-background-size, auto 100%, var(--lwt-background-size)) !important;
-    background-attachment: fixed, fixed, fixed !important;
-    outline: 1px solid var(--my-content-border-color) !important;
-    outline-offset: -1px !important;
-    border-radius: 8px !important;
-    margin-block: 4px !important;
-    margin-inline-start: 4px !important;    
-    padding-inline: 4px !important;
-    box-shadow: 5px 0 5px 1px var(--contrast-color) !important;
-}
-
-#toolbar-menubar[autohide]:not([inactive]) #main-menubar>menu {
-    margin-block: 4px !important;
-    border-radius: 4px !important;
-    
-    &[_moz-menuactive] {
-        background-color: var(--button-bgcolor) !important;
-    }
-    
-    &::before {
-        top: 0;
-        content: "";
-        position: fixed;
-        height: 8px;
-        width: 76px;
-    }
-}
-
-#toolbar-menubar[autohide][inactive]{ height: 0px !important; }
-
-#toolbar-menubar > spacer{ flex-grow: 1 }
-#toolbar-menubar[inactive] > .titlebar-buttonbox-container{ display: none }
-
-@media (-moz-gtk-csd-reversed-placement){
-    #toolbar-menubar[autohide]:not([inactive]) > .titlebar-buttonbox-container{ display: none }  
-}
-
-/* _______________________ Configuration for Linux _______________________ */
-
-@media (-moz-platform: linux) {    
-/* Remove unwanted padding in menubar */
-    toolbar { &[type="menubar"] { padding: 0px !important; }}
-}
-
-/* _______________________ Configuration for MacOS _______________________ */
-
-@media (-moz-platform: macos) {
-    :root:not([sizemode="fullscreen"]) #tabbrowser-tabs {
-        padding-inline-start: 10px !important;
-    }
 }

@@ -32,12 +32,14 @@ menuseparator {
     }
 }
 
-/* Bug fix: Separator after 'AI menu' causes unwanted scrolling */
-
-#context-ask-chat,
-#context-ask-chat + #frame-sep {
-    display: flex !important;
-}
+/* Bug fix: Separator after 'AI menu' causes unwanted scrolling \
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
+@media -moz-pref("browser.ml.chat.menu") {
+    #context-ask-chat,
+    #context-ask-chat + #frame-sep {
+        display: flex !important;
+    }
+}*/
 
 /* 'Menu inside menu' margin - bookmarksbar */
 

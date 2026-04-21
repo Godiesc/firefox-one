@@ -12,7 +12,7 @@
         &::after {
             content: "";
             position: absolute;
-            border-radius: 4px !important;
+            border-radius: calc(var(--my-toolbar-border-radius)/2) !important;
             padding-block: calc(var(--tab-height-personal)/2 + 0px) !important;
             padding-inline: 17px !important;
             z-index: -1 !important;

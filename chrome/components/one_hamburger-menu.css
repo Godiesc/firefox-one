@@ -3,7 +3,7 @@
 
 @media (-moz-platform: windows), (-moz-platform: linux) {
     :root {
-        --label-color: color-mix(in srgb, var(--arrowpanel-color, var(--tab-selected-textcolor))90%, var(--Button-background-personal));
+        --label-color: color-mix(in srgb, var(--arrowpanel-color, var(--tab-selected-textcolor)) 90%, var(--Button-background-personal));
         --margin-left-icons-personal: calc(var(--toolbarbutton-inner-padding)*2 - 10px) !important;
         --margin-right-icons-personal: 0px !important;
         --menu-label: "Menu" ;
@@ -26,10 +26,11 @@
 
 /* Color of icons and labels */
 
-.subviewbutton:not([disabled]), #appMenu-popup toolbarbutton:not([disabled]) .toolbarbutton-text label {
+.subviewbutton:not([disabled]), 
+#appMenu-popup toolbarbutton:not([disabled]) {
     -moz-context-properties: fill;
     fill: var(--label-color) !important;
-    color: var(--label-color) !important;
+    color: var(--label-color) !important;/*/**/
 }
 
 /* Login Button */
@@ -183,7 +184,7 @@
             /* Position */
             
             & #PanelUI-button {
-                --toolbarbutton-active-background: color-mix(in srgb,var(--toolbarbutton-hover-personal)70%, transparent) !important;
+                --toolbarbutton-active-background: color-mix(in srgb,var(--toolbarbutton-hover-personal) 70%, transparent) !important;
                 position: absolute; /* Makes the button hidde when 'fullscreen' */
                 top: calc(0px - var(--tab-height-personal) - var(--tab-block-margin)*2 - 3px - var(--menubar-height-personal, 0px)) !important;
                 inset-inline-start: calc(-1*var(--my-elements-left-margin, 0px) - 4px) !important; /* not left for RTL languages */

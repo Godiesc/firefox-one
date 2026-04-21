@@ -187,28 +187,31 @@ toolbarbutton.bookmark-item:not(.subviewbutton, [disabled="true"]):is([open],:ac
     margin-block: 0 !important;
 }
 
-/* Status panel */
-
-#statuspanel label {
-    background-color: var(--lwt-accent-color) !important;
-    color: currentColor !important;
-    border: 1px solid var(--toolbarbutton-hover-personal) !important;
-    border-radius: 0 8px 0 8px !important;
-}
-
 /* Delete style when 'sidebar' button change to 'active' */
 
 #sidebar-button {
+    
+    &:not(:hover) {
     --toolbarbutton-active-background: transparent !important;
+    }
 
     &[checked] {
         @media -moz-pref("sidebar.revamp") {
             list-style-image: url("chrome://browser/skin/sidebar-collapsed.svg") !important;
+            
+            @media not -moz-pref("sidebar.position_start") {
+                list-style-image: url("chrome://browser/skin/sidebar-collapsed-right.svg") !important;
+            }
         }
 
         &:hover {
             --toolbarbutton-active-background: var(--toolbarbutton-hover-background) !important;
         }
+    }
+    &[open] {
+        /* When Firefox show a 'Message' in this button */
+        --toolbarbutton-active-background: var(--button-active-bgcolor) !important;
+        fill: FieldText !important;
     }
 }
 
