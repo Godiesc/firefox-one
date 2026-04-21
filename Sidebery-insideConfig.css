@@ -18,21 +18,6 @@
     --toolbar-bgcolor: color-mix(in srgb, var(--my-toolbar-bgcolor), transparent var(--brightness-toolbar)) !important;
 }
 
-/* Trick to clic on border */
-
-body::before {
-    content: ''; display: flex; position: fixed;
-    width: calc(100% - 4px);
-    height: calc(100% + 0px);
-    margin-inline-start: 4px;
-    border-radius: 8px !important;
-    background-size: auto 100% !important;
-    background-color: color-mix(in srgb, var(--toolbar-bgcolor), transparent 30%);
-    pointer-events: none;
-    outline: 1px solid #60606050;
-    outline-offset: -1px;
-}
-
 /* __________________ Top horizontal box */
 
 .top-horizontal-box {
@@ -42,11 +27,15 @@ body::before {
 .NavigationBar.-top {
     background-color: transparent;
     width: calc(var(--uc-sidebar-hover-width) - 14px);
-    box-shadow: none; 
+    box-shadow: none;
 }
 
 .NavigationBar .nav-item[data-active="true"]:not(:hover) {
     box-shadow: 0 1px 3px 0 rgba(0,0,0,0.112);
+}
+
+body:not(:hover) .NavigationBar .nav-item[data-active="false"]:not(:hover) {
+    opacity: 0;
 }
 
 /* Sound indicator */
@@ -77,7 +66,7 @@ body::before {
 }
 
 .Tab {
-width: calc(100% + 4px);
+width: calc(100% - 1px);
     --tabs-activated-bg: color-mix(in srgb,var(--s-popup-bg), var(--s-popup-fg) 20%);
 }
 
@@ -112,11 +101,11 @@ width: calc(100% + 4px);
 /* ________________________ Pinned tabs */
 
 .Tab[data-pin="true"] {
-    --tabs-pinned-width: 36px;
+/*    --tabs-pinned-width: 40px;/**/
 }
 
 .PinnedTabsBar {
-    --my-tabs-pinned-width: calc(var(--uc-sidebar-width) - 10px);
+    --my-tabs-pinned-width: calc(var(--uc-sidebar-width) - 15px);
     min-width: var(--uc-sidebar-hover-width);
     max-width: var(--uc-sidebar-hover-width);
     padding-inline-start: 8px !important;
@@ -153,8 +142,8 @@ body:not(:hover) .PinnedTabsBar .tab-wrapper:has(.Tab[data-active="true"]) {
 /* ________________________ Normal tabs */
 
 .TabsPanel.panel>.ScrollBox .Tab {
-    margin-inline: 0 ;
-    padding-inline: 8px 9px !important;
+    margin-inline: 0 !important;
+    padding-inline: 8px;
 }
 
 /* Remove indent tab [0] */
@@ -164,7 +153,7 @@ body:not(:hover) #root[data-tabs-tree-lvl-marks="true"] .Tab[data-pin="false"]:n
 }
 
 body:hover .ScrollBox .Tab[data-lvl]:not([data-lvl="0"]) {
-    padding-inline: var(--tabs-indent) 4px !important;
+    padding-inline: var(--tabs-indent) 8px !important;
 }
 
 /* Margins to center favicon */
@@ -193,15 +182,12 @@ body:hover .ScrollBox .Tab[data-lvl]:not([data-lvl="0"]) {
     padding: 0px ;
     margin-inline: 0px;
     grid-gap: 0;
-	svg {
-            margin-inline-start: 2px !important;
-	}
 
     &::before {
         content: ''; display: flex; position: absolute; 
         top: 4px;
         left: 10px;
-        width: calc(100% - 17px); 
+        width: calc(100% - 21px); 
         height: 70%;
         border-radius: 4px !important;
         background-size: auto 100% !important;
