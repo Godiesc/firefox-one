@@ -5,7 +5,8 @@
 
 @import url('components/one_root.css');
 @import url('components/one_root-personal.css');
-@import url('components/one_containers.css');
+@import url('components/one_containers-groups.css');
+@import url('components/one_main-window.css');
 @import url('components/one_tabs-bar.css');
 @import url('components/one_urlbar-searchbar.css');
 @import url('components/one_windows-controls.css');
