@@ -4,7 +4,7 @@
 /* Arrowpanel, popup menus & panels styles \
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
 :is(menupopup, panel):where([type="arrow"]) {
-    --my-background-image-popup: radial-gradient( 100% 91.38% at 50% 99.62%,
+    --my-background-image-popup: radial-gradient( 100% 90% at 50% 100%,
                            color-mix(in srgb, var(--general-color) 10%, transparent) 0%,
                            var(--arrowpanel-background));
     --panel-background-color: var(--my-background-image-popup), var(--noise-urlbar-personal),
@@ -23,7 +23,7 @@ panel:where([type="arrow"]) {
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
 .panel-no-padding[type="arrow"] {
     margin-block: calc(-1 * var(--panel-box-shadow-margin) + 1px) !important;
-    margin-inline: -4px !important;
+    margin-inline: calc(-1 * var(--panel-box-shadow-margin)) !important;
 }
 
 /* Gradient border around popups -&- border color in popups like bookmark \
@@ -39,10 +39,18 @@ panel:where([type="arrow"]) {
     border-radius: var(--panel-border-radius);
     padding: 1px;
     background-position: center center !important;
-    background: radial-gradient(ellipse at center, var(--button-hover-bgcolor), transparent);
+    background: radial-gradient(ellipse at center, var(--color-accent-primary-hover), transparent);
     mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     mask-composite: exclude;
     pointer-events: none !important;
+}
+
+/* Panels like 'search engine' - 'open'  - affect too the group tabs preview list */
+.toolbar-menupopup {
+    &, 
+    & menupopup {
+        margin-block-start: 0px !important;
+    }
 }
 
 /* Margin bottom last item of popups */
@@ -51,28 +59,38 @@ panel:where([type="arrow"]) {
     --panel-menuitem-margin-inline: 4px !important;
 }
 
-/* Gradient background color when :hover over different items in the main menus */
-
-.protections-popup-category:not(#appMenu-popup toolbarbutton,[disabled]):hover, .protections-popup-footer-button:not(#appMenu-popup toolbarbutton):hover, 
+/* Gradient background color when ':hover' over different items in the main menus \
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+.protections-popup-category:not(#appMenu-popup toolbarbutton,[disabled]):hover, 
+.protections-popup-footer-button:not(#appMenu-popup toolbarbutton):hover, 
 #protections-popup-show-report-stack:not(#appMenu-popup toolbarbutton):hover > .protections-popup-footer-button:not(#appMenu-popup toolbarbutton), 
-panelview .toolbarbutton-1:not([disabled], [open]:not(#appMenu-popup toolbarbutton)):is(:hover), toolbarbutton.subviewbutton:not([disabled], [open], 
-.subviewbutton-back):is(:hover), .navigable.subviewbutton:not([disabled], [open]):is(:hover), menu.subviewbutton:not([disabled])[_moz-menuhover], 
-menuitem.subviewbutton:not([disabled])[_moz-menuhover], .widget-overflow-list .toolbarbutton-1:not([disabled], [open]):is(:hover), 
+panelview .toolbarbutton-1:not([disabled],[open]:not(#appMenu-popup toolbarbutton)):is(:hover), 
+toolbarbutton.subviewbutton:not([disabled], [open], .subviewbutton-back, .unified-extensions-item-action-button):is(:hover), 
+.navigable.subviewbutton:not([disabled], [open]):is(:hover),
+menu.subviewbutton:not([disabled])[_moz-menuhover], 
+menuitem.subviewbutton:not([disabled])[_moz-menuhover], 
+.widget-overflow-list .toolbarbutton-1:not([disabled], [open]):is(:hover), 
 .toolbaritem-combined-buttons:is(:not([cui-areatype="toolbar"]), [overflowedItem="true"]) > toolbarbutton:not([disabled], [open]):is(:hover),
 #downloadsListBox > richlistitem[state="1"][exists].hoveringMainArea:hover {
-    background: var(--button-bgcolor) !important;
-    color: var(--panel-text-color, var(--tab-selected-textcolor)) !important;
+    background: var(--panel-separator-zap-gradient3) !important;
+    color: contrast-color(var(--color-accent-primary-hover)) !important;/**/
 }
 
-/* Background color when clicking on different items in the main menus */
-
-.protections-popup-category:active:not([disabled]), .protections-popup-footer-button:active, #protections-popup-show-report-stack:active > .protections-popup-footer-button, 
-panelview .toolbarbutton-1:not([disabled]):is(:active, [open]), toolbarbutton.subviewbutton:not([disabled], .subviewbutton-back):is(:active, [open]), 
-.navigable.subviewbutton:not([disabled]):is(:active, [open]), menu.subviewbutton:not([disabled])[_moz-menuactive], .panel-banner-item:hover, 
-menuitem.subviewbutton:not([disabled])[_moz-menuactive], .widget-overflow-list .toolbarbutton-1:not([disabled]):is(:active, [open]), 
+/* Background color when clicking on different items in the main menus \
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+.protections-popup-category:active:not([disabled]), 
+.protections-popup-footer-button:active, 
+#protections-popup-show-report-stack:active > .protections-popup-footer-button, 
+panelview .toolbarbutton-1:not([disabled]):is(:active, [open]), 
+toolbarbutton.subviewbutton:not([disabled], .subviewbutton-back,.unified-extensions-item-action-button):is(:active, [open]), 
+.navigable.subviewbutton:not([disabled]):is(:active, [open]), 
+menu.subviewbutton:not([disabled])[_moz-menuactive], .panel-banner-item:hover, 
+menuitem.subviewbutton:not([disabled])[_moz-menuactive], 
+.widget-overflow-list .toolbarbutton-1:not([disabled]):is(:active, [open]), 
 .toolbaritem-combined-buttons:is(:not([cui-areatype="toolbar"]), [overflowedItem="true"]) > toolbarbutton:not([disabled]):is(:active, [open]),
 #downloadsListBox > richlistitem[state="1"][exists].hoveringMainArea:active {
-    background: var(--button-hover-bgcolor) !important;
+    background: var(--panel-separator-zap-gradient4) !important;
+    color: contrast-color(var(--color-accent-primary-hover)) !important;
 }
 
 /* Colors on disabled items */
@@ -108,9 +126,9 @@ treechildren::-moz-tree-separator {
 /* 'back' button */
 
 .panel-header {
-    --button-background-color-ghost-hover: var(--button-bgcolor) !important;
-    --button-background-color-ghost-active: var(--button-active-bgcolor) !important;
-    --arrowpanel-menuitem-border-radius: 3px !important;
+    --button-background-color-ghost-hover: var(--color-accent-primary-small) !important;
+    --button-background-color-ghost-active: var(--color-accent-primary-active) !important;
+    --panel-menuitem-border-radius: 3px !important;
     --arrowpanel-header-back-icon-padding: 6px 6px 6px 4px !important; 
 }
 

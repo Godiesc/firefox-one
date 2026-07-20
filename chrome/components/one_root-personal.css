@@ -6,25 +6,25 @@
   --fuchsia: #fa1e4e;     --blue: #4c4cff;       --aqua: #00bfff;        --cyan: #00ffff;        --lightblue: #45a1ff;   --pink: #FF0F7E;        --poison: #cb17cf;
   --purple: #8d35e2;      --green: #05b694;      --aquamarine: #00ffa2;  --lightgreen: #36ff4e;  --yellowbrown: #febd60; --swampautumn: #fdf008; --cheaterman: #33ff4e;
   --gray: #bfb6d2;        --ashgray: #737373;    --orange: #ff6c22;      --yellow: #ffe20f;      --red: #ff3230;         --navyblue: #0050cE;    --fruttidimare: #FF5959;
-  --catppuccino: #f38ba8;
+  --catppuccino: #f38ba8; --opera4: #16f0c1;     --opera7: #ff3c00;      --opera9: #ff4772;
   
                                                                                                                                  
-  /* Accent color ----> UI del navegador.  -----|        Newtab Accent color |                      |--- userContent <------------ Accent color
-                                                v                            v                      v    (Some 'about:' pages)                   */
-  --general-color: var(--toolbarbutton-icon-fill-attention, var(--newtab-text-primary-color, var(--blue)));
+  /* Accent color ----> UI del navegador.  -----|              Newtab Accent color |                              |--- userContent <----- Accent color
+                                                v                                  v                              v    (Some 'about:' pages)     */
+  --general-color: var(--toolbarbutton-icon-fill-attention, var(--lwt-sidebar-highlight-background-color, var(--blue)));
   
   /* __________________________________________________________ Various customizations _________________________________________________________ */
                   /* Dark wallpapers ¯¯¯|                                          Accentcolor for each wallpaper ¯¯¯|
                                         v                                                                            v                           */
-  --wallpaper-dark1: url("../newtab/wallpaper-dark1.png") !important;           --general-color-dark1: var(--lightblue) !important;
-  --wallpaper-dark2: url("../newtab/wallpaper-dark2.png") !important;           --general-color-dark2: var(--blue) !important;
-  --wallpaper-dark3: url("../newtab/wallpaper-dark3.png") !important;           --general-color-dark3: var(--aqua) !important;
-  --wallpaper-dark4: url("../newtab/wallpaper-dark4.png") !important;           --general-color-dark4: var(--gray) !important;
-  --wallpaper-dark5: url("../newtab/wallpaper-dark5.png") !important;           --general-color-dark5: var(--gray) !important;
+  --wallpaper-dark1: url("../newtab/wallpaper-dark1.png") !important;           --general-color-dark1: var(--blue) !important;
+  --wallpaper-dark2: url("../newtab/wallpaper-dark2.png") !important;           --general-color-dark2: var(--gray) !important;
+  --wallpaper-dark3: url("../newtab/wallpaper-dark3.png") !important;           --general-color-dark3: var(--lightblue) !important;
+  --wallpaper-dark4: url("../newtab/wallpaper-dark4.png") !important;           --general-color-dark4: var(--opera4) !important;
+  --wallpaper-dark5: url("../newtab/wallpaper-dark5.png") !important;           --general-color-dark5: var(--orange) !important;
   --wallpaper-dark6: url("../newtab/wallpaper-dark6.png") !important;           --general-color-dark6: var(--gray) !important;
-  --wallpaper-dark7: url("../newtab/wallpaper-dark7.png") !important;           --general-color-dark7: var(--orange) !important;
-  --wallpaper-dark8: url("../newtab/wallpaper-dark8.png") !important;           --general-color-dark8: var(--catppuccino) !important;
-  --wallpaper-dark9: url("../newtab/wallpaper-dark9.png") !important;           --general-color-dark9: var(--gray) !important;
+  --wallpaper-dark7: url("../newtab/wallpaper-dark7.png") !important;           --general-color-dark7: var(--opera7) !important;
+  --wallpaper-dark8: url("../newtab/wallpaper-dark8.png") !important;           --general-color-dark8: var(--aqua) !important;
+  --wallpaper-dark9: url("../newtab/wallpaper-dark9.png") !important;           --general-color-dark9: var(--opera9) !important;
   
                  /* light wallpapers ¯¯¯|                                          Accentcolor for each wallpaper ¯¯¯|
                                         v                                                                            v                          */  
@@ -35,14 +35,14 @@
   --wallpaper-light5: url("../newtab/wallpaper-light5.png") !important;         --general-color-light5: var(--lightgreen) !important;
   --wallpaper-light6: url("../newtab/wallpaper-light6.png") !important;         --general-color-light6: var(--lightgreen) !important;
   --wallpaper-light7: url("../newtab/wallpaper-light7.png") !important;         --general-color-light7: var(--orange) !important;
-  --wallpaper-light8: url("../newtab/wallpaper-light8.png") !important;         --general-color-light8: var(--fruttidimare) !important;
-  --wallpaper-light9: url("../newtab/wallpaper-light9.png") !important;         --general-color-light9: var(--ashgray) !important;
+  --wallpaper-light8: url("../newtab/wallpaper-light8.png") !important;         --general-color-light8: var(--purple) !important;
+  --wallpaper-light9: url("../newtab/wallpaper-light9.png") !important;         --general-color-light9: var(--lightblue) !important;
     }
 
 @media (prefers-color-scheme: dark) { :root{
   --lwt-main-image:  url("../newtab/about-page-dark.png") !important;                             /* 'about:' pages image - dark theme */ 
   --lwt-private-image:  url("../newtab/private-dark.png") !important;                             /* new-tab private-page image - dark theme */
-  --brightness-toolbar: 30%;                                                                      /* Themes with images - dark filter to navbar - bookmarksbar */
+  --brightness-toolbar: 40%;                                                                      /* Themes with images - dark filter to navbar - bookmarksbar */
   --brightness-wallpaper: 100%;                                                                   /* darker wallpaper */                           }}
   
 @media (prefers-color-scheme: light) { :root{
@@ -55,7 +55,7 @@
   
 :root {
   
-  --my-toolbar-border-radius: 8px;
+  --my-toolbar-border-radius: 10px;                                                                /* Toolbars roundness */
   
   --tab-height-personal: 28px ;                                                                   /* Tamaño altura de pestañas */
   --tab-min-width-personal: 22px ;                                                                /* Tab min width | default -> :76px */
@@ -67,16 +67,10 @@
   --left-color: #19abf4;                                                                          /* Color left wordmark */
   --right-color: #8b61c3 ;                                                                        /* Color right wordmark */
   
-  --logo-wordmark-visibility: 1 ;                                                                 /* :1 visible, :0 invisible ; Logo-wordmark*/
-  --logo-wordmark-display: flex ;                                                                 /* :none ->eliminar , :flex ->Mostrar;  Logo-wordmark*/
-  --orientation-display: block ;                                                                  /* :block -> vertical , :flex -> horizontal ; Logo-wordmark y searchbar*/
-  
   --my-newtab-elements-background: color-mix(in srgb, 
-    white 3%, var(--newtab-background-color) , transparent) ;                                     /* Background color of newtab elements */
+    white 3%, var(--newtab-background-color) 30%, transparent) ;                                  /* Background color of newtab elements */
   --my-border-radius: 12px ;                                                                      /* Roundness of many elements in 'about:' pages */
   --my-blur: blur(14px) ;                                                                         /* Utilizado para personalizar newtab page */
-  
-  --my-newtab-pinnedsites-position: start ;                                                       /* Posición pinnedsites -> : start ; center ; end */
   
   --my-selected-text-background: var(--general-color) ;                                           /* Selected text background */
   
@@ -100,8 +94,8 @@
   
   @media (prefers-color-scheme: dark) { :root {
     --lwt-main-image:  url("../newtab/main-image-dark.png") !important;                               /* main-image wallpaper - dark theme */ 
-    --brightness-toolbar: 50%;                                                                        /* Dark filter to toolbars & web content */
-    --brightness-wallpaper: 80%;                                                                      /* Black filter | no filter -> 100% */ }}
+    --brightness-toolbar: 80%;                                                                        /* Dark filter to toolbars & web content */
+    --brightness-wallpaper: 50%;                                                                      /* Black filter | no filter -> 100% */ }}
   
   @media (prefers-color-scheme: light) { :root {
     --lwt-main-image:  url("../newtab/main-image-light.png") !important;                              /* main-image wallpaper - white theme*/
@@ -112,21 +106,33 @@
 /* -----------------------------------------------------------------------------------------------------------------------------------------------
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ The following variables were not included for user editing, but are required in this file ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+:root {  
+  /* ________ Various Gradientes */
+  
+  --panel-separator-zap-gradient1: linear-gradient(to right,var(--general-color) 80% , transparent calc(94% - var(--my-elements-left-margin,0px)));
+  --panel-separator-zap-gradient2: linear-gradient(to left, var(--color-accent-primary-hover) , transparent);
+  --panel-separator-zap-gradient3: var(--color-accent-primary);
+  --panel-separator-zap-gradient4: var(--color-accent-primary-hover);
+  --panel-separator-zap-gradient5: linear-gradient(to left, transparent 7px,var(--color-accent-primary-hover) 7px, 
+                                                   transparent calc(100% - var(--margin-left-icons-personal) - 8px), 
+                                                   transparent calc(100% - var(--margin-left-icons-personal) - 8px)) 1;
+}
 
 @media (prefers-color-scheme: dark){
   :root{
     /* ------------------------------ Botones hover, clic -------------------------------- */
-    --button-smaller-bgcolor: color-mix(in srgb, var(--general-color) 25%, transparent);
-    --button-bgcolor: color-mix(in srgb, var(--general-color) 50%, transparent) !important;             /* Color de buttons */
-    --button-hover-bgcolor: color-mix(in srgb, var(--general-color) 60%, transparent) !important;       /* Color hover en menuitems */
-    --button-active-bgcolor: color-mix(in srgb, var(--general-color) 80%, transparent) !important;      /* color clic en menuitems*/
+    --color-accent-primary-xsmall: color-mix(in srgb, transparent 75%, var(--color-accent-primary));                        /* Button background color smaller */
+    --color-accent-primary-small: color-mix(in srgb, transparent 60%, var(--color-accent-primary));                         /* Button background color small */
+    --color-accent-primary-medium: color-mix(in srgb, transparent 45%, var(--color-accent-primary));                        /* Button background color medium */
+    --color-accent-primary-hover: color-mix(in srgb, var(--my-scheme-color) 24%, var(--color-accent-primary)) !important;   /* Button background color when 'hover' */
+    --color-accent-primary-active: color-mix(in srgb, var(--my-scheme-color) 40%, var(--color-accent-primary)) !important;  /* Button background color when 'active' */
   }}
 
 @media (prefers-color-scheme: light){
   :root{
     /* ------------------------------ Botones hover, clic -------------------------------- */
-    --button-smaller-bgcolor: color-mix(in srgb, var(--general-color) 25%, transparent);
-    --button-bgcolor: color-mix(in srgb, var(--general-color) 40%, transparent) !important;             /* Color de buttons */
-    --button-hover-bgcolor: color-mix(in srgb, var(--general-color) 55%, transparent) !important;       /* Color hover en menuitems */
-    --button-active-bgcolor: color-mix(in srgb, var(--general-color) 75%, transparent) !important;      /* color clic en menuitems*/
+    --color-accent-primary-xsmall: color-mix(in srgb, var(--general-color) 25%, transparent);
+    --color-accent-primary-small: color-mix(in srgb, var(--general-color) 40%, transparent) !important;             /* Color de buttons */
+    --color-accent-primary-hover: color-mix(in srgb, var(--general-color) 55%, transparent) !important;       /* Color hover en menuitems */
+    --color-accent-primary-active: color-mix(in srgb, var(--general-color) 75%, transparent) !important;      /* color clic en menuitems*/
   }}

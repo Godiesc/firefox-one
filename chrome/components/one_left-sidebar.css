@@ -79,7 +79,7 @@
         margin-inline: 0 !important;
     }
 
-    :root:not([chromehidden~="toolbar"],[inDOMFullscreen],[sizemode="fullscreen"]) {
+    :root:not([chromehidden~="toolbar"],[chromehidden*="menubar"],[inDOMFullscreen],[sizemode="fullscreen"]) {
         &>body>#browser,
         &>body>#browser-bottombox {
             margin-inline-start: var(--my-vertical-toolbar-width, 0px);
@@ -131,7 +131,7 @@
             --space-before-gradient-line: calc(var(--tab-height-personal) - var(--toolbar-height-personal) - var(--menubar-height-personal, 0px)) !important;
             border-image: linear-gradient(to bottom, transparent var(--space-before-gradient-line), 
                 var(--general-color) var(--space-before-gradient-line), 
-                var(--button-hover-bgcolor) 52%, transparent 94%) 1 !important;/**/
+                var(--color-accent-primary-hover) 52%, transparent 94%) 1 !important;/**/
         }
         & #navigator-toolbox {
             margin-top: 0px !important;
@@ -213,7 +213,7 @@
 
     #PersonalToolbar {
         --toolbarbutton-border-radius: 7px !important;
-        --toolbarbutton-background-color-active: var(--button-active-bgcolor) !important;
+        --toolbarbutton-background-color-active: var(--color-accent-primary-active) !important;
         --padding-top-left-sidebar: 56px !important;
         --padding-bottom-left-sidebar: 6px !important;
         --height-left-sidebar: calc(100vh - 8px) !important;
@@ -376,7 +376,7 @@
     /* :hover de botones: extensiones ; bookmark Folders ; other bookmarks folder */
 
     #PersonalToolbar .toolbarbutton-1:is([open],:active) stack  {
-        background-color: var(--button-active-bgcolor) !important;
+        background-color: var(--color-accent-primary-active) !important;
         fill: #d5dadd !important;
         transition: background-color 250ms ease-in-out !important;/**/
         
@@ -429,7 +429,7 @@
 
     #PersonalToolbar #panorama-tab-groups_example_com-BAP>stack, 
     #PersonalToolbar #simple-tab-groups_drive4ik-BAP>stack{
-        background-color: var(--button-active-bgcolor) !important;
+        background-color: var(--color-accent-primary-active) !important;
         fill: #eaeaea !important;
         list-style-image: url("../icons/logo_tablero.svg") !important;
     }
@@ -578,7 +578,7 @@
     
     /* Sidebar style */
         
-    #sidebar-main {
+    #sidebar-container {
         &::before {
             content: '';
             position: absolute;
@@ -608,7 +608,7 @@
     /* Sidebar style when using fullscreen mode */
     
     @media -moz-pref("browser.fullscreen.autohide") {
-        :root[inFullscreen]:not([macOSNativeFullscreen]) #navigator-toolbox[style*="margin-top"] + #browser  #sidebar-main::before { /* Not use ':has' for better performance */
+        :root[inFullscreen]:not([macOSNativeFullscreen]) #navigator-toolbox[style*="margin-top"] + #browser  #sidebar-container::before { /* Not use ':has' for better performance */
             top: 0px;
             width: 100%;
             height: 100%;
@@ -695,14 +695,14 @@
     .button-background[type="icon"] {
         img {
             fill: white !important;
-            background-color: var(--button-hover-bgcolor) !important;
-            box-shadow: 0 0 0 7px var(--button-hover-bgcolor) !important;
+            background-color: var(--color-accent-primary-hover) !important;
+            box-shadow: 0 0 0 7px var(--color-accent-primary-hover) !important;
             border-radius: 0.1px !important;
         }
 
         &:hover img {
-            background-color: var(--button-bgcolor) !important;
-            box-shadow: 0 0 0 7px var(--button-bgcolor) !important;
+            background-color: var(--color-accent-primary-small) !important;
+            box-shadow: 0 0 0 7px var(--color-accent-primary-small) !important;
         }
     }
     
@@ -820,7 +820,7 @@
     
     /* Remove margins in tabs */
     
-    #sidebar-main {
+    #sidebar-container {
         --tab-block-margin: 0px !important;
         --tab-block-margin-personal: 0px !important;
     }
@@ -954,7 +954,7 @@
 
         /* New image cause isn't posible to put an align image */
 
-        & #sidebar-main {
+        & #sidebar-container {
             background-image: none !important;
             background-color: var(--lwt-accent-color) !important;
             border-inline-color: transparent !important;
@@ -968,7 +968,7 @@
                     bottom: 0 !important;
                     background-image: linear-gradient(transparent, transparent),
                         linear-gradient(var(--toolbar-background-color), var(--toolbar-background-color)),
-                        var(--lwt-header-image, none), var(--lwt-additional-images,none),
+                        var(--toolbox-background-image),
                         linear-gradient(var(--lwt-accent-color,Field), var(--lwt-accent-color,Field)) !important;
                     background-position: 0 0, right top ,right top, var(--lwt-background-alignment) !important;
                     background-position-y: 0px !important;

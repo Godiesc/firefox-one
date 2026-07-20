@@ -42,7 +42,7 @@
     }}
 
 #appMenu-fxa-status2:not([fxastatus]) #appMenu-fxa-label2:hover {
-    background-color: var(--button-hover-bgcolor) !important;
+    background-color: var(--color-accent-primary-hover) !important;
 }
 
 /* Right margin of the shortcuts Ctrl + */
@@ -55,7 +55,7 @@
 /* 'Update Available' banner */
 
 #appMenu-popup .panel-banner-item:not([disabled]):hover, #appMenu-popup .addon-banner-item:not([disabled]):hover {
-    background: var(--button-active-bgcolor) !important;
+    background: var(--color-accent-primary-active) !important;
 }
 
 /* __________________________________________________ Menu disabled and Sidebar is ON __________________________________________________ */
@@ -68,8 +68,8 @@
 
     /* margin to the left of 'menubar-tabsbar-navbar' when new menu is disabled */
 
-    :root:not([chromehidden~="toolbar"]):has(#PersonalToolbar:not([collapsed])),
-    :root:not([chromehidden~="toolbar"],[sizemode="fullscreen"]):not(:has(#sidebar-main[hidden],sidebar-main[hidden])) {
+    :root:not([chromehidden~="toolbar"],[chromehidden*="menubar"]):has(#PersonalToolbar:not([collapsed])),
+    :root:not([chromehidden~="toolbar"],[chromehidden*="menubar"],[sizemode="fullscreen"]):not(:has(#sidebar-container[hidden],sidebar-main[hidden])) {
         & #toolbar-menubar{
             margin-inline-start: calc(var(--padding-left-tab) + 2px) !important;
         }
@@ -94,7 +94,7 @@
         #nav-bar-customization-target { padding-inline-end: var(--my-toolbar-start-end-padding, 0px); }
         
         #nav-bar:not([nonemptyoverflow], [customizing]) #nav-bar-customization-target:has(#unified-extensions-button[hidden]) {
-            --my-toolbar-start-end-padding: calc(var(--toolbar-start-end-padding) - 2px) !important;
+            --my-toolbar-start-end-padding: calc(var(--toolbar-padding-inline) - 2px) !important;
         }
     }
     
@@ -105,7 +105,7 @@
 
         @media (-moz-platform: windows), (-moz-platform: linux) {
 
-            :root:not([chromehidden~="toolbar"],[sizemode="fullscreen"]):has(#toolbar-menubar:not([autohide])) {
+            :root:not([chromehidden~="toolbar"],[chromehidden*="menubar"],[sizemode="fullscreen"]):has(#toolbar-menubar:not([autohide])) {
                 
                 /* Smaller menu button size */
                 & #PanelUI-menu-button {
@@ -114,7 +114,7 @@
                 }
 
                 & #PanelUI-button {
-                    --toolbarbutton-hover-personal: var(--button-bgcolor) !important;
+                    --toolbarbutton-hover-personal: var(--color-accent-primary-small) !important;
                     --toolbarbutton-border-radius: 0 0 4px 4px !important;
                 }
                 
@@ -152,14 +152,14 @@
             margin-inline-start: 4px !important;
         }
 
-        :root:not([chromehidden~="toolbar"]) {
+        :root:not([chromehidden~="toolbar"],[chromehidden*="menubar"]) {
             
             /* Menu button style and margins */
             
             & #PanelUI-menu-button {
                 --toolbarbutton-background-color-hover: var(--toolbarbutton-hover-personal) !important;
                 --toolbarbutton-padding-outer: 0px !important;
-                --toolbar-start-end-padding: 0px !important;
+                --toolbar-padding-inline: 0px !important;
                 --toolbarbutton-padding-inner: calc(var(--tab-height-personal)/2 - 8px) !important;/* Smaller toolbar buttons */
                 padding-block: var(--tab-block-margin-personal, 0px) !important;
                 padding-inline: 4px !important;
@@ -230,7 +230,7 @@
     
         /* _______________________ Styles Menu[open] Popup _______________________ */
 
-        :root:not([chromehidden~="toolbar"],[sizemode="normal"]) {
+        :root:not([chromehidden~="toolbar"],[chromehidden*="menubar"],[sizemode="normal"]) {
             
             /* Space for 'logo + menuLabel' inside popup */
 
@@ -292,7 +292,7 @@
             }
 
             & #appMenu-fxa-status2[fxastatus="signedin"] {
-                padding-top: var(--panel-separator-margin-vertical) !important;
+                padding-top: var(--panel-separator-padding-vertical) !important;
                 margin-inline-start: 0px !important;
             }
             
@@ -306,7 +306,7 @@
     /* Remove unwanted margin of menupopup just in linux */
     
     @media (-moz-platform: linux) {
-        :root:not([chromehidden~="toolbar"],[sizemode="normal"]) { 
+        :root:not([chromehidden~="toolbar"],[chromehidden*="menubar"],[sizemode="normal"]) { 
             & #appMenu-popup {
                 --removed-panel-shadow-margin: 0px !important;
             }
@@ -320,7 +320,7 @@
 
     @media (not -moz-pref("firefoxone.style_without_leftsidebar")) and -moz-pref("browser.toolbars.bookmarks.visibility", 'always') {
 
-        :root:not([chromehidden~="toolbar"]) {
+        :root:not([chromehidden~="toolbar"],[chromehidden*="menubar"]) {
             
             /* New Menu height */
 
@@ -370,7 +370,7 @@
 
     @media (not -moz-pref("firefoxone.style_without_leftsidebar")) and -moz-pref("browser.toolbars.bookmarks.visibility", 'always') {
 
-        :root:not([chromehidden~="toolbar"]) {
+        :root:not([chromehidden~="toolbar"],[chromehidden*="menubar"]) {
             --padding-left-tab: calc(var(--my-vertical-toolbar-width) + 0px) !important;                        /* New size of the 'menu' button */
             --margin-left-icons-personal: calc(var(--my-vertical-toolbar-width) / 2 - 18px) !important;         /* New margin-left for menu items */
             --margin-right-icons-personal: 2px !important;                                                      /* New margin-right for menu items */
@@ -378,7 +378,7 @@
 
         @media (-moz-platform: windows), (-moz-platform: linux) {
 
-            :root:not([chromehidden~="toolbar"]) {
+            :root:not([chromehidden~="toolbar"],[chromehidden*="menubar"]) {
 
 
                 & #PanelUI-button {
@@ -428,7 +428,7 @@
 
         @media (-moz-platform: windows), (-moz-platform: linux) {
 
-            :root:not([chromehidden~="toolbar"]) {
+            :root:not([chromehidden~="toolbar"],[chromehidden*="menubar"]) {
                 
                 /* New margin of icons */
                 
@@ -441,10 +441,10 @@
                     @media -moz-pref("firefoxone.style_without_leftsidebar"),
                         (not -moz-pref("firefoxone.style_without_leftsidebar")) and -moz-pref("browser.toolbars.bookmarks.visibility", 'never') {
                             #toolbar-menubar[autohide] ~ #nav-bar & {
-                                --toolbar-start-end-padding: inherit !important;
+                                --toolbar-padding-inline: inherit !important;
                                 padding-block: unset !important;
                                 padding-block-start: 4px !important;
-                                padding-inline: calc(var(--toolbar-start-end-padding) + 4px) 0px !important;
+                                padding-inline: calc(var(--toolbar-padding-inline) + 4px) 0px !important;
                             }
                     }
                 }

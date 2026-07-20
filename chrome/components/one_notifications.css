@@ -25,9 +25,9 @@
 
 .dialog-button-box {
     button[dlgtype="accept"] {
-        --button-background-color: var(--button-hover-bgcolor) !important;
-        --button-background-color-hover: var(--button-bgcolor) !important;
-        --button-background-color-active: var(--button-hover-bgcolor) !important;
+        --button-background-color: var(--color-accent-primary-hover) !important;
+        --button-background-color-hover: var(--color-accent-primary-small) !important;
+        --button-background-color-active: var(--color-accent-primary-hover) !important;
     }
     button[dlgtype="cancel"] {
         --button-background-color-hover: color-mix(in srgb, var(--red) 60%, transparent) !important;
@@ -93,13 +93,13 @@ browser[primary="true"][tabDialogShowing="true"], .dialogOverlay[topmost="true"]
     #commonDialogWindow * {
         
     --toolbarbutton-icon-fill-attention: unset !important;
-    --in-content-link-color: var(--button-active-bgcolor) !important;
+    --in-content-link-color: var(--color-accent-primary-active) !important;
     --in-content-link-color-hover: var(--general-color) !important;
-    --in-content-link-color-active: var(--button-active-bgcolor) !important;
+    --in-content-link-color-active: var(--color-accent-primary-active) !important;
         
-    --in-content-primary-button-background: var(--button-active-bgcolor) !important;
-    --in-content-primary-button-background-hover: var(--button-hover-bgcolor) !important;
-    --in-content-primary-button-background-active: var(--button-active-bgcolor) !important;
+    --in-content-primary-button-background: var(--color-accent-primary-active) !important;
+    --in-content-primary-button-background-hover: var(--color-accent-primary-hover) !important;
+    --in-content-primary-button-background-active: var(--color-accent-primary-active) !important;
     --in-content-primary-button-text-color: white !important;
         
     --checkbox-checked-border-color: transparent !important;        
@@ -107,12 +107,12 @@ browser[primary="true"][tabDialogShowing="true"], .dialogOverlay[topmost="true"]
         
     --checkbox-unchecked-bgcolor: color-mix(in srgb, var(--arrowpanel-background) 90%,var(--in-content-text-color) ) !important;
     --checkbox-unchecked-hover-bgcolor: var(--general-color) !important;                /*color de los checkbox hover*/
-    --checkbox-unchecked-active-bgcolor: var(--button-hover-bgcolor) !important;        /*color de los checkbox al darle clic*/
+    --checkbox-unchecked-active-bgcolor: var(--color-accent-primary-hover) !important;        /*color de los checkbox al darle clic*/
 
-    --checkbox-checked-bgcolor: var(--button-active-bgcolor) !important;                /*color de los checkbox con check*/
+    --checkbox-checked-bgcolor: var(--color-accent-primary-active) !important;                /*color de los checkbox con check*/
     --checkbox-checked-color: white !important;                                         /*color de la palomita check*/
     --checkbox-checked-hover-bgcolor: var(--general-color) !important;                  /*color de los checkbox con check :hover*/
-    --checkbox-checked-active-bgcolor: var(--button-active-bgcolor) !important;         
+    --checkbox-checked-active-bgcolor: var(--color-accent-primary-active) !important;         
     }    
 }
 

@@ -84,41 +84,57 @@
 
 @media -moz-pref("firefoxone.main-image") {
     
-    @media (prefers-color-scheme: dark){ 
-        :root,
-        :root:is([style*="--lwt-additional-images"],[lwtheme-image]),
-        :root:not([style*="--lwt-additional-images"],[lwtheme-image]) {            
-            --my-toolbar-bgcolor: #1e1e2fbc;
+    @media (prefers-color-scheme: dark){
+        :root {
+            --my-toolbar-bgcolor: #1e1e2fbc;/**/
         }
     }
     
     @media (prefers-color-scheme: light){
-        :root,
-        :root:is([style*="--lwt-additional-images"],[lwtheme-image]){
-            --my-toolbar-bgcolor: #f9f9f9bc;
+        :root{
+            --my-toolbar-bgcolor: #f9f9f9bc;/**/
         }
     }
     
     :root,
     :root:is([lwtheme-image],[style*="--lwt-additional-images"]),
     :root:not([style*="--lwt-additional-images"],[lwtheme-image]) {
-        --toolbar-background-color: color-mix(in srgb,                                                                       /* Toolbars - web content background color */
-         var(--my-toolbar-bgcolor), transparent var(--brightness-toolbar)) !important;
-        --tab-background-color-selected: var(--toolbar-background-color) !important;                                                  /* Tab selected background color */
-        --lwt-additional-images: var(--lwt-main-image) !important;                                                  /* Replace default theme 'aditional' image */
-        --lwt-header-image: var(--lwt-additional-images) !important;                                                /* Replace default theme 'header' image */
-        --toolbarbutton-background-color-hover: color-mix(in srgb,                                                        /* Button background when 'hover' */
-            transparent 90%, color-mix(in srgb, var(--my-font-color) 50%, var(--general-color))) !important;
-        --toolbarbutton-hover-personal: var(--toolbarbutton-background-color-hover) !important;                           /* Button background 'hover' personal */
-        --tab-selected-outline-color: var(--general-color) !important;
+        /*--toolbar-background-color: color-mix(in srgb,                                                                       /* Toolbars - web content background color */
+         /*var(--my-toolbar-bgcolor), transparent var(--brightness-toolbar)) !important;
+        /*--tab-background-color-selected: var(--toolbar-background-color) !important;                                                  /* Tab selected background color */
+        /*--lwt-additional-images: var(--lwt-main-image) !important;                                                  /* Replace default theme 'aditional' image */
+        /*--lwt-header-image: var(--lwt-additional-images) !important;                                                /* Replace default theme 'header' image */
+        /*--toolbarbutton-background-color-hover: color-mix(in srgb,                                                        /* Button background when 'hover' */
+            /*transparent 90%, color-mix(in srgb, var(--my-font-color) 50%, var(--general-color))) !important;
+        /*--toolbarbutton-hover-personal: var(--toolbarbutton-background-color-hover) !important;                           /* Button background 'hover' personal */
+        /*--tab-selected-outline-color: var(--general-color) !important;/**/
     }
     
-    /* Image size and posistion - in this way to keep align in 'expand-on-hover' */
-   
-   #main-window {
+    :root {
+      &:not([privatebrowsingmode="temporary"]) {
+         --toolbox-background-image: var(--lwt-main-image) !important;                                               /* Set image */
+         --lwt-background-size: cover !important;
+         --newtab-wallpaper: var(--lwt-header-image) !important;                                                     /* Test it using personal 'expand-on-hover' */
+         --toolbar-background-color: color-mix(in srgb,
+            var(--my-scheme-color), transparent var(--brightness-toolbar)) !important;                               /* Toolbar background */
+         --toolbarbutton-background-color-hover: color-mix(in srgb,
+            transparent 90%, color-mix(in srgb, var(--my-font-color) 50%, var(--general-color))) !important;         /* Button background when 'hover' */
+         --toolbarbutton-hover-personal: var(--toolbarbutton-background-color-hover) !important;                     /* Button background 'hover' personal */
+      }
+      
+      /* Fix tab selected background in private window */
+      &[privatebrowsingmode="temporary"] {
+         --toolbar-background-color: color-mix(in srgb,
+            var(--my-scheme-color), transparent var(--brightness-toolbar)) !important;                               /* toolbar background */
+      }
+   }
+    
+    /* Image size and posistion - in this way to keep align in 'expand-on-hover' \
+   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */   
+   #main-window > body {
       background-size: cover !important;
       background-position-x: left !important;
-      
+
       /* Sidebar 'expand-on-hover' + Sidebar on right */
       @media -moz-pref("sidebar.visibility", "expand-on-hover") and (not -moz-pref("sidebar.position_start")) {
          background-position-x: right !important;

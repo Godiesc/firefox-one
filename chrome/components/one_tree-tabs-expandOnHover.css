@@ -203,7 +203,7 @@
         }
 
         :root:has(sidebar-main:is([expanded])) {
-            #sidebar-main {
+            #sidebar-container {
                 overflow: visible !important;
                 max-width: var(--my-vertical-toolbar-width) !important;
                 z-index: var(--browser-area-z-index-toolbox-while-animating);
@@ -270,7 +270,7 @@
 
         /* The selected pinned tab is visible when the sidebar is collapsed - limited to 3 rows */
 
-        :root:has(sidebar-main:is([expanded])) #sidebar-main:not(:hover) #pinned-tabs-container .tabbrowser-tab[selected="true"] {
+        :root:has(sidebar-main:is([expanded])) #sidebar-container:not(:hover) #pinned-tabs-container .tabbrowser-tab[selected="true"] {
 
             &:nth-child(-n+12){
                 grid-row-start: 3 !important;
@@ -290,7 +290,7 @@
 
         /* Bug fix - Hide close button when not needed */
 
-        :root:has(sidebar-main:is([expanded])) #sidebar-main:not(:hover) {
+        :root:has(sidebar-main:is([expanded])) #sidebar-container:not(:hover) {
             & .close-icon,
             & #tabs-newtab-button .toolbarbutton-text,
             & #vertical-tabs-newtab-button .toolbarbutton-text {

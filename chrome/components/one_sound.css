@@ -53,7 +53,7 @@ https://github.com/Godiesc/firefox-one */
             
             /* For 'vertical tabs' on right with 'expand-on-hover'*/
             @media -moz-pref("firefoxone.verticalTabs-expandOnHover") {
-                #sidebar-main[sidebar-positionend] #tabbrowser-arrowscrollbox[orient="vertical"] & {
+                #sidebar-container[sidebar-positionend] #tabbrowser-arrowscrollbox[orient="vertical"] & {
                     mask-image: radial-gradient(circle at 0px 1px, transparent 8px, black 9px);
                 }
             }
@@ -68,7 +68,7 @@ https://github.com/Godiesc/firefox-one */
                 
                 /* For 'vertical tabs' on right with 'expand-on-hover' */
                 @media -moz-pref("firefoxone.verticalTabs-expandOnHover") {
-                    #sidebar-main[sidebar-positionend] #tabbrowser-arrowscrollbox[orient="vertical"] & {
+                    #sidebar-container[sidebar-positionend] #tabbrowser-arrowscrollbox[orient="vertical"] & {
                         mask-image: radial-gradient(circle at 0px 1px, transparent 8px, black 9px);
                     }
                 }
@@ -293,7 +293,7 @@ https://github.com/Godiesc/firefox-one */
         --my-opacity: 0.8 !important;
 
         &:hover {         
-            --my-background-color: var(--button-hover-bgcolor) !important;
+            --my-background-color: var(--color-accent-primary-hover) !important;
             --my-fill: var(--tab-selected-textcolor) !important;
             --my-opacity: 1 !important;
         }
@@ -333,7 +333,7 @@ https://github.com/Godiesc/firefox-one */
             --my-inset-inline-start: 17px !important;
 
             &:hover {         
-                --my-background-color: var(--button-hover-bgcolor) !important;
+                --my-background-color: var(--color-accent-primary-hover) !important;
                 --my-fill: var(--tab-selected-textcolor) !important;
                 --my-opacity: 1 !important;
             }

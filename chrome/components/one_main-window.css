@@ -1,26 +1,22 @@
 /* Source file made available under Mozilla Public License v. 2.0 See the main repository for updates as well as full license text. 
    https://github.com/Godiesc/firefox-gx */
 
-/* Remove theme image \
-¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
-body,
+/* Remove theme image when it is in navigator-toolbox \
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
 #navigator-toolbox {
-    background-image: none !important;
-    background-color: transparent !important;
+    background-image: none !important;      /* ¡important, Don't use the image variable - 'bug' in image in tab selected */
+    border-bottom-width: 0px !important;    /* Remove unwanted border - bug in sidebars */
 }
 
-/* Set the image in main window \
-¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
-#main-window {
-    --my-background-image: var(--lwt-additional-images), var(--lwt-header-image, none),
-        linear-gradient(var(--lwt-accent-color, Field), var(--lwt-accent-color, Field)) !important;
-    --my-background-position-y: top;
-    background-image: var(--my-background-image);
-    background-repeat: var(--lwt-background-tiling);
-    background-position: var(--lwt-background-alignment);
-    background-position-y: var(--my-background-position-y) !important;
-    background-color: var(--lwt-accent-color, Field) !important;
-    background-size:var(--my-background-size, auto) !important;
+/* Apply the image properties in body element, in both image cases ¬
+-  into 'main-window' to not affect sidebarbox                       \
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+#main-window > body {
+    background-image: var(--toolbox-background-image) !important;
+    background-repeat: var(--toolbox-background-repeat) !important;
+    background-position: var(--toolbox-background-position) !important;
+    background-position-y: var(--my-background-position-y, top) !important;
+    background-size: var(--toolbox-background-size) !important;
 }
 
 /* Gradient effect to the bottom \
@@ -36,7 +32,7 @@ body,
         background: var(--my-main-gradient-background);
         z-index: -1;
         pointer-events: none;
-        
+
         @media -moz-pref("firefoxone.main-image") {
             --my-main-gradient-background: transparent !important;
             background-color: color-mix(in srgb, var(--my-scheme-color), transparent var(--brightness-wallpaper));
@@ -44,8 +40,9 @@ body,
     }
 
     @media not -moz-pref("firefoxone.main-image") {
-        /* Put here this color only in themes with images because a bug with solid themes (lwt-accent-color) */
-        &:is([lwtheme-image],[style*="--lwt-additional-images"])>body:before {
+        /* Put here this color only in themes with images because a bug with solid themes 'lwt-accent-color'
+        -  important, Added too for 'Private' window */
+        &:is([lwtheme-image],[style*="--lwt-additional-images"],[privatebrowsingmode="temporary"])>body:before {
             background-color: var(--toolbar-background-color);
         }
     }
@@ -53,27 +50,15 @@ body,
 
 /* Remove unnecessary background to show the theme image \
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
-body, #browser, .browserContainer {
+#browser, .browserContainer {
     background-color: transparent !important;
     box-shadow: none !important; /* Remove unwanted shadow when using 'revamp' */
 }
 
-/* Web content background color */
-.browserStack>browser {
+/* Sidebar-box background the same as the web content  */
+#tabbrowser-tabpanels {
     background-color: var(--toolbar-background-color) !important;
     border-radius: var(--my-toolbar-border-radius) !important;
-}
-
-/* Change web content 'border radius' when findbar is enable */
-
-.browserContainer:has(findbar:not([hidden])) {
-    :is(.browserStack, .browserStack > browser) {
-        border-radius: var(--my-toolbar-border-radius) var(--my-toolbar-border-radius) 0px 0px !important;
-        
-        /*:root:is([chromehidden~="toolbar"]) & {
-            border-radius: 0px !important;
-        }/**/
-    }
 }
 
 /* Wallpaper for some 'about:' pages \
@@ -87,16 +72,20 @@ body, #browser, .browserContainer {
     .tab-icon-image[src="chrome://global/skin/icons/developer.svg"],
     .tab-icon-image[src="chrome://global/skin/icons/performance.svg"])) {
         
-        --my-main-gradient-background: transparent !important;
-        --toolbar-background-color: color-mix(in srgb, var(--my-scheme-color), transparent calc(var(--brightness-wallpaper)/* - 20%/**/)) !important;
-        --lwt-header-image: var(--lwt-main-image) !important;
-        --my-background-size: 100vw 100vh !important;
+        --my-main-gradient-background: var(--toolbar-background-color);
+        --my-toolbar-bgcolor: color-mix(in srgb, var(--panel-background-color) 50%, transparent) !important;
+        --toolbar-background-color: color-mix(in srgb, var(--my-toolbar-bgcolor), transparent var(--brightness-toolbar)) !important;
+        --my-background-size: cover !important;
+        --toolbox-background-image: var(--newtab-wallpaper, var(--lwt-main-image)) !important;
+        --toolbox-background-size: cover !important;
         
         @media -moz-pref("firefoxone.main-image") {
-            --toolbar-background-color: color-mix(in srgb,var(--my-toolbar-bgcolor),transparent var(--brightness-toolbar)) !important;
+            --lwt-additional-images: var(--lwt-main-image) !important;
+            --toolbar-background-color: color-mix(in srgb, var(--my-scheme-color), transparent calc(var(--brightness-toolbar))) !important;
         }
     }
 }
+
 
 /* __________________________ Menu-bar __________________________
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
@@ -128,7 +117,7 @@ menubar > menu {
     box-shadow: none !important;
 
     &>menu[_moz-menuactive] {
-        background-color: var(--button-bgcolor) !important;
+        background-color: var(--color-accent-primary-small) !important;
         border-radius: 0 0 4px 4px !important;
     }
 }
@@ -157,7 +146,7 @@ menubar > menu {
     border-radius: 4px !important;
     
     &[_moz-menuactive] {
-        background-color: var(--button-bgcolor) !important;
+        background-color: var(--color-accent-primary-small) !important;
     }
     
     &::before {
@@ -185,6 +174,10 @@ menubar > menu {
     outline: 1px solid var(--my-content-border-color) !important;
     outline-offset: -1px !important;
     box-shadow: 0 0 1px var(--my-scheme-color) !important;
+    
+    @media (prefers-color-scheme: light) {
+        --my-scheme-color: var(--my-scheme-border-color) !important;
+    }
 }
 
 /* ______________________________ Margin in all toolbars ______________________________
@@ -235,8 +228,8 @@ menubar > menu {
             
             /* When 'hover' */
             &:hover:not(:focus-within) {
-                background-color: color-mix(in srgb, var(--button-smaller-bgcolor) 70%, transparent) !important;
-                border-color: var(--button-bgcolor) !important;
+                background-color: color-mix(in srgb, var(--color-accent-primary-xsmall) 70%, transparent) !important;
+                border-color: var(--color-accent-primary-small) !important;
             }
             
             /* When 'focus' */
@@ -261,7 +254,7 @@ menubar > menu {
     
     #provider {
         --button-background-color-ghost: transparent !important;
-        --button-background-color-ghost-hover: var(--button-hover-bgcolor) !important;
+        --button-background-color-ghost-hover: var(--color-accent-primary-hover) !important;
     }
 }
 
@@ -275,7 +268,7 @@ menubar > menu {
     
     #summarize-button {
         --button-background-color: color-mix(in srgb, currentColor 13%, transparent) !important;
-        --button-background-color-hover: var(--button-hover-bgcolor) !important;
+        --button-background-color-hover: var(--color-accent-primary-hover) !important;
     }
 }
 
@@ -383,7 +376,7 @@ menubar > menu {
     #sidebar-launcher-splitter {
         margin-inline-start: -4px !important;
         
-        #sidebar-main[sidebar-positionend] ~ & {
+        #sidebar-container[sidebar-positionend] ~ & {
             margin-inline: 0px -4px !important;
         }
     }
@@ -557,19 +550,19 @@ split-view-footer {
 :root:not([inDOMFullscreen]) {
     #tabbrowser-tabbox {
         /* Used 'padding' instead of 'margin' to avoid 
-        breaking animations when #sidebar-main 'expand-on-hover' */
+        breaking animations when #sidebar-container 'expand-on-hover' */
         padding: 4px !important;
 
         /* When using sidebar 'revamp' */
         @media -moz-pref("sidebar.revamp") {
 
             /* not applied in popup windows ¯¯v */
-            :root:not([chromehidden~="toolbar"]) #sidebar-main:not([hidden]) ~ #sidebar-box:not([sidebar-positionend]) ~ & {
+            :root:not([chromehidden~="toolbar"]) #sidebar-container:not([hidden]) ~ #sidebar-box:not([sidebar-positionend]) ~ & {
                 padding-inline-start: 0px !important;
             }
 
             /* not applied in popup windows ¯¯v */
-            :root:not([chromehidden~="toolbar"]) #sidebar-main:not([hidden]) ~ #sidebar-box[sidebar-positionend] ~ & {
+            :root:not([chromehidden~="toolbar"]) #sidebar-container:not([hidden]) ~ #sidebar-box[sidebar-positionend] ~ & {
                 padding-inline-end: 0px !important;
             }
         }

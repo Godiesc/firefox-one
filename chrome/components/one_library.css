@@ -72,13 +72,13 @@
     #placesToolbar>toolbarbutton#forward-button:hover:not([disabled]),                     /* Botones adelante */
     #placesMenu > menu:is(:hover, [open]) {                                                /* Botones del menu */
         appearance: none !important;
-        background: var(--button-active-bgcolor, #0060bf) !important;
+        background: var(--color-accent-primary-active, #0060bf) !important;
         color: #eaeaea !important;
     }
     
     #placesMenu > menu:is(:hover, [open])[_moz-menuactive="true"][open="true"] {
         appearance: none !important;
-        background: var(--button-hover-bgcolor, #0060bf) !important;
+        background: var(--color-accent-primary-hover, #0060bf) !important;
     }
     
     toolbar {
@@ -161,7 +161,7 @@
         background: var(--organizer-pane-background) !important;
         }
     #editBMPanel_tagsSelectorExpander:hover{
-        background: var(--button-active-bgcolor) !important;
+        background: var(--color-accent-primary-active) !important;
         outline: none !important;
         }
     #placesView>splitter {
@@ -203,7 +203,7 @@
     }
     #contentView treecol:hover{
         appearance: none !important;
-        background-color: var(--button-active-bgcolor, #0060bf) !important;
+        background-color: var(--color-accent-primary-active, #0060bf) !important;
     }
     
     #placeContent treechildren:not(.autocomplete-treebody)::-moz-tree-cell-text() {
@@ -244,7 +244,7 @@
     /*Color "selected" de items*/
     #places treechildren:not(.autocomplete-treebody)::-moz-tree-row(selected), #placesList>treechildren::-moz-tree-row(selected) {
         appearance: none !important;
-        background-color: var(--button-active-bgcolor, #0060bf)  !important;
+        background-color: var(--color-accent-primary-active, #0060bf)  !important;
     }
     
     #placeContent treechildren:not(.autocomplete-treebody)::-moz-tree-cell-text(selected), #placesList>treechildren::-moz-tree-cell-text(selected) {

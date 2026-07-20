@@ -21,12 +21,12 @@
 /* Tab background color */
 
 .tabbrowser-tab[visuallyselected] .tab-background {
-    background-color: var(--my-tab-group-background, var(--tab-background-color-selected)) !important;
+    /*background-color: var(--my-tab-group-background, var(--tab-background-color-selected)) !important;/**/
     
-    /* Pestaña activa en temas con imágenes */
+    /* Pestaña activa en temas con imágenes 
     :root:is([lwtheme-image],[style*="--lwt-additional-images"]) & {
         --tab-background-color-selected: var(--toolbar-background-color) !important;
-    }
+    }*/
 }
 
 /* ________________________________________ Split view ________________________________________ 
@@ -36,7 +36,7 @@
     
     /* Split container background when has an active tab */
     &[hasactivetab] {
-        background-color: var(--my-tab-group-background, var(--button-smaller-bgcolor))!important;
+        background-color: var(--my-tab-group-background, var(--color-accent-primary-xsmall))!important;
         box-shadow: none !important;
     }
 }
@@ -83,8 +83,8 @@
                 border-inline-start: 1px solid var(--toolbarbutton-icon-fill) !important;
                 border-image: 0 1 linear-gradient(
                     transparent 24%,
-                    color-mix(in srgb, var(--tab-group-color-invert, var(--button-active-bgcolor)) 80%, transparent) 24%,
-                    color-mix(in srgb, var(--tab-group-color-invert, var(--button-active-bgcolor)) 80%, transparent) 68%,
+                    color-mix(in srgb, var(--tab-group-color-invert, var(--color-accent-primary-active)) 80%, transparent) 24%,
+                    color-mix(in srgb, var(--tab-group-color-invert, var(--color-accent-primary-active)) 80%, transparent) 68%,
                     transparent 68% );
 
                 .tab-background { border-radius: 0 var(--tab-border-radius) var(--tab-border-radius) 0 !important;}
@@ -114,7 +114,7 @@
 
         &[hasactivetab],
         &:hover {
-            background-color: var(--my-tab-group-background, var(--button-smaller-bgcolor))!important;
+            background-color: var(--my-tab-group-background, var(--color-accent-primary-xsmall))!important;
             box-shadow: none !important;
         }
         
@@ -133,8 +133,8 @@
                 border-block-end: 1px solid var(--toolbarbutton-icon-fill) !important;
                 border-image: 1 linear-gradient( to right,
                     transparent 11px,
-                    color-mix(in srgb, var(--tab-group-color-invert, var(--button-active-bgcolor)) 80%, transparent) 11px,
-                    color-mix(in srgb, var(--tab-group-color-invert, var(--button-active-bgcolor)) 80%, transparent) calc(100% - 11px),
+                    color-mix(in srgb, var(--tab-group-color-invert, var(--color-accent-primary-active)) 80%, transparent) 11px,
+                    color-mix(in srgb, var(--tab-group-color-invert, var(--color-accent-primary-active)) 80%, transparent) calc(100% - 11px),
                     transparent calc(100% - 11px) );
                 
                 .tab-background { border-radius: var(--tab-border-radius) var(--tab-border-radius) 0 0 !important;}
@@ -307,12 +307,12 @@
 /* Multiselected tabs */
 
 .tabbrowser-tab[multiselected]:is([selected]) :is(.tab-content, .tab-background) {
-    background-color: var(--button-bgcolor) !important;
+    background-color: var(--color-accent-primary-small) !important;
     outline-color: transparent !important;
 }
 
 .tabbrowser-tab[multiselected]:not([selected]) .tab-background {
-    background-color: var(--button-bgcolor) !important;
+    background-color: var(--color-accent-primary-small) !important;
 }
 
 .tabbrowser-tab[multiselected]:not([selected]) :is(.tab-content, .tab-background) {
@@ -414,7 +414,7 @@ sidebar-main:is([expanded]) {
     /* Variables used below to affect only scroll buttons in tabs bar and not scroll buttons into bookmarks folder */
     --my-scrollbuttons-margin-block-end: 3px;
     --my-scrollbuttons-button-bgcolor: var(--toolbarbutton-hover-personal) !important;
-    --my-scrollbuttons-button-hover-bgcolor: var(--button-bgcolor) !important;
+    --my-scrollbuttons-button-hover-bgcolor: var(--color-accent-primary-small) !important;
 }
 
 #scrollbutton-up, 
@@ -456,7 +456,6 @@ spacer {
 /* ___________ Size and color of the 'dot' when a tab needs attention */
 
 .tabbrowser-tab > .tab-stack > .tab-content[pinned][titlechanged]:not([selected="true"]) {
-    background-image: radial-gradient(circle, var(--attention-dot-color), var(--attention-dot-color) 2px, transparent 2px) !important;
     background-position: center bottom !important;
     background-size: 8px 8px !important;
 }
