@@ -55,8 +55,7 @@
 :root {
   tab-group {
     --tab-group-line-thickness: var(--my-group-line-thickness) !important;                              /* Tab-group line width */
-    --tab-selected-outline-color: light-dark(var(--tab-group-color, var(--general-color)),
-      var(--tab-group-color-invert, var(--general-color))) !important;                                  /* tab_line in 'group-tab' without default-colors */
+    --tab-selected-outline-color: var(--tab-group-color, var(--general-color)) !important;              /* tab_line in 'group-tab' without default-colors */
     --tab-loading-fill: var(--tab-selected-outline-color) !important;                                   /* Dot color when page loads */
     --my-tab-group-background: color-mix(in srgb, var(--tab-group-color-invert) 15%, var(--toolbar-background-color));  /* Tab background */
   }
