@@ -397,16 +397,22 @@
         border-image: var(--panel-separator-zap-gradient2) 1 !important;
     }
     
-    /* Test it without 'News' section - Small space above logo&wordmark - searchbox */
+    /* Test it without 'News' section - Small space above logo&wordmark - searchbox 
     
     .nova-enabled.container {
         grid-auto-rows: 0px !important;
-    }
+    }*/
     
     /* __________________________________________________________ Search box _________________________________________________________ 
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
-    /* Width */
+    /* Width 
     @container content-grid (inline-size >= calc(750px + 6.75rem)) {
+        .nova-enabled .search-inner-wrapper {
+            width: calc(6 * var(--col-width) + 12 * var(--space-medium)) !important;
+        }
+    }*/
+    
+    @container outer-grid (inline-size >= calc(1050px + 8.25rem)) {
         .nova-enabled .search-inner-wrapper {
             width: calc(6 * var(--col-width) + 12 * var(--space-medium)) !important;
         }
@@ -692,26 +698,26 @@
         }
     }
     
-    /* Recent activity wider */
+    /* Recent activity wider 
     .nova-enabled .ds-highlights .section-list {
         grid-column: 1/18 !important;
-    }
+    }*/
     
-    /* News wider */
+    /* News wider 
     .nova-enabled .content .ds-section-wrapper {
         grid-template-columns: repeat(auto-fill, calc(3 * var(--col-width) + 4 * var(--space-medium))) !important;
     }
     
     .nova-enabled .widgets-section-container {
         grid-template-columns: repeat(auto-fill, calc(5 * var(--col-width) + 3 * var(--space-medium))) !important;
-    }
+    }*/
     
-    /* widgets wider */
+    /* widgets wider 
     .nova-enabled .widgets-container {
         --mrec-width: 375px;
         --col-width: calc(var(--mrec-width) / 4);
         grid-template-columns: repeat(auto-fill, var(--col-width)) !important;
-    }
+    }*/
     
     /* ______________________________________________________ News Section _______________________________________________________ 
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
