@@ -69,6 +69,11 @@
     <td width="320px">firefoxone.tree_tabs_style</td>
     <td width="50px">true</td></tr>
 </table>
+<li><a href="https://github.com/Godiesc/firefox-one/tree/main/Previews#tree-tabs-style-enabled---eg-tab-center-reborn">Expand on hover using Tree-tabs-style</a> </li>
+<table><tr>
+    <td width="320px">firefoxone.verticalTabs-expandOnHover</td>
+    <td width="50px">true</td></tr>
+</table>   
 <li><a href="https://github.com/Godiesc/firefox-one/tree/main/Previews#tree-tabs-style-enabled-and-left-sidebar-disabled">Tree-tabs-style without Left-sidebar</a></li>
    <table><tr>
     <td width="320px">firefoxone.tree_tabs_style</td>
