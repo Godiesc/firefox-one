@@ -24,15 +24,6 @@
     width: 25.5em !important;
 }
 
-/* Color of icons and labels */
-
-.subviewbutton:not([disabled]), 
-#appMenu-popup toolbarbutton:not([disabled]) {
-    -moz-context-properties: fill;
-    fill: var(--label-color) !important;
-    color: var(--label-color) !important;/*/**/
-}
-
 /* Login Button */
 
 #appMenu-fxa-status2:not([fxastatus]) {

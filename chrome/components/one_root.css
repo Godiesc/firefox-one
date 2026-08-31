@@ -62,10 +62,9 @@
 }
 
 :root {
-  --my-main-gradient-background: linear-gradient(to top, 
-    var(--lwt-accent-color)                                                             /* Gradiente background used in themes with images */
-    calc(100% - 200px), 
+  --my-main-gradient-background: linear-gradient(to top, var(--lwt-accent-color) calc(100% - 200px),  /* Gradiente background used in themes with images */
     transparent );
+  --my-titlebar-spacer-width: 40px !important;                                                        /* Titlebar spacer width - used in 'online' and 'vertical tabs' */
   
   /* Toolbox Background & text color \
   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
@@ -130,9 +129,9 @@
   --urlbar-box-background-color-active: var(--color-accent-primary-small) !important;                 /* Background urlbar icons when 'active' */
   /*--urlbar-box-text-color-hover: contrast-color(var(--color-accent-primary-xsmall)) !important;     /* Icon fill when 'hover' & 'open' */
   --urlbar-inner-border-radius: 3px !important;                                                       /* Roundness of url bar icons */
-  --urlbar-icon-padding: calc((var(--urlbar-min-height) - 5px - 5px - 16px ) / 2) !important;         /* Urlbar icon padding */
+  --urlbar-icon-padding: calc((var(--urlbar-height) - 5px - 5px - 16px ) / 2) !important;             /* Urlbar icon padding */
   --urlbar-input-gap: 10px !important;                                                                /* Margin between 'trust' icon and url */
-  --urlbar-basic-component-size: calc(var(--urlbar-min-height) - 5*                                   /* Url icon size - height & width */
+  --urlbar-basic-component-size: calc(var(--urlbar-height) - 5*                                       /* Url icon size - height & width */
     (var(--urlbar-input-container-border-width) + var(--urlbar-input-container-padding))) !important;
   
   /* Toolbar buttons \
@@ -379,13 +378,6 @@
     --toolbar-field-background-color-focus: light-dark(#e7edf1, #4c547b) !important;                                    /* Urlbar focus */
     --sidebar-background-color: light-dark(var(--toolbar-background-color), var(--toolbar-background-color)) !important;                  /* Sidebar content background */
     --toolbarbutton-icon-fill: light-dark(#101019, #c4bbd7) !important;                                                 /* Icons */
-  }
-  
-  ::selection {
-    background: var(--my-selected-text-background) !important;
-    color: black !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
   }
 }
 
