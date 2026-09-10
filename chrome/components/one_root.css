@@ -373,7 +373,7 @@
     --lwt-accent-color: light-dark(#f9f9f9, #101019) !important;                                                        /* Frame */
     --toolbox-bgcolor: light-dark(var(--lwt-accent-color), var(--lwt-accent-color)) !important;                         /* Frame window focus */
     --toolbox-bgcolor-inactive: light-dark(var(--lwt-accent-color), var(--lwt-accent-color)) !important;                /* Frame window unfocus */
-    --toolbar-background-color: light-dark(#030615, #363844) !important;                                                         /* Toolbar */
+    --toolbar-background-color: light-dark(#eff3f5, #363844) !important;                                                         /* Toolbar */
     --arrowpanel-background: light-dark(#eff3f5, #2a2c36) !important;                                                   /* Popup */
     --toolbar-field-background-color-focus: light-dark(#e7edf1, #4c547b) !important;                                    /* Urlbar focus */
     --sidebar-background-color: light-dark(var(--toolbar-background-color), var(--toolbar-background-color)) !important;                  /* Sidebar content background */
