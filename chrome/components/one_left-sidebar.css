@@ -661,6 +661,7 @@
             --button-size-icon: 36px !important;
             --button-background-color-ghost-hover: transparent !important;
             --button-background-color-ghost-active: transparent !important;
+            --button-background-color-selected: transparent !important;
             --button-background-color-hover: transparent !important;
             --button-background-color-active: transparent !important;
             --toolbarbutton-background-color-active: transparent !important;

@@ -89,10 +89,23 @@ menulist:is(:hover, [open]) {
     --button-text-color: contrast-color(var(--color-accent-primary-hover)) !important;
 }
 
+/* Margins in tabsgroup context-menu \
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+.tab-group-editor-panel {
+/* Add 'fill' property for icons */
+    toolbarbutton .toolbarbutton-icon {
+        -moz-context-properties: fill;
+        fill: currentColor !important;
+    }
+}
+
 /* AI button 'hover' background */
 #tab-group-suggestion-button {
-    --button-border-color-ghost: var(--color-accent-primary-hover) !important;
-    --button-background-color-ghost: var(--color-accent-primary-xsmall) !important;
+    --button-border-color-ghost: var(--color-accent-primary) !important;
+    --button-border-color-ghost-hover: var(--color-accent-primary-hover) !important;
+    --button-background-color-ghost: var(--color-accent-primary) !important;
+    --button-background-color-ghost-hover: var(--color-accent-primary-hover) !important;
+    --button-text-color-ghost: contrast-color(var(--color-accent-primary)) !important;
     --button-text-color-ghost-hover: contrast-color(var(--color-accent-primary-hover)) !important;
 }
 
