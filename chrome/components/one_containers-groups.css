@@ -9,9 +9,10 @@
 #tabbrowser-tabs {
     
     .tab-context-line {
+        background-color: var(--identity-stroke-color, transparent) !important;
         height: calc(var(--tab-height-personal) - 6px) !important;
         width: 3px !important;
-        margin-inline-start: 2px !important;
+        margin-inline-start: 1px !important;
         box-shadow: 4px 0 10px var(--identity-tab-color) !important;
     }
     
@@ -29,7 +30,7 @@
     
     &[orient="horizontal"] {
         .tab-context-line {
-            margin-block-start: 3px !important;
+            margin-block-start: 2px !important;
         }
 
         .tabbrowser-tab:not([selected]) .tab-context-line {

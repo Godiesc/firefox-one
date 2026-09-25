@@ -8,7 +8,7 @@
 
 /* Makes bookmarks toolbar appear vertically at the left side of the window */
 
-    #navigator-toolbox{ position: relative }
+    #navigator-toolbox{ position: relative; overflow: visible !important; }
     #PersonalToolbar{
         position: absolute;
         display: flex;
@@ -193,6 +193,11 @@
     }
     
 /* ______________________________________________________ My Code to Adapt to -ONE- Style ______________________________________________________ */
+
+    /* Remove space of this sidebar in webapp winddow */
+    :root:has([tabs-hidden]) {
+        --my-vertical-toolbar-width: 0px !important;
+    }
     
     /* ---------------- Quitar label de items de la left-sidebar ---------------- */
     
