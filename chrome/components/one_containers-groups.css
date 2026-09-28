@@ -42,8 +42,13 @@
     
     &[orient="vertical"] {
         .tab-context-line {
+            margin-block: 2px !important;
             order: 1 !important;
-            align-self: center !important;
+            align-self: start !important;
+        }
+        
+        .tabbrowser-tab:not([selected]) .tab-context-line {
+            margin-block: 5px !important;
         }
     }
 }

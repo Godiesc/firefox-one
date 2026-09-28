@@ -194,9 +194,11 @@
     
 /* ______________________________________________________ My Code to Adapt to -ONE- Style ______________________________________________________ */
 
-    /* Remove space of this sidebar in webapp winddow */
-    :root:has([tabs-hidden]) {
-        --my-vertical-toolbar-width: 0px !important;
+    /* Remove space of this sidebar in webapp window */
+    @media not -moz-pref("sidebar.verticalTabs") {
+        :root:has(#navigator-toolbox[tabs-hidden]) {
+            --my-vertical-toolbar-width: 0px !important;
+        }
     }
     
     /* ---------------- Quitar label de items de la left-sidebar ---------------- */
@@ -771,6 +773,8 @@
         }
         
         .tools-and-extensions[orientation="horizontal"] {
+            gap: 1px !important;
+            
                 &[overflowing="true"] {
                     flex-wrap: wrap !important;
                     height: auto !important;
