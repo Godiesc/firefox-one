@@ -6,7 +6,7 @@
 #urlbar-results,
 #searchbar-results {
     margin-inline: calc(-1*var(--urlbar-background-overhang-open)) !important;
-    margin-block-end: calc(-1*var(--urlbar-background-overhang-open)) !important;
+    margin-block: calc(-1*var(--urlbar-background-overhang-open) - 4px) calc(-1*var(--urlbar-background-overhang-open)) !important;
 }
 
 /* "popup_highlight" - mouse highlight */
@@ -49,9 +49,10 @@
 /* Margin left & right */
 .urlbarView-row {
   @media -moz-pref("browser.urlbar.richSuggestions.featureGate") {
-    &:not([rich-suggestion]), &[rich-suggestion][icon-size="16"] {
-      --urlbarView-icon-margin-start: 17px !important;
-      --urlbarView-icon-margin-end: 13px !important;
+    &:not([rich-suggestion]), 
+    &[rich-suggestion][icon-size="16"] {
+      --urlbarview-icon-margin-start: 17px !important;
+      --urlbarview-icon-margin-end: 13px !important;
       }
   }
 }
@@ -175,7 +176,7 @@
     |  Edit too '--urlbar-joint-background-shadow-margin' in 'ogx_root.css' |
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
     --urlbar-background-box-shadow-open: 0 0 0 100vw rgba(0, 0, 0, 0.50) !important;
-    z-index: 34 !important;  /* Display over all other elements */
+    z-index: 3 !important;  /* Display over all other elements - tested with z-index for 'oneline' feature */
 }
 
 /* Smooth transition urlbar 'open' dark filter - 'top section' */
@@ -200,15 +201,13 @@
 }
 
 .urlbarView {
+    /* Remove rectangle defect in urlbox-searchbox */
+    --urlbarView-padding: 0px !important;
+    
     &:not(:popover-open) {
         height: 0px !important;
         width: 0px !important;
         display: flex !important;
-
-        /* Remove defect in searchbox */
-        #searchbar-new & {
-            padding-block-start: unset !important;
-        }
 
         .urlbarView-background {
             box-shadow: 0 0 0 100vw transparent !important;
@@ -227,6 +226,7 @@
 
 :is(#urlbar, #searchbar-new), 
 .urlbar-background {
+    --toolbarbutton-border-radius: var(--border-radius-urlbar-personal) !important;
     border-radius: var(--toolbarbutton-border-radius) !important;
 }
 
@@ -269,22 +269,6 @@
 .urlbar-input.textbox-input {
     margin-block: -1px 1px !important;
 }
-
-/* Dark filter when urlbar is [open] \
-¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
-:is(#urlbar-container, #search-container) {
-    &::before {
-        content: '';
-        box-shadow: 0 0 0 100vw var(--my-box-shadow-color, transparent);
-        transition: box-shadow 250ms ease-out;
-        pointer-events: none;
-        z-index: 6 !important;
-    }
-
-    &:has(#urlbar[open], #searchbar-new[open])::before {
-        --my-box-shadow-color: rgba(0, 0, 0, 0.50);
-    }
-}*/
 
 /* Trust button ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ \
 /* Green color of the secure web description \

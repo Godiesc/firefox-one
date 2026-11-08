@@ -208,7 +208,7 @@
         /* Remove unwanted margins */
         .tab-content {
             --tab-inline-padding: 0px !important;
-            --tab-icon-end-margin: 0px !important;
+            --tab-icon-margin-inline-end: 0px !important;
         }
 
         /* Centered favicon */
@@ -348,7 +348,7 @@
         
         /* Alignt newtab label When Sidebar is expanded */
         sidebar-main:is([expanded]) & {
-            --tab-icon-end-margin: 5.5px !important;
+            --tab-icon-margin-inline-end: 5.5px !important;
         }
     }
 }

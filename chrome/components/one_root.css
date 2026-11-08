@@ -51,13 +51,28 @@
 }
 
 /* ___________ Tabs groups ___________
-   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
 :root {
   tab-group {
+    --general-color: var(--tab-group-color) !important;                                                 /* General color becomes the group accent color */
+    --color-accent-primary: var(--general-color) !important;                                            /* Accent color */
     --tab-group-line-thickness: var(--my-group-line-thickness) !important;                              /* Tab-group line width */
-    --tab-selected-outline-color: var(--tab-group-color, var(--general-color)) !important;              /* tab_line in 'group-tab' without default-colors */
+    --my-classic-sound-icon-margin: calc(var(--tab-group-line-thickness) + 1px);                        /* Variable used for 'classic-sound-icon' feature */
+    --tab-group-label-padding: 4px !important;                                                          /* Group label padding inline */
+    /*--tab-group-background-color: lch(from 
+      var(--tab-group-color) l c h / 12%) !important;                                                   /* Group label Background */
+    
+    /* Need to duplicate some variable */
+    --tab-border-color-selected: var(--general-color) !important;                                       /* Selected tab border color */
+    --tab-background-color-hover: var(--color-accent-primary-xsmall) !important;                        /* Tab background when 'hover' */
     --tab-loading-fill: var(--tab-selected-outline-color) !important;                                   /* Dot color when page loads */
-    --my-tab-group-background: color-mix(in srgb, var(--tab-group-color-invert) 15%, var(--toolbar-background-color));  /* Tab background */
+    
+    /* These variables from 'ogx_root-personal.css' are also needed here */
+    --color-accent-primary-xsmall: color-mix(in srgb, transparent 75%, var(--color-accent-primary));                        /* Button background color smaller */
+    --color-accent-primary-small: color-mix(in srgb, transparent 60%, var(--color-accent-primary));                         /* Button background color small */
+    --color-accent-primary-medium: color-mix(in srgb, transparent 45%, var(--color-accent-primary));                        /* Button background color medium */
+    --color-accent-primary-hover: color-mix(in srgb, var(--my-scheme-color) 24%, var(--color-accent-primary)) !important;   /* Button background color when 'hover' */
+    --color-accent-primary-active: color-mix(in srgb, var(--my-scheme-color) 40%, var(--color-accent-primary)) !important;  /* Button background color when 'active' */
   }
 }
 
@@ -85,11 +100,11 @@
   --tabs-shadow-size: 0px !important;                                                                 /* Tab shadow */
   --tab-border-radius: calc(var(--my-toolbar-border-radius)/2) !important;                            /* Tab roundness */
   --tab-attention-dot-color: var(--general-color) !important;                                         /* Dot below favicon */
-  --tab-overflow-clip-margin: 1px !important;                                                         /* Space between tabs */
+  --tab-margin-overflow-clip: 1px !important;                                                         /* Space between tabs */
 
   /* Selected tab \
   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
-  /*--tab-selected-outline-color: transparent !important;                                             /* Selected tab border color */
+  /*--tab-border-color-selected: transparent !important;                                              /* Selected tab border color */
   --tab-loading-fill: var(--general-color) !important;                                                /* Dot color when page loads */
   --tab-background-color-hover: var(--toolbarbutton-hover-personal) !important;                       /* Tab background when 'hover' */
   /*--tab-background-color-selected: transparent !important;                                          /* tab-selected background color - Fix 'flash' bug when add tab 'hover' transition
@@ -106,7 +121,7 @@
   /* Navbar field \
   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
   --toolbar-field-background-color: transparent !important;                                           /* toolbar_field */
-  /*--toolbar-field-text-color: var(--toolbar-text-color) !important;                                 /* toolbar_field_text */
+  --toolbar-field-text-color: var(--toolbar-text-color) !important;                                   /* toolbar_field_text */
   --toolbar-field-border-color: transparent !important;                                               /* toolbar_field_border */
 
   /* Navbar field - focus \
@@ -132,11 +147,10 @@
   
   --urlbarview-action-button-background-color: var(--color-accent-primary-xsmall) !important;         /* Action buttons background */
   --urlbarview-action-button-background-color-hover: var(--color-accent-primary-active) !important;   /* Action buttons background on 'hover' */
-  --urlbarView-rich-search-suggestion-icon-size: 16px !important;                                     /* Size favicon for rich suggestions */
+  --urlbarview-rich-search-suggestion-icon-size: 16px !important;                                     /* Size favicon for rich suggestions */
   
   --border-radius-urlbar-personal: 4px;                                                               /* Personal variable - urlbar buttons roundness with 'tab-shapes' config */
 
-  
   /* Navbar field items \
   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
   --urlbar-box-background-color-hover: var(--color-accent-primary-xsmall) !important;                 /* Background urlbar icons when 'hover' */
@@ -145,8 +159,12 @@
   --urlbar-inner-border-radius: 3px !important;                                                       /* Roundness of url bar icons */
   --urlbar-icon-padding: calc((var(--urlbar-height) - 5px - 5px - 16px ) / 2) !important;             /* Urlbar icon padding */
   --urlbar-input-gap: 10px !important;                                                                /* Margin between 'trust' icon and url */  
+  --urlbar-component-gap: 0px !important;                                                             /* To keep same margin 'trust' icon & url */
   --urlbar-basic-component-size: calc(var(--urlbar-height) - 2.5 *                                    /* Url icon size - height & width */
     var(--urlbar-input-container-padding)) !important;
+  
+  --urlbarview-row-border-radius: 0px !important;                                                     /* Urlbar results roundness for each row */
+  --urlbarview-row-gutter: 0px !important;                                                            /* Unwanted padding for each row of results */
   
   /* Toolbar buttons \
   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
@@ -385,19 +403,30 @@
 
 /* __________________________________ Colors when the theme selected is 'System theme - dark/light/automatic' __________________________________ 
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
-:root:is([theme-in-app], :not([lwtheme])), :host {
+:root:is([theme-in-app], 
+:not([lwtheme])), 
+:host {
   @layer tokens-browser-theme-nova {
     @media not ((forced-colors) or (-moz-native-theme)) {
       --lwt-accent-color: light-dark(#f9f9f9, #09080d) !important;                                                          /* Frame */
       --toolbar-background-color: light-dark(#f4f2f7, #120f19) !important;                                                  /* Toolbar */
       --panel-background-color: light-dark(#f4f2f7, #1c1726) !important;                                                    /* Popup */
       --toolbar-field-background-color-focus: light-dark(#f4f2f7, #2b2640) !important;                                      /* Urlbar focus */
-      --toolbarbutton-icon-fill-attention: var(--fuchsia) !important;                                                       /* Accent color */
-      --tab-border-color-accent: transparent !important;
-      --tab-background-color: transparent !important;
-      --toolbox-background-image: linear-gradient(to right, var(--lwt-accent-color), var(--lwt-accent-color)) !important;
+      --toolbarbutton-icon-fill-attention: unset !important;                                                                /* Remove */
+      --tab-border-color-accent: transparent !important;                                                                    /* Remove styles for default gradient themes */
+      --tab-background-color: transparent !important;                                                                       /* Remove styles for default gradient themes */
+      --toolbox-background-image: linear-gradient(to right, var(--lwt-accent-color), var(--lwt-accent-color)) !important;   /* Remove styles for default gradient themes */
     }
   }
+}
+
+/* _____________ Background and font color when selecting text on Firefox UI _____________ 
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+::selection {
+    color: contrast-color(var(--my-selected-text-background)) !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    background: var(--my-selected-text-background) !important;
 }
 
 /* _____________________ Set height of menu-bar, Bookmarks-bar */

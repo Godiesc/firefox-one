@@ -8,7 +8,7 @@
     .tab-content { box-shadow: none !important; }
     
     .tabbrowser-tab[visuallyselected] .tab-background {
-        --tab-selected-outline-color: transparent !important;
+        --tab-border-color-selected: transparent !important;
     }
 
     .tabbrowser-tab[visuallyselected] .tab-content {

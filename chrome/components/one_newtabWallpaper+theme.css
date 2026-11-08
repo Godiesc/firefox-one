@@ -71,7 +71,7 @@
     -moz-pref("browser.newtabpage.activity-stream.newtabWallpapers.wallpaper", "dark-landscape") {
 
       :root:not([privatebrowsingmode="temporary"]) {
-        --tab-selected-outline-color: transparent !important;                                 /* Selected tab border color */
+        --tab-border-color-selected: transparent !important;                                  /* Selected tab border color */
         --lwt-text-color: #fefefe !important;                                                 /* Frame text color */
         --tab-selected-textcolor: #fefefe !important;                                         /* Selected tab text color */
         --toolbar-text-color: #dedede !important;                                             /* Toolbar text color */
@@ -139,8 +139,8 @@
     -moz-pref("browser.newtabpage.activity-stream.newtabWallpapers.wallpaper", 'light-beach') {
       
       :root:not([privatebrowsingmode="temporary"]) {
-        --tab-background-color-selected: #fefefe !important;                              /* Tab background color */
-        --tab-selected-outline-color: var(--general-color) !important;                                              /* Selected tab border color */
+        --tab-background-color-selected: #fefefe !important;                                  /* Tab background color */
+        --tab-border-color-selected: var(--general-color) !important;                         /* Selected tab border color */
         --lwt-text-color: #3a334f !important;                                                 /* Frame text color */
         --tab-selected-textcolor: #3a334f !important;                                         /* Selected tab text color */
         --toolbar-text-color: #3a334f !important;                                             /* Toolbar text color */
